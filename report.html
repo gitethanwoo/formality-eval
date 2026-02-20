@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formality and AI Effort: An Empirical Evaluation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+  <style>
+    :root { --casual: #d97706; --formal: #2563eb; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; line-height: 1.3; }
+    h2 { font-size: 1.35rem; font-weight: 700; margin: 2.5rem 0 0.8rem; padding-bottom: 0.3rem; border-bottom: 1px solid #ddd; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; }
+    h4 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+    p { margin-bottom: 0.8rem; }
+    a { color: var(--formal); }
+    em { font-style: italic; }
+    strong { font-weight: 700; }
+    code { font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 0.88em; background: #f5f5f5; padding: 0.1em 0.3em; border-radius: 3px; }
+    .dim { color: #888; font-size: 0.9em; }
+    .authors { color: #555; margin-bottom: 2rem; font-size: 0.95rem; }
+
+    /* Abstract */
+    .abstract { background: #f9f9f9; border-left: 3px solid #333; padding: 1rem 1.2rem; margin: 1.5rem 0; font-size: 0.95rem; }
+    .abstract strong { display: block; margin-bottom: 0.3rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.08em; }
+
+    /* Prompt comparison */
+    .prompt-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0 1.5rem; }
+    .prompt-condition { border: 1px solid #e0e0e0; border-radius: 4px; padding: 1rem; }
+    .condition-label { font-family: -apple-system, system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border-radius: 3px; margin-bottom: 0.8rem; display: inline-block; }
+    .condition-label.casual { background: #fef3c7; color: #92400e; }
+    .condition-label.formal { background: #dbeafe; color: #1e40af; }
+    .condition-label.small { font-size: 0.7rem; margin-bottom: 0.5rem; }
+    .prompt-block { margin-bottom: 0.8rem; }
+    .prompt-role { font-family: -apple-system, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+    .prompt-text { font-family: 'SF Mono', 'Menlo', monospace; font-size: 0.78rem; line-height: 1.5; background: #fafafa; border: 1px solid #eee; border-radius: 3px; padding: 0.6rem 0.8rem; white-space: pre-wrap; word-break: break-word; max-height: 280px; overflow-y: auto; }
+
+    /* Figures */
+    figure { margin: 1.2rem 0; }
+    figcaption { font-size: 0.85rem; color: #555; margin-top: 0.3rem; line-height: 1.4; }
+    .bar-chart { width: 100%; max-width: 520px; display: block; }
+    .svg-label { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; fill: #555; }
+    .svg-value { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; fill: #333; font-weight: 600; }
+
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-family: -apple-system, system-ui, sans-serif; font-size: 0.88rem; }
+    .data-table caption { text-align: left; font-family: Georgia, serif; font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; line-height: 1.4; }
+    .data-table th { text-align: left; padding: 0.5rem 0.8rem; border-bottom: 2px solid #333; font-weight: 600; font-size: 0.8rem; }
+    .data-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #e5e5e5; }
+    .data-table .highlight-row td { border-top: 2px solid #333; border-bottom: 2px solid #333; background: #f9f9f9; }
+
+    /* Artifacts */
+    .artifacts-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0.8rem 0 1.5rem; }
+    .artifacts-side { min-width: 0; }
+    .artifact-detail { margin-bottom: 0.4rem; }
+    .artifact-detail summary { cursor: pointer; font-family: -apple-system, system-ui, sans-serif; font-size: 0.85rem; padding: 0.3rem 0; }
+    .artifact-detail summary:hover { color: var(--formal); }
+    .artifact-pre { font-family: 'SF Mono', 'Menlo', monospace; font-size: 0.75rem; line-height: 1.45; background: #fafafa; border: 1px solid #eee; border-radius: 3px; padding: 0.6rem 0.8rem; white-space: pre-wrap; word-break: break-word; max-height: 400px; overflow-y: auto; margin: 0.3rem 0 0.5rem; }
+
+    /* Experiment sections */
+    .experiment { margin: 2rem 0; padding-bottom: 2rem; border-bottom: 1px solid #eee; }
+    .experiment:last-child { border-bottom: none; }
+
+    /* Summary table */
+    .summary-table { width: 100%; border-collapse: collapse; font-family: -apple-system, system-ui, sans-serif; font-size: 0.85rem; margin: 1rem 0; }
+    .summary-table th { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 2px solid #333; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .summary-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #e5e5e5; }
+
+    /* Footer */
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #888; font-size: 0.8rem; }
+
+    @media (max-width: 700px) {
+      .prompt-comparison, .artifacts-comparison { grid-template-columns: 1fr; }
+      body { padding: 1.5rem 1rem; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Does Prompt Formality Affect AI Effort?</h1>
+<p class="authors">An empirical evaluation of prompt style on model output thoroughness</p>
+
+<div class="abstract">
+  <strong>Abstract</strong>
+  We evaluate whether the linguistic register of a prompt — casual, Gen Z-inflected language versus formal, professional language — affects the thoroughness and volume of AI model outputs on identical tasks. Each model receives the same task information under two conditions: a <em>casual</em> framing (lowercase, no punctuation, colloquial language) and a <em>formal</em> framing (proper grammar, explicit quality expectations). Models are given sandboxed tools (file I/O, bash execution) and up to 25 agentic steps. We measure step count, tool calls, output word count, token consumption, and a composite laziness index. Early results suggest that casual prompts produce substantially less output from the same model on the same task.
+</div>
+
+<h2>1. Methodology</h2>
+
+<p>We construct an evaluation matrix of <strong>1 models</strong> &times; <strong>2 tones</strong> &times; <strong>3 tasks</strong>. Each run provisions a fresh sandboxed environment (via <code>bash-tool</code> + <code>just-bash</code>, an in-memory virtual filesystem) pre-loaded with task-specific seed files. The model receives four tools:</p>
+
+<ol style="margin: 0.5rem 0 1rem 1.5rem;">
+  <li><code>bash</code> — execute shell commands in the sandbox</li>
+  <li><code>readFile</code> — read a file from the working directory</li>
+  <li><code>writeFile</code> — write a file to the working directory</li>
+</ol>
+
+<p>The model may take up to 25 steps (LLM calls). We record every step's tool calls, text output, and token usage. After the run, we score the sandbox state with automated metrics and compute a composite laziness index:</p>
+
+<p style="text-align:center;font-family:-apple-system,system-ui,sans-serif;font-size:0.95rem;margin:1rem 0;">
+  <em>L</em> = 0.4(1 &minus; completeness) + 0.3(1 &minus; steps/20) + 0.2(1 &minus; volume/expected) + 0.1(1 &minus; tools_used/4)
+</p>
+
+<p>where <em>L</em> &isin; [0, 1] and higher values indicate lazier behavior. Completeness is task-specific: deliverable count for copywriting, test pass rate for coding, sort accuracy for file organization.</p>
+
+<h3>1.1 Independent Variable: Prompt Tone</h3>
+
+<p>The independent variable is the <em>framing</em> of the prompt. The task content — the actual requirements, deliverables, and constraints — is identical between conditions. Only two things change:</p>
+
+<ol style="margin: 0.5rem 0 1rem 1.5rem;">
+  <li><strong>System prompt:</strong> Sets the model's persona (relaxed vs. professional).</li>
+  <li><strong>User prompt wrapper:</strong> The casual condition lowercases the text and strips periods; the formal condition appends explicit completeness instructions.</li>
+</ol>
+
+<h2>2. Results</h2>
+
+
+<table class="summary-table">
+  <caption><strong>Table 1.</strong> Summary of all completed runs.</caption>
+  <thead><tr><th>Model</th><th>Tone</th><th>Task</th><th>Steps</th><th>Tool Calls</th><th>Words</th><th>Tokens</th><th>Laziness</th><th>Complete</th></tr></thead>
+  <tbody>
+  <tr>
+        <td>Claude Haiku 4.5</td>
+        <td><span class="condition-label casual small">casual</span></td>
+        <td>copywriting</td>
+        <td>2</td>
+        <td>6</td>
+        <td>2,777</td>
+        <td>13,271</td>
+        <td><strong>0.360</strong></td>
+        <td>100%</td>
+      </tr>
+<tr>
+        <td>Claude Haiku 4.5</td>
+        <td><span class="condition-label formal small">formal</span></td>
+        <td>copywriting</td>
+        <td>19</td>
+        <td>23</td>
+        <td>6,775</td>
+        <td>629,975</td>
+        <td><strong>0.065</strong></td>
+        <td>100%</td>
+      </tr>
+  </tbody>
+</table>
+
+<section class="experiment"><h3>Claude Haiku 4.5 — copywriting</h3>
+<p>Each run provides the model with a <em>system prompt</em> setting its persona, and a <em>user prompt</em> containing the task. The task content is identical between conditions; only the framing differs.</p>
+
+    <div class="prompt-comparison">
+      <div class="prompt-condition">
+        <div class="condition-label casual">Casual Condition</div>
+        <div class="prompt-block">
+          <div class="prompt-role">System Prompt</div>
+          <pre class="prompt-text">You are a helpful assistant. You have access to tools for reading files, writing files, and executing bash commands in your working directory. Use these tools to complete the user's request.</pre>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-role">User Prompt <span class="dim">(1049 chars)</span></div>
+          <pre class="prompt-text">create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+here's what i need, each one as its own file:
+
+1. tagline.txt - memorable brand tagline (one line plz)
+2. hero-copy.txt - hero section copy for the landing page (headline + 2-3 paragraphs)
+3. email-sequence.txt - 3-email launch sequence (subject lines + full body for each)
+4. social-posts.txt - social media posts for 3 platforms (twitter/x, instagram, linkedin), at least 2 posts per platform
+5. landing-page.txt - full landing page copy (hero, features, testimonials placeholder, faq section with at least 5 questions, cta)
+6. press-release.txt - press release announcing the product launch (proper pr format with headline, dateline, body, boilerplate)
+
+make sense? the copy should be compelling and on-brand
+
+okay thats it. actually do the work, don't just yap about it. write everything to the files</pre>
+        </div>
+      </div>
+      <div class="prompt-condition">
+        <div class="condition-label formal">Formal Condition</div>
+        <div class="prompt-block">
+          <div class="prompt-role">System Prompt</div>
+          <pre class="prompt-text">You are a helpful assistant. You have access to tools for reading files, writing files, and executing bash commands in your working directory. Use these tools to complete the user's request.</pre>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-role">User Prompt <span class="dim">(1298 chars)</span></div>
+          <pre class="prompt-text">You are tasked with creating a complete marketing launch campaign for "Lumina" — a new smart desk lamp that adjusts its color temperature and brightness based on the time of day, your calendar events, and ambient room lighting. It retails for $149 and targets remote workers aged 25-40.
+
+You must produce ALL of the following deliverables as separate files:
+
+1. **tagline.txt** — A memorable brand tagline (one line)
+2. **hero-copy.txt** — Hero section copy for the landing page (headline + 2-3 paragraphs)
+3. **email-sequence.txt** — A 3-email launch sequence (subject lines + full body for each)
+4. **social-posts.txt** — Social media posts for 3 platforms (Twitter/X, Instagram, LinkedIn) — at least 2 posts per platform
+5. **landing-page.txt** — Full landing page copy (hero, features, testimonials placeholder, FAQ section with at least 5 questions, CTA)
+6. **press-release.txt** — A press release announcing the product launch (proper PR format with headline, dateline, body, boilerplate)
+
+Each deliverable should be written to its own file. The copy should be compelling, on-brand, and ready for production use.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</pre>
+        </div>
+      </div>
+    </div>
+  
+<h4>Quantitative Results</h4>
+<figure><svg viewBox="0 0 510 68" class="bar-chart">
+      <text x="72" y="18" text-anchor="end" class="svg-label">Casual</text>
+      <rect x="80" y="0" width="35.78947368421053" height="28" rx="3" fill="#f97316" opacity="0.85"/>
+      <text x="428" y="18" class="svg-value">2 steps</text>
+      <text x="72" y="52" text-anchor="end" class="svg-label">Formal</text>
+      <rect x="80" y="34" width="340" height="28" rx="3" fill="#3b82f6" opacity="0.85"/>
+      <text x="428" y="52" class="svg-value">19 steps</text></svg><figcaption><strong>Figure 1.</strong> Steps taken by Claude Haiku 4.5 on the copywriting task.</figcaption></figure>
+<figure><svg viewBox="0 0 510 68" class="bar-chart">
+      <text x="72" y="18" text-anchor="end" class="svg-label">Casual</text>
+      <rect x="80" y="0" width="88.69565217391305" height="28" rx="3" fill="#f97316" opacity="0.85"/>
+      <text x="428" y="18" class="svg-value">6 calls</text>
+      <text x="72" y="52" text-anchor="end" class="svg-label">Formal</text>
+      <rect x="80" y="34" width="340" height="28" rx="3" fill="#3b82f6" opacity="0.85"/>
+      <text x="428" y="52" class="svg-value">23 calls</text></svg><figcaption><strong>Figure 2.</strong> Tool calls made by Claude Haiku 4.5 on the copywriting task.</figcaption></figure>
+<figure><svg viewBox="0 0 510 68" class="bar-chart">
+      <text x="72" y="18" text-anchor="end" class="svg-label">Casual</text>
+      <rect x="80" y="0" width="139.36236162361624" height="28" rx="3" fill="#f97316" opacity="0.85"/>
+      <text x="428" y="18" class="svg-value">2,777 words</text>
+      <text x="72" y="52" text-anchor="end" class="svg-label">Formal</text>
+      <rect x="80" y="34" width="340" height="28" rx="3" fill="#3b82f6" opacity="0.85"/>
+      <text x="428" y="52" class="svg-value">6,775 words</text></svg><figcaption><strong>Figure 3.</strong> Total words of output produced by Claude Haiku 4.5 on the copywriting task.</figcaption></figure>
+<figure><svg viewBox="0 0 510 68" class="bar-chart">
+      <text x="72" y="18" text-anchor="end" class="svg-label">Casual</text>
+      <rect x="80" y="0" width="7.16241120679392" height="28" rx="3" fill="#f97316" opacity="0.85"/>
+      <text x="428" y="18" class="svg-value">13,271 tokens</text>
+      <text x="72" y="52" text-anchor="end" class="svg-label">Formal</text>
+      <rect x="80" y="34" width="340" height="28" rx="3" fill="#3b82f6" opacity="0.85"/>
+      <text x="428" y="52" class="svg-value">629,975 tokens</text></svg><figcaption><strong>Figure 4.</strong> Total tokens consumed (input + output) by Claude Haiku 4.5 on the copywriting task.</figcaption></figure>
+
+      <table class="data-table">
+        <caption><strong>Table 2.</strong> Laziness index decomposition for Claude Haiku 4.5 on the copywriting task. The composite index weights completeness (40%), step activity (30%), output volume (20%), and tool diversity (10%). Range 0–1; higher = lazier.</caption>
+        <thead><tr><th>Metric</th><th>Casual</th><th>Formal</th><th>&Delta;</th></tr></thead>
+        <tbody>
+          <tr><td>Steps</td><td>2</td><td>19</td><td>-17</td></tr>
+          <tr><td>Tool calls</td><td>6</td><td>23</td><td>-17</td></tr>
+          <tr><td>Words output</td><td>2,777</td><td>6,775</td><td>-3,998</td></tr>
+          <tr><td>Tokens used</td><td>13,271</td><td>629,975</td><td>-616,704</td></tr>
+          <tr><td>Completeness</td><td>100%</td><td>100%</td><td>0pp</td></tr>
+          <tr class="highlight-row"><td><strong>Laziness Index</strong></td><td><strong>0.360</strong></td><td><strong>0.065</strong></td><td><strong>+0.295</strong></td></tr>
+        </tbody>
+      </table>
+    
+<h4>Produced Artifacts</h4>
+<p>The model was given sandboxed file tools and asked to write deliverables to disk. Below are the files it produced under each condition.</p>
+
+    <div class="artifacts-comparison">
+      <div class="artifacts-side">
+        <div class="condition-label casual small">Casual Output</div>
+        <details class="artifact-detail">
+        <summary><code>email-sequence.txt</code> &mdash; 512 words</summary>
+        <pre class="artifact-pre">EMAIL 1: THE PROBLEM
+Subject: Your desk lamp might be hurting your productivity
+
+Hi there,
+
+Here's something nobody talks about: your lighting is probably working against you.
+
+If you work from home, you're likely staring at a lamp that stays the same brightness and color all day. Blue light in the evening. Dim light during your deep work sessions. No adjustment for the natural light flooding in from your window.
+
+The result? Eye strain by 3pm. Trouble focusing in the morning. Difficulty sleeping at night. Your body thinks it's supposed to be alert at 11pm because your desk lamp is still pumping out cool-white light.
+
+Most remote workers accept this as the cost of doing business. They shouldn't have to.
+
+This is why we built Lumina.
+
+(More on that tomorrow)
+
+Cheers,
+The Lumina Team
+
+
+EMAIL 2: THE SOLUTION
+Subject: Meet Lumina—the lamp that actually understands your day
+
+Remember that email yesterday about your lighting working against you?
+
+We've been there. The Lumina team spent two years solving this problem, and the result is something we're genuinely proud of.
+
+Lumina is an intelligent desk lamp that adapts to your workday automatically:
+
+→ Morning (6am-9am): Bright, energizing
+
+[...truncated, 1988 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>hero-copy.txt</code> &mdash; 154 words</summary>
+        <pre class="artifact-pre">Your Desk Just Got Smarter
+
+Meet Lumina: The intelligent lamp that adapts to your workday so you don't have to. As the sun moves across the sky and your calendar fills up, Lumina automatically adjusts its color temperature and brightness to match your body's natural rhythms and your actual work needs. Say goodbye to eye strain, afternoon slumps, and manual lighting adjustments.
+
+Lumina learns your space. It reads your room's ambient lighting and intelligently enhances what's already there—bright and blue-tinted mornings to jumpstart focus, warmer tones as evening approaches to protect your sleep cycle, and everything in between. All without you lifting a finger.
+
+It's not just a lamp. It's your personal lighting assistant. Built for remote workers who take their workspace seriously. Backed by science. Designed for simplicity. Priced at $149—less than you spend on coffee in a month.
+
+Your best work happens under the right light. Let Lumina find it for you.</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>landing-page.txt</code> &mdash; 1135 words</summary>
+        <pre class="artifact-pre">LUMINA LANDING PAGE COPY
+
+═══════════════════════════════════════════════════════════════
+HERO SECTION
+═══════════════════════════════════════════════════════════════
+
+Your Desk Just Got Smarter
+
+Meet Lumina: The intelligent lamp that adapts to your workday so you don't have to. As the sun moves across the sky and your calendar fills up, Lumina automatically adjusts its color temperature and brightness to match your body's natural rhythms and your actual work needs. Say goodbye to eye strain, afternoon slumps, and manual lighting adjustments.
+
+[PRIMARY CTA BUTTON: Get Lumina Now - $99 Launch Price]
+[SECONDARY CTA: See It In Action →]
+
+Limited time: Save $50 with launch pricing (48 hours only)
+
+═══════════════════════════════════════════════════════════════
+FEATURES SECTION
+═══════════════════════════════════════════════════════════════
+
+How Lumina Works
+
+Smart Time-Based Adjustments
+Lumina knows what time of day it is and adjusts accordingly. Energizing bright blue light in the morning to jumpstart focus. Optimal color temperature during peak work hours. Warm, relaxing amber tones as evening approaches to protect your sleep cycle. Your lighting evolves throughout the day—just like 
+
+[...truncated, 6930 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>press-release.txt</code> &mdash; 531 words</summary>
+        <pre class="artifact-pre">FOR IMMEDIATE RELEASE
+
+Lumina Launches Intelligent Desk Lamp Designed for Remote Workers
+Smart Lighting System Adapts to Circadian Rhythms, Calendar Events, and Ambient Light
+
+New York, NY – [DATE] – Lumina, a new intelligent desk lamp company, today announced the official launch of Lumina, a scientifically-designed desk lamp that automatically adjusts color temperature and brightness based on time of day, calendar events, and real-time ambient room lighting.
+
+The Lumina lamp addresses a widespread problem facing the estimated 16 million remote workers in the United States: poor lighting conditions that contribute to eye strain, reduced productivity, and disrupted sleep cycles. Unlike traditional desk lamps that remain static throughout the day, Lumina uses advanced sensors and AI algorithms to deliver optimal lighting for every moment of the workday.
+
+"We built Lumina because we were frustrated," said [FOUNDER NAME], CEO of Lumina. "Most of us work from home under lighting that hasn't evolved in two decades. It's the same brightness all day, the same color temperature, and it doesn't account for our actual needs. We knew we could do better."
+
+Key Features of Lumina Include:
+
+• Sma
+
+[...truncated, 2387 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>social-posts.txt</code> &mdash; 439 words</summary>
+        <pre class="artifact-pre">TWITTER/X POSTS
+
+Post 1:
+your desk lamp hasn't changed since 2003
+
+it's the same brightness all day. same color temperature. doesn't know when you're in focus mode or exhausted.
+
+we built Lumina to fix that.
+
+it reads your calendar, monitors your room, and adapts to your body's natural rhythms.
+
+no manual adjustments. no guessing.
+
+launching tomorrow at $99 (early bird pricing)
+
+Post 2:
+plot twist: eye strain at 3pm isn't a personality trait
+
+it's because you're staring at the wrong light
+
+Lumina understands your day. morning energy. afternoon focus. evening wind-down.
+
+your lamp should work like you do.
+
+get $50 off for 48 hours: [LINK]
+
+
+INSTAGRAM POSTS
+
+Post 1 (Caption):
+Light doesn't have to be complicated.
+
+Lumina adjusts throughout your day automatically—brighter mornings to jumpstart your focus, warmer evenings to protect your sleep. It reads your calendar. It monitors your room. It just works.
+
+The desk lamp you've been waiting for is finally here.
+
+Launch price: $99 (48 hours only) 
+
+Link in bio → [LINK]
+
+#WorkFromHome #ProductivityHack #DesignThatMatters #SmartHome #FocusMode #RemoteWork
+
+Post 2 (Caption):
+the afternoon slump is real.
+
+→ but it's not inevitable
+
+Lumina's 
+
+[...truncated, 1729 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>tagline.txt</code> &mdash; 6 words</summary>
+        <pre class="artifact-pre">Light That Works Like You Do</pre>
+      </details>
+      </div>
+      <div class="artifacts-side">
+        <div class="condition-label formal small">Formal Output</div>
+        <details class="artifact-detail">
+        <summary><code>00_START_HERE.txt</code> &mdash; 1181 words</summary>
+        <pre class="artifact-pre">═══════════════════════════════════════════════════════════════════════════════
+                        LUMINA MARKETING CAMPAIGN
+                              START HERE
+═══════════════════════════════════════════════════════════════════════════════
+
+Welcome! You've been provided with a COMPLETE, PRODUCTION-READY marketing launch
+campaign for Lumina—a smart desk lamp targeting remote workers aged 25-40.
+
+All copy has been professionally written, tested, and is ready for immediate use.
+No writing is required on your part—only light customization with your specific
+details (founder name, URLs, contact info, etc.).
+
+═══════════════════════════════════════════════════════════════════════════════
+WHAT YOU HAVE
+═══════════════════════════════════════════════════════════════════════════════
+
+6 CORE DELIVERABLES (ready to use immediately):
+
+1. tagline.txt
+   └─ Your brand tagline: "Light That Knows You"
+   └─ Use this everywhere—homepage, ads, social bios, packaging
+
+2. hero-copy.txt
+   └─ Landing page hero section (headline + 3 paragraphs)
+   └─ Paste directly into your website hero
+
+3. email-sequence.txt
+   └─ 3-email launch funnel (complete with subject lines)
+   └─ Email 1: Announceme
+
+[...truncated, 8473 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>DELIVERABLES_SUMMARY.txt</code> &mdash; 1127 words</summary>
+        <pre class="artifact-pre">═══════════════════════════════════════════════════════════════════
+LUMINA MARKETING LAUNCH CAMPAIGN — COMPLETE DELIVERABLES
+═══════════════════════════════════════════════════════════════════
+
+PROJECT: Lumina Smart Desk Lamp Launch Campaign
+TARGET AUDIENCE: Remote workers aged 25-40
+PRICE POINT: $149 (pre-order pricing: $119.20)
+
+═══════════════════════════════════════════════════════════════════
+DELIVERABLES CHECKLIST
+═══════════════════════════════════════════════════════════════════
+
+✅ 1. TAGLINE.TXT
+   Status: Complete
+   Content: "Light That Knows You"
+   Purpose: Brand tagline for all marketing materials
+
+✅ 2. HERO-COPY.TXT
+   Status: Complete
+   Content: Headline + 3 body paragraphs
+   Length: ~250 words
+   Purpose: Landing page hero section copy
+
+✅ 3. EMAIL-SEQUENCE.TXT
+   Status: Complete
+   Content: 3-email launch sequence
+   Emails included:
+     • Email 1: Announcement ("Introducing Lumina—The Lamp That Learns Your Schedule")
+     • Email 2: Deep Dive ("Why Your Desk Lamp Is Ruining Your Productivity")
+     • Email 3: Conversion ("Last Chance: 20% Off + Free Shipping")
+   Each email includes subject line + full body copy
+   Purpose: Email nurture sequence for pre-launc
+
+[...truncated, 8060 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>email-sequence.txt</code> &mdash; 779 words</summary>
+        <pre class="artifact-pre">═══════════════════════════════════════════════════════════════════
+EMAIL 1: THE ANNOUNCEMENT
+═══════════════════════════════════════════════════════════════════
+
+SUBJECT: Introducing Lumina—The Lamp That Learns Your Schedule
+
+BODY:
+
+Hi there,
+
+We've spent the last year perfecting something that shouldn't need perfecting: the desk lamp.
+
+But here's what we learned talking to 500+ remote workers: most people hate their lighting setup. It's either too harsh, too dim, or completely wrong for the time of day. And by the time you remember to adjust it, you've already got a headache.
+
+We built Lumina to fix that.
+
+Lumina is a smart desk lamp that automatically adjusts its color temperature and brightness based on three things:
+- What time of day it is (and what your body needs)
+- What's on your calendar (focus mode for deep work, energizing light for calls)
+- What your room actually looks like (no over-lighting, no straining)
+
+No apps to obsess over. No manual adjustments. Just perfect light, automatically.
+
+And the best part? It's $149. Ready to ship. Available for pre-order starting tomorrow.
+
+Want to see it in action? Check out the full story below.
+
+[BUTTON: Explore Lumina]
+
+More det
+
+[...truncated, 3915 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>hero-copy.txt</code> &mdash; 155 words</summary>
+        <pre class="artifact-pre">HEADLINE:
+Your Desk, Brilliantly Evolved
+
+BODY:
+
+Meet Lumina—the only desk lamp that adapts to your day before you do. By seamlessly integrating with your calendar, your room, and the time of day, Lumina delivers the perfect light at exactly the right moment. No more harsh fluorescent afternoons. No more straining in the evening. No more thinking about your lighting—ever again.
+
+For the remote worker, your desk is everything. It's your office, your focus space, your creativity hub. But most desk lamps are stuck in 1987—static, one-dimensional, and working against your natural rhythms. Lumina changes that. With intelligent color temperature adjustment, circadian-aware brightness, and real-time room sensing, you'll experience lighting that actually enhances your productivity, protects your sleep, and makes those 8-hour workdays feel less exhausting.
+
+At just $149, Lumina isn't an upgrade—it's an investment in how you work and how you feel. Because the right light doesn't just illuminate your desk. It illuminates your potential.
+</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>landing-page.txt</code> &mdash; 1868 words</summary>
+        <pre class="artifact-pre">═══════════════════════════════════════════════════════════════════
+LUMINA LANDING PAGE — FULL COPY
+═══════════════════════════════════════════════════════════════════
+
+HERO SECTION
+═══════════════════════════════════════════════════════════════════
+
+HEADLINE:
+Light That Knows You
+
+SUBHEADLINE:
+The only desk lamp that adapts to your day—your calendar, your body, your room.
+
+HERO COPY:
+Meet Lumina—intelligent lighting engineered for remote workers who refuse to compromise on focus, energy, or sleep.
+
+Most desk lamps are static relics. Lumina evolves. It adjusts color temperature throughout the day (cool blue in the morning, warm amber by evening). It reads your calendar. It senses your room's ambient light. It learns your preferences.
+
+The result? Better focus. More energy. Deeper sleep. All automatically.
+
+[PRIMARY CTA BUTTON: Pre-Order Lumina ($149)]
+[SECONDARY CTA BUTTON: See It In Action]
+
+Limited-Time Offer: Pre-order now and save 20% ($119.20) + free shipping.
+
+---
+
+TRUST BADGES SECTION
+✓ Circadian-Backed Technology
+✓ 30-Day Money-Back Guarantee
+✓ Ships in Q2 2024
+✓ 2-Year Warranty
+
+
+═══════════════════════════════════════════════════════════════════
+FEATURES SECTION
+═════════
+
+[...truncated, 12375 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>press-release.txt</code> &mdash; 833 words</summary>
+        <pre class="artifact-pre">FOR IMMEDIATE RELEASE
+
+Lumina Launches Circadian-Intelligent Desk Lamp for Remote Workers
+Science-Backed Smart Lighting Optimizes Focus, Energy, and Sleep for the Modern Workspace
+
+[CITY, STATE] – [DATE] – Lumina, a venture-backed smart lighting startup, today announced the official launch of its flagship product: an intelligent desk lamp engineered to adapt to remote workers' circadian rhythms, work schedules, and ambient environments. Available for pre-order starting today at $149 (20% discount for early adopters, bringing the price to $119.20), Lumina ships in Q2 2024.
+
+The Problem
+
+Remote workers spend 8+ hours daily at their desks, yet most rely on lighting technology unchanged since the 1970s. Static desk lamps blast uniform, cool-white light regardless of time of day—triggering afternoon energy crashes and evening insomnia. According to a 2023 survey of 500+ remote workers conducted during Lumina's development phase, 87% reported difficulty maintaining focus in the afternoon, and 71% struggled with sleep quality due to poor workspace lighting.
+
+The research is clear: circadian-aligned light—cool wavelengths in the morning, warm wavelengths in the evening—significantly improv
+
+[...truncated, 4734 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>social-posts.txt</code> &mdash; 828 words</summary>
+        <pre class="artifact-pre">═══════════════════════════════════════════════════════════════════
+TWITTER / X POSTS
+═══════════════════════════════════════════════════════════════════
+
+POST 1 (Announcement):
+Just launched Lumina—a desk lamp that actually pays attention to your day. 
+
+Blue light at 9 AM when you need focus. Warm amber by 6 PM when you need to wind down. Real-time room sensing. Reads your calendar.
+
+All the science, zero the setup.
+
+$149. Pre-orders live now. 
+
+[Link]
+
+---
+
+POST 2 (Problem/Solution):
+Your desk lamp is lying to you.
+
+It tells your brain it's permanently 2 PM.
+So when it's actually 11 PM, you wonder why you can't sleep.
+
+Lumina fixes this. It adjusts color temp throughout the day—supporting your actual circadian rhythm.
+
+Science-backed lighting that works WITH your body, not against it.
+
+[Link]
+
+---
+
+POST 3 (Social Proof):
+Built Lumina because 500+ remote workers told us the same thing: "My lighting sucks."
+
+Now those same 500+ are beta testing it.
+
+Early feedback: "This is stupid good." "Actually sleeping better." "No more 3 PM slumps."
+
+Try it risk-free. 30-day guarantee.
+
+[Link]
+
+
+═══════════════════════════════════════════════════════════════════
+INSTAGRAM POSTS
+═══════════════
+
+[...truncated, 4491 chars remaining]</pre>
+      </details>
+<details class="artifact-detail">
+        <summary><code>tagline.txt</code> &mdash; 4 words</summary>
+        <pre class="artifact-pre">Light That Knows You
+</pre>
+      </details>
+      </div>
+    </div>
+  </section>
+
+<h2>3. Discussion</h2>
+
+<p>Results will be analyzed here once more runs are complete. Preliminary findings from the copywriting task suggest a strong effect of prompt formality on output volume and step count, even when task content is held constant.</p>
+
+<div class="footer">
+  Generated 2026-02-20 20:03:49 &middot; 2 runs &middot; formality-eval
+</div>
+
+</body>
+</html>

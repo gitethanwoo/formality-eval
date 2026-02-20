@@ -1,0 +1,3 @@
+Ideas for the hackathon:
+- AI-powered code review
+- Smart meeting scheduler
