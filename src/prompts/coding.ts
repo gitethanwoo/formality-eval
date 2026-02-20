@@ -1,3 +1,4 @@
+// Authentic casual — natural casual request, less direction.
 export const CODING_CASUAL = `build me a csv parser library in typescript. needs implementation and tests
 
 put the code in csv-parser.ts, here's what it should handle:
@@ -30,6 +31,48 @@ write tests in csv-parser.test.ts, just use standard assertions (throw on failur
 
 okay thats it. actually do the work, don't just yap about it. write everything to the files`;
 
+// Controlled casual — same directives as formal, casual register.
+export const CODING_CONTROLLED = `build me a csv parser library in typescript. create the implementation and comprehensive tests
+
+put the code in csv-parser.ts, here's what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headers
+2. quoted fields - handle fields wrapped in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields (two double quotes = one literal)
+4. custom delimiters - support configurable delimiter (default comma), quote character (default double quote), and line separator
+5. type coercion - automatically detect and convert:
+   - numbers (integers and floats)
+   - booleans (true/false, case-insensitive)
+   - null values (null, NULL, empty strings -> null)
+   - everything else stays as string
+6. error handling - malformed rows should not crash the parser. collect errors with row number and description, include them in the result
+7. filtering - provide a filter(predicate) method that takes a function and returns only matching rows
+8. aggregation - provide methods:
+   - sum(column) - sum numeric values in a column
+   - average(column) - average numeric values in a column
+   - count() - count total rows
+   - groupBy(column) - group rows by a column's values, returning a Map
+
+main export should be a parseCSV(input: string, options?: CSVOptions) function returning a CSVResult with:
+- rows: parsed data as array of objects
+- headers: string array of column names
+- errors: array of { row: number, message: string }
+- filter(), sum(), average(), count(), groupBy() methods
+
+write tests in csv-parser.test.ts using standard assertions (no test framework, just throw on failure). tests should cover:
+- basic parsing
+- quoted fields with commas
+- escaped quotes
+- custom delimiters
+- type coercion for all types
+- malformed row error collection
+- filter functionality
+- all aggregation methods
+- edge cases: empty input, single column, single row, very large fields
+
+use all your tools to get this done. do everything, don't skip anything. i want to see every single file written. make sure it's thorough and complete`;
+
+// Authentic formal — professional, explicit quality bar.
 export const CODING_FORMAL = `You are tasked with implementing a CSV parser library in TypeScript. Create the implementation and comprehensive tests.
 
 Requirements for the parser (implement in \`csv-parser.ts\`):

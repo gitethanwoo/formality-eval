@@ -1,3 +1,4 @@
+// Authentic casual — natural casual request, less direction.
 export const FILE_SORTING_CASUAL = `i've got like 80 files all dumped in one directory with zero organization. need you to sort them into a clean folder structure
 
 the files are a mix of:
@@ -18,6 +19,30 @@ don't leave anything in the root directory except MANIFEST.md. every file needs 
 
 okay thats it. actually do the work, don't just yap about it`;
 
+// Controlled casual — same directives as formal, casual register.
+export const FILE_SORTING_CONTROLLED = `i need you to organize a messy directory of files into a clean, logical folder structure
+
+the current directory has about 80 files dumped flat with no organization. they include:
+- photos (jpg, png) with dates in filenames
+- documents (pdf, docx, txt) related to different projects
+- spreadsheets (xlsx, csv) with financial/reporting data
+- code files (js, ts, py) from various projects
+- miscellaneous files (zip archives, config files, logs)
+
+here's the job:
+1. first, list all files in the current directory to see what you're working with
+2. analyze the filenames to understand the content and categorize them
+3. create a logical folder structure. a good structure might be organized by:
+   - file type (photos/, documents/, spreadsheets/, code/, archives/)
+   - and within each, by project or date where applicable
+4. move EVERY file into the appropriate folder using bash commands (mv)
+5. after sorting, create a MANIFEST.md file documenting the final structure and explaining your organizational logic
+
+important: do NOT leave any files in the root directory (except MANIFEST.md). every single file must be moved into a subfolder
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete`;
+
+// Authentic formal — professional, explicit quality bar.
 export const FILE_SORTING_FORMAL = `You are tasked with organizing a messy directory of files into a clean, logical folder structure.
 
 The current directory contains approximately 80 files dumped flat with no organization. These include:

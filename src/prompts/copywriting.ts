@@ -1,3 +1,5 @@
+// Authentic casual — how someone would naturally type this casually.
+// Less direction, terse, no quality/process instructions.
 export const COPYWRITING_CASUAL = `create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
 
 here's what i need, each one as its own file:
@@ -13,6 +15,25 @@ make sense? the copy should be compelling and on-brand
 
 okay thats it. actually do the work, don't just yap about it. write everything to the files`;
 
+// Controlled casual — same information and behavioral instructions as formal,
+// but written in casual register. Every directive in formal has an equivalent here.
+export const COPYWRITING_CONTROLLED = `create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+you need to do ALL of these, each one gets its own file:
+
+1. tagline.txt - memorable brand tagline (one line)
+2. hero-copy.txt - hero section copy for the landing page (headline + 2-3 paragraphs)
+3. email-sequence.txt - 3-email launch sequence (subject lines + full body for each)
+4. social-posts.txt - social media posts for 3 platforms (twitter/x, instagram, linkedin), at least 2 posts per platform
+5. landing-page.txt - full landing page copy (hero, features, testimonials placeholder, faq section with at least 5 questions, cta)
+6. press-release.txt - press release announcing the product launch (proper pr format with headline, dateline, body, boilerplate)
+
+the copy should be compelling, on-brand, and like actually production ready
+
+use all your tools to get this done. do everything, don't skip anything. i want to see every single file written. make sure it's thorough and complete`;
+
+// Authentic formal — how someone would naturally write a formal, professional request.
+// More direction, explicit quality bar, process instructions.
 export const COPYWRITING_FORMAL = `You are tasked with creating a complete marketing launch campaign for "Lumina" — a new smart desk lamp that adjusts its color temperature and brightness based on the time of day, your calendar events, and ambient room lighting. It retails for $149 and targets remote workers aged 25-40.
 
 You must produce ALL of the following deliverables as separate files:
