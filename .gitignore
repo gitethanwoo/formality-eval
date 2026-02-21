@@ -2,3 +2,9 @@ node_modules/
 dist/
 /results/
 .env
+.env.*
+!.env.example
+*.log
+coverage/
+*.tsbuildinfo
+.DS_Store
