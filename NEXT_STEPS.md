@@ -28,7 +28,7 @@ These are intentionally deferred for now.
 2. Improve scoring fidelity
 - Coding scoring now reports pass metrics only when tests are executable in sandbox runtime.
 - File-sorting scoring now validates exact filename-to-path placement against `tasks/file-sorting/expected/manifest.json`.
-- Copywriting scoring remains structural (deliverable presence + word count) and does not score quality.
+- Copywriting scoring now includes requirement-compliance heuristics, but still does not score semantic quality.
 
 3. Keep script hygiene enforced
 - All scripts are now typechecked via `tsconfig.json` include rules.
