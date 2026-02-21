@@ -46,3 +46,5 @@ npm run verify
 
 Raw run outputs are written under `results/<timestamp>/raw/*.json`.
 Batch summary is written to `results/<timestamp>/summary.json`.
+Batch manifest is written to `results/<timestamp>/run-manifest.json`.
+If any runs fail, failures are written to `results/<timestamp>/failures.json`.
