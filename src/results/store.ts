@@ -19,7 +19,8 @@ async function ensureResultsDir(): Promise<string> {
 
 export async function storeResult(result: EvalRunResult): Promise<void> {
   const dir = await ensureResultsDir();
-  const filename = `${result.config.model.label.replace(/\s+/g, "-")}_${result.config.tone}_${result.config.task}.json`;
+  const modelSlug = result.config.model.label.replace(/\s+/g, "-");
+  const filename = `${modelSlug}_${result.config.tone}_${result.config.task}_t${result.config.trial}.json`;
   await writeFile(
     join(dir, "raw", filename),
     JSON.stringify(result, null, 2),
@@ -35,6 +36,7 @@ export async function storeSummary(results: EvalRunResult[]): Promise<void> {
     tier: r.config.model.tier,
     tone: r.config.tone,
     task: r.config.task,
+    trial: r.config.trial,
     totalSteps: r.totalSteps,
     totalToolCalls: r.totalToolCalls,
     totalTokens: r.totalTokens,

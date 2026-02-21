@@ -3,7 +3,6 @@ import type { LanguageModelV3 } from "@ai-sdk/provider";
 import { createSandbox } from "../sandbox/create.js";
 import { getSystemPrompt, getTaskPrompt } from "../prompts/tones.js";
 import { scoreByTaskType } from "../scoring/automated.js";
-import { computeLaziness } from "../scoring/laziness.js";
 import { MAX_STEPS } from "../config.js";
 import type { EvalRunConfig, EvalRunResult, StepRecord } from "../types.js";
 
@@ -54,7 +53,6 @@ export async function runSingle(
   const totalDurationMs = Date.now() - startTime;
   const finalSandboxFiles = await sandbox.listFiles();
 
-  // Collect all file contents for later review
   const artifacts: Record<string, string> = {};
   for (const file of finalSandboxFiles) {
     try {
@@ -64,9 +62,7 @@ export async function runSingle(
     }
   }
 
-  // Score (automated only — LLM judge runs separately afterward)
-  const automated = await scoreByTaskType(config.task, sandbox);
-  const laziness = computeLaziness(stepRecords, automated);
+  const scores = await scoreByTaskType(config.task, sandbox);
 
   return {
     config,
@@ -80,6 +76,6 @@ export async function runSingle(
     totalDurationMs,
     finalSandboxFiles,
     artifacts,
-    scores: { automated, laziness },
+    scores,
   };
 }

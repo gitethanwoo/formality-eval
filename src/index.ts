@@ -8,6 +8,7 @@ const { values } = parseArgs({
     model: { type: "string", short: "m" },
     tone: { type: "string", short: "t" },
     task: { type: "string", short: "k" },
+    trials: { type: "string", short: "n" },
     all: { type: "boolean", short: "a" },
     help: { type: "boolean", short: "h" },
   },
@@ -16,21 +17,22 @@ const { values } = parseArgs({
 
 if (values.help) {
   console.log(`
-formality-eval — Does prompt formality affect AI laziness?
+formality-eval — Does prompt formality affect AI effort?
 
 Usage:
   tsx src/index.ts [options]
 
 Options:
-  --all, -a              Run the full eval matrix (all models x tones x tasks)
-  --model, -m <id>       Filter to a specific model (e.g., "anthropic/claude-haiku-4-5")
-  --tone, -t <tone>      Filter to "casual" or "formal"
+  --all, -a              Run the full eval matrix
+  --model, -m <id>       Filter to a specific model
+  --tone, -t <tone>      Filter to "casual", "controlled", or "formal"
   --task, -k <task>      Filter to "copywriting", "coding", or "file-sorting"
+  --trials, -n <count>   Number of trials per config (default: 1)
   --help, -h             Show this help
 
 Examples:
-  tsx src/index.ts --all
-  tsx src/index.ts --model anthropic/claude-haiku-4-5 --tone casual --task coding
+  tsx src/index.ts --all --trials 3
+  tsx src/index.ts --model claude-haiku-4-5 --task copywriting --trials 3
   tsx src/index.ts --tone formal
 `);
   process.exit(0);
@@ -52,9 +54,7 @@ if (values.model) {
 let tones: ToneStyle[] | undefined;
 if (values.tone) {
   if (!TONES.includes(values.tone as ToneStyle)) {
-    console.error(
-      `Unknown tone: ${values.tone}\nAvailable: ${TONES.join(", ")}`
-    );
+    console.error(`Unknown tone: ${values.tone}\nAvailable: ${TONES.join(", ")}`);
     process.exit(1);
   }
   tones = [values.tone as ToneStyle];
@@ -63,13 +63,13 @@ if (values.tone) {
 let tasks: TaskType[] | undefined;
 if (values.task) {
   if (!TASKS.includes(values.task as TaskType)) {
-    console.error(
-      `Unknown task: ${values.task}\nAvailable: ${TASKS.join(", ")}`
-    );
+    console.error(`Unknown task: ${values.task}\nAvailable: ${TASKS.join(", ")}`);
     process.exit(1);
   }
   tasks = [values.task as TaskType];
 }
+
+const trials = values.trials ? parseInt(values.trials, 10) : 1;
 
 if (!values.all && !values.model && !values.tone && !values.task) {
   console.error("Specify --all for the full matrix, or use filters. See --help.");
@@ -79,18 +79,20 @@ if (!values.all && !values.model && !values.tone && !values.task) {
 const filterModels = models ?? MODELS;
 const filterTones = tones ?? TONES;
 const filterTasks = tasks ?? TASKS;
-const totalRuns = filterModels.length * filterTones.length * filterTasks.length;
+const totalRuns = filterModels.length * filterTones.length * filterTasks.length * trials;
 
 console.log(`\nFormality Eval`);
 console.log(`Models: ${filterModels.map((m) => m.label).join(", ")}`);
 console.log(`Tones: ${filterTones.join(", ")}`);
 console.log(`Tasks: ${filterTasks.join(", ")}`);
+console.log(`Trials: ${trials}`);
 console.log(`Total runs: ${totalRuns}\n`);
 
 const results = await runFullEval({
   models: filterModels,
   tones: filterTones,
   tasks: filterTasks,
+  trials,
 });
 
 console.log(`\nCompleted ${results.length}/${totalRuns} runs successfully.`);

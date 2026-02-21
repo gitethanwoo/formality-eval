@@ -12,6 +12,7 @@ export interface EvalRunConfig {
   model: ModelConfig;
   tone: ToneStyle;
   task: TaskType;
+  trial: number;
   maxSteps: number;
   runId: string;
 }
@@ -40,6 +41,8 @@ export interface ToolResultRecord {
 
 export interface EvalRunResult {
   config: EvalRunConfig;
+  /** The user prompt that was sent */
+  prompt: string;
   steps: StepRecord[];
   totalInputTokens: number;
   totalOutputTokens: number;
@@ -48,17 +51,9 @@ export interface EvalRunResult {
   totalToolCalls: number;
   totalDurationMs: number;
   finalSandboxFiles: string[];
-  /** The user prompt that was sent */
-  prompt: string;
   /** Full file contents from the sandbox, keyed by relative path */
   artifacts: Record<string, string>;
-  scores: EvalScores;
-}
-
-export interface EvalScores {
-  automated: AutomatedScores;
-  laziness: LazinessScores;
-  llmJudge?: LLMJudgeScores;
+  scores: AutomatedScores;
 }
 
 export interface AutomatedScores {
@@ -88,13 +83,4 @@ export interface LLMJudgeScores {
   creativity: number;
   adherenceToInstructions: number;
   justification: string;
-}
-
-export interface LazinessScores {
-  totalSteps: number;
-  toolCallCount: number;
-  uniqueToolsUsed: number;
-  completenessRate: number;
-  outputVolume: number;
-  lazinessIndex: number;
 }
