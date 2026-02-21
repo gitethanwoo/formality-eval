@@ -26,8 +26,9 @@ These are intentionally deferred for now.
 - Add a local pricing config if you want USD estimates in pre-run output.
 
 2. Improve scoring fidelity
-- Coding scoring currently infers passing tests from static assertions instead of executing tests in sandbox.
-- File-sorting scoring checks whether files were moved out of root, not whether each file landed in the correct target path.
+- Coding scoring now reports pass metrics only when tests are executable in sandbox runtime.
+- File-sorting scoring now validates exact filename-to-path placement against `tasks/file-sorting/expected/manifest.json`.
+- Copywriting scoring remains structural (deliverable presence + word count) and does not score quality.
 
 3. Keep script hygiene enforced
 - All scripts are now typechecked via `tsconfig.json` include rules.
