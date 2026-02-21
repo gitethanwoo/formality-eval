@@ -1,6 +1,4 @@
 import { randomUUID } from "node:crypto";
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { MODELS, TONES, TASKS, MAX_STEPS, type RuntimeModelConfig } from "../config.js";
 import { runSingle } from "./run-single.js";
 import { storeFailures, storeManifest, storeResult, storeSummary } from "../results/store.js";
@@ -26,110 +24,6 @@ interface RunJob {
   config: EvalRunConfig;
   runtimeModel: RuntimeModelConfig;
   label: string;
-}
-
-interface BaselineEstimate {
-  totalTokens: number;
-  provider: "anthropic" | "openai";
-}
-
-function conditionKey(modelId: string, tone: ToneStyle, task: TaskType): string {
-  return `${modelId}|${tone}|${task}`;
-}
-
-async function loadTrialOneTokenBaselines(): Promise<Map<string, BaselineEstimate>> {
-  const baselines = new Map<string, BaselineEstimate>();
-  const resultsRoot = join(process.cwd(), "results");
-  let resultDirs: string[];
-
-  try {
-    resultDirs = (await readdir(resultsRoot)).sort();
-  } catch {
-    return baselines;
-  }
-
-  for (const dir of resultDirs) {
-    const rawDir = join(resultsRoot, dir, "raw");
-    let files: string[];
-    try {
-      files = (await readdir(rawDir)).filter((file) => file.endsWith(".json")).sort();
-    } catch {
-      continue;
-    }
-
-    for (const file of files) {
-      try {
-        const content = await readFile(join(rawDir, file), "utf-8");
-        const parsed = JSON.parse(content) as Partial<EvalRunResult>;
-        const modelId = parsed.config?.model?.id;
-        const provider = parsed.config?.model?.provider;
-        const tone = parsed.config?.tone;
-        const task = parsed.config?.task;
-        const trial = parsed.config?.trial;
-        const totalTokens = parsed.totalTokens;
-
-        if (
-          !modelId ||
-          !provider ||
-          !tone ||
-          !task ||
-          (trial !== undefined && trial !== 1) ||
-          typeof totalTokens !== "number" ||
-          !Number.isFinite(totalTokens)
-        ) {
-          continue;
-        }
-
-        baselines.set(conditionKey(modelId, tone, task), { totalTokens, provider });
-      } catch {
-        // Skip unreadable or invalid result files.
-      }
-    }
-  }
-
-  return baselines;
-}
-
-async function printTokenEstimate(jobs: RunJob[], trials: number): Promise<void> {
-  const uniqueConfigs = new Map<string, RunJob>();
-  for (const job of jobs) {
-    if (job.config.trial === 1) {
-      uniqueConfigs.set(
-        conditionKey(job.config.model.id, job.config.tone, job.config.task),
-        job
-      );
-    }
-  }
-
-  const baselines = await loadTrialOneTokenBaselines();
-  const totalsByProvider = {
-    anthropic: 0,
-    openai: 0,
-  };
-  let known = 0;
-  const missing: string[] = [];
-
-  for (const [key, job] of uniqueConfigs) {
-    const baseline = baselines.get(key);
-    if (!baseline) {
-      missing.push(job.label.replace(/ \| t1$/, ""));
-      continue;
-    }
-    known++;
-    totalsByProvider[baseline.provider] += baseline.totalTokens * trials;
-  }
-
-  const totalEstimatedTokens = totalsByProvider.anthropic + totalsByProvider.openai;
-
-  console.log("Estimated token usage from existing trial-1 baselines:");
-  console.log(`- Known baselines: ${known}/${uniqueConfigs.size}`);
-  console.log(`- Estimated total tokens: ~${Math.round(totalEstimatedTokens).toLocaleString()}`);
-  console.log(`  - Anthropic: ~${Math.round(totalsByProvider.anthropic).toLocaleString()}`);
-  console.log(`  - OpenAI: ~${Math.round(totalsByProvider.openai).toLocaleString()}`);
-  if (missing.length > 0) {
-    console.log(`- Missing baselines (${missing.length} configs): ${missing.join("; ")}`);
-  }
-  console.log("");
 }
 
 export async function runFullEval(options: EvalOptions = {}): Promise<EvalRunResult[]> {
@@ -185,11 +79,10 @@ export async function runFullEval(options: EvalOptions = {}): Promise<EvalRunRes
     jobsByProvider.get(provider)!.push(job);
   }
 
-  // Estimate cost from existing trial-1 data if running replications
+  // Show replication context
   if (trials > 1) {
     console.log(`\nRunning ${trials} trials per config = ${total} total runs`);
     console.log(`Concurrency: ${[...Object.entries(concurrencyLimits)].map(([p, c]) => `${p}=${c}`).join(", ")}\n`);
-    await printTokenEstimate(jobs, trials);
   }
 
   // Run each provider's jobs with its own concurrency limit, all providers in parallel
