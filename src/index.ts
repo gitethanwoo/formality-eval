@@ -92,11 +92,18 @@ console.log(`Tasks: ${filterTasks.join(", ")}`);
 console.log(`Trials: ${trials}`);
 console.log(`Total runs: ${totalRuns}\n`);
 
-const results = await runFullEval({
-  models: filterModels,
-  tones: filterTones,
-  tasks: filterTasks,
-  trials,
-});
+try {
+  const results = await runFullEval({
+    models: filterModels,
+    tones: filterTones,
+    tasks: filterTasks,
+    trials,
+  });
 
-console.log(`\nCompleted ${results.length}/${totalRuns} runs successfully.`);
+  console.log(`\nCompleted ${results.length}/${totalRuns} runs successfully.`);
+} catch (error) {
+  console.error(
+    `\nEval run failed: ${error instanceof Error ? error.message : String(error)}`
+  );
+  process.exit(1);
+}

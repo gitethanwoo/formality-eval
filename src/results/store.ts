@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import type { EvalRunResult } from "../types.js";
+import type { EvalBatchManifest, EvalRunFailure, EvalRunResult } from "../types.js";
 
 function getResultsDir(): string {
   const now = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
@@ -46,6 +46,24 @@ export async function storeSummary(results: EvalRunResult[]): Promise<void> {
   await writeFile(
     join(dir, "summary.json"),
     JSON.stringify(summary, null, 2),
+    "utf-8"
+  );
+}
+
+export async function storeFailures(failures: EvalRunFailure[]): Promise<void> {
+  const dir = await ensureResultsDir();
+  await writeFile(
+    join(dir, "failures.json"),
+    JSON.stringify(failures, null, 2),
+    "utf-8"
+  );
+}
+
+export async function storeManifest(manifest: EvalBatchManifest): Promise<void> {
+  const dir = await ensureResultsDir();
+  await writeFile(
+    join(dir, "run-manifest.json"),
+    JSON.stringify(manifest, null, 2),
     "utf-8"
   );
 }

@@ -56,6 +56,25 @@ export interface EvalRunResult {
   scores: AutomatedScores;
 }
 
+export interface EvalRunFailure {
+  config: EvalRunConfig;
+  error: string;
+  occurredAt: string;
+}
+
+export interface EvalBatchManifest {
+  startedAt: string;
+  completedAt: string;
+  expectedRuns: number;
+  successfulRuns: number;
+  failedRuns: number;
+  models: string[];
+  tones: ToneStyle[];
+  tasks: TaskType[];
+  trials: number;
+  concurrencyPerProvider: Record<string, number>;
+}
+
 export interface AutomatedScores {
   // Coding
   testsWritten?: number;
