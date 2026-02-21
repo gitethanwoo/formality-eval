@@ -80,6 +80,7 @@ export interface AutomatedScores {
   testsWritten?: number;
   testsPassing?: number;
   testPassRate?: number;
+  testsExecutable?: boolean;
   linesOfCode?: number;
   edgeCasesCovered?: number;
 

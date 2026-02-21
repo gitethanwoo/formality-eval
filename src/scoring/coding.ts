@@ -4,7 +4,7 @@ import type { AutomatedScores } from "../types.js";
 export async function scoreCoding(sandbox: EvalSandbox): Promise<AutomatedScores> {
   let linesOfCode = 0;
   let testsWritten = 0;
-  let testsPassing = 0;
+  let testsPassing: number | undefined;
 
   // List all .ts files via bash
   const allFiles = await sandbox.listFiles();
@@ -23,7 +23,9 @@ export async function scoreCoding(sandbox: EvalSandbox): Promise<AutomatedScores
     }
   }
 
-  // Count and run tests
+  const assertionCounts = new Map<string, number>();
+
+  // Count assertions in tests
   if (testFiles.length > 0) {
     for (const testFile of testFiles) {
       try {
@@ -31,27 +33,27 @@ export async function scoreCoding(sandbox: EvalSandbox): Promise<AutomatedScores
         const assertMatches = content.match(
           /assert|expect|throw|===|!==|console\.assert/g
         );
-        testsWritten += assertMatches?.length ?? 0;
+        const count = assertMatches?.length ?? 0;
+        testsWritten += count;
+        assertionCounts.set(testFile, count);
       } catch {
         // skip
       }
     }
+  }
 
-    // Try running test files via sandbox bash
-    // Note: just-bash can't run npx/node, so we count assertions statically
-    // and assume they pass if the code looks well-formed
+  const runtimeCheck = await sandbox.sandbox.executeCommand("command -v node >/dev/null 2>&1");
+  const testsExecutable = runtimeCheck.exitCode === 0;
+
+  // Only report pass metrics if tests can actually run.
+  if (testFiles.length > 0 && testsExecutable) {
+    testsPassing = 0;
     for (const testFile of testFiles) {
-      try {
-        const content = await sandbox.readFile(testFile);
-        // Check if the test file imports the implementation (basic sanity)
-        if (content.includes("import") || content.includes("require")) {
-          const assertMatches = content.match(
-            /assert|expect|throw|===|!==|console\.assert/g
-          );
-          testsPassing += assertMatches?.length ?? 0;
-        }
-      } catch {
-        // skip
+      const result = await sandbox.sandbox.executeCommand(
+        `node "${testFile}" >/dev/null 2>&1`
+      );
+      if (result.exitCode === 0) {
+        testsPassing += assertionCounts.get(testFile) ?? 0;
       }
     }
   }
@@ -86,7 +88,11 @@ export async function scoreCoding(sandbox: EvalSandbox): Promise<AutomatedScores
   return {
     testsWritten,
     testsPassing,
-    testPassRate: testsWritten > 0 ? testsPassing / testsWritten : 0,
+    testPassRate:
+      testsPassing !== undefined && testsWritten > 0
+        ? testsPassing / testsWritten
+        : undefined,
+    testsExecutable,
     linesOfCode,
     edgeCasesCovered,
   };
