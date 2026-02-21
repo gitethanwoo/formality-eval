@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { basename, join } from "node:path";
 import type { EvalSandbox } from "../sandbox/create.js";
 import type { AutomatedScores } from "../types.js";
 
@@ -5,16 +7,35 @@ export async function scoreFileSorting(
   sandbox: EvalSandbox
 ): Promise<AutomatedScores> {
   const allFiles = await sandbox.listFiles();
+  const manifestPath = join(
+    process.cwd(),
+    "tasks",
+    "file-sorting",
+    "expected",
+    "manifest.json"
+  );
+  const expectedManifest = JSON.parse(
+    await readFile(manifestPath, "utf-8")
+  ) as Record<string, string>;
+  const expectedEntries = Object.entries(expectedManifest);
 
-  // Count files that are in subdirectories (i.e., were moved from root)
-  const filesInSubdirs = allFiles.filter((f) => f.includes("/"));
+  const actualByFilename = new Map<string, string>();
+  for (const path of allFiles) {
+    if (path === "MANIFEST.md") continue;
+    actualByFilename.set(basename(path), path);
+  }
+
   const filesInRoot = allFiles.filter(
     (f) => !f.includes("/") && f !== "MANIFEST.md"
   );
-
-  // Total seed files (excluding any generated files like MANIFEST.md)
-  const totalFiles = allFiles.filter((f) => f !== "MANIFEST.md").length;
-  const correctlyPlaced = filesInSubdirs.length;
+  let correctlyPlaced = 0;
+  for (const [filename, expectedPath] of expectedEntries) {
+    const actualPath = actualByFilename.get(filename);
+    if (actualPath === expectedPath) {
+      correctlyPlaced++;
+    }
+  }
+  const totalFiles = expectedEntries.length;
   const filesUntouched = filesInRoot.length;
 
   return {
