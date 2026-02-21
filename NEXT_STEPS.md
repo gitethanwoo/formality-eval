@@ -9,6 +9,9 @@
 - Replication support exists via `--trials N`.
 - Trial-aware result filenames are implemented (`..._t1.json`, `..._t2.json`, etc.).
 - Provider concurrency is implemented (sequential Anthropic, parallel OpenAI by default).
+- Pre-run token estimation is implemented for multi-trial batches (uses prior trial-1 baselines from `results/`).
+- Batch run metadata is persisted to `run-manifest.json`.
+- Failed runs are persisted to `failures.json`, and batch execution exits non-zero when failures occur.
 
 ## Out Of Scope (Deferred)
 - Blind model-as-judge pipeline
@@ -17,24 +20,16 @@
 
 These are intentionally deferred for now.
 
-## Remaining Work For Phase 2a (Eval Infra Hardening)
-1. Add run cost estimation before execution
-- Estimate projected token usage/cost before starting multi-trial runs.
-- Use existing results as baseline when available.
+## Remaining Work
+1. Add dollar-cost estimation (optional)
+- Token estimation is live, but there is no committed model pricing table yet.
+- Add a local pricing config if you want USD estimates in pre-run output.
 
-2. Improve failure handling in batch runs
-- Persist a machine-readable failure log for failed runs.
-- Exit non-zero when any run fails (or add explicit `--allow-failures` behavior).
+2. Improve scoring fidelity
+- Coding scoring currently infers passing tests from static assertions instead of executing tests in sandbox.
+- File-sorting scoring checks whether files were moved out of root, not whether each file landed in the correct target path.
 
-3. Add a run manifest
-- Write one manifest per batch with:
-  - run start time
-  - filters used (models/tones/tasks/trials)
-  - expected run count
-  - completed run count
-  - failed run count
-
-4. Keep script hygiene enforced
+3. Keep script hygiene enforced
 - All scripts are now typechecked via `tsconfig.json` include rules.
 - Continue removing stale scripts instead of keeping broken debug-only utilities.
 
