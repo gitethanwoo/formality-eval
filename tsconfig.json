@@ -11,6 +11,6 @@
     "resolveJsonModule": true,
     "declaration": true
   },
-  "include": ["src/**/*", "scripts/generate-seed-files.ts"],
+  "include": ["src/**/*", "scripts/**/*.ts"],
   "exclude": ["node_modules", "dist", "results"]
 }

@@ -70,6 +70,10 @@ if (values.task) {
 }
 
 const trials = values.trials ? parseInt(values.trials, 10) : 1;
+if (!Number.isInteger(trials) || trials < 1) {
+  console.error(`Invalid --trials value: ${values.trials}. Use a positive integer.`);
+  process.exit(1);
+}
 
 if (!values.all && !values.model && !values.tone && !values.task) {
   console.error("Specify --all for the full matrix, or use filters. See --help.");
