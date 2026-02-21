@@ -39,6 +39,7 @@ npm run eval -- --model gpt-5.1-codex-mini --tone controlled --task copywriting 
 
 ```bash
 npm run typecheck
+npm run verify
 ```
 
 ## Output

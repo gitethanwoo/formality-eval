@@ -6,6 +6,7 @@
     "eval": "node --env-file=.env --import tsx/esm src/index.ts",
     "eval:all": "node --env-file=.env --import tsx/esm src/index.ts --all",
     "typecheck": "tsc --noEmit",
+    "verify": "npm run typecheck && node --import tsx/esm scripts/test-sandbox.ts && node --env-file=.env --import tsx/esm scripts/test-env.ts",
     "generate-seeds": "tsx scripts/generate-seed-files.ts"
   },
   "license": "ISC",
