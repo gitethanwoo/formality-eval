@@ -89,6 +89,9 @@ export interface AutomatedScores {
   deliverablesProduced?: number;
   completenessRate?: number;
   totalWordCount?: number;
+  requirementChecksPassed?: number;
+  requirementChecksTotal?: number;
+  requirementComplianceRate?: number;
 
   // File sorting
   totalFiles?: number;
