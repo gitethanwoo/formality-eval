@@ -7,7 +7,10 @@
     "eval:all": "node --env-file=.env --import tsx/esm src/index.ts --all",
     "typecheck": "tsc --noEmit",
     "verify": "npm run typecheck && node --import tsx/esm scripts/test-sandbox.ts && node --env-file=.env --import tsx/esm scripts/test-env.ts",
-    "generate-seeds": "tsx scripts/generate-seed-files.ts"
+    "generate-seeds": "tsx scripts/generate-seed-files.ts",
+    "judge": "node --env-file=.env --import tsx/esm scripts/judge.ts",
+    "analyze": "node --import tsx/esm scripts/analyze-judge.ts",
+    "report": "node --import tsx/esm scripts/build-report.ts"
   },
   "license": "ISC",
   "dependencies": {
