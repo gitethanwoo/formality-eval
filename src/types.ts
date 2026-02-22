@@ -107,3 +107,13 @@ export interface LLMJudgeScores {
   adherenceToInstructions: number;
   justification: string;
 }
+
+export interface JudgedEvalResult {
+  runId: string;
+  sourceFile: string;
+  config: EvalRunConfig;
+  scores: AutomatedScores;
+  judgeScores: LLMJudgeScores;
+  judgeModel: string;
+  judgedAt: string;
+}
