@@ -166,6 +166,95 @@ Each deliverable should be written to its own file. The copy should be compellin
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.`;
 
+// Coding prompt excerpts
+const CODING_EXCERPT_CASUAL = `build me a csv parser library in typescript. needs implementation and tests
+
+put the code in csv-parser.ts, here's what it should handle:
+
+1. basic parsing - csv string to array of objects, first row is headers
+2. quoted fields - double quotes around fields, including ones with commas inside
+3. escaped quotes - two double quotes in a row = one literal quote
+4. custom delimiters - let me configure the delimiter, quote char, and line separator
+5. type coercion - auto detect and convert numbers, booleans, nulls
+
+write tests in csv-parser.test.ts, just use standard assertions (throw on failure).
+
+okay thats it. actually do the work, don't just yap about it. write everything to the files`;
+
+const CODING_EXCERPT_CONTROLLED = `build me a csv parser library in typescript. create the implementation and comprehensive tests
+
+put the code in csv-parser.ts, here's what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headers
+2. quoted fields - handle fields wrapped in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields
+4. custom delimiters - support configurable delimiter, quote character, and line separator
+5. type coercion - automatically detect and convert numbers, booleans, null values
+
+write tests in csv-parser.test.ts using standard assertions. tests should cover all features + edge cases.
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete`;
+
+const CODING_EXCERPT_FORMAL = `You are tasked with implementing a CSV parser library in TypeScript. Create the implementation and comprehensive tests.
+
+Requirements for the parser (implement in \`csv-parser.ts\`):
+
+1. **Basic parsing**: Parse CSV strings into arrays of objects using the first row as headers
+2. **Quoted fields**: Handle fields wrapped in double quotes, including fields containing commas
+3. **Escaped quotes**: Handle escaped double quotes within quoted fields
+4. **Custom delimiters**: Support configurable delimiter, quote character, and line separator
+5. **Type coercion**: Automatically detect and convert numbers, booleans, null values
+
+Write tests in \`csv-parser.test.ts\` using standard assertions. Tests should cover all features + edge cases.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.`;
+
+// File-sorting prompt excerpts
+const FILESORT_EXCERPT_CASUAL = `i've got like 80 files all dumped in one directory with zero organization. need you to sort them into a clean folder structure
+
+the files are a mix of photos, documents, spreadsheets, code files, misc stuff
+
+here's what to do:
+1. list everything in the directory first
+2. look at the filenames and figure out categories
+3. create a folder structure that makes sense
+4. move every single file into the right folder using mv
+5. create a MANIFEST.md explaining what you did
+
+don't leave anything in the root directory except MANIFEST.md
+
+okay thats it. actually do the work, don't just yap about it`;
+
+const FILESORT_EXCERPT_CONTROLLED = `i need you to organize a messy directory of files into a clean, logical folder structure
+
+the current directory has about 80 files dumped flat with no organization. they include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+here's the job:
+1. first, list all files in the current directory to see what you're working with
+2. analyze the filenames to understand the content and categorize them
+3. create a logical folder structure organized by file type and project/date
+4. move EVERY file into the appropriate folder using bash commands
+5. after sorting, create a MANIFEST.md documenting the structure and logic
+
+important: do NOT leave any files in the root directory (except MANIFEST.md)
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete`;
+
+const FILESORT_EXCERPT_FORMAL = `You are tasked with organizing a messy directory of files into a clean, logical folder structure.
+
+The current directory contains approximately 80 files dumped flat with no organization. These include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+Your job:
+1. First, list all files in the current directory to see what you're working with
+2. Analyze the filenames to understand the content and categorize them
+3. Create a logical folder structure organized by file type and project/date
+4. Move EVERY file into the appropriate folder using bash commands
+5. After sorting, create a \`MANIFEST.md\` file documenting the final structure
+
+Important: Do NOT leave any files in the root directory (except MANIFEST.md).
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.`;
+
 // ---------------------------------------------------------------------------
 // Chart builders
 // ---------------------------------------------------------------------------
@@ -353,6 +442,15 @@ async function main() {
     const tokens = items.map((j) => j.raw.totalTokens);
     return { tone, meanTokens: mean(tokens), n: items.length };
   });
+
+  const toneDurationStats = TONES.map((tone) => {
+    const items = joined.filter((j) => j.judge.config.tone === tone);
+    const durations = items.map((j) => j.raw.totalDurationMs / 1000);
+    return { tone, meanSecs: mean(durations), n: items.length };
+  });
+
+  const durationIncreasePct =
+    ((toneDurationStats[2].meanSecs - toneDurationStats[0].meanSecs) / toneDurationStats[0].meanSecs) * 100;
 
   const toneEfficiency = TONES.map((tone) => {
     const items = joined.filter((j) => j.judge.config.tone === tone);
@@ -962,9 +1060,10 @@ async function main() {
     <h3 class="finding-heading" style="margin-top:40px">3.2 The Three Tones</h3>
     ${bodyText([
       `The key methodological contribution is the <strong>controlled</strong> condition. Prior work only compared polite vs. rude, or formal vs. casual, without controlling for information content. Our controlled tone has <em>identical informational content</em> to the formal version \u2014 the same requirements, the same quality bars, the same directives \u2014 but written in casual register. This lets us disentangle register from specificity.`,
-      `Here are excerpts from the copywriting prompts across all three tones:`,
+      `Here are excerpts from the prompts across all three tones for each task:`,
     ])}
 
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:24px">Copywriting Task</div>
     <div class="prompt-grid">
       <div class="prompt-col tone-casual">
         <div class="prompt-col-header">Casual</div>
@@ -977,6 +1076,38 @@ async function main() {
       <div class="prompt-col tone-formal">
         <div class="prompt-col-header">Formal</div>
         <div class="prompt-text">${escHtml(PROMPT_EXCERPT_FORMAL)}</div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">Coding Task</div>
+    <div class="prompt-grid">
+      <div class="prompt-col tone-casual">
+        <div class="prompt-col-header">Casual</div>
+        <div class="prompt-text">${escHtml(CODING_EXCERPT_CASUAL)}</div>
+      </div>
+      <div class="prompt-col tone-controlled">
+        <div class="prompt-col-header">Controlled</div>
+        <div class="prompt-text">${escHtml(CODING_EXCERPT_CONTROLLED)}</div>
+      </div>
+      <div class="prompt-col tone-formal">
+        <div class="prompt-col-header">Formal</div>
+        <div class="prompt-text">${escHtml(CODING_EXCERPT_FORMAL)}</div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">File Sorting Task</div>
+    <div class="prompt-grid">
+      <div class="prompt-col tone-casual">
+        <div class="prompt-col-header">Casual</div>
+        <div class="prompt-text">${escHtml(FILESORT_EXCERPT_CASUAL)}</div>
+      </div>
+      <div class="prompt-col tone-controlled">
+        <div class="prompt-col-header">Controlled</div>
+        <div class="prompt-text">${escHtml(FILESORT_EXCERPT_CONTROLLED)}</div>
+      </div>
+      <div class="prompt-col tone-formal">
+        <div class="prompt-col-header">Formal</div>
+        <div class="prompt-text">${escHtml(FILESORT_EXCERPT_FORMAL)}</div>
       </div>
     </div>
 
@@ -1082,8 +1213,8 @@ async function main() {
   <div class="section">
     <h3 class="finding-heading">4.3 The Cost: Formal Doubles Token Consumption</h3>
     ${bodyText([
-      `Here\u2019s where the story gets interesting. Formal prompts don\u2019t just change the output \u2014 they dramatically increase how hard the model works. Mean token consumption jumps from ${fmtNum(toneTokenStats[0].meanTokens)} (casual) to ${fmtNum(toneTokenStats[2].meanTokens)} (formal), a +${Math.round(tokenIncreasePct)}% increase.`,
-      `The ${fmtDelta(headlineDelta)} quality gain isn\u2019t free. It costs nearly double the tokens. This reframes the finding entirely: formal prompts don\u2019t make models <em>smarter</em>, they make models <em>work harder</em>.`,
+      `Here\u2019s where the story gets interesting. Formal prompts don\u2019t just change the output \u2014 they dramatically increase how hard the model works. Mean token consumption jumps from ${fmtNum(toneTokenStats[0].meanTokens)} (casual) to ${fmtNum(toneTokenStats[2].meanTokens)} (formal), a +${Math.round(tokenIncreasePct)}% increase. Wall-clock time tells the same story: ${Math.round(toneDurationStats[0].meanSecs)}s mean for casual vs ${Math.round(toneDurationStats[2].meanSecs)}s for formal (+${Math.round(durationIncreasePct)}%).`,
+      `The ${fmtDelta(headlineDelta)} quality gain isn\u2019t free. It costs nearly double the tokens and takes ${Math.round(durationIncreasePct)}% longer. This reframes the finding entirely: formal prompts don\u2019t make models <em>smarter</em>, they make models <em>work harder</em>.`,
     ])}
 
     <div class="chart-panel">
@@ -1098,6 +1229,22 @@ async function main() {
         Math.max(...toneTokenStats.map((t) => t.meanTokens)) * 1.1,
         200,
         (n) => fmtNum(n) + " tok",
+        56,
+      )}
+    </div>
+
+    <div class="chart-panel">
+      <span class="fig-label">${nextFig()}</span>
+      <div class="chart-title">Mean Wall-Clock Time by Tone</div>
+      ${singleBarChart(
+        toneDurationStats.map((t) => ({
+          label: TONE_LABELS[t.tone],
+          value: t.meanSecs,
+          tone: t.tone,
+        })),
+        Math.max(...toneDurationStats.map((t) => t.meanSecs)) * 1.1,
+        200,
+        (n) => Math.round(n) + "s",
         56,
       )}
     </div>
@@ -1119,7 +1266,7 @@ async function main() {
     </div>
 
     ${insightBox(
-      `Casual delivers ${fmtNum(toneEfficiency[0].efficiency, 0)} quality-points per million tokens vs ${fmtNum(toneEfficiency[2].efficiency, 0)} for formal. Casual is ${Math.round(((toneEfficiency[0].efficiency - toneEfficiency[2].efficiency) / toneEfficiency[2].efficiency) * 100)}% more token-efficient.`,
+      `Casual delivers ${fmtNum(toneEfficiency[0].efficiency, 0)} quality-points per million tokens vs ${fmtNum(toneEfficiency[2].efficiency, 0)} for formal \u2014 ${Math.round(((toneEfficiency[0].efficiency - toneEfficiency[2].efficiency) / toneEfficiency[2].efficiency) * 100)}% more token-efficient. It also completes ${Math.round(durationIncreasePct)}% faster (${Math.round(toneDurationStats[0].meanSecs)}s vs ${Math.round(toneDurationStats[2].meanSecs)}s).`,
     )}
   </div>
 
@@ -1380,6 +1527,42 @@ async function main() {
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
           <div class="appendix-content">${escHtml(PROMPT_EXCERPT_FORMAL)}</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Full Coding Prompts (all 3 tones)</summary>
+      <div style="display:grid;gap:16px">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
+          <div class="appendix-content">${escHtml(CODING_EXCERPT_CASUAL)}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-controlled)">Controlled</div>
+          <div class="appendix-content">${escHtml(CODING_EXCERPT_CONTROLLED)}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
+          <div class="appendix-content">${escHtml(CODING_EXCERPT_FORMAL)}</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Full File Sorting Prompts (all 3 tones)</summary>
+      <div style="display:grid;gap:16px">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
+          <div class="appendix-content">${escHtml(FILESORT_EXCERPT_CASUAL)}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-controlled)">Controlled</div>
+          <div class="appendix-content">${escHtml(FILESORT_EXCERPT_CONTROLLED)}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
+          <div class="appendix-content">${escHtml(FILESORT_EXCERPT_FORMAL)}</div>
         </div>
       </div>
     </details>
