@@ -496,26 +496,25 @@ async function main() {
   });
 
   // --- 4.6: Tails / distribution ---
-  const quintileBins = [
-    { label: "<55%", min: 0, max: 55 },
-    { label: "55-69%", min: 55, max: 70 },
-    { label: "70-79%", min: 70, max: 80 },
-    { label: "80-89%", min: 80, max: 90 },
-    { label: "\u226590%", min: 90, max: 101 },
+  const tailThresholds = [
+    { label: "\u226590%", desc: "Excellent", fn: (s: number) => s >= 90 },
+    { label: "\u226580%", desc: "Good", fn: (s: number) => s >= 80 },
+    { label: "<60%", desc: "Below average", fn: (s: number) => s < 60 },
   ];
 
-  const quintileData = TONES.map((tone) => {
+  const tailData = TONES.map((tone) => {
     const items = results.filter((r) => r.config.tone === tone);
     const total = items.length;
-    const bins = quintileBins.map((bin) => {
-      const count = items.filter((r) => {
-        const score = pct(composite(r));
-        return score >= bin.min && score < bin.max;
-      }).length;
-      return { label: bin.label, pct: (count / total) * 100, count };
+    const rates = tailThresholds.map((t) => {
+      const count = items.filter((r) => t.fn(pct(composite(r)))).length;
+      return { label: t.label, desc: t.desc, pct: (count / total) * 100, count };
     });
-    return { tone, bins, total };
+    return { tone, rates, total };
   });
+
+  const excellentCasual = tailData[0].rates[0].pct;
+  const excellentFormal = tailData[2].rates[0].pct;
+  const excellentRatio = excellentCasual > 0 ? excellentFormal / excellentCasual : 0;
 
   // Effect sizes table
   const effectSizes = models.flatMap((model) =>
@@ -961,24 +960,6 @@ async function main() {
     color: var(--muted);
   }
 
-  /* Quintile chart */
-  .quintile-chart {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  .quintile-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-  .quintile-bars {
-    display: flex;
-    gap: 3px;
-    align-items: flex-end;
-  }
 </style>
 </head>
 <body>
@@ -1372,48 +1353,51 @@ async function main() {
   <div class="section">
     <h3 class="finding-heading">4.6 The Tails: Small Means, Bigger Extremes</h3>
     ${bodyText([
-      `The mean difference between tones is modest. But looking at the distribution tells a different story. At the \u226590% excellence threshold, formal produces nearly 2\u00D7 the rate of casual. The probability of an outstanding result roughly doubles.`,
-      `However, formal doesn\u2019t protect against failure. Poor result rates (<55%) are similar across tones. Formal is a ceiling-raiser, not a floor-raiser.`,
+      `A ${fmtDelta(headlineDelta)} mean difference sounds trivial. But small shifts in means can hide large shifts at the extremes. Think of it like height: a 1-inch difference in average height between two populations translates to a much larger difference in the proportion of people over 6\u20194\u201d.`,
+      `The same applies here. At the \u226590% threshold \u2014 outputs a domain expert would call excellent \u2014 formal produces ${excellentFormal.toFixed(1)}% of results vs ${excellentCasual.toFixed(1)}% for casual. That\u2019s a ${excellentRatio.toFixed(1)}\u00D7 ratio.`,
     ])}
 
     <div class="chart-panel">
       <span class="fig-label">${nextFig()}</span>
-      <div class="chart-title">Score Distribution by Tone (% of results in each bin)</div>
+      <div class="chart-title">Rate of Results Exceeding Each Quality Threshold</div>
       <div class="tone-legend">
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
       </div>
-      <div class="quintile-chart" style="margin-top:16px">
-        ${quintileBins
-          .map((bin, i) => {
-            const maxBinPct = Math.max(...quintileData.flatMap((t) => t.bins.map((b) => b.pct)));
-            return `<div class="quintile-group">
-            <div class="quintile-bars">
-              ${TONES.map((tone) => {
-                const td = quintileData.find((t) => t.tone === tone);
-                const val = td ? td.bins[i].pct : 0;
-                return `<div style="display:flex;flex-direction:column;align-items:center;gap:3px">
-                  <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted)">${val.toFixed(0)}%</div>
-                  <div style="width:20px;height:120px;background:var(--border);display:flex;align-items:flex-end">
-                    <div style="width:100%;height:${barPct(val, maxBinPct * 1.1)}%;background:var(--tone-${tone})"></div>
-                  </div>
-                </div>`;
-              }).join("")}
-            </div>
-            <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:6px">${escHtml(bin.label)}</div>
-          </div>`;
-          })
-          .join("")}
-      </div>
+      ${tailThresholds.map((threshold, ti) => {
+        const maxPct = Math.max(...tailData.flatMap((t) => t.rates.map((r) => r.pct)));
+        return `
+        <div style="margin-top:${ti === 0 ? 16 : 24}px">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">${escHtml(threshold.desc)} (${escHtml(threshold.label)})</div>
+          ${TONES.map((tone) => {
+            const td = tailData.find((t) => t.tone === tone);
+            const val = td ? td.rates[ti].pct : 0;
+            const count = td ? td.rates[ti].count : 0;
+            const total = td ? td.total : 0;
+            return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">${TONE_LABELS[tone]}</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:${barPct(val, maxPct * 1.15)}%;height:100%;background:var(--tone-${tone})"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">${val.toFixed(1)}% <span style="font-weight:400;color:var(--muted)">(${count}/${total})</span></div>
+            </div>`;
+          }).join("")}
+        </div>`;
+      }).join("")}
     </div>
 
     <div style="margin:24px 0;padding:20px 24px;background:var(--card);border:1px solid var(--border);text-align:center">
-      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px">At the \u226590% threshold</div>
-      <div style="font-family:var(--font-mono);font-size:28px;font-weight:600;color:var(--blue)">${quintileData[2].bins[4].pct.toFixed(1)}% <span style="font-size:14px;color:var(--muted)">formal</span> vs ${quintileData[0].bins[4].pct.toFixed(1)}% <span style="font-size:14px;color:var(--muted)">casual</span></div>
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px">Excellent results (\u226590%)</div>
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:600;color:var(--blue)">${excellentFormal.toFixed(1)}% <span style="font-size:14px;color:var(--muted)">formal</span> vs ${excellentCasual.toFixed(1)}% <span style="font-size:14px;color:var(--muted)">casual</span></div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px">${excellentRatio.toFixed(1)}\u00D7 more likely with formal</div>
     </div>
 
-    ${insightBox(`Formal is a ceiling-raiser, not a floor-raiser. The mean difference is small, but the probability of an excellent result nearly doubles.`)}
+    ${bodyText([
+      `But look at the bottom: below-average results (<60%) barely move between tones. Formal doesn\u2019t protect you from bad outputs \u2014 it just makes excellent ones more likely.`,
+    ])}
+
+    ${insightBox(`Formal is a ceiling-raiser, not a floor-raiser. The probability of excellence nearly doubles, but the probability of failure stays the same.`)}
   </div>
 
   <div class="section-divider"></div>
