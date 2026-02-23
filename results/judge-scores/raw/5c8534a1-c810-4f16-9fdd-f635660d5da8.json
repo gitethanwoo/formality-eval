@@ -1,0 +1,32 @@
+{
+  "runId": "5c8534a1-c810-4f16-9fdd-f635660d5da8",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "5c8534a1-c810-4f16-9fdd-f635660d5da8"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 44,
+    "sortAccuracy": 0.55,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The folder hierarchy demonstrates solid organizational logic with intuitive categorization by file type and purpose, and naming conventions are consistent throughout. However, the assistant failed to move `.env.example` and `.eslintrc.json` from the root into the `config/` folder, directly violating the explicit requirement that no files remain in the root directory. Furthermore, the MANIFEST.md falsely claims that 'no loose files remain in the root directory,' compounding the adherence failure despite otherwise clear documentation."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:47.876Z"
+}

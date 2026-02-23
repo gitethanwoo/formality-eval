@@ -1,0 +1,35 @@
+{
+  "runId": "b9d49545-aa81-44e7-9cd9-c897fa81c709",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "b9d49545-aa81-44e7-9cd9-c897fa81c709"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1516,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains excellent voice consistency through the 'quiet intelligence' and calendar-integration themes across all deliverables, specifically targeting remote worker pain points like video call fatigue and creative sprints. Strengths include the fresh 'light that learns your rhythm' angle that avoids lighting clichés, comprehensive coverage exceeding minimum requirements (9 social posts vs. 6 required), and polished professional tone appropriate for the 25-40 demographic. Minor weaknesses include occasional awkward phrasing such as 'calendar happening now' in Email 2 and the use of placeholder testimonials rather than specific social proof on the landing page."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:54.804Z"
+}

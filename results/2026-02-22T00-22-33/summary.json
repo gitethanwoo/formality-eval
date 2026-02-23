@@ -1,0 +1,1370 @@
+[
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 3,
+    "totalToolCalls": 7,
+    "totalTokens": 5808,
+    "totalDurationMs": 32011,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1069,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 4,
+    "totalToolCalls": 3,
+    "totalTokens": 9378,
+    "totalDurationMs": 32118,
+    "scores": {
+      "testsWritten": 55,
+      "testsExecutable": false,
+      "linesOfCode": 227,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 3,
+    "totalToolCalls": 7,
+    "totalTokens": 5870,
+    "totalDurationMs": 34261,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1092,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 10,
+    "totalToolCalls": 9,
+    "totalTokens": 20732,
+    "totalDurationMs": 45537,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1283,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 4,
+    "totalToolCalls": 3,
+    "totalTokens": 18863,
+    "totalDurationMs": 91265,
+    "scores": {
+      "testsWritten": 61,
+      "testsExecutable": false,
+      "linesOfCode": 268,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 30,
+    "totalToolCalls": 29,
+    "totalTokens": 156239,
+    "totalDurationMs": 70886,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 14,
+      "sortAccuracy": 0.175,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 31,
+    "totalToolCalls": 30,
+    "totalTokens": 165396,
+    "totalDurationMs": 77378,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 28,
+      "sortAccuracy": 0.35,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 3,
+    "totalToolCalls": 7,
+    "totalTokens": 6063,
+    "totalDurationMs": 30325,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1123,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 4,
+    "totalToolCalls": 3,
+    "totalTokens": 10606,
+    "totalDurationMs": 33064,
+    "scores": {
+      "testsWritten": 47,
+      "testsExecutable": false,
+      "linesOfCode": 247,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 27363,
+    "totalDurationMs": 153365,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 3590,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 13551,
+    "totalDurationMs": 32137,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1021,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 30,
+    "totalToolCalls": 29,
+    "totalTokens": 150981,
+    "totalDurationMs": 71949,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 24,
+      "sortAccuracy": 0.3,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 13949,
+    "totalDurationMs": 34245,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1087,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 40,
+    "totalToolCalls": 39,
+    "totalTokens": 234354,
+    "totalDurationMs": 94910,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 26,
+      "sortAccuracy": 0.325,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 5,
+    "totalToolCalls": 4,
+    "totalTokens": 25342,
+    "totalDurationMs": 105032,
+    "scores": {
+      "testsWritten": 48,
+      "testsExecutable": false,
+      "linesOfCode": 292,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 38448,
+    "totalDurationMs": 36132,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 49,
+      "sortAccuracy": 0.6125,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 5,
+    "totalToolCalls": 4,
+    "totalTokens": 20450,
+    "totalDurationMs": 79301,
+    "scores": {
+      "testsWritten": 44,
+      "testsExecutable": false,
+      "linesOfCode": 295,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 14676,
+    "totalDurationMs": 25425,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1315,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 27,
+    "totalToolCalls": 26,
+    "totalTokens": 121864,
+    "totalDurationMs": 59051,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 18,
+      "sortAccuracy": 0.225,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 9,
+    "totalToolCalls": 8,
+    "totalTokens": 19936,
+    "totalDurationMs": 25177,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1466,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 6,
+    "totalToolCalls": 5,
+    "totalTokens": 41539,
+    "totalDurationMs": 141645,
+    "scores": {
+      "testsWritten": 37,
+      "testsExecutable": false,
+      "linesOfCode": 371,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 30842,
+    "totalDurationMs": 179804,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4151,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 28,
+    "totalToolCalls": 27,
+    "totalTokens": 233540,
+    "totalDurationMs": 99408,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 19,
+      "sortAccuracy": 0.2375,
+      "filesUntouched": 2
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 9,
+    "totalToolCalls": 8,
+    "totalTokens": 19001,
+    "totalDurationMs": 31324,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1565,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 16664,
+    "totalDurationMs": 26723,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1530,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 191765,
+    "totalDurationMs": 179561,
+    "scores": {
+      "testsWritten": 86,
+      "testsExecutable": false,
+      "linesOfCode": 335,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 10,
+    "totalToolCalls": 9,
+    "totalTokens": 83688,
+    "totalDurationMs": 113982,
+    "scores": {
+      "testsWritten": 16,
+      "testsExecutable": false,
+      "linesOfCode": 612,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 6,
+    "totalToolCalls": 5,
+    "totalTokens": 131208,
+    "totalDurationMs": 181875,
+    "scores": {
+      "testsWritten": 78,
+      "testsExecutable": false,
+      "linesOfCode": 272,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 37,
+    "totalToolCalls": 36,
+    "totalTokens": 343913,
+    "totalDurationMs": 123300,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 17,
+      "sortAccuracy": 0.2125,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 40,
+    "totalToolCalls": 39,
+    "totalTokens": 339148,
+    "totalDurationMs": 124368,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 27,
+      "sortAccuracy": 0.3375,
+      "filesUntouched": 2
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 39,
+    "totalToolCalls": 38,
+    "totalTokens": 359296,
+    "totalDurationMs": 131723,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 8,
+      "sortAccuracy": 0.1,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 17560,
+    "totalDurationMs": 27757,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1455,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 16165,
+    "totalDurationMs": 28696,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1599,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 16,
+    "totalToolCalls": 15,
+    "totalTokens": 419876,
+    "totalDurationMs": 243810,
+    "scores": {
+      "testsWritten": 116,
+      "testsExecutable": false,
+      "linesOfCode": 323,
+      "edgeCasesCovered": 9
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 24,
+    "totalToolCalls": 24,
+    "totalTokens": 394737,
+    "totalDurationMs": 245570,
+    "scores": {
+      "testsWritten": 115,
+      "testsExecutable": false,
+      "linesOfCode": 515,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 10,
+    "totalToolCalls": 9,
+    "totalTokens": 370184,
+    "totalDurationMs": 313846,
+    "scores": {
+      "testsWritten": 67,
+      "testsExecutable": false,
+      "linesOfCode": 394,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 11,
+    "totalToolCalls": 11,
+    "totalTokens": 85636,
+    "totalDurationMs": 75120,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 14,
+      "sortAccuracy": 0.175,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 20,
+    "totalToolCalls": 19,
+    "totalTokens": 223338,
+    "totalDurationMs": 105733,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 15,
+      "sortAccuracy": 0.1875,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 11,
+    "totalToolCalls": 10,
+    "totalTokens": 295673,
+    "totalDurationMs": 214288,
+    "scores": {
+      "testsWritten": 57,
+      "testsExecutable": false,
+      "linesOfCode": 311,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 21,
+    "totalToolCalls": 20,
+    "totalTokens": 496954,
+    "totalDurationMs": 238215,
+    "scores": {
+      "testsWritten": 82,
+      "testsExecutable": false,
+      "linesOfCode": 318,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 12,
+    "totalToolCalls": 12,
+    "totalTokens": 96059,
+    "totalDurationMs": 76413,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 32,
+      "sortAccuracy": 0.4,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 60,
+    "totalToolCalls": 59,
+    "totalTokens": 428853,
+    "totalDurationMs": 165529,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 44,
+      "sortAccuracy": 0.55,
+      "filesUntouched": 2
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 31248,
+    "totalDurationMs": 176282,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4132,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 5,
+    "totalToolCalls": 9,
+    "totalTokens": 46796,
+    "totalDurationMs": 196907,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4492,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 15,
+    "totalToolCalls": 15,
+    "totalTokens": 242314,
+    "totalDurationMs": 212768,
+    "scores": {
+      "testsWritten": 801,
+      "testsExecutable": false,
+      "linesOfCode": 990,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 13,
+    "totalToolCalls": 13,
+    "totalTokens": 193509,
+    "totalDurationMs": 196199,
+    "scores": {
+      "testsWritten": 825,
+      "testsExecutable": false,
+      "linesOfCode": 839,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 10,
+    "totalToolCalls": 15,
+    "totalTokens": 98526,
+    "totalDurationMs": 99830,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 29,
+      "sortAccuracy": 0.3625,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 8,
+    "totalToolCalls": 18,
+    "totalTokens": 56472,
+    "totalDurationMs": 86211,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 18,
+      "sortAccuracy": 0.225,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 30631,
+    "totalDurationMs": 170688,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4114,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 31390,
+    "totalDurationMs": 179826,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4321,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 31,
+    "totalToolCalls": 31,
+    "totalTokens": 840763,
+    "totalDurationMs": 367901,
+    "scores": {
+      "testsWritten": 174,
+      "testsExecutable": false,
+      "linesOfCode": 863,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 28,
+    "totalToolCalls": 28,
+    "totalTokens": 533950,
+    "totalDurationMs": 314007,
+    "scores": {
+      "testsWritten": 150,
+      "testsExecutable": false,
+      "linesOfCode": 679,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 16,
+    "totalToolCalls": 15,
+    "totalTokens": 125582,
+    "totalDurationMs": 101966,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 17,
+      "sortAccuracy": 0.2125,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 16,
+    "totalToolCalls": 15,
+    "totalTokens": 134757,
+    "totalDurationMs": 96764,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 33,
+      "sortAccuracy": 0.4125,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 2,
+    "totalToolCalls": 6,
+    "totalTokens": 14452,
+    "totalDurationMs": 57163,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 2894,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 2,
+    "totalToolCalls": 6,
+    "totalTokens": 17187,
+    "totalDurationMs": 73331,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 3820,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 26,
+    "totalToolCalls": 25,
+    "totalTokens": 901546,
+    "totalDurationMs": 291733,
+    "scores": {
+      "testsWritten": 114,
+      "testsExecutable": false,
+      "linesOfCode": 723,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 24,
+    "totalToolCalls": 23,
+    "totalTokens": 761306,
+    "totalDurationMs": 252204,
+    "scores": {
+      "testsWritten": 120,
+      "testsExecutable": false,
+      "linesOfCode": 674,
+      "edgeCasesCovered": 10
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 19,
+    "totalToolCalls": 18,
+    "totalTokens": 119900,
+    "totalDurationMs": 45461,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 7,
+      "sortAccuracy": 0.0875,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 12,
+    "totalToolCalls": 11,
+    "totalTokens": 80123,
+    "totalDurationMs": 39298,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 31,
+      "sortAccuracy": 0.3875,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 5,
+    "totalToolCalls": 9,
+    "totalTokens": 65214,
+    "totalDurationMs": 120104,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 5489,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 15,
+    "totalToolCalls": 19,
+    "totalTokens": 520961,
+    "totalDurationMs": 317436,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 5210,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 27,
+    "totalToolCalls": 26,
+    "totalTokens": 1032529,
+    "totalDurationMs": 420039,
+    "scores": {
+      "testsWritten": 893,
+      "testsExecutable": false,
+      "linesOfCode": 691,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 27,
+    "totalToolCalls": 26,
+    "totalTokens": 934713,
+    "totalDurationMs": 325926,
+    "scores": {
+      "testsWritten": 181,
+      "testsExecutable": false,
+      "linesOfCode": 1259,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 39,
+    "totalToolCalls": 38,
+    "totalTokens": 619690,
+    "totalDurationMs": 177121,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 0
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 31,
+    "totalToolCalls": 30,
+    "totalTokens": 649515,
+    "totalDurationMs": 201398,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 1
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 14,
+    "totalToolCalls": 18,
+    "totalTokens": 341328,
+    "totalDurationMs": 249973,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 3125,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 16,
+    "totalToolCalls": 20,
+    "totalTokens": 442920,
+    "totalDurationMs": 319994,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 5054,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "totalSteps": 25,
+    "totalToolCalls": 24,
+    "totalTokens": 1007952,
+    "totalDurationMs": 371091,
+    "scores": {
+      "testsWritten": 247,
+      "testsExecutable": false,
+      "linesOfCode": 786,
+      "edgeCasesCovered": 12
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "totalSteps": 21,
+    "totalToolCalls": 20,
+    "totalTokens": 780739,
+    "totalDurationMs": 307397,
+    "scores": {
+      "testsWritten": 304,
+      "testsExecutable": false,
+      "linesOfCode": 1026,
+      "edgeCasesCovered": 11
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "totalSteps": 30,
+    "totalToolCalls": 29,
+    "totalTokens": 726095,
+    "totalDurationMs": 242880,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 9,
+      "sortAccuracy": 0.1125,
+      "filesUntouched": 3
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "totalSteps": 32,
+    "totalToolCalls": 31,
+    "totalTokens": 716080,
+    "totalDurationMs": 232697,
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 4
+    }
+  }
+]

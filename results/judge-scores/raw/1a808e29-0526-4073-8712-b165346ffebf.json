@@ -1,0 +1,35 @@
+{
+  "runId": "1a808e29-0526-4073-8712-b165346ffebf",
+  "sourceFile": "Claude-Opus-4.6_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "1a808e29-0526-4073-8712-b165346ffebf"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3668,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 9,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign demonstrates excellent voice consistency through the recurring 'plug and forget' and 'it just works' themes, and avoids lighting clichés with fresh angles like calendar integration and the 'ghost on Zoom' pain point. However, the landing-page.txt file appears truncated and missing the required FAQ section with 5+ questions, which impacts both thoroughness and adherence to the specific structural requirements."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:19:25.929Z"
+}

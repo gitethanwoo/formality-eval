@@ -1,0 +1,35 @@
+{
+  "runId": "36178713-5c0a-41b5-98bb-ec6122ebdb03",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "36178713-5c0a-41b5-98bb-ec6122ebdb03"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1492,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains excellent voice consistency through cohesive 'flow' and 'effortless' messaging that specifically targets remote worker pain points like calendar management and eye strain, while the calendar-integration feature provides genuine originality beyond generic lighting clichés. However, UTF-8 encoding errors producing 'â€™' characters instead of apostrophes in the email sequence, along with placeholder testimonial names in the landing page, slightly detract from professional polish. All six required deliverables are present and properly formatted with appropriate platform-specific variations, demonstrating thorough adherence to instructions."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:12.614Z"
+}

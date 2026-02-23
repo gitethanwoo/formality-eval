@@ -1,0 +1,35 @@
+{
+  "runId": "0a0e8f24-2853-4693-bfd0-a8679b8bb81e",
+  "sourceFile": "GPT-5.2-Codex_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "0a0e8f24-2853-4693-bfd0-a8679b8bb81e"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1098,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign demonstrates exceptional voice consistency through the recurring 'it just works' positioning and calendar-aware feature differentiation across all six deliverables. The calendar integration angle offers genuine originality versus typical smart lamp clichés, though some phrasing like 'light that works as hard as you do' borders on generic marketing speak. While the Instagram posts are text-heavy for the platform and the press release follows a standard template, the execution is polished and the $149 value proposition is clearly articulated against the competitive landscape defined in the brand guide."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:16.657Z"
+}

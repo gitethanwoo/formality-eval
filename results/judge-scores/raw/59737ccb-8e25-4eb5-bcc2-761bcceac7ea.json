@@ -1,0 +1,32 @@
+{
+  "runId": "59737ccb-8e25-4eb5-bcc2-761bcceac7ea",
+  "sourceFile": "Claude-Opus-4.6_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "59737ccb-8e25-4eb5-bcc2-761bcceac7ea"
+  },
+  "scores": {
+    "testsWritten": 29,
+    "testsExecutable": false,
+    "linesOfCode": 732,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 5,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates robust handling of CSV edge cases including quoted fields with embedded commas/newlines and escaped quotes, with comprehensive tests covering various line endings and malformed input. The code is well-structured with clear separation between tokenization, type coercion, and line splitting logic. However, it lacks required streaming support for large files and fails to utilize generics for type-safe row objects, using Record<string, unknown> instead. Additionally, the custom test framework, while functional, deviates from standard TypeScript testing practices."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:13:15.821Z"
+}

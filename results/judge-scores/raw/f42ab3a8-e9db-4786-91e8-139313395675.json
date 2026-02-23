@@ -1,0 +1,35 @@
+{
+  "runId": "f42ab3a8-e9db-4786-91e8-139313395675",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "f42ab3a8-e9db-4786-91e8-139313395675"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1599,
+    "requirementChecksPassed": 6,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 1
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a consistent 'adaptive rhythm' positioning across all deliverables with a warm, tech-savvy voice appropriate for remote workers. Strengths include the specific calendar-integration angle that differentiates from competitors and the clean, professional writing free of generic fluff. Minor weaknesses include slightly repetitive wordplay ('glow' puns) across emails and social posts that could benefit from more distinct platform-native tones."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:27.494Z"
+}

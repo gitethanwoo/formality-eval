@@ -1,0 +1,32 @@
+{
+  "runId": "dc4116fd-8ab0-45e7-b5da-58036f45ec32",
+  "sourceFile": "Claude-Haiku-4.5_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "dc4116fd-8ab0-45e7-b5da-58036f45ec32"
+  },
+  "scores": {
+    "testsWritten": 120,
+    "testsExecutable": false,
+    "linesOfCode": 674,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 6,
+    "creativity": 7,
+    "adherenceToInstructions": 4,
+    "justification": "Clean, well-documented code with useful aggregation methods and comprehensive test coverage, but critically fails to handle newlines within quoted fields due to premature line-splitting architecture, lacks streaming support for large files, and omits generics for type-safe row structures despite requirements explicitly requesting them."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:23:54.873Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "a7363395-3efe-4006-9b5a-92ffa74ebd6d",
+  "sourceFile": "Claude-Opus-4.6_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a7363395-3efe-4006-9b5a-92ffa74ebd6d"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 29,
+    "sortAccuracy": 0.3625,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "Excellent organizational logic with consistent kebab-case naming and intuitive 2-3 level nesting. The manifest is comprehensive with clear tree visualization and rationale. Minor potential overlap between 'financial' and 'revenue-reports' categories, and cron_cleanup.py could arguably reside in scripts/, but overall execution is polished and professional."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:02.261Z"
+}

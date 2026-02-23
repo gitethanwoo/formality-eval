@@ -1,0 +1,32 @@
+{
+  "runId": "58596e72-3c9a-45b3-bd42-5be47901f1e3",
+  "sourceFile": "Claude-Opus-4.6_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "58596e72-3c9a-45b3-bd42-5be47901f1e3"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 33,
+    "sortAccuracy": 0.4125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent consistency with kebab-case naming throughout and a well-balanced two-level hierarchy that logically groups files by type then project/subject. All 80 files were meticulously accounted for and moved with zero remaining in root, accompanied by a comprehensive MANIFEST explaining the rationale. Minor improvement possible by separating screenshots from personal photos in the 2024 folder, though the current structure fully satisfies requirements."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:24.542Z"
+}

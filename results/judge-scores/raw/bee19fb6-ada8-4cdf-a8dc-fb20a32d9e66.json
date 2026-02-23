@@ -1,0 +1,35 @@
+{
+  "runId": "bee19fb6-ada8-4cdf-a8dc-fb20a32d9e66",
+  "sourceFile": "GPT-5.2-Codex_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "bee19fb6-ada8-4cdf-a8dc-fb20a32d9e66"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1123,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign delivers all six required assets with a consistently warm, tech-savvy voice that effectively targets remote workers through relevant concepts like \"deep work\" and calendar integration. Specific strengths include the memorable \"babysitting\" line in social posts and the clear \"it just works\" positioning that unifies all deliverables. However, the campaign misses opportunities to sharply differentiate from competitors mentioned in the brand guide (BenQ, Dyson), and some phrasing like \"productivity and wellness\" remains safely generic rather than truly distinctive."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:23.710Z"
+}

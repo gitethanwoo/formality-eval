@@ -1,0 +1,32 @@
+{
+  "runId": "c329da94-7574-4133-80fe-31974395dd96",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "c329da94-7574-4133-80fe-31974395dd96"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 12,
+    "sortAccuracy": 0.15,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 5,
+    "creativity": 7,
+    "adherenceToInstructions": 4,
+    "justification": "The organizational scheme demonstrates strong logical grouping by file type and purpose, with consistent lowercase naming and well-balanced 2-3 level nesting. However, the assistant explicitly violated the core requirement to move EVERY file out of the root, leaving .env.example, .eslintrc.json, and MANIFEST.md in place—configuration files that clearly belong in code/config/ or similar subdirectories. While the MANIFEST.md documentation is comprehensive and the 78 moved files are sensibly arranged, this incomplete execution fails the 'no files in root' constraint."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:28.993Z"
+}

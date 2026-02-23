@@ -1,0 +1,32 @@
+{
+  "runId": "7b7ad9eb-d2b0-4fcc-9173-2e8a35cbcf18",
+  "sourceFile": "GPT-5.2-Codex_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "7b7ad9eb-d2b0-4fcc-9173-2e8a35cbcf18"
+  },
+  "scores": {
+    "testsWritten": 55,
+    "testsExecutable": false,
+    "linesOfCode": 227,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "Clean, readable code with comprehensive tests for implemented features, but critically fails on two requirements: newlines within quoted fields (architecturally impossible due to pre-splitting lines) and streaming support. Type safety is weak with pervasive 'any' types rather than generics for row typing."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:45.094Z"
+}

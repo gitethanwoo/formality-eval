@@ -1,0 +1,35 @@
+{
+  "runId": "7c418348-8d33-457f-813e-005cb1a1a68c",
+  "sourceFile": "GPT-5.2-Codex_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "7c418348-8d33-457f-813e-005cb1a1a68c"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1021,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 8,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign maintains excellent voice consistency through the 'light that adapts to your life' theme and effectively targets remote workers with practical benefits like calendar-aware lighting. Writing is polished and persuasive, though the landing page includes placeholder testimonials rather than actual social proof. The calendar integration angle provides a fresh, specific differentiator from generic smart lighting products."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:37.675Z"
+}

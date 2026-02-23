@@ -1,0 +1,83 @@
+[
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "copywriting",
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 27444,
+    "totalDurationMs": 151611,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 3473
+      },
+      "laziness": {
+        "totalSteps": 4,
+        "toolCallCount": 8,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 3473,
+        "lazinessIndex": 0.265
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "copywriting",
+    "totalSteps": 4,
+    "totalToolCalls": 8,
+    "totalTokens": 29824,
+    "totalDurationMs": 167473,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 3832
+      },
+      "laziness": {
+        "totalSteps": 4,
+        "toolCallCount": 8,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 3832,
+        "lazinessIndex": 0.265
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "copywriting",
+    "totalSteps": 5,
+    "totalToolCalls": 9,
+    "totalTokens": 43334,
+    "totalDurationMs": 181500,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 3896
+      },
+      "laziness": {
+        "totalSteps": 5,
+        "toolCallCount": 9,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 3896,
+        "lazinessIndex": 0.24999999999999997
+      }
+    }
+  }
+]

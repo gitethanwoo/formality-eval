@@ -1,0 +1,32 @@
+{
+  "runId": "4fc2591c-2433-45cd-8c1d-e4c7ca5b7015",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "4fc2591c-2433-45cd-8c1d-e4c7ca5b7015"
+  },
+  "scores": {
+    "testsWritten": 76,
+    "testsExecutable": false,
+    "linesOfCode": 311,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates solid CSV parsing logic with proper handling of quoted fields, escapes, custom delimiters, and newlines within quotes. The test suite is comprehensive with meaningful assertions that validate actual behavior (type coercion, error messages) rather than just checking for crashes. However, it fails to implement streaming support despite it being an explicit requirement, and lacks TypeScript generics (using Record<string, any> instead of typed rows). The architectural choice to include aggregation methods (sum, filter, groupBy) directly on the CSVResult interface couples parsing with data manipulation, which is unconventional for a parser library."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:33.185Z"
+}

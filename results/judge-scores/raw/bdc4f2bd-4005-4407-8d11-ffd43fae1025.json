@@ -1,0 +1,32 @@
+{
+  "runId": "bdc4f2bd-4005-4407-8d11-ffd43fae1025",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "bdc4f2bd-4005-4407-8d11-ffd43fae1025"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 28,
+    "sortAccuracy": 0.35,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 5,
+    "creativity": 7,
+    "adherenceToInstructions": 5,
+    "justification": "The folder hierarchy demonstrates excellent organizational logic with intuitive categorization by type, language, and project, and maintains consistent snake_case naming throughout. However, the execution is incomplete: .env.example and .eslintrc.json were erroneously left in the root directory despite explicit instructions to move every file, and the MANIFEST.md incorrectly claims the root contains only subdirectories and itself. The nesting depth is well-balanced at 2-3 levels, and the manifest provides clear documentation of the organizational rationale for the successfully moved files."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:02.018Z"
+}

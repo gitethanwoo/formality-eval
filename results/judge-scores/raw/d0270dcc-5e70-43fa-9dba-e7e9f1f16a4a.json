@@ -1,0 +1,32 @@
+{
+  "runId": "d0270dcc-5e70-43fa-9dba-e7e9f1f16a4a",
+  "sourceFile": "Claude-Haiku-4.5_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d0270dcc-5e70-43fa-9dba-e7e9f1f16a4a"
+  },
+  "scores": {
+    "testsWritten": 124,
+    "testsExecutable": false,
+    "linesOfCode": 593,
+    "edgeCasesCovered": 11
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 6,
+    "creativity": 4,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation offers clean, readable code with robust type coercion and extensive documentation. However, it critically fails to handle newlines within quoted fields (splits on line separators before parsing quotes, breaking CSV spec), lacks the requested streaming API for large files (loads entire input into memory), and omits TypeScript generics (using `Record<string, any>` instead of generic row types) despite claiming these features."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:30.670Z"
+}

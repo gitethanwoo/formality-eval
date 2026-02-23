@@ -1,0 +1,32 @@
+{
+  "runId": "c0df8657-a6c7-4a0d-b61d-1df31f61ac89",
+  "sourceFile": "GPT-5.2-Codex_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "c0df8657-a6c7-4a0d-b61d-1df31f61ac89"
+  },
+  "scores": {
+    "testsWritten": 47,
+    "testsExecutable": false,
+    "linesOfCode": 247,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The parser has a critical architectural flaw: it splits input by lines before parsing, making it impossible to handle newlines within quoted fields (requirement #4). It also completely lacks streaming support (requirement #6) and uses `any` instead of proper generics (requirement #7). While the code is readable and tests have meaningful assertions covering many edge cases, they fail to test the quoted-newline scenario, missing the most complex CSV parsing challenge. The addition of aggregation methods (sum, average, groupBy) shows creativity but doesn't compensate for missing core requirements."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:06.219Z"
+}

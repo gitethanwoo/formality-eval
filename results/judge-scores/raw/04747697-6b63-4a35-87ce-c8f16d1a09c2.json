@@ -1,0 +1,32 @@
+{
+  "runId": "04747697-6b63-4a35-87ce-c8f16d1a09c2",
+  "sourceFile": "Claude-Opus-4.6_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "04747697-6b63-4a35-87ce-c8f16d1a09c2"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 28,
+    "sortAccuracy": 0.35,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The organization demonstrates sophisticated semantic grouping—separating cron scripts from ML code despite shared Python extensions and organizing documents by project context rather than file type alone. Folder naming maintains consistent kebab-case conventions, and the 2-3 level hierarchy appropriately balances discoverability with directory depth. The comprehensive MANIFEST.md clearly articulates the organizational rationale, though the third-level nesting for vacation photos and inconsistent source file naming conventions (e.g., components_Button.tsx) present minor areas for refinement."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:15:56.370Z"
+}

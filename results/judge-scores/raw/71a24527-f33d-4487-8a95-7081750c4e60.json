@@ -1,0 +1,35 @@
+{
+  "runId": "71a24527-f33d-4487-8a95-7081750c4e60",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "71a24527-f33d-4487-8a95-7081750c4e60"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1501,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains exceptional voice consistency through the \"rhythm\" metaphor and warm, approachable tone across all deliverables, while the calendar-integration angle demonstrates sharp audience insight for remote workers. However, minor polish issues exist, such as the awkward \"planes of light\" phrasing in hero-copy.txt and a potentially erroneous \"whisper-quiet fan\" mention in email 2 that conflicts with the \"whisper-quiet base\" in the landing page. The platform-tailored social content and comprehensive FAQ showcase thoroughness, though the messaging remains within conventional smart-home boundaries rather than taking bold creative risks."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:54.801Z"
+}

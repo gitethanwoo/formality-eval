@@ -1,0 +1,35 @@
+{
+  "runId": "2720fae6-5137-4dcc-811b-140595abda76",
+  "sourceFile": "Claude-Opus-4.6_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "2720fae6-5137-4dcc-811b-140595abda76"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4151,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 6,
+    "creativity": 8,
+    "adherenceToInstructions": 6,
+    "justification": "The campaign demonstrates exceptional voice consistency and audience alignment, leveraging specific remote work pain points (e.g., '3 PM wall,' calendar sync) and a fresh 'calendar-aware' differentiator that avoids cliché lighting tropes. However, the landing page omits the required FAQ section with 5+ questions, and multiple deliverables (landing page, press release, social posts) appear truncated or incomplete, indicating the submission did not fully satisfy the brief's structural requirements."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:24.742Z"
+}

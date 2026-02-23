@@ -1,0 +1,32 @@
+{
+  "runId": "d1d7d8ba-dfc4-4f3e-8d2a-55b7e8d511d7",
+  "sourceFile": "GPT-5.2-Codex_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d1d7d8ba-dfc4-4f3e-8d2a-55b7e8d511d7"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 45,
+    "sortAccuracy": 0.5625,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "Excellent execution with consistent lowercase naming and intuitive grouping by type→domain→context (e.g., documents/projects/project_alpha). The photo organization by year plus functional subfolders (graphics, screenshots) is particularly thoughtful. Minor nitpick: splitting .ts and .tsx into separate folders separates related React code (hooks vs components), though this follows file-extension logic. Nesting depth stays within the 2-3 level guideline perfectly, and all 80 files are accounted for with a clear, comprehensive MANIFEST."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:19.424Z"
+}

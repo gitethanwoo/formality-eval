@@ -1,0 +1,32 @@
+{
+  "runId": "b5682916-c2e2-4184-a6bb-31ee5d347e48",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "b5682916-c2e2-4184-a6bb-31ee5d347e48"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 22,
+    "sortAccuracy": 0.275,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 6,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The organizational logic is excellent, particularly the intuitive 2-level hierarchy for documents (split by project/meetings/personal) and photos (by year/type), plus consistent kebab-case naming throughout. However, the assistant failed to move `.env.example` and `.eslintrc.json` from the root into `config/`, violating the 'every file' requirement, and the MANIFEST incorrectly claims the root contains only the manifest. This incompleteness and inaccurate documentation are significant flaws given the explicit constraints."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:52.897Z"
+}

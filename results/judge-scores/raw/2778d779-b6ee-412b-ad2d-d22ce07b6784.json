@@ -1,0 +1,32 @@
+{
+  "runId": "2778d779-b6ee-412b-ad2d-d22ce07b6784",
+  "sourceFile": "Claude-Opus-4.6_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "2778d779-b6ee-412b-ad2d-d22ce07b6784"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 19,
+    "sortAccuracy": 0.2375,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent pattern recognition by extracting years from photo filenames to create chronological subfolders, and intelligently separates data/ml Python code from utility scripts. The two-level hierarchy achieves optimal balance—neither too flat nor excessively nested—while the MANIFEST provides comprehensive documentation with clear rationale for each category. The only minor weakness is grouping HR and sales spreadsheets together rather than separating them, though this is pragmatic given the small file count."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:14:20.772Z"
+}

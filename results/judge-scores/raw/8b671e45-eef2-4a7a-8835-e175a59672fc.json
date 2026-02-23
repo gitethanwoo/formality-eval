@@ -1,0 +1,32 @@
+{
+  "runId": "8b671e45-eef2-4a7a-8835-e175a59672fc",
+  "sourceFile": "Claude-Haiku-4.5_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "8b671e45-eef2-4a7a-8835-e175a59672fc"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 17,
+    "sortAccuracy": 0.2125,
+    "filesUntouched": 6
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The organizational scheme demonstrates excellent logical grouping with consistent naming conventions and well-balanced 2-3 level nesting that makes navigation intuitive. However, seven metadata files remain at the root directory (including the MANIFEST.md itself), directly violating the strict requirement that no files remain in root, and the provided MANIFEST.md content appears truncated, omitting portions of the inventory documentation."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:00.428Z"
+}

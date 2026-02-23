@@ -1,0 +1,32 @@
+{
+  "runId": "dcb4b4e9-5c6d-44ec-af9d-342403ede7f3",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "dcb4b4e9-5c6d-44ec-af9d-342403ede7f3"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 27,
+    "sortAccuracy": 0.3375,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent logical grouping by file type with intuitive subcategorization (e.g., code separated by language, photos and screenshots organized by year, documents grouped by department/function). Naming conventions are consistently lowercase and descriptive, while nesting maintains an ideal 2-3 level depth (e.g., spreadsheets/projects/project_alpha/). The MANIFEST clearly documents the structure and rationale. A minor improvement could be separating work-related photos (team offsite, whiteboard) from personal vacation photos within the photos/2024/ directory."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:53.288Z"
+}

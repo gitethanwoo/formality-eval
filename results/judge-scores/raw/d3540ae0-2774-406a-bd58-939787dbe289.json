@@ -1,0 +1,35 @@
+{
+  "runId": "d3540ae0-2774-406a-bd58-939787dbe289",
+  "sourceFile": "Claude-Opus-4.6_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d3540ae0-2774-406a-bd58-939787dbe289"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3718,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 9,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign demonstrates exceptional creativity through the 'calendar-synced' angle and maintains a consistent, warm voice across all channels, particularly excelling in the email sequence's conversational tone and the LinkedIn thought leadership posts. However, the landing-page.txt artifact appears truncated and lacks the required FAQ section with 5+ questions, while hero-copy.txt blends into a single narrative rather than clearly delineating three distinct sections as requested. Despite these structural gaps, the persuasive argumentation—positioning Lumina against high-priced competitors while addressing specific remote worker pain points like eye strain and productivity—shows sophisticated marketing craft that would likely resonate with the target demographic."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:39.200Z"
+}

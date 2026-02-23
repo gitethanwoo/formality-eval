@@ -1,0 +1,32 @@
+{
+  "runId": "37988e3c-9147-4ce4-afea-69fc86916225",
+  "sourceFile": "GPT-5.2-Codex_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "37988e3c-9147-4ce4-afea-69fc86916225"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 18,
+    "sortAccuracy": 0.225,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent hierarchical balance with consistent 2-3 level nesting and intuitive categorization by file type, project, and chronology. All 73 files were moved from root with zero omissions, and naming conventions remain uniformly lowercase with underscores throughout. The MANIFEST clearly documents the structure, though it could better explain the rationale for separating screenshots from other photos under the 'images' vs 'photos' distinction. The separation of design assets from personal/work photos and the logical grouping of code by language show practical domain expertise."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:59.179Z"
+}

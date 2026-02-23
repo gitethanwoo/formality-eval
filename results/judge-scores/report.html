@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Formality Tax</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Departure Mono';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2409-1@1.0/DepartureMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --ink: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --blue: #6366f1;
+    --blue-light: rgba(99,102,241,0.06);
+    --blue-mid: rgba(99,102,241,0.12);
+    --tone-casual: #c7d2fe;
+    --tone-controlled: #818cf8;
+    --tone-formal: #4338ca;
+    --green: #059669;
+    --red: #dc2626;
+    --font-mono: "IBM Plex Mono", monospace;
+    --font-serif: "Source Serif 4", Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    min-height: 100vh;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  /* Hero */
+  .hero { margin-bottom: 64px; }
+  .hero-title {
+    font-family: 'Departure Mono', var(--font-mono);
+    font-size: 42px;
+    font-weight: normal;
+    color: var(--blue);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  /* Metric cards */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 48px 0;
+  }
+  @media (max-width: 600px) { .metric-grid { grid-template-columns: 1fr; } }
+  .metric-card {
+    background: var(--card);
+    padding: 24px;
+    text-align: center;
+  }
+  .metric-card-value {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .metric-card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Body text */
+  .body-text {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+  .body-text:last-child { margin-bottom: 0; }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 4px, transparent 4px, transparent 8px);
+    margin: 56px 0;
+  }
+
+  /* Section */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 4px, transparent 4px, transparent 8px);
+  }
+  .section-annotation {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* Finding heading */
+  .finding-heading {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  /* Chart panel */
+  .chart-panel {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 32px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .chart-panel .fig-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    opacity: 0.6;
+    letter-spacing: 1px;
+  }
+  .chart-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  /* Insight box */
+  .insight-box {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* Tone legend */
+  .tone-legend {
+    display: flex;
+    gap: 24px;
+    margin: 16px 0 8px;
+    justify-content: center;
+  }
+  .tone-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .tone-swatch { width: 12px; height: 12px; flex-shrink: 0; }
+  .tone-swatch.tone-casual { background: var(--tone-casual); }
+  .tone-swatch.tone-controlled { background: var(--tone-controlled); }
+  .tone-swatch.tone-formal { background: var(--tone-formal); }
+
+  /* Prompt comparison */
+  .prompt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  @media (max-width: 600px) { .prompt-grid { grid-template-columns: 1fr; } }
+  .prompt-col {
+    background: var(--card);
+    padding: 20px;
+  }
+  .prompt-col-header {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-top: 3px solid var(--border);
+  }
+  .prompt-col.tone-casual .prompt-col-header { border-top-color: var(--tone-casual); }
+  .prompt-col.tone-controlled .prompt-col-header { border-top-color: var(--tone-controlled); }
+  .prompt-col.tone-formal .prompt-col-header { border-top-color: var(--tone-formal); }
+  .prompt-text {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* Data table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin: 24px 0;
+  }
+  .data-table th, .data-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .data-table th {
+    background: var(--card);
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .data-table td {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    background: var(--card);
+  }
+  .delta-pos { color: var(--green); }
+  .delta-neg { color: var(--red); }
+  .delta-neutral { color: var(--muted); }
+
+  /* Recommendation boxes */
+  .rec-box {
+    margin: 16px 0;
+    padding: 20px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+  }
+  .rec-box-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .rec-box-body {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* Threats table */
+  .threats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 24px 0;
+  }
+  .threats-table th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 500;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    background: var(--card);
+  }
+  .threats-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+    background: var(--card);
+  }
+  .threats-table td:first-child {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .severity-high { color: var(--red); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+  .severity-medium { color: #d97706; font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+  .severity-low { color: var(--green); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+
+  /* Appendix */
+  details { margin: 16px 0; }
+  details summary {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--blue);
+    cursor: pointer;
+    padding: 12px 0;
+    letter-spacing: 0.5px;
+  }
+  details summary:hover { text-decoration: underline; }
+  details[open] summary { margin-bottom: 12px; }
+  .appendix-content {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  /* Footer */
+  .report-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+  .report-footer a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .report-footer a:hover { text-decoration: underline; }
+
+  /* Design matrix */
+  .design-matrix {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  @media (max-width: 600px) { .design-matrix { grid-template-columns: repeat(2, 1fr); } }
+  .design-cell {
+    background: var(--card);
+    padding: 16px;
+    text-align: center;
+  }
+  .design-cell-value {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .design-cell-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ================================================================== -->
+  <!-- SECTION 1: HERO                                                     -->
+  <!-- ================================================================== -->
+  <div class="hero">
+    <h1 class="hero-title">The Formality Tax</h1>
+    <p class="hero-subtitle">What prompt register actually does to LLM output quality</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-card-value">+1.8%</div>
+      <div class="metric-card-label">quality gain<br>formal vs casual</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-card-value">+92%</div>
+      <div class="metric-card-label">token cost<br>increase</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-card-value">r=0.98</div>
+      <div class="metric-card-label">model strength &times;<br>tone sensitivity</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 2: THE QUESTION                                             -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">The Question</span>
+    <span class="section-line"></span>
+    
+  </div>
+    <p class="body-text">There’s a generational divide in how people talk to AI. Some write structured, professional prompts with explicit requirements and quality bars. Others type the way they’d text a friend — terse, lowercase, minimal punctuation, vibes over specifications. It’s not about politeness (“please” and “thank you”) — it’s about <em>grammatical register</em>. Gen-Z shorthand vs. millennial corporate email.</p><p class="body-text">Prior work has tested politeness effects on MCQ benchmarks — accuracy on multiple-choice questions. Yin et al. (2024) examined politeness, Cai et al. (2025) tested tone on MMLU, and EmotionPrompt explored emotional stimulus. But nobody has tested the register/formality spectrum on the kind of work people actually <em>use</em> AI for: writing marketing copy, building software, organizing files. Agentic, multi-step, generative tasks where the model uses tools and iterates.</p><p class="body-text">We designed an experiment to find out. The twist: we added a third condition between casual and formal — <strong>“controlled”</strong> — which has the same informational content as formal but written in a casual register. This lets us separate two things that formal prompts change simultaneously: (a) the grammatical register and formality, and (b) the specificity and completeness of the instructions.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 3: EXPERIMENTAL DESIGN                                      -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Experimental Design</span>
+    <span class="section-line"></span>
+    
+  </div>
+
+    <h3 class="finding-heading">3.1 The Matrix</h3>
+    <p class="body-text">We tested 4 models across 3 tones, 3 tasks, and 5 trials per cell — 180 target runs, 190 actual evaluations including a partial extra batch.</p>
+
+    <div class="design-matrix">
+      <div class="design-cell">
+        <div class="design-cell-value">4</div>
+        <div class="design-cell-label">models</div>
+      </div>
+      <div class="design-cell">
+        <div class="design-cell-value">3</div>
+        <div class="design-cell-label">tones</div>
+      </div>
+      <div class="design-cell">
+        <div class="design-cell-value">3</div>
+        <div class="design-cell-label">tasks</div>
+      </div>
+      <div class="design-cell">
+        <div class="design-cell-value">5</div>
+        <div class="design-cell-label">trials / cell</div>
+      </div>
+    </div>
+
+    <p class="body-text"><strong>Models:</strong> Claude Opus 4.6 and GPT-5.2 Codex (large tier), Claude Haiku 4.5 and GPT-5.1 Codex Mini (small tier). Two providers, two capability tiers — a deliberate pairing to test whether model strength interacts with tone sensitivity.</p>
+
+    <h3 class="finding-heading" style="margin-top:40px">3.2 The Three Tones</h3>
+    <p class="body-text">The key methodological contribution is the <strong>controlled</strong> condition. Prior work only compared polite vs. rude, or formal vs. casual, without controlling for information content. Our controlled tone has <em>identical informational content</em> to the formal version — the same requirements, the same quality bars, the same directives — but written in casual register. This lets us disentangle register from specificity.</p><p class="body-text">Here are excerpts from the prompts across all three tones for each task:</p>
+
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:24px">Copywriting Task</div>
+    <div class="prompt-grid">
+      <div class="prompt-col tone-casual">
+        <div class="prompt-col-header">Casual</div>
+        <div class="prompt-text">create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+here's what i need, each one as its own file:
+
+1. tagline.txt - memorable brand tagline (one line plz)
+2. hero-copy.txt - hero section copy for the landing page
+3. email-sequence.txt - 3-email launch sequence
+4. social-posts.txt - social media posts for 3 platforms
+
+make sense? the copy should be compelling and on-brand
+
+okay thats it. actually do the work, don't just yap about it.</div>
+      </div>
+      <div class="prompt-col tone-controlled">
+        <div class="prompt-col-header">Controlled</div>
+        <div class="prompt-text">create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+you need to do ALL of these, each one gets its own file:
+
+1. tagline.txt - memorable brand tagline (one line)
+2. hero-copy.txt - hero section copy for the landing page
+3. email-sequence.txt - 3-email launch sequence
+4. social-posts.txt - social media posts for 3 platforms
+
+the copy should be compelling, on-brand, and like actually production ready
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+      </div>
+      <div class="prompt-col tone-formal">
+        <div class="prompt-col-header">Formal</div>
+        <div class="prompt-text">You are tasked with creating a complete marketing launch campaign for &quot;Lumina&quot; — a new smart desk lamp that adjusts its color temperature and brightness based on the time of day, your calendar events, and ambient room lighting. It retails for $149 and targets remote workers aged 25-40.
+
+You must produce ALL of the following deliverables as separate files:
+
+1. **tagline.txt** — A memorable brand tagline (one line)
+2. **hero-copy.txt** — Hero section copy for the landing page
+3. **email-sequence.txt** — A 3-email launch sequence
+4. **social-posts.txt** — Social media posts for 3 platforms
+
+Each deliverable should be written to its own file. The copy should be compelling, on-brand, and ready for production use.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">Coding Task</div>
+    <div class="prompt-grid">
+      <div class="prompt-col tone-casual">
+        <div class="prompt-col-header">Casual</div>
+        <div class="prompt-text">build me a csv parser library in typescript. needs implementation and tests
+
+put the code in csv-parser.ts, here's what it should handle:
+
+1. basic parsing - csv string to array of objects, first row is headers
+2. quoted fields - double quotes around fields, including ones with commas inside
+3. escaped quotes - two double quotes in a row = one literal quote
+4. custom delimiters - let me configure the delimiter, quote char, and line separator
+5. type coercion - auto detect and convert numbers, booleans, nulls
+
+write tests in csv-parser.test.ts, just use standard assertions (throw on failure).
+
+okay thats it. actually do the work, don't just yap about it. write everything to the files</div>
+      </div>
+      <div class="prompt-col tone-controlled">
+        <div class="prompt-col-header">Controlled</div>
+        <div class="prompt-text">build me a csv parser library in typescript. create the implementation and comprehensive tests
+
+put the code in csv-parser.ts, here's what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headers
+2. quoted fields - handle fields wrapped in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields
+4. custom delimiters - support configurable delimiter, quote character, and line separator
+5. type coercion - automatically detect and convert numbers, booleans, null values
+
+write tests in csv-parser.test.ts using standard assertions. tests should cover all features + edge cases.
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+      </div>
+      <div class="prompt-col tone-formal">
+        <div class="prompt-col-header">Formal</div>
+        <div class="prompt-text">You are tasked with implementing a CSV parser library in TypeScript. Create the implementation and comprehensive tests.
+
+Requirements for the parser (implement in `csv-parser.ts`):
+
+1. **Basic parsing**: Parse CSV strings into arrays of objects using the first row as headers
+2. **Quoted fields**: Handle fields wrapped in double quotes, including fields containing commas
+3. **Escaped quotes**: Handle escaped double quotes within quoted fields
+4. **Custom delimiters**: Support configurable delimiter, quote character, and line separator
+5. **Type coercion**: Automatically detect and convert numbers, booleans, null values
+
+Write tests in `csv-parser.test.ts` using standard assertions. Tests should cover all features + edge cases.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">File Sorting Task</div>
+    <div class="prompt-grid">
+      <div class="prompt-col tone-casual">
+        <div class="prompt-col-header">Casual</div>
+        <div class="prompt-text">i've got like 80 files all dumped in one directory with zero organization. need you to sort them into a clean folder structure
+
+the files are a mix of photos, documents, spreadsheets, code files, misc stuff
+
+here's what to do:
+1. list everything in the directory first
+2. look at the filenames and figure out categories
+3. create a folder structure that makes sense
+4. move every single file into the right folder using mv
+5. create a MANIFEST.md explaining what you did
+
+don't leave anything in the root directory except MANIFEST.md
+
+okay thats it. actually do the work, don't just yap about it</div>
+      </div>
+      <div class="prompt-col tone-controlled">
+        <div class="prompt-col-header">Controlled</div>
+        <div class="prompt-text">i need you to organize a messy directory of files into a clean, logical folder structure
+
+the current directory has about 80 files dumped flat with no organization. they include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+here's the job:
+1. first, list all files in the current directory to see what you're working with
+2. analyze the filenames to understand the content and categorize them
+3. create a logical folder structure organized by file type and project/date
+4. move EVERY file into the appropriate folder using bash commands
+5. after sorting, create a MANIFEST.md documenting the structure and logic
+
+important: do NOT leave any files in the root directory (except MANIFEST.md)
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+      </div>
+      <div class="prompt-col tone-formal">
+        <div class="prompt-col-header">Formal</div>
+        <div class="prompt-text">You are tasked with organizing a messy directory of files into a clean, logical folder structure.
+
+The current directory contains approximately 80 files dumped flat with no organization. These include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+Your job:
+1. First, list all files in the current directory to see what you're working with
+2. Analyze the filenames to understand the content and categorize them
+3. Create a logical folder structure organized by file type and project/date
+4. Move EVERY file into the appropriate folder using bash commands
+5. After sorting, create a `MANIFEST.md` file documenting the final structure
+
+Important: Do NOT leave any files in the root directory (except MANIFEST.md).
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+      </div>
+    </div>
+
+    <h3 class="finding-heading" style="margin-top:40px">3.3 The Tasks</h3>
+    <p class="body-text">All three tasks are agentic and multi-step — models use tools, write files, and iterate. This is novel compared to prior work’s focus on single-turn text-in/text-out benchmarks.</p><p class="body-text"><strong>Copywriting:</strong> Create a complete marketing launch campaign for a smart desk lamp — tagline, hero copy, email sequence, social posts, landing page, and press release, each as a separate file.</p><p class="body-text"><strong>Coding:</strong> Build a CSV parser library in TypeScript with parsing, type coercion, error handling, filtering, and aggregation — plus a comprehensive test suite.</p><p class="body-text"><strong>File Sorting:</strong> Organize ~80 files dumped flat in a directory into a clean folder structure by type and project, then document the result in a manifest.</p>
+
+    <h3 class="finding-heading" style="margin-top:40px">3.4 Blind Judge Protocol</h3>
+    <p class="body-text">Each output was scored by Kimi K2.5 (via OpenRouter), a different model family to avoid self-enhancement bias. The judge sees <em>only</em> a neutral task description and the output artifacts. It does <strong>not</strong> see the model name, tone, trial number, original prompt, or token counts.</p><p class="body-text">Four dimensions are scored on a 1–10 scale: quality, thoroughness, creativity, and adherence to instructions. We report composite scores on a 0–100% scale (the mean of all four dimensions, multiplied by 10).</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 4: FINDINGS                                                 -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Findings</span>
+    <span class="section-line"></span>
+    
+  </div>
+  </div>
+
+  <!-- 4.1 Surface Finding -->
+  <div class="section">
+    <h3 class="finding-heading">4.1 The Surface Finding: Formal Scores Higher</h3>
+    <p class="body-text">Across all 190 evaluations, formal prompts score +1.8% higher than casual (74.1% vs 72.3%). Controlled lands between them at 74.9%. This is directionally consistent with prior work — Cai et al. found +3.1% on humanities tasks.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.001</span>
+      <div class="chart-title">Composite Score by Tone</div>
+      <div class="tone-legend">
+        <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">72.3%</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:72.34848484848484%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.9%</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.88095238095238%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.1%</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.13934426229508%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <p class="body-text">Breaking the composite into its four dimensions reveals what’s actually driving the effect. Thoroughness shows the strongest signal. Creativity is completely flat.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.002</span>
+      <div class="chart-title">Score by Dimension and Tone</div>
+      
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Quality<span style="color:var(--green);margin-left:8px">Δ +1.7%</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:73.33333333333333%;background:var(--tone-casual)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">73.3%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Controlled</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:75.55555555555556%;background:var(--tone-controlled)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">75.6%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Formal</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:75.08196721311475%;background:var(--tone-formal)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">75.1%</div>
+        </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Thoroughness<span style="color:var(--green);margin-left:8px">Δ +3.5%</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:75%;background:var(--tone-casual)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">75.0%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Controlled</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:79.84126984126985%;background:var(--tone-controlled)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">79.8%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Formal</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:78.52459016393442%;background:var(--tone-formal)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">78.5%</div>
+        </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Creativity<span style="color:var(--muted);margin-left:8px">Δ +0.0%</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:68.33333333333333%;background:var(--tone-casual)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">68.3%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Controlled</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:69.04761904761905%;background:var(--tone-controlled)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">69.0%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Formal</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:68.36065573770492%;background:var(--tone-formal)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">68.4%</div>
+        </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Adherence<span style="color:var(--green);margin-left:8px">Δ +1.9%</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:72.72727272727272%;background:var(--tone-casual)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">72.7%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Controlled</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:75.07936507936508%;background:var(--tone-controlled)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">75.1%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Formal</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:74.59016393442623%;background:var(--tone-formal)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">74.6%</div>
+        </div>
+    </div>
+
+    <div class="insight-box">→ At first glance, formal works better. But this is the least interesting finding in this paper.</div>
+  </div>
+
+  <!-- 4.2 Information, Not Register -->
+  <div class="section">
+    <h3 class="finding-heading">4.2 It’s Information, Not Register</h3>
+    <p class="body-text">The controlled condition is the key to understanding what’s really happening. It has the <em>same informational content</em> as formal — the same requirements, the same quality bars, the same explicit directives — but written in casual register, with lowercase, colloquialisms, and relaxed grammar.</p><p class="body-text">If grammatical formality mattered, controlled should score like casual. If informational completeness mattered, controlled should score like formal. The data is unambiguous:</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.003</span>
+      <div class="chart-title">Composite Score by Task and Tone</div>
+      <div class="tone-legend">
+        <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:32px;justify-content:center">
+    <div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">80.2%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:80.20833333333334%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">81.9%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:81.93181818181819%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">83.2%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:83.21428571428571%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Copywriting</div>
+      </div><div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">57.0%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:57.02380952380952%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">60.5%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:60.5%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">59.6%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:59.62499999999999%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Coding</div>
+      </div><div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">78.7%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:78.69047619047619%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">81.2%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:81.19047619047619%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">79.1%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:79.125%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">File Sorting</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="insight-box">→ Controlled ≈ Formal across all tasks. Informational completeness drives quality, not grammatical register. Be specific about what you want, but write however comes naturally.</div>
+  </div>
+
+  <!-- 4.3 The Cost -->
+  <div class="section">
+    <h3 class="finding-heading">4.3 The Cost: Formal Doubles Token Consumption</h3>
+    <p class="body-text">Here’s where the story gets interesting. Formal prompts don’t just change the output — they dramatically increase how hard the model works. Mean token consumption jumps from 150,360 (casual) to 289,158 (formal), a +92% increase. Wall-clock time tells the same story: 98s mean for casual vs 163s for formal (+66%).</p><p class="body-text">The +1.8% quality gain isn’t free. It costs nearly double the tokens and takes 66% longer. This reframes the finding entirely: formal prompts don’t make models <em>smarter</em>, they make models <em>work harder</em>.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.004</span>
+      <div class="chart-title">Mean Token Usage by Tone</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">150,360 tok</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:47.27214138083307%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">234,214 tok</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:73.63512842954802%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">289,158 tok</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:90.9090909090909%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.005</span>
+      <div class="chart-title">Mean Wall-Clock Time by Tone</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">98s</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:54.90306736638938%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">141s</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:78.6058103315969%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">163s</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:90.9090909090909%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.006</span>
+      <div class="chart-title">Quality per Million Tokens (Efficiency)</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">3,073</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:90.9090909090909%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">2,254</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:66.66657686144822%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1,799</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:53.20856796987579%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="insight-box">→ Casual delivers 3,073 quality-points per million tokens vs 1,799 for formal — 71% more token-efficient. It also completes 66% faster (98s vs 163s).</div>
+  </div>
+
+  <!-- 4.4 Only Strong Models Benefit -->
+  <div class="section">
+    <h3 class="finding-heading">4.4 Only Strong Models Benefit</h3>
+    <p class="body-text">The headline quality gain hides a critical interaction: not all models benefit equally from formal prompts. The correlation between model overall quality and formal-casual delta is 0.98 — near-perfect linearity. Tone sensitivity appears to be a marker of model sophistication.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.007</span>
+      <div class="chart-title">Composite Score by Model and Tone</div>
+      <div class="tone-legend">
+        <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:32px;justify-content:center">
+    <div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">70.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:70.83333333333333%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">74.3%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:74.33333333333334%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">71.0%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:71%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Haiku 4.5</div>
+      </div><div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.83333333333333%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">77.5%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:77.5%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">77.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:77.83333333333333%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Opus 4.6</div>
+      </div><div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.9%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.91666666666667%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">71.3%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:71.25%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.83333333333333%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">GPT 5.1 Codex Mini</div>
+      </div><div style="flex:1;text-align:center;max-width:200px">
+        <div style="display:flex;gap:4px;justify-content:center;align-items:flex-end;height:200px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.6%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.63888888888889%;background:var(--tone-casual)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">76.5%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:76.47058823529412%;background:var(--tone-controlled)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">74.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:74.84375%;background:var(--tone-formal)"></div>
+              </div>
+            </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">GPT 5.2 Codex</div>
+      </div>
+  </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="text-align:left">Model</th>
+          <th>Overall</th>
+          <th>F−C Delta</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left;font-weight:500">Claude Opus 4.6</td>
+          <td>76.1%</td>
+          <td class="delta-pos">+5.0%</td>
+          <td>large</td>
+        </tr><tr>
+          <td style="text-align:left;font-weight:500">GPT-5.2 Codex</td>
+          <td>74.6%</td>
+          <td class="delta-neutral">+2.2%</td>
+          <td>large</td>
+        </tr><tr>
+          <td style="text-align:left;font-weight:500">GPT-5.1 Codex Mini</td>
+          <td>72.3%</td>
+          <td class="delta-neutral">-0.1%</td>
+          <td>small</td>
+        </tr><tr>
+          <td style="text-align:left;font-weight:500">Claude Haiku 4.5</td>
+          <td>72.1%</td>
+          <td class="delta-neutral">+0.2%</td>
+          <td>small</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">→ Tone sensitivity scales linearly with model capability (r=0.98). Strong models extract signal from well-structured prompts; weak models are tone-deaf.</div>
+  </div>
+
+  <!-- 4.5 Formal Changes the Process -->
+  <div class="section">
+    <h3 class="finding-heading">4.5 Formal Changes the Process, Not Just the Output</h3>
+    <p class="body-text">Formal prompts don’t just produce different output — they change how the model reasons about the task. Formal-prompted models take more steps (+38%), but each step is less dense: tool-calls-per-step actually <em>decreases</em> from 1.29 to 1.08.</p><p class="body-text">This suggests a shift toward more deliberate, incremental refinement rather than dense multi-tool bursts. The model takes a more measured, step-by-step approach.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.008</span>
+      <div class="chart-title">Mean Steps by Tone</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">12.3</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:63.16360536309386%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">15.9</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:81.11070515162588%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">17.0</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:86.95652173913044%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.009</span>
+      <div class="chart-title">Tool Calls per Step by Tone</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1.29</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:86.95652173913044%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1.23</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:83.01587000936603%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1.08</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:72.51096558702386%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div>
+  </div>
+    </div>
+
+    <div class="insight-box">→ Formal prompts don’t just change output — they change how the model reasons. More deliberation, more incremental refinement, fewer dense multi-tool bursts.</div>
+  </div>
+
+  <!-- 4.6 The Tails -->
+  <div class="section">
+    <h3 class="finding-heading">4.6 The Tails: Small Means, Bigger Extremes</h3>
+    <p class="body-text">A +1.8% mean difference sounds trivial. But small shifts in means can hide large shifts at the extremes. Think of it like height: a 1-inch difference in average height between two populations translates to a much larger difference in the proportion of people over 6’4”.</p><p class="body-text">The same applies here. At the ≥90% threshold — outputs a domain expert would call excellent — formal produces 19.7% of results vs 10.6% for casual. That’s a 1.9× ratio.</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.010</span>
+      <div class="chart-title">Rate of Results Exceeding Each Quality Threshold</div>
+      <div class="tone-legend">
+        <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+      </div>
+      
+        <div style="margin-top:16px">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">Excellent (≥90%)</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:20.092226613965746%;height:100%;background:var(--tone-casual)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">10.6% <span style="font-weight:400;color:var(--muted)">(7/66)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:33.07699891550824%;height:100%;background:var(--tone-controlled)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">17.5% <span style="font-weight:400;color:var(--muted)">(11/63)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:37.26708074534162%;height:100%;background:var(--tone-formal)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">19.7% <span style="font-weight:400;color:var(--muted)">(12/61)</span></div>
+            </div>
+        </div>
+        <div style="margin-top:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">Good (≥80%)</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:80.36890645586298%;height:100%;background:var(--tone-casual)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">42.4% <span style="font-weight:400;color:var(--muted)">(28/66)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:81.18899733806568%;height:100%;background:var(--tone-controlled)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">42.9% <span style="font-weight:400;color:var(--muted)">(27/63)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:86.95652173913044%;height:100%;background:var(--tone-formal)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">45.9% <span style="font-weight:400;color:var(--muted)">(28/61)</span></div>
+            </div>
+        </div>
+        <div style="margin-top:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">Below average (&lt;60%)</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:31.573498964803314%;height:100%;background:var(--tone-casual)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">16.7% <span style="font-weight:400;color:var(--muted)">(11/66)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:39.09099871832791%;height:100%;background:var(--tone-controlled)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">20.6% <span style="font-weight:400;color:var(--muted)">(13/63)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:46.58385093167703%;height:100%;background:var(--tone-formal)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">24.6% <span style="font-weight:400;color:var(--muted)">(15/61)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin:24px 0;padding:20px 24px;background:var(--card);border:1px solid var(--border);text-align:center">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px">Excellent results (≥90%)</div>
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:600;color:var(--blue)">19.7% <span style="font-size:14px;color:var(--muted)">formal</span> vs 10.6% <span style="font-size:14px;color:var(--muted)">casual</span></div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px">1.9× more likely with formal</div>
+    </div>
+
+    <p class="body-text">But look at the bottom: below-average results (<60%) barely move between tones. Formal doesn’t protect you from bad outputs — it just makes excellent ones more likely.</p>
+
+    <div class="insight-box">→ Formal is a ceiling-raiser, not a floor-raiser. The probability of excellence nearly doubles, but the probability of failure stays the same.</div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 5: IMPLICATIONS                                             -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Implications</span>
+    <span class="section-line"></span>
+    
+  </div>
+    <p class="body-text">Three practical recommendations, depending on what you’re optimizing for:</p>
+
+    <div class="rec-box" style="border-left-color:var(--tone-casual)">
+      <div class="rec-box-title">Cost-Sensitive</div>
+      <div class="rec-box-body">Use casual prompts. They’re 71% more token-efficient. The quality gap is 1.8% — negligible for most use cases. If you’re running thousands of API calls, the cost savings are significant and the quality tradeoff is minimal.</div>
+    </div>
+
+    <div class="rec-box" style="border-left-color:var(--tone-formal)">
+      <div class="rec-box-title">Quality-Maximizing (Strong Models Only)</div>
+      <div class="rec-box-body">Use formal prompts with a top-tier model (Opus-class). The quality gain concentrates at the excellence tail — nearly 2× the rate of ≥90% results. But only if you’re using a strong model. Small models are tone-deaf and won’t benefit.</div>
+    </div>
+
+    <div class="rec-box" style="border-left-color:var(--tone-controlled)">
+      <div class="rec-box-title">The Goldilocks Choice</div>
+      <div class="rec-box-body">Use the controlled approach: <em>complete information, casual register</em>. You get roughly formal-level quality at closer to casual-level cost. The finding that matters most is that informational completeness drives quality, not grammatical formality. Be specific about what you want, but write however comes naturally. The professional email voice doesn’t earn you anything the bullet points didn’t already cover.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 6: THREATS TO VALIDITY                                      -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Threats to Validity</span>
+    <span class="section-line"></span>
+    
+  </div>
+    <p class="body-text">Every experiment has limitations. We’ve tried to address them directly rather than bury them.</p>
+
+    <table class="threats-table">
+      <thead>
+        <tr><th>Threat</th><th>Severity</th><th>Mitigation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Single LLM judge (Kimi K2.5)</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>Different model family avoids self-enhancement bias. Comparative analysis (tone A vs B) is robust to consistent judge bias — any systematic over- or under-scoring cancels in the deltas.</td>
+        </tr>
+        <tr>
+          <td>5 trials per cell</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>190 total results. Effects consistent directionally across models and tasks. Expanded from 2–3 to 5 trials based on initial findings.</td>
+        </tr>
+        <tr>
+          <td>1–10 grading scale</td>
+          <td><span class="severity-low">Low</span></td>
+          <td>Recent work (arXiv:2601.03444) found 1–10 yields slightly lower human-LLM alignment (ICC=0.805) than 0–5 (ICC=0.853). However, this applies to absolute calibration. Our comparative analysis measures relative differences — any scale bias affects all conditions equally.</td>
+        </tr>
+        <tr>
+          <td>Prompt confounding</td>
+          <td><span class="severity-low">Low</span></td>
+          <td>The controlled condition directly tests this. Casual vs formal differ in both register AND content; controlled isolates register by holding information constant.</td>
+        </tr>
+        <tr>
+          <td>RLHF training confound</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>Cannot be eliminated. Models are trained to respond to professional language. This is part of the real-world effect we’re measuring, not a confound to be removed.</td>
+        </tr>
+        <tr>
+          <td>Token cost as confound</td>
+          <td><span class="severity-high">High</span></td>
+          <td>Addressed directly in Finding 4.3. The quality gain may be partly a compute artifact — more tokens = more reasoning = better output, regardless of prompt tone.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- SECTION 7: RELATED WORK                                             -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Related Work</span>
+    <span class="section-line"></span>
+    
+  </div>
+    <p class="body-text">Several studies have examined how prompt style affects LLM performance. Yin et al. (2024) tested politeness on MCQ benchmarks and found that respectful phrasing modestly improved accuracy. Cai et al. (2025) tested tone variations on MMLU, finding +3.1% on humanities tasks with formal prompts — directionally consistent with our +1.8%. The EmotionPrompt line of work (Li et al., 2024) demonstrated that emotional stimuli in prompts can boost performance, operating through a different mechanism (arousal vs. register) but pointing in the same direction.</p><p class="body-text">Ma et al. (2025) examined politeness effects on code generation stability, finding that polite prompts produced more consistent outputs — our coding results align, though our controlled condition complicates the interpretation. The grading scale paper (arXiv:2601.03444, 2026) informed our choice to acknowledge the 1–10 scale limitation while arguing that comparative analysis remains valid.</p><p class="body-text">Our work extends this body of research in three ways: (1) we test on agentic, multi-step, generative tasks rather than MCQ benchmarks, (2) we add the controlled condition to disentangle register from informational content — a confound that prior work does not address, and (3) we reveal the cost dimension that prior work entirely ignores. The finding that formal prompts double token consumption without proportional quality gains is, to our knowledge, novel.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- APPENDIX                                                            -->
+  <!-- ================================================================== -->
+  <div class="section">
+    <div class="section-header">
+    <span class="section-title">Appendix</span>
+    <span class="section-line"></span>
+    
+  </div>
+
+    <details>
+      <summary>Full Copywriting Prompts (all 3 tones)</summary>
+      <div style="display:grid;gap:16px">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
+          <div class="appendix-content">create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+here's what i need, each one as its own file:
+
+1. tagline.txt - memorable brand tagline (one line plz)
+2. hero-copy.txt - hero section copy for the landing page
+3. email-sequence.txt - 3-email launch sequence
+4. social-posts.txt - social media posts for 3 platforms
+
+make sense? the copy should be compelling and on-brand
+
+okay thats it. actually do the work, don't just yap about it.</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-controlled)">Controlled</div>
+          <div class="appendix-content">create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40
+
+you need to do ALL of these, each one gets its own file:
+
+1. tagline.txt - memorable brand tagline (one line)
+2. hero-copy.txt - hero section copy for the landing page
+3. email-sequence.txt - 3-email launch sequence
+4. social-posts.txt - social media posts for 3 platforms
+
+the copy should be compelling, on-brand, and like actually production ready
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
+          <div class="appendix-content">You are tasked with creating a complete marketing launch campaign for &quot;Lumina&quot; — a new smart desk lamp that adjusts its color temperature and brightness based on the time of day, your calendar events, and ambient room lighting. It retails for $149 and targets remote workers aged 25-40.
+
+You must produce ALL of the following deliverables as separate files:
+
+1. **tagline.txt** — A memorable brand tagline (one line)
+2. **hero-copy.txt** — Hero section copy for the landing page
+3. **email-sequence.txt** — A 3-email launch sequence
+4. **social-posts.txt** — Social media posts for 3 platforms
+
+Each deliverable should be written to its own file. The copy should be compelling, on-brand, and ready for production use.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Full Coding Prompts (all 3 tones)</summary>
+      <div style="display:grid;gap:16px">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
+          <div class="appendix-content">build me a csv parser library in typescript. needs implementation and tests
+
+put the code in csv-parser.ts, here's what it should handle:
+
+1. basic parsing - csv string to array of objects, first row is headers
+2. quoted fields - double quotes around fields, including ones with commas inside
+3. escaped quotes - two double quotes in a row = one literal quote
+4. custom delimiters - let me configure the delimiter, quote char, and line separator
+5. type coercion - auto detect and convert numbers, booleans, nulls
+
+write tests in csv-parser.test.ts, just use standard assertions (throw on failure).
+
+okay thats it. actually do the work, don't just yap about it. write everything to the files</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-controlled)">Controlled</div>
+          <div class="appendix-content">build me a csv parser library in typescript. create the implementation and comprehensive tests
+
+put the code in csv-parser.ts, here's what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headers
+2. quoted fields - handle fields wrapped in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields
+4. custom delimiters - support configurable delimiter, quote character, and line separator
+5. type coercion - automatically detect and convert numbers, booleans, null values
+
+write tests in csv-parser.test.ts using standard assertions. tests should cover all features + edge cases.
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
+          <div class="appendix-content">You are tasked with implementing a CSV parser library in TypeScript. Create the implementation and comprehensive tests.
+
+Requirements for the parser (implement in `csv-parser.ts`):
+
+1. **Basic parsing**: Parse CSV strings into arrays of objects using the first row as headers
+2. **Quoted fields**: Handle fields wrapped in double quotes, including fields containing commas
+3. **Escaped quotes**: Handle escaped double quotes within quoted fields
+4. **Custom delimiters**: Support configurable delimiter, quote character, and line separator
+5. **Type coercion**: Automatically detect and convert numbers, booleans, null values
+
+Write tests in `csv-parser.test.ts` using standard assertions. Tests should cover all features + edge cases.
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Full File Sorting Prompts (all 3 tones)</summary>
+      <div style="display:grid;gap:16px">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
+          <div class="appendix-content">i've got like 80 files all dumped in one directory with zero organization. need you to sort them into a clean folder structure
+
+the files are a mix of photos, documents, spreadsheets, code files, misc stuff
+
+here's what to do:
+1. list everything in the directory first
+2. look at the filenames and figure out categories
+3. create a folder structure that makes sense
+4. move every single file into the right folder using mv
+5. create a MANIFEST.md explaining what you did
+
+don't leave anything in the root directory except MANIFEST.md
+
+okay thats it. actually do the work, don't just yap about it</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-controlled)">Controlled</div>
+          <div class="appendix-content">i need you to organize a messy directory of files into a clean, logical folder structure
+
+the current directory has about 80 files dumped flat with no organization. they include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+here's the job:
+1. first, list all files in the current directory to see what you're working with
+2. analyze the filenames to understand the content and categorize them
+3. create a logical folder structure organized by file type and project/date
+4. move EVERY file into the appropriate folder using bash commands
+5. after sorting, create a MANIFEST.md documenting the structure and logic
+
+important: do NOT leave any files in the root directory (except MANIFEST.md)
+
+use all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
+          <div class="appendix-content">You are tasked with organizing a messy directory of files into a clean, logical folder structure.
+
+The current directory contains approximately 80 files dumped flat with no organization. These include photos, documents, spreadsheets, code files, and miscellaneous files.
+
+Your job:
+1. First, list all files in the current directory to see what you're working with
+2. Analyze the filenames to understand the content and categorize them
+3. Create a logical folder structure organized by file type and project/date
+4. Move EVERY file into the appropriate folder using bash commands
+5. After sorting, create a `MANIFEST.md` file documenting the final structure
+
+Important: Do NOT leave any files in the root directory (except MANIFEST.md).
+
+Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Effect Size Heatmap: Formal − Casual by Model × Task</summary>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Model</th>
+            <th>Copywriting</th><th>Coding</th><th>File Sorting</th>
+            <th>Avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td style="text-align:left;font-weight:500">Claude Haiku 4.5</td>
+              <td class="delta-pos">+7.5%</td><td class="delta-neutral">+2.0%</td><td class="delta-neg">-9.0%</td>
+              <td class="delta-neutral"><strong>+0.2%</strong></td>
+            </tr><tr>
+              <td style="text-align:left;font-weight:500">Claude Opus 4.6</td>
+              <td class="delta-pos">+5.5%</td><td class="delta-pos">+5.0%</td><td class="delta-pos">+4.5%</td>
+              <td class="delta-pos"><strong>+5.0%</strong></td>
+            </tr><tr>
+              <td style="text-align:left;font-weight:500">GPT-5.1 Codex Mini</td>
+              <td class="delta-neutral">+0.4%</td><td class="delta-neutral">+1.5%</td><td class="delta-pos">+6.0%</td>
+              <td class="delta-neutral"><strong>+2.6%</strong></td>
+            </tr><tr>
+              <td style="text-align:left;font-weight:500">GPT-5.2 Codex</td>
+              <td class="delta-neutral">+2.5%</td><td class="delta-neutral">+1.2%</td><td class="delta-neutral">+1.4%</td>
+              <td class="delta-neutral"><strong>+1.7%</strong></td>
+            </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details>
+      <summary>Blind Judge Protocol &mdash; Neutral Task Descriptions</summary>
+      <div class="appendix-content">The judge receives a neutral, tone-free description of each task:
+
+Copywriting: "Evaluate the marketing campaign deliverables for completeness, quality of copy, brand consistency, and whether all requested files were produced."
+
+Coding: "Evaluate the CSV parser implementation for correctness, code quality, test coverage, and handling of edge cases as specified."
+
+File Sorting: "Evaluate the file organization for logical structure, completeness (all files sorted), and quality of the manifest documentation."
+
+The judge does NOT receive:
+- The original prompt (in any tone)
+- The model name or provider
+- The trial number
+- Token counts or timing data
+- Any metadata about the run configuration
+
+Scoring dimensions (1-10 each):
+- Quality: Overall quality of the work product
+- Thoroughness: Completeness and attention to detail
+- Creativity: Novel approaches, good design decisions
+- Adherence to Instructions: How well the output matches the task requirements</div>
+    </details>
+
+    <details>
+      <summary>GitHub Repository</summary>
+      <div class="appendix-content">Full source code, raw data, and analysis scripts are available at:
+https://github.com/gitethanwoo/formality-eval
+
+The repository includes:
+- All 9 prompt variants (3 tones x 3 tasks)
+- The evaluation harness (src/)
+- The blind judge implementation (scripts/judge.ts)
+- Raw results for all 190 evaluations
+- This report generator (scripts/build-report.ts)</div>
+    </details>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- FOOTER                                                              -->
+  <!-- ================================================================== -->
+  <footer class="report-footer">
+    190 eval runs &middot; 190 with raw data joined &middot; Judge: Kimi K2.5 via OpenRouter (blind) &middot; Generated 2026-02-23<br>
+    <a href="https://github.com/gitethanwoo/formality-eval">github.com/gitethanwoo/formality-eval</a>
+  </footer>
+
+</div>
+</body>
+</html>

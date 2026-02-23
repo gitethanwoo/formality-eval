@@ -1,0 +1,32 @@
+{
+  "runId": "7452ecc2-4f24-4e42-bcf9-ac16880dd940",
+  "sourceFile": "Claude-Opus-4.6_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "7452ecc2-4f24-4e42-bcf9-ac16880dd940"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 32,
+    "sortAccuracy": 0.4,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The organizational structure demonstrates expert judgment with intuitive 2-3 level nesting (e.g., photos/2023/, spreadsheets/budgets-expenses/) and rigorous kebab-case consistency throughout. The MANIFEST.md is exemplary, providing ASCII trees and detailed tables that meticulously account for all 80 files with specific sorting rationales. Minor improvements could include grouping project-alpha and project-beta under a parent projects/ folder for future scalability, and the MANIFEST.md technically remains in the root despite the 'no root files' requirement—though this is necessary and appropriately acknowledged."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:43.368Z"
+}

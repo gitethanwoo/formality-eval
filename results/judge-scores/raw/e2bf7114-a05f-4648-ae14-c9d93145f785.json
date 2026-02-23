@@ -1,0 +1,32 @@
+{
+  "runId": "e2bf7114-a05f-4648-ae14-c9d93145f785",
+  "sourceFile": "Claude-Opus-4.6_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "e2bf7114-a05f-4648-ae14-c9d93145f785"
+  },
+  "scores": {
+    "testsWritten": 770,
+    "testsExecutable": false,
+    "linesOfCode": 1008,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 8,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "Well-architected parser with robust state machine handling for quoted fields, escaped quotes, and multiline values. Test suite thoroughly validates edge cases including mixed line endings and type coercion. However, it fails to implement requested generics for type-safe row objects and lacks streaming capabilities for large files, instead requiring full string input. The custom test framework, while functional, is unconventional."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:13:18.227Z"
+}

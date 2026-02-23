@@ -1,0 +1,32 @@
+{
+  "runId": "d4110c27-4cd8-4fcd-8630-40dc7942d309",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d4110c27-4cd8-4fcd-8630-40dc7942d309"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 15,
+    "sortAccuracy": 0.1875,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The type-first hierarchy with functional subdivisions (e.g., photos by year and purpose, documents by project) creates an intuitive structure supported by an excellent manifest. Minor issues include the team offsite photo miscategorized under personal/ rather than workplace/, and devops configs nested under code/ when a top-level infrastructure/ folder might be clearer, but overall execution is strong with appropriate 2-3 level nesting and consistent naming."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:45.787Z"
+}

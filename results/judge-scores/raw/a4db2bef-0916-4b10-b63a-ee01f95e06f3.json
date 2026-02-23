@@ -1,0 +1,32 @@
+{
+  "runId": "a4db2bef-0916-4b10-b63a-ee01f95e06f3",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a4db2bef-0916-4b10-b63a-ee01f95e06f3"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1374
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign delivers all 6 required files with impressive consistency, maintaining the 'adaptive rhythm' messaging and warm, tech-savvy voice throughout. Strengths include the specific calendar-integration angle that differentiates from generic smart lamps, platform-appropriate social tones (LinkedIn's professionalism vs. Instagram's wellness focus), and a well-structured press release with complete boilerplate. Minor polish issues exist (landing-page.txt repeats 'glare or glare'), and while the execution is solid professional work, it stops short of truly groundbreaking creative territory that would merit a 9-10."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:17:38.340Z"
+}

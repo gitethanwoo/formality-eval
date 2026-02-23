@@ -1,0 +1,32 @@
+{
+  "runId": "d8e9fbae-753d-4476-8552-0057eefb412e",
+  "sourceFile": "Claude-Haiku-4.5_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "d8e9fbae-753d-4476-8552-0057eefb412e"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 13,
+    "sortAccuracy": 0.1625,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 9,
+    "creativity": 5,
+    "adherenceToInstructions": 7,
+    "justification": "The structure achieves complete migration of all 80 files with consistent lowercase naming and well-balanced 2-level nesting. Code is logically separated by architectural tier and photos are chronologically organized. However, 'documents/personal/' serves as a problematic catch-all mixing design assets (logos, mockups), screenshots (which contradictorily remain separated from other images), and business documents (OKRs), undermining the 'immediately obvious' navigation requirement. Additionally, CSV files are inconsistently split between documents/ and spreadsheets/ without clear logic."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:05.453Z"
+}

@@ -1,0 +1,35 @@
+{
+  "runId": "11c32405-df8a-4095-baf8-fdf004cc45bb",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "11c32405-df8a-4095-baf8-fdf004cc45bb"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1565,
+    "requirementChecksPassed": 6,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 1
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign delivers all six required files with a consistent warm, 'it just works' voice that fits remote workers 25-40, effectively highlighting calendar integration and circadian wellness benefits. However, it is marred by a confusing 'LenientLumina' hashtag (likely a typo) in the Twitter posts and repetitive phrasing like 'back-to-back calls' across multiple deliverables. While the calendar-aware angle provides genuine freshness, the overall 'adaptive light' messaging relies on somewhat conventional smart-home tropes rather than breaking new creative ground."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:01.584Z"
+}

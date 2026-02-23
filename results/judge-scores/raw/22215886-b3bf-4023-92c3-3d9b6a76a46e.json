@@ -1,0 +1,35 @@
+{
+  "runId": "22215886-b3bf-4023-92c3-3d9b6a76a46e",
+  "sourceFile": "Claude-Opus-4.6_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "22215886-b3bf-4023-92c3-3d9b6a76a46e"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3197,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 5,
+    "creativity": 8,
+    "adherenceToInstructions": 5,
+    "justification": "The campaign maintains a cohesive, modern voice across all deliverables with effective platform-specific adaptations—particularly the contrast between Twitter's punchy minimalism and LinkedIn's data-backed authority—while avoiding clichés like 'illuminate your workspace' in favor of specific, persuasive benefits like calendar sync reducing eye strain. However, the landing page deliverable is truncated and omits the required FAQ section with five questions, representing a significant failure to meet specified deliverable requirements despite otherwise excellent execution."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:23.880Z"
+}

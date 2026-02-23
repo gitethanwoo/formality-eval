@@ -1,0 +1,83 @@
+[
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "totalSteps": 10,
+    "totalToolCalls": 13,
+    "totalTokens": 53898,
+    "totalDurationMs": 92067,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 10,
+        "toolCallCount": 13,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.2
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "totalSteps": 10,
+    "totalToolCalls": 14,
+    "totalTokens": 74294,
+    "totalDurationMs": 92481,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 10,
+        "toolCallCount": 14,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.2
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "totalSteps": 17,
+    "totalToolCalls": 16,
+    "totalTokens": 149950,
+    "totalDurationMs": 111003,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 17,
+        "toolCallCount": 16,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.095
+      }
+    }
+  }
+]

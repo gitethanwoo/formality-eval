@@ -1,0 +1,32 @@
+{
+  "runId": "24e3258e-d5ac-4dc1-a715-aa449d95cfe7",
+  "sourceFile": "Claude-Opus-4.6_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "24e3258e-d5ac-4dc1-a715-aa449d95cfe7"
+  },
+  "scores": {
+    "testsWritten": 174,
+    "testsExecutable": false,
+    "linesOfCode": 863,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 7,
+    "justification": "The implementation demonstrates clean architecture with well-separated concerns (field parsing, type coercion, line splitting) and comprehensive test coverage for edge cases like escaped quotes and custom delimiters. The field-level state machine correctly handles CSV complexities including newlines within quoted fields. However, the truncated code makes it impossible to verify the streaming requirement, and the visible type definitions use `unknown` rather than proper generics (e.g., `parseCSV<T>()`), limiting type safety for consumers."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:58.997Z"
+}

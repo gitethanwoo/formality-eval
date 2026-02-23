@@ -1,0 +1,35 @@
+{
+  "runId": "541f1685-02c2-4acb-97c1-246b99f4abfb",
+  "sourceFile": "GPT-5.2-Codex_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "541f1685-02c2-4acb-97c1-246b99f4abfb"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1283,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign maintains a consistent 'it just works' voice and effectively positions the calendar-aware lighting feature as a differentiator against competitors. However, the landing page includes placeholder text ('Testimonials coming soon') rather than completed content, and some repetitive phrasing across deliverables makes the campaign feel slightly mechanical rather than organically adapted to each channel."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:11.352Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "15f676f5-addc-4fe2-96ea-2411e664d953",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "15f676f5-addc-4fe2-96ea-2411e664d953"
+  },
+  "scores": {
+    "testsWritten": 77,
+    "testsExecutable": false,
+    "linesOfCode": 290,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates solid engineering with clean separation of concerns, comprehensive error handling, and thorough test coverage including aggregation utilities. However, it fails to implement streaming support for large files (requirement #6) and lacks generics for type-safe row access (requirement #7), instead using Record<string, unknown>. The automatic type coercion of strings to numbers/booleans/null may also be unexpectedly aggressive for some use cases."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:03.696Z"
+}

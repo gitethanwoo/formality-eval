@@ -1,0 +1,32 @@
+{
+  "runId": "1006c0b0-79ea-4570-9c5e-1b3fc8c4e710",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "1006c0b0-79ea-4570-9c5e-1b3fc8c4e710"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 26,
+    "sortAccuracy": 0.325,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "Excellent execution with intuitive type-based top-level structure and logical 2-3 level nesting (e.g., spreadsheets/finance/revenue/, documents/projects/project_alpha/meetings/). Naming conventions are consistent throughout (lowercase, underscore separators). All ~80 files are accounted for with zero remaining in root. Particularly thoughtful touches include organizing photos by year while isolating screenshots, and subdividing finance spreadsheets by function (budget, expenses, revenue). Minor quibble: config/package_old.json might arguably belong in archives, but config is defensible."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:34.201Z"
+}

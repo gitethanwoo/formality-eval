@@ -1,0 +1,32 @@
+{
+  "runId": "9ec01ed8-932c-47ab-85cd-9a92d378f66e",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "9ec01ed8-932c-47ab-85cd-9a92d378f66e"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 18,
+    "sortAccuracy": 0.225,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The structure demonstrates excellent organizational logic with clear separation by type (code, docs, photos) and purpose (backend/frontend, financial/operations). Naming is consistently lowercase with underscores (e.g., project_alpha, cron_cleanup.py). Nesting achieves ideal balance at 2-3 levels, with thoughtful date-based subfolders for personal photos. The only minor weakness is slight ambiguity between root config/ and code/config/ folders, though the manifest reasonably distinguishes infrastructure from development configuration."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:56.522Z"
+}

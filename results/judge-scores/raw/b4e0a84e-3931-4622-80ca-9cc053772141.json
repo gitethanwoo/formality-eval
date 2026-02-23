@@ -1,0 +1,32 @@
+{
+  "runId": "b4e0a84e-3931-4622-80ca-9cc053772141",
+  "sourceFile": "Claude-Opus-4.6_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "b4e0a84e-3931-4622-80ca-9cc053772141"
+  },
+  "scores": {
+    "testsWritten": 778,
+    "testsExecutable": false,
+    "linesOfCode": 985,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 8,
+    "creativity": 7,
+    "adherenceToInstructions": 8,
+    "justification": "The implementation demonstrates solid architecture with a state-machine parser that correctly handles RFC 4180 edge cases including escaped quotes, commas within quoted fields, and newlines spanning multiple lines. TypeScript types are well-crafted using generics and strict interfaces, while the test suite employs meaningful assertions that validate actual parsed values and type coercion behavior. Creative additions like chainable utility methods (sum, average, groupBy) on the result object enhance usability beyond basic requirements. Minor deductions apply due to truncated code obscuring complete streaming implementation details and full malformed CSV error handling coverage."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:12:25.288Z"
+}

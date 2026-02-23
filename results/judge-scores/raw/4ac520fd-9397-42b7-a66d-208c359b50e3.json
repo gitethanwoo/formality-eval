@@ -1,0 +1,32 @@
+{
+  "runId": "4ac520fd-9397-42b7-a66d-208c359b50e3",
+  "sourceFile": "Claude-Haiku-4.5_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "4ac520fd-9397-42b7-a66d-208c359b50e3"
+  },
+  "scores": {
+    "testsWritten": 130,
+    "testsExecutable": false,
+    "linesOfCode": 796,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 5,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation is clean and well-documented but fails to deliver three critical requirements: (1) newlines within quoted fields are not supported because the parser splits by line separator before parsing fields, breaking multi-line quoted values; (2) streaming support is absent as the function accepts a complete string rather than implementing a streaming interface; and (3) generics are not used—rows are typed as Record<string, any> instead of a generic CSVResult<T>. The test suite is comprehensive for features that exist but cannot test newlines-in-quotes since the implementation doesn't support them. The excessive documentation (7 files) suggests effort misallocation toward requirements that weren't asked for (documentation) instead of technical requirements that were (streaming, newlines, generics)."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:51.366Z"
+}

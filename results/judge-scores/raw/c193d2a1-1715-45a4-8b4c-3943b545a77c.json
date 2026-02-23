@@ -1,0 +1,32 @@
+{
+  "runId": "c193d2a1-1715-45a4-8b4c-3943b545a77c",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "c193d2a1-1715-45a4-8b4c-3943b545a77c"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1625
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a unified, warm voice that effectively speaks to remote workers 25-40 through relevant terminology like 'deep work' and 'sprints,' while the calendar-aware lighting feature offers a genuinely fresh functional angle. However, occasional generic phrases such as 'illuminate your best work' and repetitive structural patterns across deliverables prevent it from achieving true creative distinction, though all technical requirements are met with professional polish."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:17:52.473Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "87989542-a777-4c82-a9d1-d85c346f875d",
+  "sourceFile": "Claude-Haiku-4.5_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "87989542-a777-4c82-a9d1-d85c346f875d"
+  },
+  "scores": {
+    "testsWritten": 116,
+    "testsExecutable": false,
+    "linesOfCode": 805,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides a functional CSV parser with good documentation and edge case handling for quoted fields and custom delimiters, but critically fails to meet two major requirements: streaming/large file parsing (it loads the entire input into memory with `input.split()`) and proper TypeScript generics (it uses `Record<string, any>` instead of generic row types like `parseCSV<T>()`). The test suite uses a hand-rolled assertion framework with JSON.stringify comparisons rather than standard testing libraries, and while comprehensive in quantity, the quality of type safety is undermined by liberal use of `any` types in the coercion and result interfaces."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:27.456Z"
+}

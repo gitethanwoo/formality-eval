@@ -1,0 +1,32 @@
+{
+  "runId": "0b416649-bf05-45fe-b000-c2ca58accb99",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "0b416649-bf05-45fe-b000-c2ca58accb99"
+  },
+  "scores": {
+    "testsWritten": 82,
+    "testsExecutable": false,
+    "linesOfCode": 318,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The parser demonstrates clean code organization and thoughtful features like automatic type coercion and convenient aggregation methods (sum, average, groupBy). However, it critically fails to implement two explicit requirements: handling newlines within quoted fields (it pre-splits input on line separators before parsing, breaking multiline fields) and streaming support for large files. Additionally, it lacks the requested TypeScript generics for type-safe row parsing, instead relying on `Record<string, any>`."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:20.240Z"
+}

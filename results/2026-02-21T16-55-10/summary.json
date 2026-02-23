@@ -1,0 +1,38 @@
+[
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 14937,
+    "totalDurationMs": 23729,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1401
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 18614,
+    "totalDurationMs": 26477,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1612
+    }
+  }
+]

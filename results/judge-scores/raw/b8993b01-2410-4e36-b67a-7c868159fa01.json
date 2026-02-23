@@ -1,0 +1,35 @@
+{
+  "runId": "b8993b01-2410-4e36-b67a-7c868159fa01",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "b8993b01-2410-4e36-b67a-7c868159fa01"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1315,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a warm, consistent voice using 'glow' metaphors and circadian-focused messaging across all deliverables, effectively positioning Lumina at the $149 sweet spot between budget and premium competitors. Specific strengths include the calendar-integration feature angle and remote-worker-specific pain points (eye strain, meeting transitions), though Email 3's 'launch pricing' urgency conflicts with the press release's standard pricing framing, and some feature repetition across files slightly dulls the impact."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:44.323Z"
+}

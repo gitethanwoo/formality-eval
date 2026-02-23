@@ -1,0 +1,35 @@
+{
+  "runId": "5a50ce3c-cc5b-4189-a377-445678ada8be",
+  "sourceFile": "Claude-Haiku-4.5_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "5a50ce3c-cc5b-4189-a377-445678ada8be"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4115,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a unified 'Light That Learns Your Day' voice across all deliverables, skillfully avoiding clichéd lighting metaphors in favor of specific remote-work pain points like the '3 PM crash' and calendar-synced automation. It exceeds minimum requirements with 12 social posts (double the asked minimum) and 10 comprehensive FAQ questions, while demonstrating strong audience fit through platform-tailored tones (data-driven LinkedIn versus lifestyle Instagram). Minor weaknesses include slightly vague 'AI-powered' technical claims and heavy repetition of the same beta statistics across files—strategically consistent but reducing content variety."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:19:14.745Z"
+}

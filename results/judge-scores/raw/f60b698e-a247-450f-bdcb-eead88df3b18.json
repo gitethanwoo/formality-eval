@@ -1,0 +1,32 @@
+{
+  "runId": "f60b698e-a247-450f-bdcb-eead88df3b18",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "f60b698e-a247-450f-bdcb-eead88df3b18"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 26,
+    "sortAccuracy": 0.325,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The organizational structure demonstrates strong logical coherence by categorizing files by type (code, documents, spreadsheets) and subdividing appropriately by language, project, or date. Naming conventions remain consistent throughout with lowercase and underscores, while the hierarchy maintains an appropriate 2-3 level depth with no files remaining in the root. The MANIFEST.md is comprehensive, clearly documenting all ~80 files moved and explaining the organizational rationale. Minor improvements could include clarifying why package_old.json resides in config/ rather than archives/ and standardizing whether date-based subfolders apply to all photo subcategories."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:29.091Z"
+}

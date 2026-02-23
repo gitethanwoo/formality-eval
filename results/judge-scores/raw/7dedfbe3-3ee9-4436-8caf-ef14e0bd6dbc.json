@@ -1,0 +1,32 @@
+{
+  "runId": "7dedfbe3-3ee9-4436-8caf-ef14e0bd6dbc",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "7dedfbe3-3ee9-4436-8caf-ef14e0bd6dbc"
+  },
+  "scores": {
+    "testsWritten": 116,
+    "testsExecutable": false,
+    "linesOfCode": 323,
+    "edgeCasesCovered": 9
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides solid CSV parsing logic with proper handling of quoted fields, escaped quotes, and custom delimiters, but fails to meet two explicit requirements: streaming support (it requires the entire file as a string input, unsuitable for large files) and TypeScript generics (rows are typed as Record<string, CSVValue> rather than generic T). The API design oddly couples parsing with data analysis methods (sum, average, groupBy), which conflates concerns. Tests are comprehensive for functionality but use a custom framework instead of standard libraries and miss testing newlines within quoted fields explicitly."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:58.833Z"
+}

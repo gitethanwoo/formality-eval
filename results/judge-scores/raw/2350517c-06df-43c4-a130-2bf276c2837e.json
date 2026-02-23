@@ -1,0 +1,32 @@
+{
+  "runId": "2350517c-06df-43c4-a130-2bf276c2837e",
+  "sourceFile": "GPT-5.2-Codex_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "2350517c-06df-43c4-a130-2bf276c2837e"
+  },
+  "scores": {
+    "testsWritten": 44,
+    "testsExecutable": false,
+    "linesOfCode": 295,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation offers clean, readable code with robust handling of quoted fields, custom delimiters, and type coercion. However, it critically omits streaming support (requirement #6) and lacks generics for type-safe row access. The architecture attaching data manipulation methods (sum, average, groupBy) to the result object mixes concerns and deviates from standard parser design patterns."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:29:58.947Z"
+}

@@ -1,0 +1,35 @@
+{
+  "runId": "b19a4d01-c57f-4e9b-8ac4-5259e2dcec85",
+  "sourceFile": "Claude-Opus-4.6_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "b19a4d01-c57f-4e9b-8ac4-5259e2dcec85"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3918,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 8,
+    "creativity": 8,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign demonstrates exceptional voice consistency and sophisticated audience targeting, weaving 'it just works' messaging throughout all touchpoints while effectively positioning Lumina between budget and luxury competitors with specific, credible features like calendar sync and CRI 97. However, the landing page appears to be missing the required FAQ section, and some deliverables (LinkedIn Post 2, comparison table) are truncated in the provided artifacts, preventing a flawless adherence score."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:21.997Z"
+}

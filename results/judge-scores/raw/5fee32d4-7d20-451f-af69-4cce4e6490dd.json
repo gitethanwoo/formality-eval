@@ -1,0 +1,35 @@
+{
+  "runId": "5fee32d4-7d20-451f-af69-4cce4e6490dd",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "5fee32d4-7d20-451f-af69-4cce4e6490dd"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1378,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a consistently warm, approachable voice across all deliverables while effectively differentiating Lumina through its calendar-sync feature—a genuinely fresh angle in the smart lighting space. While the copy is polished and appropriately targets remote workers' wellness and productivity needs, the tagline 'Light that follows your day' and phrases like 'glow brighter' rely on somewhat familiar constructions rather than truly distinctive language. The comprehensive FAQ, platform-specific social variations, and solid competitive positioning demonstrate thorough, professional execution of the brief."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:27.727Z"
+}

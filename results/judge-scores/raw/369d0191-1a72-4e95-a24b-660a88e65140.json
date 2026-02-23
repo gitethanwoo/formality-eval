@@ -1,0 +1,35 @@
+{
+  "runId": "369d0191-1a72-4e95-a24b-660a88e65140",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "369d0191-1a72-4e95-a24b-660a88e65140"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1348,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains excellent voice consistency across all deliverables, with a warm, tech-savvy tone that appropriately targets remote workers through specific references to calendar syncing and video calls. The landing page FAQ and email sequence demonstrate strong audience fit by addressing practical concerns like travel and smart home integration, while the social posts effectively differentiate platform strategies. However, some social copy veers into generic marketing phrases like \"Work smarter. Light happier,\" and the tagline, while serviceable, lacks the distinctiveness of the more detailed product positioning found in the hero copy and press release."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:15.024Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "1a89b03d-89ef-4581-af1b-ab72012bed75",
+  "sourceFile": "GPT-5.2-Codex_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "1a89b03d-89ef-4581-af1b-ab72012bed75"
+  },
+  "scores": {
+    "testsWritten": 46,
+    "testsExecutable": false,
+    "linesOfCode": 281,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 7,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides clean, readable code with proper handling of quoted fields, escaped quotes, and custom delimiters, including robust error collection. However, it critically omits streaming support (requirement #6) despite the explicit requirement for large file handling, and fails to use generics for type-safe row parsing (requirement #7), relying instead on `Record<string, unknown>`. While the code appears to handle newlines within quoted fields, the test suite conspicuously lacks coverage for this critical edge case, and the aggressive automatic type coercion (converting empty strings to null, etc.) may introduce unexpected behavior."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:38.754Z"
+}

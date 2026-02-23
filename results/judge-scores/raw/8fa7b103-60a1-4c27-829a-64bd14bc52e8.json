@@ -1,0 +1,35 @@
+{
+  "runId": "8fa7b103-60a1-4c27-829a-64bd14bc52e8",
+  "sourceFile": "Claude-Haiku-4.5_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "8fa7b103-60a1-4c27-829a-64bd14bc52e8"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3820,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 8,
+    "justification": "The campaign delivers a unified, modern voice across all deliverables with persuasive, platform-specific messaging that effectively targets remote worker pain points like afternoon eye strain and video call lighting. Notable strengths include the 'calendar sync' differentiator and consistent 'it just works' positioning, though apparent truncation in the landing page FAQ section and press release boilerplate slightly impact the adherence score."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:23:53.218Z"
+}

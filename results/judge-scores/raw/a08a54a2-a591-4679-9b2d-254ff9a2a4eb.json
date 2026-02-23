@@ -1,0 +1,35 @@
+{
+  "runId": "a08a54a2-a591-4679-9b2d-254ff9a2a4eb",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a08a54a2-a591-4679-9b2d-254ff9a2a4eb"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1282,
+    "requirementChecksPassed": 6,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 1
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign demonstrates excellent thoroughness with all six deliverables fully realized and a consistent voice emphasizing calendar-aware lighting as a key differentiator. Specific strengths include platform-appropriate social content (visual Instagram guidance, professional LinkedIn tone) and persuasive feature-benefit mapping that directly addresses remote worker pain points like video call glare and eye strain. Weaknesses include a safe, somewhat forgettable tagline and occasional generic marketing language like 'luminous precision' that keeps the writing from being truly distinctive."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:48.044Z"
+}

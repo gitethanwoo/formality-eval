@@ -1,0 +1,35 @@
+{
+  "runId": "65f03b12-fd4e-40ca-b5e1-78ef7cfc183e",
+  "sourceFile": "Claude-Opus-4.6_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "65f03b12-fd4e-40ca-b5e1-78ef7cfc183e"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3590,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 6,
+    "justification": "The campaign maintains a cohesive, modern 'it just works' voice with excellent audience fit (e.g., references to 'squinting at 4pm' and looking like a 'ghost on Zoom') and creative angles like calendar-synced lighting that avoid clichés. However, it fails to meet specific structural requirements: the landing page omits the required FAQ section with 5+ questions, and the hero copy does not contain the requested three distinct sections, instead reading as a single narrative block."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:23.694Z"
+}

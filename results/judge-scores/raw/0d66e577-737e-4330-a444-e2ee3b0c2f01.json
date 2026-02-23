@@ -1,0 +1,32 @@
+{
+  "runId": "0d66e577-737e-4330-a444-e2ee3b0c2f01",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "0d66e577-737e-4330-a444-e2ee3b0c2f01"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 27,
+    "sortAccuracy": 0.3375,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The folder hierarchy demonstrates strong organizational logic with intuitive categorization (e.g., documents by project/audience, spreadsheets by domain) and consistent lowercase naming conventions. However, it fails the explicit instruction to leave no files in the root, as .env.example and .eslintrc.json remain unmoved, and the MANIFEST.md falsely claims 'every file has been relocated.'"
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:13.466Z"
+}

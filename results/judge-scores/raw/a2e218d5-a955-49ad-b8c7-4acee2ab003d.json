@@ -1,0 +1,32 @@
+{
+  "runId": "a2e218d5-a955-49ad-b8c7-4acee2ab003d",
+  "sourceFile": "Claude-Haiku-4.5_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a2e218d5-a955-49ad-b8c7-4acee2ab003d"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 32,
+    "sortAccuracy": 0.4,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 8,
+    "creativity": 6,
+    "adherenceToInstructions": 9,
+    "justification": "The organizational scheme demonstrates solid judgment in categorizing diverse file types by language, project, and date, resulting in an immediately browsable structure with consistent naming conventions. While the hierarchy effectively balances breadth and depth, the manifest contains numerical discrepancies in its summary counts, and the 'personal' folder name is somewhat misleading given its work-related content like roadmaps and style guides."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:07.379Z"
+}

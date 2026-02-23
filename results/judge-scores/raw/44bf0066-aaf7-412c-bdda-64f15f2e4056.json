@@ -1,0 +1,32 @@
+{
+  "runId": "44bf0066-aaf7-412c-bdda-64f15f2e4056",
+  "sourceFile": "Claude-Haiku-4.5_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "44bf0066-aaf7-412c-bdda-64f15f2e4056"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 24,
+    "sortAccuracy": 0.3,
+    "filesUntouched": 3
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The structure demonstrates intuitive categorical organization with consistent snake_case naming and balanced 2-3 level nesting, showing thoughtful separation of spreadsheets into financial/operational/data categories and logical chronological grouping of photos. However, it violates the strict requirement to leave no files in the root directory, instead placing four organizational artifacts (MANIFEST.md, README.md, etc.) at the top level. Additionally, the MANIFEST.md contains a structural error in its tree diagram, incorrectly depicting 'scripts' as a subdirectory of 'code/' in addition to its correct root-level placement."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:19:42.466Z"
+}

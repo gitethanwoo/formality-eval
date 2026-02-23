@@ -1,0 +1,32 @@
+{
+  "runId": "ac8726d9-2a31-4b98-a068-94d38067894f",
+  "sourceFile": "Claude-Opus-4.6_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "ac8726d9-2a31-4b98-a068-94d38067894f"
+  },
+  "scores": {
+    "testsWritten": 177,
+    "testsExecutable": false,
+    "linesOfCode": 701,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation demonstrates strong architectural separation between tokenization and parsing, robust handling of CSV edge cases (escaped quotes, newlines within fields), and meaningful test assertions that validate actual data values. However, it critically omits the required streaming/large file support, fails to use generics for type-safe row mapping as requested, employs a non-standard custom test harness instead of a conventional framework, and the provided code appears truncated/incomplete."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:13:03.202Z"
+}

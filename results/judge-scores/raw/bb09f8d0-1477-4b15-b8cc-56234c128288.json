@@ -1,0 +1,32 @@
+{
+  "runId": "bb09f8d0-1477-4b15-b8cc-56234c128288",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "bb09f8d0-1477-4b15-b8cc-56234c128288"
+  },
+  "scores": {
+    "testsWritten": 69,
+    "testsExecutable": false,
+    "linesOfCode": 296,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates solid engineering with a fluent API design, comprehensive edge case handling (escaped quotes, custom delimiters, malformed rows), and meaningful test assertions. However, it fails to satisfy two explicit requirements: streaming/large file parsing (it processes entire strings eagerly rather than supporting iterators or chunks) and proper generics (rows are typed as `Record<string, unknown>` rather than supporting a generic type parameter for type-safe access)."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:09.889Z"
+}

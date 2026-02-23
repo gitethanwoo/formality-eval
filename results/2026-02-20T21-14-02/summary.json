@@ -1,0 +1,83 @@
+[
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "totalSteps": 9,
+    "totalToolCalls": 8,
+    "totalTokens": 19114,
+    "totalDurationMs": 28620,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 1503
+      },
+      "laziness": {
+        "totalSteps": 9,
+        "toolCallCount": 8,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 1503,
+        "lazinessIndex": 0.3148
+      }
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "totalSteps": 9,
+    "totalToolCalls": 8,
+    "totalTokens": 19506,
+    "totalDurationMs": 29107,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 1563
+      },
+      "laziness": {
+        "totalSteps": 9,
+        "toolCallCount": 8,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 1563,
+        "lazinessIndex": 0.3108
+      }
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "totalSteps": 9,
+    "totalToolCalls": 8,
+    "totalTokens": 22110,
+    "totalDurationMs": 34738,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 1434
+      },
+      "laziness": {
+        "totalSteps": 9,
+        "toolCallCount": 8,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 1434,
+        "lazinessIndex": 0.3194
+      }
+    }
+  }
+]

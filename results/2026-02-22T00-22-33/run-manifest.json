@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-02-22T00:22:01.461Z",
+  "completedAt": "2026-02-22T02:20:10.713Z",
+  "expectedRuns": 72,
+  "successfulRuns": 72,
+  "failedRuns": 0,
+  "models": [
+    "claude-opus-4-6",
+    "claude-haiku-4-5",
+    "gpt-5.2-codex",
+    "gpt-5.1-codex-mini"
+  ],
+  "tones": [
+    "casual",
+    "controlled",
+    "formal"
+  ],
+  "tasks": [
+    "copywriting",
+    "coding",
+    "file-sorting"
+  ],
+  "trials": 2,
+  "concurrencyPerProvider": {
+    "anthropic": 1,
+    "openai": 4
+  }
+}

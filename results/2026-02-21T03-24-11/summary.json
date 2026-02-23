@@ -1,0 +1,86 @@
+[
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "casual",
+    "task": "coding",
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 98153,
+    "totalDurationMs": 112913,
+    "scores": {
+      "automated": {
+        "testsWritten": 73,
+        "testsPassing": 73,
+        "testPassRate": 1,
+        "linesOfCode": 300,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 7,
+        "toolCallCount": 6,
+        "uniqueToolsUsed": 1,
+        "completenessRate": 1,
+        "outputVolume": 300,
+        "lazinessIndex": 0.27
+      }
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "totalSteps": 8,
+    "totalToolCalls": 7,
+    "totalTokens": 156085,
+    "totalDurationMs": 151621,
+    "scores": {
+      "automated": {
+        "testsWritten": 57,
+        "testsPassing": 57,
+        "testPassRate": 1,
+        "linesOfCode": 287,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 8,
+        "toolCallCount": 7,
+        "uniqueToolsUsed": 1,
+        "completenessRate": 1,
+        "outputVolume": 287,
+        "lazinessIndex": 0.255
+      }
+    }
+  },
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "coding",
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 131546,
+    "totalDurationMs": 197508,
+    "scores": {
+      "automated": {
+        "testsWritten": 90,
+        "testsPassing": 90,
+        "testPassRate": 1,
+        "linesOfCode": 322,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 7,
+        "toolCallCount": 6,
+        "uniqueToolsUsed": 1,
+        "completenessRate": 1,
+        "outputVolume": 322,
+        "lazinessIndex": 0.27
+      }
+    }
+  }
+]

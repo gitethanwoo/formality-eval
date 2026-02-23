@@ -1,0 +1,35 @@
+{
+  "runId": "53f637fe-6f13-454c-9f0d-95a74522a43a",
+  "sourceFile": "Claude-Opus-4.6_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "53f637fe-6f13-454c-9f0d-95a74522a43a"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3676,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 6,
+    "justification": "The campaign maintains a cohesive 'it just works' voice across all touchpoints and cleverly differentiates through calendar-sync functionality—offering a genuinely fresh angle beyond generic lighting marketing. However, the landing page appears truncated and omits the required FAQ section with 5+ questions, while the hero copy lacks the requested three distinct sections and the LinkedIn posts are cut off mid-content, indicating significant structural gaps."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:11.595Z"
+}

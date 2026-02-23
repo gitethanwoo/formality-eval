@@ -1,0 +1,32 @@
+{
+  "runId": "0279c4a5-cd6b-489e-b808-23dcdf260550",
+  "sourceFile": "Claude-Haiku-4.5_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "0279c4a5-cd6b-489e-b808-23dcdf260550"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 31,
+    "sortAccuracy": 0.3875,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The organization demonstrates excellent logical grouping by file function (code by language, documents by purpose, photos by year) with consistent snake_case naming throughout. The 2-3 level nesting strikes an optimal balance, and all 80 files are accounted for with a comprehensive MANIFEST.md. Minor improvement possible in the photos/2024/ directory, which mixes personal vacation shots with work graphics and screenshots; separating these by context rather than just year would enhance clarity further."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:15.535Z"
+}

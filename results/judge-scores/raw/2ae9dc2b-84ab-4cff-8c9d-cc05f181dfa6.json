@@ -1,0 +1,32 @@
+{
+  "runId": "2ae9dc2b-84ab-4cff-8c9d-cc05f181dfa6",
+  "sourceFile": "Claude-Haiku-4.5_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "2ae9dc2b-84ab-4cff-8c9d-cc05f181dfa6"
+  },
+  "scores": {
+    "testsWritten": 407,
+    "testsExecutable": false,
+    "linesOfCode": 745,
+    "edgeCasesCovered": 11
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation features clean, well-documented code with comprehensive testing (72 tests) and useful extras like aggregation methods, but fails critical requirements: it cannot handle newlines within quoted fields (architecturally flawed by splitting on line separators before parsing) and lacks streaming support for large files. It also uses `any` types instead of proper generics and over-delivers with 10 files of documentation rather than the requested 2-file implementation."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:48.974Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "d1cf987b-7deb-4122-9f35-eb42422ff595",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "d1cf987b-7deb-4122-9f35-eb42422ff595"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 4,
+    "sortAccuracy": 0.05,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 8,
+    "adherenceToInstructions": 5,
+    "justification": "The folder hierarchy demonstrates excellent logical grouping with intuitive 2-3 level nesting and consistent snake_case naming conventions. However, the assistant failed to move .env.example and .eslintrc.json from the root directory despite explicit instructions to move every file, and the MANIFEST.md incorrectly claims no loose files remain. These oversights mar an otherwise polished and thoughtful organizational scheme that skillfully separates code by layer, documents by purpose, and photos by year."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:42.639Z"
+}

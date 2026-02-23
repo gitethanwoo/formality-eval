@@ -1,0 +1,32 @@
+{
+  "runId": "cd6fe968-3ddf-488d-8a31-2c016348cd5c",
+  "sourceFile": "Claude-Haiku-4.5_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "cd6fe968-3ddf-488d-8a31-2c016348cd5c"
+  },
+  "scores": {
+    "testsWritten": 893,
+    "testsExecutable": false,
+    "linesOfCode": 691,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 8,
+    "creativity": 5,
+    "adherenceToInstructions": 4,
+    "justification": "The submission demonstrates exceptional thoroughness with 70KB of documentation, 50+ examples, and 200+ comprehensive tests with meaningful assertions. However, it critically fails to implement two explicit requirements: handling newlines within quoted fields (the architecture splits on lineSeparator before parsing, breaking RFC 4180 compliance) and streaming support for large files. While the code is readable and well-structured, the lack of generics for row types (using Record<string, any>) and the architectural limitation on multiline fields prevent higher scores."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:08.724Z"
+}

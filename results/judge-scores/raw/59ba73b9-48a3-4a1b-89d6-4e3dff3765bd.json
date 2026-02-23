@@ -1,0 +1,32 @@
+{
+  "runId": "59ba73b9-48a3-4a1b-89d6-4e3dff3765bd",
+  "sourceFile": "GPT-5.2-Codex_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "59ba73b9-48a3-4a1b-89d6-4e3dff3765bd"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 21,
+    "sortAccuracy": 0.2625,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The organizational structure demonstrates sophisticated categorization, particularly the semantic distinction between 'images' (design assets) and 'photos' (personal photographs), and architectural separation of TypeScript code by usage (tsx for React components vs ts for backend). All ~81 files are comprehensively organized with consistent lowercase naming and logical 2-3 level nesting. The MANIFEST clearly articulates the organizational rationale, though the screenshots year-nesting creates slightly deeper paths than necessary compared to the flatter photos structure."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:59.592Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "0c08054d-7045-47c5-8b4a-8ab115241594",
+  "sourceFile": "Claude-Opus-4.6_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "0c08054d-7045-47c5-8b4a-8ab115241594"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 18,
+    "sortAccuracy": 0.225,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The structure exhibits excellent organizational logic with intuitive, type-based top-level categories (photos, documents, code) and consistent snake_case naming throughout. The 2-3 level nesting is well-balanced, particularly the year-based subfolders for personal photos and functional separation of code into frontend/backend/data_and_ml. All ~80 files were moved with zero root stragglers, and the MANIFEST.md is comprehensive with file counts and clear rationale, though the archives section appears truncated in the provided output."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:08.892Z"
+}

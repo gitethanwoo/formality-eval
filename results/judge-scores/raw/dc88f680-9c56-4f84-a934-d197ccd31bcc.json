@@ -1,0 +1,32 @@
+{
+  "runId": "dc88f680-9c56-4f84-a934-d197ccd31bcc",
+  "sourceFile": "Claude-Haiku-4.5_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "dc88f680-9c56-4f84-a934-d197ccd31bcc"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 0,
+    "sortAccuracy": 0,
+    "filesUntouched": 1
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 7,
+    "justification": "The organizational scheme demonstrates excellent categorical logic with intuitive 2-3 level nesting and consistent numbered prefixes (01_, 02_) that ensure intuitive sorting. The MANIFEST.md is exceptionally thorough, cataloguing every file with descriptive metadata and clear rationales. However, adherence is imperfect as QUICK_REFERENCE.txt remains in the root directory despite strict instructions requiring all files be moved to subdirectories, and the manifest's file count (80) slightly mismatches the actual listing (82 items including the two root files)."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:41.752Z"
+}

@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-02-21T16:54:47.082Z",
+  "completedAt": "2026-02-21T16:55:13.635Z",
+  "expectedRuns": 2,
+  "successfulRuns": 2,
+  "failedRuns": 0,
+  "models": [
+    "gpt-5.1-codex-mini"
+  ],
+  "tones": [
+    "casual"
+  ],
+  "tasks": [
+    "copywriting"
+  ],
+  "trials": 2,
+  "concurrencyPerProvider": {
+    "anthropic": 1,
+    "openai": 4
+  }
+}

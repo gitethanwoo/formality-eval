@@ -1,0 +1,35 @@
+{
+  "runId": "590ebfd0-588d-49a8-9b64-311778c27ccf",
+  "sourceFile": "Claude-Haiku-4.5_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "590ebfd0-588d-49a8-9b64-311778c27ccf"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 5163,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign demonstrates exceptional voice consistency across all six deliverables, maintaining a modern, approachable tone whether in a press release or Twitter post. The 'calendar integration' angle offers genuine originality that differentiates Lumina from competitors, while the consistent use of social proof and circadian rhythm messaging effectively targets the remote worker demographic. Minor deductions for some repetitive testimonial content across files and the landing page truncation in the artifact, though the structure suggests completeness."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:24.203Z"
+}

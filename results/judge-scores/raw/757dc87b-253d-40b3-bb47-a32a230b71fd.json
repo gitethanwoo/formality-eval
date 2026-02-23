@@ -1,0 +1,32 @@
+{
+  "runId": "757dc87b-253d-40b3-bb47-a32a230b71fd",
+  "sourceFile": "Claude-Opus-4.6_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "757dc87b-253d-40b3-bb47-a32a230b71fd"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 27,
+    "sortAccuracy": 0.3375,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "Excellent execution with complete accounting of all 80 files, consistent snake_case naming throughout, and optimal 2-level nesting (7 top-level categories with intuitive subfolders). The MANIFEST is outstanding—providing tree diagrams, file counts, and descriptive tables for every item. Minor improvement possible in separating personal vs. work photographs within the 2024 folder, though the current organization remains logical."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:14:20.755Z"
+}

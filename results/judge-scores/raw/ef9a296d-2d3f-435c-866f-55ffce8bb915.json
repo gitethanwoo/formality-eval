@@ -1,0 +1,32 @@
+{
+  "runId": "ef9a296d-2d3f-435c-866f-55ffce8bb915",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "ef9a296d-2d3f-435c-866f-55ffce8bb915"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 13,
+    "sortAccuracy": 0.1625,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 5,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The organizational scheme demonstrates strong categorical logic with consistent lowercase naming and appropriate 2-3 level nesting, but critically fails the requirement to move all files from root—leaving .env.example and .eslintrc.json behind—while the MANIFEST.md incorrectly asserts the root directory contains only the manifest."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:28.496Z"
+}

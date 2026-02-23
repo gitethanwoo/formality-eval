@@ -1,0 +1,32 @@
+{
+  "runId": "ad7537ff-6ab7-4625-b4fa-824ee704bfb3",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "ad7537ff-6ab7-4625-b4fa-824ee704bfb3"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 23,
+    "sortAccuracy": 0.2875,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 6,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The organizational scheme demonstrates excellent logical hierarchy with intuitive 2-3 level nesting (e.g., photos/personal/events/, documents/projects/project_alpha/) and consistent lowercase naming conventions that make navigation obvious. However, the assistant failed to relocate .env.example and .eslintrc.json from the root directory, violating the explicit requirement that no files remain at the root, and the MANIFEST incorrectly asserts all files were moved when these two exceptions remain."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:17.213Z"
+}

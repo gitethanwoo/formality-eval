@@ -1,0 +1,32 @@
+{
+  "runId": "16084dde-1975-4614-bd3e-6424c0e0bbaf",
+  "sourceFile": "Claude-Haiku-4.5_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "16084dde-1975-4614-bd3e-6424c0e0bbaf"
+  },
+  "scores": {
+    "testsWritten": 181,
+    "testsExecutable": false,
+    "linesOfCode": 1259,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates excellent code organization, comprehensive testing with 50+ cases, and extensive documentation, but critically fails to handle newlines within quoted fields (it splits by line separator before parsing, breaking multiline fields) and lacks streaming support for large files as required. The aggregation methods (sum, average, groupBy) and chainable operations show thoughtful feature additions beyond basic requirements."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:08.995Z"
+}

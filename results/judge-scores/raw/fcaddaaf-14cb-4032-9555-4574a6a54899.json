@@ -1,0 +1,32 @@
+{
+  "runId": "fcaddaaf-14cb-4032-9555-4574a6a54899",
+  "sourceFile": "Claude-Opus-4.6_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "fcaddaaf-14cb-4032-9555-4574a6a54899"
+  },
+  "scores": {
+    "testsWritten": 293,
+    "testsExecutable": false,
+    "linesOfCode": 776,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 8,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The code demonstrates clean architecture with well-separated concerns—distinguishing line splitting, field parsing, and type coercion—and handles complex CSV edge cases like escaped quotes and embedded newlines robustly. Test assertions are meaningful and validate actual data values rather than mere execution success. However, the implementation lacks streaming capabilities for large files (loading entire input into memory via splitLines) and does not utilize generics for type-safe row access, failing two specific requirements despite otherwise solid execution."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:12:18.084Z"
+}

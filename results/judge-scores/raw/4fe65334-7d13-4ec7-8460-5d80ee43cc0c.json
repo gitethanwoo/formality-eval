@@ -1,0 +1,32 @@
+{
+  "runId": "4fe65334-7d13-4ec7-8460-5d80ee43cc0c",
+  "sourceFile": "Claude-Opus-4.6_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "4fe65334-7d13-4ec7-8460-5d80ee43cc0c"
+  },
+  "scores": {
+    "testsWritten": 825,
+    "testsExecutable": false,
+    "linesOfCode": 839,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation features clean, well-documented code with excellent test coverage using a creative custom assertion framework, and handles complex edge cases like escaped quotes and type coercion. However, it critically fails the requirement for newlines within quoted fields due to its flawed line-splitting architecture (splitting on newlines before parsing fields), lacks the requested generics for type-safe rows, and appears to omit streaming support in favor of a simple string-based API. The inclusion of query methods (sum, average, groupBy) on the result object represents unnecessary scope creep that distracts from the core parsing functionality."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:44.793Z"
+}

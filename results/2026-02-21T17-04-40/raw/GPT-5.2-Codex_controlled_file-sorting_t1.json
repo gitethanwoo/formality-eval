@@ -1,0 +1,611 @@
+{
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "c4083b22-9114-4754-9055-5fce4629477e"
+  },
+  "prompt": "i need you to organize a messy directory of files into a clean, logical folder structure\n\nthe current directory has about 80 files dumped flat with no organization. they include:\n- photos (jpg, png) with dates in filenames\n- documents (pdf, docx, txt) related to different projects\n- spreadsheets (xlsx, csv) with financial/reporting data\n- code files (js, ts, py) from various projects\n- miscellaneous files (zip archives, config files, logs)\n\nhere's the job:\n1. first, list all files in the current directory to see what you're working with\n2. analyze the filenames to understand the content and categorize them\n3. create a logical folder structure. a good structure might be organized by:\n   - file type (photos/, documents/, spreadsheets/, code/, archives/)\n   - and within each, by project or date where applicable\n4. move EVERY file into the appropriate folder using bash commands (mv)\n5. after sorting, create a MANIFEST.md file documenting the final structure and explaining your organizational logic\n\nimportant: do NOT leave any files in the root directory (except MANIFEST.md). every single file must be moved into a subfolder\n\nuse all your tools to get this done. do everything, don't skip anything. make sure it's thorough and complete",
+  "steps": [
+    {
+      "stepIndex": 0,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "ls -la"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "total 82\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 .\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 ..\n-rw-r--r-- 1 user user    65 Feb 20 13:05 .env.example\n-rw-r--r-- 1 user user    66 Feb 20 13:05 .eslintrc.json\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20230918_concert.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20231014_hiking_trail.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20231225_christmas_tree.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20240315_vacation_beach.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20240316_vacation_sunset.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20240401_family_dinner.jpg\n-rw-r--r-- 1 user user    17 Feb 20 13:05 IMG_20240520_office_setup.jpg\n-rw-r--r-- 1 user user    48 Feb 20 13:05 Makefile\n-rw-r--r-- 1 user user    23 Feb 20 13:05 Q1_2024_revenue_report.xlsx\n-rw-r--r-- 1 user user    23 Feb 20 13:05 Q2_2024_revenue_report.xlsx\n-rw-r--r-- 1 user user    23 Feb 20 13:05 Q3_2024_revenue_report.xlsx\n-rw-r--r-- 1 user user    23 Feb 20 13:05 Q4_2023_revenue_report.xlsx\n-rw-r--r-- 1 user user    67 Feb 20 13:05 TODO.txt\n-rw-r--r-- 1 user user    50 Feb 20 13:05 api_documentation_draft.txt\n-rw-r--r-- 1 user user    86 Feb 20 13:05 api_handler.ts\n-rw-r--r-- 1 user user    62 Feb 20 13:05 application_debug.log\n-rw-r--r-- 1 user user    64 Feb 20 13:05 auth_middleware.ts\n-rw-r--r-- 1 user user    19 Feb 20 13:05 backup_2024-03-01.zip\n-rw-r--r-- 1 user user    19 Feb 20 13:05 backup_2024-06-15.zip\n-rw-r--r-- 1 user user    17 Feb 20 13:05 banner_ad_1200x628.png\n-rw-r--r-- 1 user user    23 Feb 20 13:05 budget_2024_final_FINAL_v3.xlsx\n-rw-r--r-- 1 user user    91 Feb 20 13:05 components_Button.tsx\n-rw-r--r-- 1 user user    55 Feb 20 13:05 cover_letter_techcorp.pdf\n-rw-r--r-- 1 user user    54 Feb 20 13:05 credentials_template.yaml\n-rw-r--r-- 1 user user    55 Feb 20 13:05 cron_cleanup.py\n-rw-r--r-- 1 user user    23 Feb 20 13:05 customer_feedback_2024.xlsx\n-rw-r--r-- 1 user user    60 Feb 20 13:05 data_pipeline.py\n-rw-r--r-- 1 user user    59 Feb 20 13:05 database.ts\n-rw-r--r-- 1 user user    66 Feb 20 13:05 deploy.sh\n-rw-r--r-- 1 user user    75 Feb 20 13:05 docker-compose.yml\n-rw-r--r-- 1 user user    59 Feb 20 13:05 employee_directory.csv\n-rw-r--r-- 1 user user    67 Feb 20 13:05 error_log_2024-05.log\n-rw-r--r-- 1 user user    23 Feb 20 13:05 expense_report_q1_2024.xlsx\n-rw-r--r-- 1 user user    65 Feb 20 13:05 graphql_schema.ts\n-rw-r--r-- 1 user user    71 Feb 20 13:05 hooks_useAuth.ts\n-rw-r--r-- 1 user user    76 Feb 20 13:05 index.js\n-rw-r--r-- 1 user user    23 Feb 20 13:05 inventory_tracker.xlsx\n-rw-r--r-- 1 user user    81 Feb 20 13:05 lambda_handler.js\n-rw-r--r-- 1 user user    19 Feb 20 13:05 legacy_code_archive.zip\n-rw-r--r-- 1 user user    17 Feb 20 13:05 logo_draft_final.png\n-rw-r--r-- 1 user user    23 Feb 20 13:05 marketing_spend_by_channel.xlsx\n-rw-r--r-- 1 user user    61 Feb 20 13:05 meeting_notes_project_alpha_feb2024.txt\n-rw-r--r-- 1 user user    54 Feb 20 13:05 meeting_notes_project_alpha_jan2024.txt\n-rw-r--r-- 1 user user    52 Feb 20 13:05 meeting_notes_project_beta_mar2024.txt\n-rw-r--r-- 1 user user    55 Feb 20 13:05 migrate_db.ts\n-rw-r--r-- 1 user user    42 Feb 20 13:05 nda_signed_clientx.pdf\n-rw-r--r-- 1 user user    93 Feb 20 13:05 nginx.conf\n-rw-r--r-- 1 user user    34 Feb 20 13:05 old_resume_2023.pdf\n-rw-r--r-- 1 user user    52 Feb 20 13:05 onboarding_checklist.docx\n-rw-r--r-- 1 user user    71 Feb 20 13:05 package_old.json\n-rw-r--r-- 1 user user    17 Feb 20 13:05 product_mockup_v2.png\n-rw-r--r-- 1 user user    42 Feb 20 13:05 product_roadmap_2024.pdf\n-rw-r--r-- 1 user user    17 Feb 20 13:05 profile_photo_linkedin.jpg\n-rw-r--r-- 1 user user    40 Feb 20 13:05 project_alpha_burndown.csv\n-rw-r--r-- 1 user user    44 Feb 20 13:05 project_alpha_final_report.pdf\n-rw-r--r-- 1 user user    49 Feb 20 13:05 project_alpha_proposal.pdf\n-rw-r--r-- 1 user user    58 Feb 20 13:05 project_beta_requirements.docx\n-rw-r--r-- 1 user user    54 Feb 20 13:05 project_beta_timeline.pdf\n-rw-r--r-- 1 user user    31 Feb 20 13:05 quarterly_okrs_q2_2024.docx\n-rw-r--r-- 1 user user    75 Feb 20 13:05 random_notes.txt\n-rw-r--r-- 1 user user    70 Feb 20 13:05 react_dashboard.tsx\n-rw-r--r-- 1 user user    55 Feb 20 13:05 sales_leads_june2024.csv\n-rw-r--r-- 1 user user    72 Feb 20 13:05 scraper.py\n-rw-r--r-- 1 user user    17 Feb 20 13:05 screenshot_2024-01-22_dashboard.png\n-rw-r--r-- 1 user user    17 Feb 20 13:05 screenshot_2024-06-12.png\n-rw-r--r-- 1 user user    17 Feb 20 13:05 screenshot_2024-07-03_bug_report.png\n-rw-r--r-- 1 user user    79 Feb 20 13:05 server_access.log\n-rw-r--r-- 1 user user    56 Feb 20 13:05 setup_script.sh\n-rw-r--r-- 1 user user    47 Feb 20 13:05 style_guide_v3.pdf\n-rw-r--r-- 1 user user    17 Feb 20 13:05 team_photo_offsite_2024.jpg\n-rw-r--r-- 1 user user   114 Feb 20 13:05 test_utils.py\n-rw-r--r-- 1 user user    61 Feb 20 13:05 train_model.py\n-rw-r--r-- 1 user user    79 Feb 20 13:05 tsconfig.prod.json\n-rw-r--r-- 1 user user    47 Feb 20 13:05 user_research_findings.txt\n-rw-r--r-- 1 user user    73 Feb 20 13:05 utils.ts\n-rw-r--r-- 1 user user    82 Feb 20 13:05 validate_schema.ts\n-rw-r--r-- 1 user user    84 Feb 20 13:05 webpack.config.js\n-rw-r--r-- 1 user user    17 Feb 20 13:05 whiteboard_brainstorm_session.jpg\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 734,
+      "outputTokens": 32,
+      "totalTokens": 766,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 1,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "mkdir -p photos/2023 photos/2024 photos/graphics photos/portraits photos/misc documents/project_alpha documents/project_beta documents/product documents/engineering documents/hr documents/legal documents/career documents/notes spreadsheets/finance spreadsheets/sales spreadsheets/operations spreadsheets/project_alpha code/javascript code/typescript code/tsx code/python code/shell code/build archives config logs misc"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 2973,
+      "outputTokens": 1145,
+      "totalTokens": 4118,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 2,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "mv IMG_20230918_concert.jpg IMG_20231014_hiking_trail.jpg IMG_20231225_christmas_tree.jpg photos/2023/\nmv IMG_20240315_vacation_beach.jpg IMG_20240316_vacation_sunset.jpg IMG_20240401_family_dinner.jpg IMG_20240520_office_setup.jpg team_photo_offsite_2024.jpg photos/2024/\nmv screenshot_2024-01-22_dashboard.png screenshot_2024-06-12.png screenshot_2024-07-03_bug_report.png photos/2024/\nmv banner_ad_1200x628.png logo_draft_final.png product_mockup_v2.png photos/graphics/\nmv profile_photo_linkedin.jpg photos/portraits/\nmv whiteboard_brainstorm_session.jpg photos/misc/\n\nmv project_alpha_final_report.pdf project_alpha_proposal.pdf documents/project_alpha/\nmv meeting_notes_project_alpha_jan2024.txt meeting_notes_project_alpha_feb2024.txt documents/project_alpha/\nmv project_beta_requirements.docx project_beta_timeline.pdf meeting_notes_project_beta_mar2024.txt documents/project_beta/\nmv product_roadmap_2024.pdf style_guide_v3.pdf user_research_findings.txt documents/product/\nmv api_documentation_draft.txt documents/engineering/\nmv onboarding_checklist.docx quarterly_okrs_q2_2024.docx documents/hr/\nmv nda_signed_clientx.pdf documents/legal/\nmv cover_letter_techcorp.pdf old_resume_2023.pdf documents/career/\nmv TODO.txt random_notes.txt documents/notes/\n\nmv Q1_2024_revenue_report.xlsx Q2_2024_revenue_report.xlsx Q3_2024_revenue_report.xlsx Q4_2023_revenue_report.xlsx budget_2024_final_FINAL_v3.xlsx expense_report_q1_2024.xlsx spreadsheets/finance/\nmv marketing_spend_by_channel.xlsx sales_leads_june2024.csv customer_feedback_2024.xlsx spreadsheets/sales/\nmv employee_directory.csv inventory_tracker.xlsx spreadsheets/operations/\nmv project_alpha_burndown.csv spreadsheets/project_alpha/\n\nmv index.js lambda_handler.js webpack.config.js code/javascript/\nmv api_handler.ts auth_middleware.ts database.ts graphql_schema.ts hooks_useAuth.ts migrate_db.ts utils.ts validate_schema.ts code/typescript/\nmv components_Button.tsx react_dashboard.tsx code/tsx/\nmv cron_cleanup.py data_pipeline.py scraper.py test_utils.py train_model.py code/python/\nmv deploy.sh setup_script.sh code/shell/\nmv Makefile code/build/\n\nmv backup_2024-03-01.zip backup_2024-06-15.zip legacy_code_archive.zip archives/\n\nmv .env.example .eslintrc.json docker-compose.yml nginx.conf tsconfig.prod.json package_old.json credentials_template.yaml config/\n\nmv application_debug.log error_log_2024-05.log server_access.log logs/"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 4139,
+      "outputTokens": 664,
+      "totalTokens": 4803,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 3,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "ls -la"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "total 10\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 .\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 ..\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 archives/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 code/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 config/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 documents/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 logs/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 misc/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 photos/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 spreadsheets/\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 4824,
+      "outputTokens": 43,
+      "totalTokens": 4867,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 4,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "rmdir misc"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 5116,
+      "outputTokens": 59,
+      "totalTokens": 5175,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 5,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find . -maxdepth 3 -type d | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": ".\n./archives\n./code\n./code/build\n./code/javascript\n./code/python\n./code/shell\n./code/tsx\n./code/typescript\n./config\n./documents\n./documents/career\n./documents/engineering\n./documents/hr\n./documents/legal\n./documents/notes\n./documents/product\n./documents/project_alpha\n./documents/project_beta\n./logs\n./photos\n./photos/2023\n./photos/2024\n./photos/graphics\n./photos/misc\n./photos/portraits\n./spreadsheets\n./spreadsheets/finance\n./spreadsheets/operations\n./spreadsheets/project_alpha\n./spreadsheets/sales\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 5196,
+      "outputTokens": 56,
+      "totalTokens": 5252,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 6,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find photos -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "photos/2023/IMG_20230918_concert.jpg\nphotos/2023/IMG_20231014_hiking_trail.jpg\nphotos/2023/IMG_20231225_christmas_tree.jpg\nphotos/2024/IMG_20240315_vacation_beach.jpg\nphotos/2024/IMG_20240316_vacation_sunset.jpg\nphotos/2024/IMG_20240401_family_dinner.jpg\nphotos/2024/IMG_20240520_office_setup.jpg\nphotos/2024/screenshot_2024-01-22_dashboard.png\nphotos/2024/screenshot_2024-06-12.png\nphotos/2024/screenshot_2024-07-03_bug_report.png\nphotos/2024/team_photo_offsite_2024.jpg\nphotos/graphics/banner_ad_1200x628.png\nphotos/graphics/logo_draft_final.png\nphotos/graphics/product_mockup_v2.png\nphotos/misc/whiteboard_brainstorm_session.jpg\nphotos/portraits/profile_photo_linkedin.jpg\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 5420,
+      "outputTokens": 131,
+      "totalTokens": 5551,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 7,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find documents -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "documents/career/cover_letter_techcorp.pdf\ndocuments/career/old_resume_2023.pdf\ndocuments/engineering/api_documentation_draft.txt\ndocuments/hr/onboarding_checklist.docx\ndocuments/hr/quarterly_okrs_q2_2024.docx\ndocuments/legal/nda_signed_clientx.pdf\ndocuments/notes/random_notes.txt\ndocuments/notes/TODO.txt\ndocuments/product/product_roadmap_2024.pdf\ndocuments/product/style_guide_v3.pdf\ndocuments/product/user_research_findings.txt\ndocuments/project_alpha/meeting_notes_project_alpha_feb2024.txt\ndocuments/project_alpha/meeting_notes_project_alpha_jan2024.txt\ndocuments/project_alpha/project_alpha_final_report.pdf\ndocuments/project_alpha/project_alpha_proposal.pdf\ndocuments/project_beta/meeting_notes_project_beta_mar2024.txt\ndocuments/project_beta/project_beta_requirements.docx\ndocuments/project_beta/project_beta_timeline.pdf\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 5797,
+      "outputTokens": 34,
+      "totalTokens": 5831,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 8,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find spreadsheets -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "spreadsheets/finance/budget_2024_final_FINAL_v3.xlsx\nspreadsheets/finance/expense_report_q1_2024.xlsx\nspreadsheets/finance/Q1_2024_revenue_report.xlsx\nspreadsheets/finance/Q2_2024_revenue_report.xlsx\nspreadsheets/finance/Q3_2024_revenue_report.xlsx\nspreadsheets/finance/Q4_2023_revenue_report.xlsx\nspreadsheets/operations/employee_directory.csv\nspreadsheets/operations/inventory_tracker.xlsx\nspreadsheets/project_alpha/project_alpha_burndown.csv\nspreadsheets/sales/customer_feedback_2024.xlsx\nspreadsheets/sales/marketing_spend_by_channel.xlsx\nspreadsheets/sales/sales_leads_june2024.csv\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 6073,
+      "outputTokens": 35,
+      "totalTokens": 6108,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 9,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find code -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "code/build/Makefile\ncode/javascript/index.js\ncode/javascript/lambda_handler.js\ncode/javascript/webpack.config.js\ncode/python/cron_cleanup.py\ncode/python/data_pipeline.py\ncode/python/scraper.py\ncode/python/test_utils.py\ncode/python/train_model.py\ncode/shell/deploy.sh\ncode/shell/setup_script.sh\ncode/tsx/components_Button.tsx\ncode/tsx/react_dashboard.tsx\ncode/typescript/api_handler.ts\ncode/typescript/auth_middleware.ts\ncode/typescript/database.ts\ncode/typescript/graphql_schema.ts\ncode/typescript/hooks_useAuth.ts\ncode/typescript/migrate_db.ts\ncode/typescript/utils.ts\ncode/typescript/validate_schema.ts\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 6294,
+      "outputTokens": 33,
+      "totalTokens": 6327,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 10,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find config -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "config/.env.example\nconfig/.eslintrc.json\nconfig/credentials_template.yaml\nconfig/docker-compose.yml\nconfig/nginx.conf\nconfig/package_old.json\nconfig/tsconfig.prod.json\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 6494,
+      "outputTokens": 33,
+      "totalTokens": 6527,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 11,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find archives -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "archives/backup_2024-03-01.zip\narchives/backup_2024-06-15.zip\narchives/legacy_code_archive.zip\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 6590,
+      "outputTokens": 33,
+      "totalTokens": 6623,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 12,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "find logs -type f | sort"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "logs/application_debug.log\nlogs/error_log_2024-05.log\nlogs/server_access.log\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 6676,
+      "outputTokens": 33,
+      "totalTokens": 6709,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 13,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "writeFile",
+          "args": {
+            "path": "MANIFEST.md",
+            "content": "# Manifest\n\n## Organizational Logic\n- Grouped by **file type** at the top level (photos, documents, spreadsheets, code, archives, config, logs).\n- Within each type, organized by **project, purpose, or date** where it made sense (e.g., project_alpha, finance, 2023/2024).\n- All original root files have been moved into a subfolder; only this manifest remains in the root.\n\n## Folder Structure\n\n### photos/\n- **2023/**\n  - IMG_20230918_concert.jpg\n  - IMG_20231014_hiking_trail.jpg\n  - IMG_20231225_christmas_tree.jpg\n- **2024/**\n  - IMG_20240315_vacation_beach.jpg\n  - IMG_20240316_vacation_sunset.jpg\n  - IMG_20240401_family_dinner.jpg\n  - IMG_20240520_office_setup.jpg\n  - screenshot_2024-01-22_dashboard.png\n  - screenshot_2024-06-12.png\n  - screenshot_2024-07-03_bug_report.png\n  - team_photo_offsite_2024.jpg\n- **graphics/**\n  - banner_ad_1200x628.png\n  - logo_draft_final.png\n  - product_mockup_v2.png\n- **portraits/**\n  - profile_photo_linkedin.jpg\n- **misc/**\n  - whiteboard_brainstorm_session.jpg\n\n### documents/\n- **project_alpha/**\n  - meeting_notes_project_alpha_jan2024.txt\n  - meeting_notes_project_alpha_feb2024.txt\n  - project_alpha_final_report.pdf\n  - project_alpha_proposal.pdf\n- **project_beta/**\n  - meeting_notes_project_beta_mar2024.txt\n  - project_beta_requirements.docx\n  - project_beta_timeline.pdf\n- **product/**\n  - product_roadmap_2024.pdf\n  - style_guide_v3.pdf\n  - user_research_findings.txt\n- **engineering/**\n  - api_documentation_draft.txt\n- **hr/**\n  - onboarding_checklist.docx\n  - quarterly_okrs_q2_2024.docx\n- **legal/**\n  - nda_signed_clientx.pdf\n- **career/**\n  - cover_letter_techcorp.pdf\n  - old_resume_2023.pdf\n- **notes/**\n  - TODO.txt\n  - random_notes.txt\n\n### spreadsheets/\n- **finance/**\n  - Q4_2023_revenue_report.xlsx\n  - Q1_2024_revenue_report.xlsx\n  - Q2_2024_revenue_report.xlsx\n  - Q3_2024_revenue_report.xlsx\n  - budget_2024_final_FINAL_v3.xlsx\n  - expense_report_q1_2024.xlsx\n- **sales/**\n  - customer_feedback_2024.xlsx\n  - marketing_spend_by_channel.xlsx\n  - sales_leads_june2024.csv\n- **operations/**\n  - employee_directory.csv\n  - inventory_tracker.xlsx\n- **project_alpha/**\n  - project_alpha_burndown.csv\n\n### code/\n- **javascript/**\n  - index.js\n  - lambda_handler.js\n  - webpack.config.js\n- **typescript/**\n  - api_handler.ts\n  - auth_middleware.ts\n  - database.ts\n  - graphql_schema.ts\n  - hooks_useAuth.ts\n  - migrate_db.ts\n  - utils.ts\n  - validate_schema.ts\n- **tsx/**\n  - components_Button.tsx\n  - react_dashboard.tsx\n- **python/**\n  - cron_cleanup.py\n  - data_pipeline.py\n  - scraper.py\n  - test_utils.py\n  - train_model.py\n- **shell/**\n  - deploy.sh\n  - setup_script.sh\n- **build/**\n  - Makefile\n\n### archives/\n- backup_2024-03-01.zip\n- backup_2024-06-15.zip\n- legacy_code_archive.zip\n\n### config/\n- .env.example\n- .eslintrc.json\n- credentials_template.yaml\n- docker-compose.yml\n- nginx.conf\n- package_old.json\n- tsconfig.prod.json\n\n### logs/\n- application_debug.log\n- error_log_2024-05.log\n- server_access.log\n"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "writeFile",
+          "result": {
+            "success": true
+          }
+        }
+      ],
+      "inputTokens": 6751,
+      "outputTokens": 1023,
+      "totalTokens": 7774,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 14,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "ls -la"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "total 10\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 .\ndrwxr-xr-x 1 user user     0 Jan  1 00:00 ..\n-rw-r--r-- 1 user user  2979 Feb 21 12:05 MANIFEST.md\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 archives/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 code/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 config/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 documents/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 logs/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 photos/\ndrwxr-xr-x 1 user user     0 Feb 21 12:04 spreadsheets/\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 7790,
+      "outputTokens": 38,
+      "totalTokens": 7828,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 15,
+      "text": "Summary:\n- Created a type-based folder structure with project/date subfolders and moved every file accordingly.\n- Added a detailed `MANIFEST.md` documenting the final layout and organization logic.\n- Verified the root contains only `MANIFEST.md` and the new folders.\n\nKey commands executed:\n- `mkdir -p photos/2023 photos/2024 photos/graphics photos/portraits photos/misc documents/project_alpha documents/project_beta documents/product documents/engineering documents/hr documents/legal documents/career documents/notes spreadsheets/finance spreadsheets/sales spreadsheets/operations spreadsheets/project_alpha code/javascript code/typescript code/tsx code/python code/shell code/build archives config logs`\n- `mv ...` (moved all files into the appropriate folders)\n- `rmdir misc`\n- `ls -la`",
+      "toolCalls": [],
+      "toolResults": [],
+      "inputTokens": 8081,
+      "outputTokens": 178,
+      "totalTokens": 8259,
+      "finishReason": "stop",
+      "durationMs": 0
+    }
+  ],
+  "totalInputTokens": 88948,
+  "totalOutputTokens": 3570,
+  "totalTokens": 92518,
+  "totalSteps": 16,
+  "totalToolCalls": 15,
+  "totalDurationMs": 57264,
+  "finalSandboxFiles": [
+    "archives/backup_2024-03-01.zip",
+    "archives/backup_2024-06-15.zip",
+    "archives/legacy_code_archive.zip",
+    "code/build/Makefile",
+    "code/javascript/index.js",
+    "code/javascript/lambda_handler.js",
+    "code/javascript/webpack.config.js",
+    "code/python/cron_cleanup.py",
+    "code/python/data_pipeline.py",
+    "code/python/scraper.py",
+    "code/python/test_utils.py",
+    "code/python/train_model.py",
+    "code/shell/deploy.sh",
+    "code/shell/setup_script.sh",
+    "code/tsx/components_Button.tsx",
+    "code/tsx/react_dashboard.tsx",
+    "code/typescript/api_handler.ts",
+    "code/typescript/auth_middleware.ts",
+    "code/typescript/database.ts",
+    "code/typescript/graphql_schema.ts",
+    "code/typescript/hooks_useAuth.ts",
+    "code/typescript/migrate_db.ts",
+    "code/typescript/utils.ts",
+    "code/typescript/validate_schema.ts",
+    "config/.env.example",
+    "config/.eslintrc.json",
+    "config/credentials_template.yaml",
+    "config/docker-compose.yml",
+    "config/nginx.conf",
+    "config/package_old.json",
+    "config/tsconfig.prod.json",
+    "documents/career/cover_letter_techcorp.pdf",
+    "documents/career/old_resume_2023.pdf",
+    "documents/engineering/api_documentation_draft.txt",
+    "documents/hr/onboarding_checklist.docx",
+    "documents/hr/quarterly_okrs_q2_2024.docx",
+    "documents/legal/nda_signed_clientx.pdf",
+    "documents/notes/random_notes.txt",
+    "documents/notes/TODO.txt",
+    "documents/product/product_roadmap_2024.pdf",
+    "documents/product/style_guide_v3.pdf",
+    "documents/product/user_research_findings.txt",
+    "documents/project_alpha/meeting_notes_project_alpha_feb2024.txt",
+    "documents/project_alpha/meeting_notes_project_alpha_jan2024.txt",
+    "documents/project_alpha/project_alpha_final_report.pdf",
+    "documents/project_alpha/project_alpha_proposal.pdf",
+    "documents/project_beta/meeting_notes_project_beta_mar2024.txt",
+    "documents/project_beta/project_beta_requirements.docx",
+    "documents/project_beta/project_beta_timeline.pdf",
+    "logs/application_debug.log",
+    "logs/error_log_2024-05.log",
+    "logs/server_access.log",
+    "MANIFEST.md",
+    "photos/2023/IMG_20230918_concert.jpg",
+    "photos/2023/IMG_20231014_hiking_trail.jpg",
+    "photos/2023/IMG_20231225_christmas_tree.jpg",
+    "photos/2024/IMG_20240315_vacation_beach.jpg",
+    "photos/2024/IMG_20240316_vacation_sunset.jpg",
+    "photos/2024/IMG_20240401_family_dinner.jpg",
+    "photos/2024/IMG_20240520_office_setup.jpg",
+    "photos/2024/screenshot_2024-01-22_dashboard.png",
+    "photos/2024/screenshot_2024-06-12.png",
+    "photos/2024/screenshot_2024-07-03_bug_report.png",
+    "photos/2024/team_photo_offsite_2024.jpg",
+    "photos/graphics/banner_ad_1200x628.png",
+    "photos/graphics/logo_draft_final.png",
+    "photos/graphics/product_mockup_v2.png",
+    "photos/misc/whiteboard_brainstorm_session.jpg",
+    "photos/portraits/profile_photo_linkedin.jpg",
+    "spreadsheets/finance/budget_2024_final_FINAL_v3.xlsx",
+    "spreadsheets/finance/expense_report_q1_2024.xlsx",
+    "spreadsheets/finance/Q1_2024_revenue_report.xlsx",
+    "spreadsheets/finance/Q2_2024_revenue_report.xlsx",
+    "spreadsheets/finance/Q3_2024_revenue_report.xlsx",
+    "spreadsheets/finance/Q4_2023_revenue_report.xlsx",
+    "spreadsheets/operations/employee_directory.csv",
+    "spreadsheets/operations/inventory_tracker.xlsx",
+    "spreadsheets/project_alpha/project_alpha_burndown.csv",
+    "spreadsheets/sales/customer_feedback_2024.xlsx",
+    "spreadsheets/sales/marketing_spend_by_channel.xlsx",
+    "spreadsheets/sales/sales_leads_june2024.csv"
+  ],
+  "artifacts": {
+    "archives/backup_2024-03-01.zip": "placeholder archive",
+    "archives/backup_2024-06-15.zip": "placeholder archive",
+    "archives/legacy_code_archive.zip": "placeholder archive",
+    "code/build/Makefile": "build:\n\tdocker build -t myapp .\n\ntest:\n\tnpm test",
+    "code/javascript/index.js": "const express = require(\"express\");\nconst app = express();\napp.listen(3000);",
+    "code/javascript/lambda_handler.js": "exports.handler = async (event) => {\n  return { statusCode: 200, body: 'OK' };\n};",
+    "code/javascript/webpack.config.js": "module.exports = {\n  entry: './src/index.js',\n  output: { filename: 'bundle.js' }\n};",
+    "code/python/cron_cleanup.py": "import os\nimport glob\n\ndef cleanup_old_logs():\n    pass",
+    "code/python/data_pipeline.py": "import pandas as pd\n\ndef process(df):\n    return df.dropna()",
+    "code/python/scraper.py": "import requests\nfrom bs4 import BeautifulSoup\n\ndef scrape(url):\n    pass",
+    "code/python/test_utils.py": "import unittest\n\nclass TestUtils(unittest.TestCase):\n    def test_placeholder(self):\n        self.assertTrue(True)",
+    "code/python/train_model.py": "import torch\n\ndef train(model, data):\n    pass  # placeholder",
+    "code/shell/deploy.sh": "#!/bin/bash\necho 'Deploying to production...'\ndocker compose up -d",
+    "code/shell/setup_script.sh": "#!/bin/bash\necho 'Setting up environment...'\nnpm install",
+    "code/tsx/components_Button.tsx": "export function Button({ label }: { label: string }) {\n  return <button>{label}</button>;\n}",
+    "code/tsx/react_dashboard.tsx": "export default function Dashboard() {\n  return <div>Dashboard</div>;\n}",
+    "code/typescript/api_handler.ts": "export function handleRequest(req: Request): Response {\n  return new Response(\"OK\");\n}",
+    "code/typescript/auth_middleware.ts": "export function authenticate(req: any) {\n  // placeholder auth\n}",
+    "code/typescript/database.ts": "export class Database {\n  connect() { /* placeholder */ }\n}",
+    "code/typescript/graphql_schema.ts": "export const typeDefs = `\n  type Query {\n    hello: String\n  }\n`;",
+    "code/typescript/hooks_useAuth.ts": "export function useAuth() {\n  return { user: null, login: () => {} };\n}",
+    "code/typescript/migrate_db.ts": "export async function migrate() {\n  // run migrations\n}",
+    "code/typescript/utils.ts": "export function formatDate(d: Date): string {\n  return d.toISOString();\n}",
+    "code/typescript/validate_schema.ts": "import { z } from 'zod';\nexport const UserSchema = z.object({ name: z.string() });",
+    "config/.env.example": "DATABASE_URL=postgres://localhost:5432/mydb\nAPI_KEY=your-key-here",
+    "config/.eslintrc.json": "{\n  \"extends\": [\"eslint:recommended\"],\n  \"env\": { \"node\": true }\n}",
+    "config/credentials_template.yaml": "aws:\n  access_key: REPLACE_ME\n  secret_key: REPLACE_ME",
+    "config/docker-compose.yml": "version: '3.8'\nservices:\n  app:\n    build: .\n    ports:\n      - '3000:3000'",
+    "config/nginx.conf": "server {\n  listen 80;\n  server_name localhost;\n  location / { proxy_pass http://app:3000; }\n}",
+    "config/package_old.json": "{\n  \"name\": \"old-project\",\n  \"version\": \"0.1.0\",\n  \"dependencies\": {}\n}",
+    "config/tsconfig.prod.json": "{\n  \"extends\": \"./tsconfig.json\",\n  \"compilerOptions\": { \"sourceMap\": false }\n}",
+    "documents/career/cover_letter_techcorp.pdf": "placeholder pdf - Cover letter for TechCorp application",
+    "documents/career/old_resume_2023.pdf": "placeholder pdf - Resume from 2023",
+    "documents/engineering/api_documentation_draft.txt": "Draft API documentation for the v2 REST endpoints.",
+    "documents/hr/onboarding_checklist.docx": "placeholder docx - New employee onboarding checklist",
+    "documents/hr/quarterly_okrs_q2_2024.docx": "placeholder docx - Q2 2024 OKRs",
+    "documents/legal/nda_signed_clientx.pdf": "placeholder pdf - Signed NDA with Client X",
+    "documents/notes/random_notes.txt": "Ideas for the hackathon:\n- AI-powered code review\n- Smart meeting scheduler",
+    "documents/notes/TODO.txt": "- Fix login bug\n- Update dependencies\n- Write tests for auth module",
+    "documents/product/product_roadmap_2024.pdf": "placeholder pdf - Product roadmap for 2024",
+    "documents/product/style_guide_v3.pdf": "placeholder pdf - Company style guide version 3",
+    "documents/product/user_research_findings.txt": "User research findings from Q1 2024 interviews.",
+    "documents/project_alpha/meeting_notes_project_alpha_feb2024.txt": "Meeting notes for Project Alpha sprint review, February 2024.",
+    "documents/project_alpha/meeting_notes_project_alpha_jan2024.txt": "Meeting notes for Project Alpha kickoff, January 2024.",
+    "documents/project_alpha/project_alpha_final_report.pdf": "placeholder pdf - Project Alpha final report",
+    "documents/project_alpha/project_alpha_proposal.pdf": "placeholder pdf - Project Alpha proposal document",
+    "documents/project_beta/meeting_notes_project_beta_mar2024.txt": "Meeting notes for Project Beta planning, March 2024.",
+    "documents/project_beta/project_beta_requirements.docx": "placeholder docx - Project Beta requirements specification",
+    "documents/project_beta/project_beta_timeline.pdf": "placeholder pdf - Project Beta timeline and milestones",
+    "logs/application_debug.log": "DEBUG: Starting application\nDEBUG: Loading config\nDEBUG: Ready",
+    "logs/error_log_2024-05.log": "2024-05-15 ERROR: Connection timeout\n2024-05-16 ERROR: Null pointer",
+    "logs/server_access.log": "2024-06-01 12:00:00 GET /api/health 200\n2024-06-01 12:01:00 POST /api/login 200",
+    "MANIFEST.md": "# Manifest\n\n## Organizational Logic\n- Grouped by **file type** at the top level (photos, documents, spreadsheets, code, archives, config, logs).\n- Within each type, organized by **project, purpose, or date** where it made sense (e.g., project_alpha, finance, 2023/2024).\n- All original root files have been moved into a subfolder; only this manifest remains in the root.\n\n## Folder Structure\n\n### photos/\n- **2023/**\n  - IMG_20230918_concert.jpg\n  - IMG_20231014_hiking_trail.jpg\n  - IMG_20231225_christmas_tree.jpg\n- **2024/**\n  - IMG_20240315_vacation_beach.jpg\n  - IMG_20240316_vacation_sunset.jpg\n  - IMG_20240401_family_dinner.jpg\n  - IMG_20240520_office_setup.jpg\n  - screenshot_2024-01-22_dashboard.png\n  - screenshot_2024-06-12.png\n  - screenshot_2024-07-03_bug_report.png\n  - team_photo_offsite_2024.jpg\n- **graphics/**\n  - banner_ad_1200x628.png\n  - logo_draft_final.png\n  - product_mockup_v2.png\n- **portraits/**\n  - profile_photo_linkedin.jpg\n- **misc/**\n  - whiteboard_brainstorm_session.jpg\n\n### documents/\n- **project_alpha/**\n  - meeting_notes_project_alpha_jan2024.txt\n  - meeting_notes_project_alpha_feb2024.txt\n  - project_alpha_final_report.pdf\n  - project_alpha_proposal.pdf\n- **project_beta/**\n  - meeting_notes_project_beta_mar2024.txt\n  - project_beta_requirements.docx\n  - project_beta_timeline.pdf\n- **product/**\n  - product_roadmap_2024.pdf\n  - style_guide_v3.pdf\n  - user_research_findings.txt\n- **engineering/**\n  - api_documentation_draft.txt\n- **hr/**\n  - onboarding_checklist.docx\n  - quarterly_okrs_q2_2024.docx\n- **legal/**\n  - nda_signed_clientx.pdf\n- **career/**\n  - cover_letter_techcorp.pdf\n  - old_resume_2023.pdf\n- **notes/**\n  - TODO.txt\n  - random_notes.txt\n\n### spreadsheets/\n- **finance/**\n  - Q4_2023_revenue_report.xlsx\n  - Q1_2024_revenue_report.xlsx\n  - Q2_2024_revenue_report.xlsx\n  - Q3_2024_revenue_report.xlsx\n  - budget_2024_final_FINAL_v3.xlsx\n  - expense_report_q1_2024.xlsx\n- **sales/**\n  - customer_feedback_2024.xlsx\n  - marketing_spend_by_channel.xlsx\n  - sales_leads_june2024.csv\n- **operations/**\n  - employee_directory.csv\n  - inventory_tracker.xlsx\n- **project_alpha/**\n  - project_alpha_burndown.csv\n\n### code/\n- **javascript/**\n  - index.js\n  - lambda_handler.js\n  - webpack.config.js\n- **typescript/**\n  - api_handler.ts\n  - auth_middleware.ts\n  - database.ts\n  - graphql_schema.ts\n  - hooks_useAuth.ts\n  - migrate_db.ts\n  - utils.ts\n  - validate_schema.ts\n- **tsx/**\n  - components_Button.tsx\n  - react_dashboard.tsx\n- **python/**\n  - cron_cleanup.py\n  - data_pipeline.py\n  - scraper.py\n  - test_utils.py\n  - train_model.py\n- **shell/**\n  - deploy.sh\n  - setup_script.sh\n- **build/**\n  - Makefile\n\n### archives/\n- backup_2024-03-01.zip\n- backup_2024-06-15.zip\n- legacy_code_archive.zip\n\n### config/\n- .env.example\n- .eslintrc.json\n- credentials_template.yaml\n- docker-compose.yml\n- nginx.conf\n- package_old.json\n- tsconfig.prod.json\n\n### logs/\n- application_debug.log\n- error_log_2024-05.log\n- server_access.log\n",
+    "photos/2023/IMG_20230918_concert.jpg": "placeholder image",
+    "photos/2023/IMG_20231014_hiking_trail.jpg": "placeholder image",
+    "photos/2023/IMG_20231225_christmas_tree.jpg": "placeholder image",
+    "photos/2024/IMG_20240315_vacation_beach.jpg": "placeholder image",
+    "photos/2024/IMG_20240316_vacation_sunset.jpg": "placeholder image",
+    "photos/2024/IMG_20240401_family_dinner.jpg": "placeholder image",
+    "photos/2024/IMG_20240520_office_setup.jpg": "placeholder image",
+    "photos/2024/screenshot_2024-01-22_dashboard.png": "placeholder image",
+    "photos/2024/screenshot_2024-06-12.png": "placeholder image",
+    "photos/2024/screenshot_2024-07-03_bug_report.png": "placeholder image",
+    "photos/2024/team_photo_offsite_2024.jpg": "placeholder image",
+    "photos/graphics/banner_ad_1200x628.png": "placeholder image",
+    "photos/graphics/logo_draft_final.png": "placeholder image",
+    "photos/graphics/product_mockup_v2.png": "placeholder image",
+    "photos/misc/whiteboard_brainstorm_session.jpg": "placeholder image",
+    "photos/portraits/profile_photo_linkedin.jpg": "placeholder image",
+    "spreadsheets/finance/budget_2024_final_FINAL_v3.xlsx": "placeholder spreadsheet",
+    "spreadsheets/finance/expense_report_q1_2024.xlsx": "placeholder spreadsheet",
+    "spreadsheets/finance/Q1_2024_revenue_report.xlsx": "placeholder spreadsheet",
+    "spreadsheets/finance/Q2_2024_revenue_report.xlsx": "placeholder spreadsheet",
+    "spreadsheets/finance/Q3_2024_revenue_report.xlsx": "placeholder spreadsheet",
+    "spreadsheets/finance/Q4_2023_revenue_report.xlsx": "placeholder spreadsheet",
+    "spreadsheets/operations/employee_directory.csv": "name,email,department\nJohn Doe,john@example.com,Engineering",
+    "spreadsheets/operations/inventory_tracker.xlsx": "placeholder spreadsheet",
+    "spreadsheets/project_alpha/project_alpha_burndown.csv": "sprint,planned,completed\n1,20,18\n2,22,22",
+    "spreadsheets/sales/customer_feedback_2024.xlsx": "placeholder spreadsheet",
+    "spreadsheets/sales/marketing_spend_by_channel.xlsx": "placeholder spreadsheet",
+    "spreadsheets/sales/sales_leads_june2024.csv": "company,contact,status\nAcme Inc,jane@acme.com,qualified"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 45,
+    "sortAccuracy": 0.5625,
+    "filesUntouched": 0
+  }
+}

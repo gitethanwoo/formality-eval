@@ -1,0 +1,32 @@
+{
+  "runId": "a743f048-efbc-41f9-a031-17f82670d222",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a743f048-efbc-41f9-a031-17f82670d222"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 51,
+    "sortAccuracy": 0.6375,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent taxonomic consistency with a clear file-type-first hierarchy (code/, documents/, spreadsheets/) followed by intuitive sub-categorization by language, department, year, or project. All 80 files were comprehensively reorganized with uniform snake_case naming and appropriate 2-3 level nesting (e.g., spreadsheets/finance/, documents/projects/project_alpha/). Minor improvements could include sub-organizing the 10 TypeScript files by architectural concern (components/, hooks/, utils/) rather than keeping them flat, and separating personal from professional photos within the 2024 folder."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:30.872Z"
+}

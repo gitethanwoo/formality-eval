@@ -1,0 +1,83 @@
+[
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "file-sorting",
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 37023,
+    "totalDurationMs": 53477,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 7,
+        "toolCallCount": 6,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.245
+      }
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "file-sorting",
+    "totalSteps": 29,
+    "totalToolCalls": 28,
+    "totalTokens": 137588,
+    "totalDurationMs": 69692,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 29,
+        "toolCallCount": 28,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.05
+      }
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "file-sorting",
+    "totalSteps": 31,
+    "totalToolCalls": 30,
+    "totalTokens": 147216,
+    "totalDurationMs": 71025,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 31,
+        "toolCallCount": 30,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.05
+      }
+    }
+  }
+]

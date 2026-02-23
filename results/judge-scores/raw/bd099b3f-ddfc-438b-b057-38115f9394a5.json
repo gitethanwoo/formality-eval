@@ -1,0 +1,32 @@
+{
+  "runId": "bd099b3f-ddfc-438b-b057-38115f9394a5",
+  "sourceFile": "Claude-Haiku-4.5_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "bd099b3f-ddfc-438b-b057-38115f9394a5"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 25,
+    "sortAccuracy": 0.3125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational structure demonstrates excellent domain awareness, categorizing photos and documents by context (personal/work/design) rather than just file extension. The MANIFEST.md is exceptionally thorough with detailed file-purpose tables, visual tree diagrams, and complete accounting of all 80 files with zero remaining in root. Naming conventions remain perfectly consistent (snake_case throughout), and the 2-3 level nesting strikes an ideal balance. The only minor improvement would be relocating runtime logs from config/logs/ to a dedicated data/ or logs/ top-level folder, as logs are operational outputs rather than configuration files."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:18.277Z"
+}

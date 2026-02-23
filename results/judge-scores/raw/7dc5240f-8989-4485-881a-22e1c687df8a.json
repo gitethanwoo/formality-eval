@@ -1,0 +1,32 @@
+{
+  "runId": "7dc5240f-8989-4485-881a-22e1c687df8a",
+  "sourceFile": "GPT-5.2-Codex_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "7dc5240f-8989-4485-881a-22e1c687df8a"
+  },
+  "scores": {
+    "testsWritten": 61,
+    "testsExecutable": false,
+    "linesOfCode": 268,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 5,
+    "creativity": 4,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation correctly handles core CSV parsing including quoted fields, escaped quotes, and custom delimiters, but completely omits streaming support which was explicitly required. The architecture is seriously flawed by polluting the result object with data analysis methods (filter, sum, average, groupBy) that violate separation of concerns. Type safety is weak due to pervasive 'any' usage and ineffective generics that don't actually constrain the return type. Tests validate basic parsing but focus heavily on these unrequested aggregation features while failing to test newlines within quoted fields or whitespace handling."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:47.139Z"
+}

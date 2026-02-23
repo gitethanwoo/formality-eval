@@ -1,0 +1,32 @@
+{
+  "runId": "4ee83add-9261-4663-8e11-ebc260cae368",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "4ee83add-9261-4663-8e11-ebc260cae368"
+  },
+  "scores": {
+    "testsWritten": 113,
+    "testsExecutable": false,
+    "linesOfCode": 316,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The parser demonstrates solid engineering with comprehensive handling of CSV edge cases including escaped quotes, custom delimiters, and multiline fields. The test suite validates actual behavior with meaningful assertions for filtering, aggregation, and malformed row detection. However, the implementation lacks the requested streaming support for large files, relies heavily on `any` types instead of leveraging TypeScript generics for type-safe rows, and enforces mandatory type coercion without providing an option for raw string values."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:30.359Z"
+}

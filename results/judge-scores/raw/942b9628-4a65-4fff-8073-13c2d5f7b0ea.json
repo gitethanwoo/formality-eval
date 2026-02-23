@@ -1,0 +1,35 @@
+{
+  "runId": "942b9628-4a65-4fff-8073-13c2d5f7b0ea",
+  "sourceFile": "Claude-Haiku-4.5_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "942b9628-4a65-4fff-8073-13c2d5f7b0ea"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 5154,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign delivers a cohesive, modern voice with persuasive, data-driven copy (e.g., '89% report sharper focus') and fresh angles like calendar integration that avoid lighting clichés. However, the landing page lacks the required FAQ section with 5+ questions, and the press release boilerplate appears incomplete, which limits the thoroughness and adherence scores."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:19.358Z"
+}

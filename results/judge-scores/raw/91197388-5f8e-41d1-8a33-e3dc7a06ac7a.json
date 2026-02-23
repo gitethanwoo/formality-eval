@@ -1,0 +1,35 @@
+{
+  "runId": "91197388-5f8e-41d1-8a33-e3dc7a06ac7a",
+  "sourceFile": "Claude-Haiku-4.5_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "91197388-5f8e-41d1-8a33-e3dc7a06ac7a"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3030,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains cohesive voice and messaging around circadian health and calendar integration across all deliverables, with strong audience fit through specific pain points like '3 PM energy crashes' and Zoom fatigue. While the strategy is sound and execution exceeds minimum requirements (8 FAQ questions, 10 social posts), minor issues like placeholder text in the press release and a somewhat generic tagline prevent it from reaching true excellence."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:43.974Z"
+}

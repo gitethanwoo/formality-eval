@@ -1,0 +1,35 @@
+{
+  "runId": "4ab40b3a-cda9-4188-b70a-95a606c76d28",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "4ab40b3a-cda9-4188-b70a-95a606c76d28"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1388,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a cohesive 'warm tech' voice centered on calendar integration and 'rhythm,' effectively targeting remote workers with specific scenarios like deep work and video calls. All six deliverables are present and well-structured, with the landing page and email sequence particularly strong. Minor deductions for the press release's redundant dateline opening and slightly generic Instagram captions compared to the sharper website copy."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:15.855Z"
+}

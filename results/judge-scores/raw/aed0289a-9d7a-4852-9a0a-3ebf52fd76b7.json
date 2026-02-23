@@ -1,0 +1,32 @@
+{
+  "runId": "aed0289a-9d7a-4852-9a0a-3ebf52fd76b7",
+  "sourceFile": "Claude-Opus-4.6_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "aed0289a-9d7a-4852-9a0a-3ebf52fd76b7"
+  },
+  "scores": {
+    "testsWritten": 103,
+    "testsExecutable": false,
+    "linesOfCode": 544,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 6,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation shows clean architecture with well-separated concerns (field parsing, line splitting, type coercion) and handles quoted fields, escaped quotes, and custom delimiters correctly. However, it critically lacks the required streaming/large file parsing capability—instead loading the entire input as a string—and omits generics for type-safe row mapping despite the requirement for 'proper TypeScript types and generics.' The test suite uses meaningful assertions and covers edge cases like custom delimiters and type coercion, though the truncated files make full evaluation difficult."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:12:39.014Z"
+}

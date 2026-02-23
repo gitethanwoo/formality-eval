@@ -1,0 +1,240 @@
+{
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "c36cbc61-290d-4aff-8327-746c8a47e4b2"
+  },
+  "prompt": "build me a csv parser library in typescript. needs implementation and tests\n\nput the code in csv-parser.ts, here's what it should handle:\n\n1. basic parsing - csv string to array of objects, first row is headers\n2. quoted fields - double quotes around fields, including ones with commas inside\n3. escaped quotes - two double quotes in a row = one literal quote\n4. custom delimiters - let me configure the delimiter, quote char, and line separator\n5. type coercion - auto detect and convert numbers (int + float), booleans (true/false case insensitive), nulls (null, NULL, empty string -> null), everything else stays as string\n6. error handling - malformed rows shouldn't crash it. collect errors with row number and description\n7. filtering - filter(predicate) method that returns matching rows\n8. aggregation methods:\n   - sum(column) - sum numeric values\n   - average(column) - average numeric values\n   - count() - total rows\n   - groupBy(column) - group rows by column value, return a Map\n\nmain export should be parseCSV(input, options?) returning a CSVResult with: rows (array of objects), headers (string array), errors (array of {row, message}), and the filter/sum/average/count/groupBy methods\n\nwrite tests in csv-parser.test.ts, just use standard assertions (throw on failure). cover:\n- basic parsing\n- quoted fields with commas\n- escaped quotes\n- custom delimiters\n- type coercion for all types\n- malformed row error collection\n- filter functionality\n- all aggregation methods\n- edge cases: empty input, single column, single row, very large fields\n\nokay thats it. actually do the work, don't just yap about it. write everything to the files",
+  "steps": [
+    {
+      "stepIndex": 0,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > csv-parser.ts\n// csv-parser.ts\n\ntype CSVOptions = {\n  delimiter?: string;\n  quote?: string;\n  lineSeparator?: string;\n};\n\ninterface CSVError {\n  row: number;\n  message: string;\n}\n\ninterface CSVResult<T extends Record<string, any> = Record<string, any>> {\n  headers: string[];\n  rows: T[];\n  errors: CSVError[];\n  filter: (predicate: (row: T) => boolean) => T[];\n  sum: (column: string) => number;\n  average: (column: string) => number;\n  count: () => number;\n  groupBy: (column: string) => Map<any, T[]>;\n}\n\ninterface ParseLineResult {\n  fields: string[];\n  error?: string;\n}\n\nconst DEFAULT_DELIMITER = ',';\nconst DEFAULT_QUOTE = '\"';\nconst DEFAULT_LINE_SEPARATOR = '\\n';\n\nfunction parseLine(line: string, delimiter: string, quote: string): ParseLineResult {\n  const fields: string[] = [];\n  let current = '';\n  let inQuotes = false;\n  let i = 0;\n  let error: string | undefined;\n\n  while (i < line.length) {\n    const char = line[i];\n\n    if (char === quote) {\n      const nextChar = line[i + 1];\n      if (inQuotes && nextChar === quote) {\n        current += quote;\n        i += 2;\n        continue;\n      }\n\n      inQuotes = !inQuotes;\n      i += 1;\n      continue;\n    }\n\n    if (!inQuotes && char === delimiter) {\n      fields.push(current);\n      current = '';\n      i += 1;\n      continue;\n    }\n\n    current += char;\n    i += 1;\n  }\n\n  fields.push(current);\n\n  if (inQuotes) {\n    error = 'Unterminated quoted field';\n  }\n\n  return { fields, error };\n}\n\nfunction coerceValue(rawValue: string): any {\n  const trimmed = rawValue.trim();\n\n  if (trimmed.length === 0) {\n    return null;\n  }\n\n  const lower = trimmed.toLowerCase();\n  if (lower === 'null') {\n    return null;\n  }\n\n  if (lower === 'true') {\n    return true;\n  }\n\n  if (lower === 'false') {\n    return false;\n  }\n\n  if (/^-?\\d+(\\.\\d+)?$/.test(trimmed)) {\n    const num = Number(trimmed);\n    if (Number.isFinite(num)) {\n      return num;\n    }\n  }\n\n  return rawValue;\n}\n\nexport function parseCSV<T extends Record<string, any> = Record<string, any>>(\n  input: string,\n  options?: CSVOptions,\n): CSVResult<T> {\n  const delimiter = options?.delimiter ?? DEFAULT_DELIMITER;\n  const quote = options?.quote ?? DEFAULT_QUOTE;\n  const lineSeparator = options?.lineSeparator ?? DEFAULT_LINE_SEPARATOR;\n\n  if (!input) {\n    const empty: CSVResult<T> = {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n    return empty;\n  }\n\n  const rawLines = input.split(lineSeparator);\n  const lines = rawLines.map((line) => (lineSeparator === '\\n' ? line.replace(/\\r$/, '') : line));\n\n  if (lines.length === 0) {\n    return {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n  }\n\n  const errors: CSVError[] = [];\n  const headerLine = lines[0];\n  const headerParse = parseLine(headerLine, delimiter, quote);\n  const headers = headerParse.fields;\n\n  if (headerParse.error) {\n    errors.push({ row: 1, message: headerParse.error });\n  }\n\n  const rows: T[] = [];\n\n  for (let index = 1; index < lines.length; index += 1) {\n    const line = lines[index];\n    const rowNumber = index + 1;\n\n    if (line.length === 0 && index === lines.length - 1) {\n      // skip trailing empty line\n      continue;\n    }\n\n    const parsed = parseLine(line, delimiter, quote);\n\n    if (parsed.error) {\n      errors.push({ row: rowNumber, message: parsed.error });\n      continue;\n    }\n\n    if (parsed.fields.length !== headers.length) {\n      errors.push({ row: rowNumber, message: 'Malformed row: column count does not match headers' });\n      continue;\n    }\n\n    const record: Record<string, any> = {};\n    for (let i = 0; i < headers.length; i += 1) {\n      record[headers[i]] = coerceValue(parsed.fields[i]);\n    }\n\n    rows.push(record as T);\n  }\n\n  const result: CSVResult<T> = {\n    headers,\n    rows,\n    errors,\n    filter: (predicate) => rows.filter(predicate),\n    sum: (column: string) =>\n      rows.reduce((acc, row) => {\n        const value = row[column];\n        return typeof value === 'number' ? acc + value : acc;\n      }, 0),\n    average: (column: string) => {\n      let total = 0;\n      let count = 0;\n      for (const row of rows) {\n        const value = row[column];\n        if (typeof value === 'number') {\n          total += value;\n          count += 1;\n        }\n      }\n      return count === 0 ? 0 : total / count;\n    },\n    count: () => rows.length,\n    groupBy: (column: string) => {\n      const map = new Map<any, T[]>();\n      for (const row of rows) {\n        const key = row[column];\n        const bucket = map.get(key);\n        if (bucket) {\n          bucket.push(row);\n        } else {\n          map.set(key, [row]);\n        }\n      }\n      return map;\n    },\n  };\n\n  return result;\n}\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 701,
+      "outputTokens": 8814,
+      "totalTokens": 9515,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 1,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > csv-parser.test.ts\nimport { parseCSV } from './csv-parser';\n\ntype TestFn = () => void;\n\nfunction assert(condition: boolean, message?: string): void {\n  if (!condition) {\n    throw new Error(message || 'Assertion failed');\n  }\n}\n\nfunction assertEqual<T>(actual: T, expected: T, message?: string): void {\n  if (actual !== expected) {\n    throw new Error(message || `Expected ${expected} but got ${actual}`);\n  }\n}\n\nfunction assertDeepEqual(actual: unknown, expected: unknown, message?: string): void {\n  const stringify = JSON.stringify;\n  if (stringify(actual) !== stringify(expected)) {\n    throw new Error(message || `Deep equality failed: ${stringify(actual)} vs ${stringify(expected)}`);\n  }\n}\n\nconst tests: Array<{ name: string; fn: TestFn }> = [\n  {\n    name: 'basic parsing',\n    fn: () => {\n      const csv = 'name,age\\nAlice,30\\nBob,25';\n      const result = parseCSV(csv);\n      assertDeepEqual(result.headers, ['name', 'age']);\n      assertEqual(result.rows.length, 2);\n      assertEqual(result.count(), 2);\n      assertEqual(result.errors.length, 0);\n      assertEqual(result.rows[0].name, 'Alice');\n      assertEqual(typeof result.rows[0].age, 'number');\n      assertEqual(result.rows[0].age, 30);\n    },\n  },\n  {\n    name: 'quoted fields with commas',\n    fn: () => {\n      const csv = 'id,quote\\n1,\"Hello, world\"\\n2,\"Another, piece\"';\n      const result = parseCSV(csv);\n      assertEqual(result.rows[0].quote, 'Hello, world');\n      assertEqual(result.rows[1].quote, 'Another, piece');\n    },\n  },\n  {\n    name: 'escaped quotes',\n    fn: () => {\n      const csv = 'id,message\\n1,\"He said \"\"hello\"\"\"';\n      const result = parseCSV(csv);\n      assertEqual(result.rows[0].message, 'He said \"hello\"');\n    },\n  },\n  {\n    name: 'custom delimiters and quotes',\n    fn: () => {\n      const csv = \"id|note\\n1|'a|b|c'\\n2|'escape ''quotes'' test'\";\n      const result = parseCSV(csv, { delimiter: '|', quote: \"'\" });\n      assertEqual(result.rows[0].note, 'a|b|c');\n      assertEqual(result.rows[1].note, \"escape 'quotes' test\");\n    },\n  },\n  {\n    name: 'type coercion covers all types',\n    fn: () => {\n      const csv = 'number,boolTrue,boolFalse,nullVariant,empty,decimal,text\\n123,TRUE,false,null,,45.67,keep';\n      const result = parseCSV(csv);\n      const row = result.rows[0];\n      assertEqual(typeof row.number, 'number');\n      assertEqual(row.number, 123);\n      assertEqual(row.boolTrue, true);\n      assertEqual(row.boolFalse, false);\n      assertEqual(row.nullVariant, null);\n      assertEqual(row.empty, null);\n      assertEqual(row.decimal, 45.67);\n      assertEqual(row.text, 'keep');\n    },\n  },\n  {\n    name: 'malformed row error collection',\n    fn: () => {\n      const csv = 'a,b\\n1,2\\n3';\n      const result = parseCSV(csv);\n      assertEqual(result.rows.length, 1);\n      assertEqual(result.errors.length, 1);\n      assertEqual(result.errors[0].row, 3);\n      assert(result.errors[0].message.includes('column count'));\n    },\n  },\n  {\n    name: 'filter functionality',\n    fn: () => {\n      const csv = 'name,score\\nAlex,10\\nJamie,5\\nSam,15';\n      const result = parseCSV(csv);\n      const filtered = result.filter((row) => row.score >= 10);\n      assertEqual(filtered.length, 2);\n      assertEqual(filtered[0].name, 'Alex');\n      assertEqual(filtered[1].name, 'Sam');\n    },\n  },\n  {\n    name: 'aggregation helpers',\n    fn: () => {\n      const csv = 'team,score\\nA,10\\nB,20\\nA,30';\n      const result = parseCSV(csv);\n      assertEqual(result.sum('score'), 60);\n      assertEqual(result.average('score'), 20);\n      assertEqual(result.count(), 3);\n      const groups = result.groupBy('team');\n      assertEqual(groups.get('A')?.length ?? 0, 2);\n      assertEqual(groups.get('B')?.length ?? 0, 1);\n    },\n  },\n  {\n    name: 'edge cases',\n    fn: () => {\n      const empty = parseCSV('');\n      assertEqual(empty.rows.length, 0);\n      assertEqual(empty.headers.length, 0);\n      assertEqual(empty.errors.length, 0);\n\n      const single = parseCSV('value\\n777');\n      assertEqual(single.rows.length, 1);\n      assertEqual(single.rows[0].value, 777);\n\n      const oneColumnLarge = parseCSV('blob\\n' + 'a'.repeat(5000));\n      assertEqual(oneColumnLarge.rows[0].blob, 'a'.repeat(5000));\n    },\n  },\n];\n\nfor (const test of tests) {\n  try {\n    test.fn();\n    console.log(`✅ ${test.name}`);\n  } catch (error) {\n    console.error(`❌ ${test.name} failed:`, error);\n    process.exit(1);\n  }\n}\n\nconsole.log('All tests passed!');\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 9536,
+      "outputTokens": 3497,
+      "totalTokens": 13033,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 2,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "apply_patch <<'EOF'\n*** Begin Patch\n*** Update File: csv-parser.ts\n@@\n-type CSVOptions = {\n+export type CSVOptions = {\n   delimiter?: string;\n   quote?: string;\n   lineSeparator?: string;\n };\n \n-interface CSVError {\n+export interface CSVError {\n   row: number;\n   message: string;\n }\n \n-interface CSVResult<T extends Record<string, any> = Record<string, any>> {\n+export interface CSVResult<T extends Record<string, any> = Record<string, any>> {\n   headers: string[];\n   rows: T[];\n   errors: CSVError[];\n   filter: (predicate: (row: T) => boolean) => T[];\n   sum: (column: string) => number;\n   average: (column: string) => number;\n   count: () => number;\n   groupBy: (column: string) => Map<any, T[]>;\n }\n*** End Patch\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "bash: apply_patch: command not found\n",
+            "exitCode": 127
+          }
+        }
+      ],
+      "inputTokens": 13054,
+      "outputTokens": 755,
+      "totalTokens": 13809,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 3,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > csv-parser.ts\n// csv-parser.ts\n\nexport type CSVOptions = {\n  delimiter?: string;\n  quote?: string;\n  lineSeparator?: string;\n};\n\nexport interface CSVError {\n  row: number;\n  message: string;\n}\n\nexport interface CSVResult<T extends Record<string, any> = Record<string, any>> {\n  headers: string[];\n  rows: T[];\n  errors: CSVError[];\n  filter: (predicate: (row: T) => boolean) => T[];\n  sum: (column: string) => number;\n  average: (column: string) => number;\n  count: () => number;\n  groupBy: (column: string) => Map<any, T[]>;\n}\n\ninterface ParseLineResult {\n  fields: string[];\n  error?: string;\n}\n\nconst DEFAULT_DELIMITER = ',';\nconst DEFAULT_QUOTE = '\"';\nconst DEFAULT_LINE_SEPARATOR = '\\n';\n\nfunction parseLine(line: string, delimiter: string, quote: string): ParseLineResult {\n  const fields: string[] = [];\n  let current = '';\n  let inQuotes = false;\n  let i = 0;\n  let error: string | undefined;\n\n  while (i < line.length) {\n    const char = line[i];\n\n    if (char === quote) {\n      const nextChar = line[i + 1];\n      if (inQuotes && nextChar === quote) {\n        current += quote;\n        i += 2;\n        continue;\n      }\n\n      inQuotes = !inQuotes;\n      i += 1;\n      continue;\n    }\n\n    if (!inQuotes && char === delimiter) {\n      fields.push(current);\n      current = '';\n      i += 1;\n      continue;\n    }\n\n    current += char;\n    i += 1;\n  }\n\n  fields.push(current);\n\n  if (inQuotes) {\n    error = 'Unterminated quoted field';\n  }\n\n  return { fields, error };\n}\n\nfunction coerceValue(rawValue: string): any {\n  const trimmed = rawValue.trim();\n\n  if (trimmed.length === 0) {\n    return null;\n  }\n\n  const lower = trimmed.toLowerCase();\n  if (lower === 'null') {\n    return null;\n  }\n\n  if (lower === 'true') {\n    return true;\n  }\n\n  if (lower === 'false') {\n    return false;\n  }\n\n  if (/^-?\\d+(\\.\\d+)?$/.test(trimmed)) {\n    const num = Number(trimmed);\n    if (Number.isFinite(num)) {\n      return num;\n    }\n  }\n\n  return rawValue;\n}\n\nexport function parseCSV<T extends Record<string, any> = Record<string, any>>(\n  input: string,\n  options?: CSVOptions,\n): CSVResult<T> {\n  const delimiter = options?.delimiter ?? DEFAULT_DELIMITER;\n  const quote = options?.quote ?? DEFAULT_QUOTE;\n  const lineSeparator = options?.lineSeparator ?? DEFAULT_LINE_SEPARATOR;\n\n  if (!input) {\n    const empty: CSVResult<T> = {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n    return empty;\n  }\n\n  const rawLines = input.split(lineSeparator);\n  const lines = rawLines.map((line) => (lineSeparator === '\\n' ? line.replace(/\\r$/, '') : line));\n\n  if (lines.length === 0) {\n    return {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n  }\n\n  const errors: CSVError[] = [];\n  const headerLine = lines[0];\n  const headerParse = parseLine(headerLine, delimiter, quote);\n  const headers = headerParse.fields;\n\n  if (headerParse.error) {\n    errors.push({ row: 1, message: headerParse.error });\n  }\n\n  const rows: T[] = [];\n\n  for (let index = 1; index < lines.length; index += 1) {\n    const line = lines[index];\n    const rowNumber = index + 1;\n\n    if (line.length === 0 && index === lines.length - 1) {\n      // skip trailing empty line\n      continue;\n    }\n\n    const parsed = parseLine(line, delimiter, quote);\n\n    if (parsed.error) {\n      errors.push({ row: rowNumber, message: parsed.error });\n      continue;\n    }\n\n    if (parsed.fields.length !== headers.length) {\n      errors.push({ row: rowNumber, message: 'Malformed row: column count does not match headers' });\n      continue;\n    }\n\n    const record: Record<string, any> = {};\n    for (let i = 0; i < headers.length; i += 1) {\n      record[headers[i]] = coerceValue(parsed.fields[i]);\n    }\n\n    rows.push(record as T);\n  }\n\n  const result: CSVResult<T> = {\n    headers,\n    rows,\n    errors,\n    filter: (predicate) => rows.filter(predicate),\n    sum: (column: string) =>\n      rows.reduce((acc, row) => {\n        const value = row[column];\n        return typeof value === 'number' ? acc + value : acc;\n      }, 0),\n    average: (column: string) => {\n      let total = 0;\n      let count = 0;\n      for (const row of rows) {\n        const value = row[column];\n        if (typeof value === 'number') {\n          total += value;\n          count += 1;\n        }\n      }\n      return count === 0 ? 0 : total / count;\n    },\n    count: () => rows.length,\n    groupBy: (column: string) => {\n      const map = new Map<any, T[]>();\n      for (const row of rows) {\n        const key = row[column];\n        const bucket = map.get(key);\n        if (bucket) {\n          bucket.push(row);\n        } else {\n          map.set(key, [row]);\n        }\n      }\n      return map;\n    },\n  };\n\n  return result;\n}\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 13840,
+      "outputTokens": 1661,
+      "totalTokens": 15501,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 4,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "npx ts-node csv-parser.test.ts"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "bash: npx: command not found\n",
+            "exitCode": 127
+          }
+        }
+      ],
+      "inputTokens": 15522,
+      "outputTokens": 93,
+      "totalTokens": 15615,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 5,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "node -v"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "bash: node: command not found\n",
+            "exitCode": 127
+          }
+        }
+      ],
+      "inputTokens": 15646,
+      "outputTokens": 111,
+      "totalTokens": 15757,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 6,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "ls"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "README.md\ncsv-parser.test.ts\ncsv-parser.ts\n",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 15787,
+      "outputTokens": 122,
+      "totalTokens": 15909,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 7,
+      "text": "Summary:\n- Implemented `parseCSV` in `csv-parser.ts` with configurable delimiter/quote/line separator, proper quoted field handling, escaped quotes, type coercion (numbers, booleans, null), malformed-row error collection, and aggregation/filter helpers as specified.\n- Added comprehensive TypeScript exports (`CSVOptions`, `CSVError`, `CSVResult`) and helper methods.\n- Created `csv-parser.test.ts` with assertion-based coverage for basic parsing, quoted/escaped fields, custom configuration, type coercion, malformed rows, filtering, aggregation, and edge cases (empty input, single column/row, large fields).\n\nTesting:\n- Not run: the sandbox lacks `node`/`npx` so I couldn’t execute the TypeScript tests (`csv-parser.test.ts`).",
+      "toolCalls": [],
+      "toolResults": [],
+      "inputTokens": 15943,
+      "outputTokens": 245,
+      "totalTokens": 16188,
+      "finishReason": "stop",
+      "durationMs": 0
+    }
+  ],
+  "totalInputTokens": 100029,
+  "totalOutputTokens": 15298,
+  "totalTokens": 115327,
+  "totalSteps": 8,
+  "totalToolCalls": 7,
+  "totalDurationMs": 95651,
+  "finalSandboxFiles": [
+    "csv-parser.test.ts",
+    "csv-parser.ts",
+    "README.md"
+  ],
+  "artifacts": {
+    "csv-parser.test.ts": "import { parseCSV } from './csv-parser';\n\ntype TestFn = () => void;\n\nfunction assert(condition: boolean, message?: string): void {\n  if (!condition) {\n    throw new Error(message || 'Assertion failed');\n  }\n}\n\nfunction assertEqual<T>(actual: T, expected: T, message?: string): void {\n  if (actual !== expected) {\n    throw new Error(message || `Expected ${expected} but got ${actual}`);\n  }\n}\n\nfunction assertDeepEqual(actual: unknown, expected: unknown, message?: string): void {\n  const stringify = JSON.stringify;\n  if (stringify(actual) !== stringify(expected)) {\n    throw new Error(message || `Deep equality failed: ${stringify(actual)} vs ${stringify(expected)}`);\n  }\n}\n\nconst tests: Array<{ name: string; fn: TestFn }> = [\n  {\n    name: 'basic parsing',\n    fn: () => {\n      const csv = 'name,age\\nAlice,30\\nBob,25';\n      const result = parseCSV(csv);\n      assertDeepEqual(result.headers, ['name', 'age']);\n      assertEqual(result.rows.length, 2);\n      assertEqual(result.count(), 2);\n      assertEqual(result.errors.length, 0);\n      assertEqual(result.rows[0].name, 'Alice');\n      assertEqual(typeof result.rows[0].age, 'number');\n      assertEqual(result.rows[0].age, 30);\n    },\n  },\n  {\n    name: 'quoted fields with commas',\n    fn: () => {\n      const csv = 'id,quote\\n1,\"Hello, world\"\\n2,\"Another, piece\"';\n      const result = parseCSV(csv);\n      assertEqual(result.rows[0].quote, 'Hello, world');\n      assertEqual(result.rows[1].quote, 'Another, piece');\n    },\n  },\n  {\n    name: 'escaped quotes',\n    fn: () => {\n      const csv = 'id,message\\n1,\"He said \"\"hello\"\"\"';\n      const result = parseCSV(csv);\n      assertEqual(result.rows[0].message, 'He said \"hello\"');\n    },\n  },\n  {\n    name: 'custom delimiters and quotes',\n    fn: () => {\n      const csv = \"id|note\\n1|'a|b|c'\\n2|'escape ''quotes'' test'\";\n      const result = parseCSV(csv, { delimiter: '|', quote: \"'\" });\n      assertEqual(result.rows[0].note, 'a|b|c');\n      assertEqual(result.rows[1].note, \"escape 'quotes' test\");\n    },\n  },\n  {\n    name: 'type coercion covers all types',\n    fn: () => {\n      const csv = 'number,boolTrue,boolFalse,nullVariant,empty,decimal,text\\n123,TRUE,false,null,,45.67,keep';\n      const result = parseCSV(csv);\n      const row = result.rows[0];\n      assertEqual(typeof row.number, 'number');\n      assertEqual(row.number, 123);\n      assertEqual(row.boolTrue, true);\n      assertEqual(row.boolFalse, false);\n      assertEqual(row.nullVariant, null);\n      assertEqual(row.empty, null);\n      assertEqual(row.decimal, 45.67);\n      assertEqual(row.text, 'keep');\n    },\n  },\n  {\n    name: 'malformed row error collection',\n    fn: () => {\n      const csv = 'a,b\\n1,2\\n3';\n      const result = parseCSV(csv);\n      assertEqual(result.rows.length, 1);\n      assertEqual(result.errors.length, 1);\n      assertEqual(result.errors[0].row, 3);\n      assert(result.errors[0].message.includes('column count'));\n    },\n  },\n  {\n    name: 'filter functionality',\n    fn: () => {\n      const csv = 'name,score\\nAlex,10\\nJamie,5\\nSam,15';\n      const result = parseCSV(csv);\n      const filtered = result.filter((row) => row.score >= 10);\n      assertEqual(filtered.length, 2);\n      assertEqual(filtered[0].name, 'Alex');\n      assertEqual(filtered[1].name, 'Sam');\n    },\n  },\n  {\n    name: 'aggregation helpers',\n    fn: () => {\n      const csv = 'team,score\\nA,10\\nB,20\\nA,30';\n      const result = parseCSV(csv);\n      assertEqual(result.sum('score'), 60);\n      assertEqual(result.average('score'), 20);\n      assertEqual(result.count(), 3);\n      const groups = result.groupBy('team');\n      assertEqual(groups.get('A')?.length ?? 0, 2);\n      assertEqual(groups.get('B')?.length ?? 0, 1);\n    },\n  },\n  {\n    name: 'edge cases',\n    fn: () => {\n      const empty = parseCSV('');\n      assertEqual(empty.rows.length, 0);\n      assertEqual(empty.headers.length, 0);\n      assertEqual(empty.errors.length, 0);\n\n      const single = parseCSV('value\\n777');\n      assertEqual(single.rows.length, 1);\n      assertEqual(single.rows[0].value, 777);\n\n      const oneColumnLarge = parseCSV('blob\\n' + 'a'.repeat(5000));\n      assertEqual(oneColumnLarge.rows[0].blob, 'a'.repeat(5000));\n    },\n  },\n];\n\nfor (const test of tests) {\n  try {\n    test.fn();\n    console.log(`✅ ${test.name}`);\n  } catch (error) {\n    console.error(`❌ ${test.name} failed:`, error);\n    process.exit(1);\n  }\n}\n\nconsole.log('All tests passed!');\n",
+    "csv-parser.ts": "// csv-parser.ts\n\nexport type CSVOptions = {\n  delimiter?: string;\n  quote?: string;\n  lineSeparator?: string;\n};\n\nexport interface CSVError {\n  row: number;\n  message: string;\n}\n\nexport interface CSVResult<T extends Record<string, any> = Record<string, any>> {\n  headers: string[];\n  rows: T[];\n  errors: CSVError[];\n  filter: (predicate: (row: T) => boolean) => T[];\n  sum: (column: string) => number;\n  average: (column: string) => number;\n  count: () => number;\n  groupBy: (column: string) => Map<any, T[]>;\n}\n\ninterface ParseLineResult {\n  fields: string[];\n  error?: string;\n}\n\nconst DEFAULT_DELIMITER = ',';\nconst DEFAULT_QUOTE = '\"';\nconst DEFAULT_LINE_SEPARATOR = '\\n';\n\nfunction parseLine(line: string, delimiter: string, quote: string): ParseLineResult {\n  const fields: string[] = [];\n  let current = '';\n  let inQuotes = false;\n  let i = 0;\n  let error: string | undefined;\n\n  while (i < line.length) {\n    const char = line[i];\n\n    if (char === quote) {\n      const nextChar = line[i + 1];\n      if (inQuotes && nextChar === quote) {\n        current += quote;\n        i += 2;\n        continue;\n      }\n\n      inQuotes = !inQuotes;\n      i += 1;\n      continue;\n    }\n\n    if (!inQuotes && char === delimiter) {\n      fields.push(current);\n      current = '';\n      i += 1;\n      continue;\n    }\n\n    current += char;\n    i += 1;\n  }\n\n  fields.push(current);\n\n  if (inQuotes) {\n    error = 'Unterminated quoted field';\n  }\n\n  return { fields, error };\n}\n\nfunction coerceValue(rawValue: string): any {\n  const trimmed = rawValue.trim();\n\n  if (trimmed.length === 0) {\n    return null;\n  }\n\n  const lower = trimmed.toLowerCase();\n  if (lower === 'null') {\n    return null;\n  }\n\n  if (lower === 'true') {\n    return true;\n  }\n\n  if (lower === 'false') {\n    return false;\n  }\n\n  if (/^-?\\d+(\\.\\d+)?$/.test(trimmed)) {\n    const num = Number(trimmed);\n    if (Number.isFinite(num)) {\n      return num;\n    }\n  }\n\n  return rawValue;\n}\n\nexport function parseCSV<T extends Record<string, any> = Record<string, any>>(\n  input: string,\n  options?: CSVOptions,\n): CSVResult<T> {\n  const delimiter = options?.delimiter ?? DEFAULT_DELIMITER;\n  const quote = options?.quote ?? DEFAULT_QUOTE;\n  const lineSeparator = options?.lineSeparator ?? DEFAULT_LINE_SEPARATOR;\n\n  if (!input) {\n    const empty: CSVResult<T> = {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n    return empty;\n  }\n\n  const rawLines = input.split(lineSeparator);\n  const lines = rawLines.map((line) => (lineSeparator === '\\n' ? line.replace(/\\r$/, '') : line));\n\n  if (lines.length === 0) {\n    return {\n      headers: [],\n      rows: [],\n      errors: [],\n      filter: () => [],\n      sum: () => 0,\n      average: () => 0,\n      count: () => 0,\n      groupBy: () => new Map(),\n    };\n  }\n\n  const errors: CSVError[] = [];\n  const headerLine = lines[0];\n  const headerParse = parseLine(headerLine, delimiter, quote);\n  const headers = headerParse.fields;\n\n  if (headerParse.error) {\n    errors.push({ row: 1, message: headerParse.error });\n  }\n\n  const rows: T[] = [];\n\n  for (let index = 1; index < lines.length; index += 1) {\n    const line = lines[index];\n    const rowNumber = index + 1;\n\n    if (line.length === 0 && index === lines.length - 1) {\n      // skip trailing empty line\n      continue;\n    }\n\n    const parsed = parseLine(line, delimiter, quote);\n\n    if (parsed.error) {\n      errors.push({ row: rowNumber, message: parsed.error });\n      continue;\n    }\n\n    if (parsed.fields.length !== headers.length) {\n      errors.push({ row: rowNumber, message: 'Malformed row: column count does not match headers' });\n      continue;\n    }\n\n    const record: Record<string, any> = {};\n    for (let i = 0; i < headers.length; i += 1) {\n      record[headers[i]] = coerceValue(parsed.fields[i]);\n    }\n\n    rows.push(record as T);\n  }\n\n  const result: CSVResult<T> = {\n    headers,\n    rows,\n    errors,\n    filter: (predicate) => rows.filter(predicate),\n    sum: (column: string) =>\n      rows.reduce((acc, row) => {\n        const value = row[column];\n        return typeof value === 'number' ? acc + value : acc;\n      }, 0),\n    average: (column: string) => {\n      let total = 0;\n      let count = 0;\n      for (const row of rows) {\n        const value = row[column];\n        if (typeof value === 'number') {\n          total += value;\n          count += 1;\n        }\n      }\n      return count === 0 ? 0 : total / count;\n    },\n    count: () => rows.length,\n    groupBy: (column: string) => {\n      const map = new Map<any, T[]>();\n      for (const row of rows) {\n        const key = row[column];\n        const bucket = map.get(key);\n        if (bucket) {\n          bucket.push(row);\n        } else {\n          map.set(key, [row]);\n        }\n      }\n      return map;\n    },\n  };\n\n  return result;\n}\n",
+    "README.md": "# CSV Parser\n\nImplement the CSV parser library in this directory.\n"
+  },
+  "scores": {
+    "testsWritten": 52,
+    "testsExecutable": false,
+    "linesOfCode": 322,
+    "edgeCasesCovered": 9
+  }
+}

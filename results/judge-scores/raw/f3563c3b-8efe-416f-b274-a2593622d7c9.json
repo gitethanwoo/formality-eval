@@ -1,0 +1,32 @@
+{
+  "runId": "f3563c3b-8efe-416f-b274-a2593622d7c9",
+  "sourceFile": "Claude-Opus-4.6_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "f3563c3b-8efe-416f-b274-a2593622d7c9"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 18,
+    "sortAccuracy": 0.225,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational scheme demonstrates excellent judgment by applying context-appropriate categorization strategies—chronological nesting for personal photos, functional layers for code (frontend/backend), and business domains for spreadsheets—while maintaining consistent kebab-case naming throughout. The hierarchy achieves optimal balance with a maximum depth of three folder levels and equitable distribution of files (no folder contains more than 8 files). Minor weaknesses include the mixing of disparate script types (Python data pipelines with shell deployment scripts) within `data-and-scripts/` and inconsistent nesting for undated personal photos compared to dated ones, though these represent pragmatic trade-offs rather than significant flaws."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:15:46.138Z"
+}

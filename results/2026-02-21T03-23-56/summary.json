@@ -1,0 +1,86 @@
+[
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 45297,
+    "totalDurationMs": 96642,
+    "scores": {
+      "automated": {
+        "testsWritten": 51,
+        "testsPassing": 51,
+        "testPassRate": 1,
+        "linesOfCode": 286,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 7,
+        "toolCallCount": 6,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 286,
+        "lazinessIndex": 0.22
+      }
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "totalSteps": 5,
+    "totalToolCalls": 4,
+    "totalTokens": 25907,
+    "totalDurationMs": 101348,
+    "scores": {
+      "automated": {
+        "testsWritten": 54,
+        "testsPassing": 54,
+        "testPassRate": 1,
+        "linesOfCode": 275,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 5,
+        "toolCallCount": 4,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 275,
+        "lazinessIndex": 0.24999999999999997
+      }
+    }
+  },
+  {
+    "model": "GPT-5.2 Codex",
+    "provider": "openai",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "totalSteps": 6,
+    "totalToolCalls": 5,
+    "totalTokens": 30876,
+    "totalDurationMs": 105040,
+    "scores": {
+      "automated": {
+        "testsWritten": 36,
+        "testsPassing": 36,
+        "testPassRate": 1,
+        "linesOfCode": 261,
+        "edgeCasesCovered": 10
+      },
+      "laziness": {
+        "totalSteps": 6,
+        "toolCallCount": 5,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 261,
+        "lazinessIndex": 0.26
+      }
+    }
+  }
+]

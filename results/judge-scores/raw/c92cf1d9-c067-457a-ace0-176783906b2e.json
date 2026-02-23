@@ -1,0 +1,32 @@
+{
+  "runId": "c92cf1d9-c067-457a-ace0-176783906b2e",
+  "sourceFile": "GPT-5.2-Codex_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "c92cf1d9-c067-457a-ace0-176783906b2e"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 23,
+    "sortAccuracy": 0.2875,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 6,
+    "adherenceToInstructions": 9,
+    "justification": "Strong organizational logic with consistent lowercase naming and balanced 2-3 level nesting (e.g., spreadsheets/finance/, photos/2024/). All 80 files accounted for with no root clutter. Code organized by language is safe but mixes concerns (frontend/backend/ML); project folders mixed with functional categories in documents/ is slightly inconsistent. MANIFEST excellently documents structure and rationale."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:58.761Z"
+}

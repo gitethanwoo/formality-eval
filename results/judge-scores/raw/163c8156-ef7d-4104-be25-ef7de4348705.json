@@ -1,0 +1,32 @@
+{
+  "runId": "163c8156-ef7d-4104-be25-ef7de4348705",
+  "sourceFile": "Claude-Opus-4.6_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "163c8156-ef7d-4104-be25-ef7de4348705"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 17,
+    "sortAccuracy": 0.2125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The hybrid organizational scheme (type-first, then context/project) elegantly accommodates diverse content ranging from personal photos to backend code. The folder structure maintains consistent snake_case naming and sensible 2-level nesting, while the MANIFEST.md provides exceptional documentation with detailed file descriptions and clear rationale. Only minor quibbles: the config/ folder mixes disparate infrastructure and application configurations, though this is defensible for a small set of files, and all 77 files are comprehensively accounted for."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:32.896Z"
+}

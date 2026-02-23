@@ -1,0 +1,35 @@
+{
+  "runId": "1b9aba2a-5c01-4fd0-af4f-30da59bf219f",
+  "sourceFile": "Claude-Opus-4.6_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "1b9aba2a-5c01-4fd0-af4f-30da59bf219f"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3998,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign demonstrates exceptional voice consistency through the 'zero effort' and 'it just works' messaging across all six deliverables, with sharp audience targeting specific to remote workers (calendar integration, video call lighting, circadian rhythm). The calendar-aware lighting feature provides a fresh, concrete angle that avoids category clichés like 'illuminate your workspace,' while the competitive pricing positioning ($149 vs. $600 alternatives) is highly persuasive. However, the landing-page.txt file appears truncated before the required FAQ section (5+ questions), and the final LinkedIn post is incomplete, impacting thoroughness and adherence scores despite the otherwise polished, professional execution."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:19:54.483Z"
+}

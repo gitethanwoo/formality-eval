@@ -1,0 +1,32 @@
+{
+  "runId": "f98a9bf7-30e9-45e8-b4f1-7ffcc8f49a48",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "f98a9bf7-30e9-45e8-b4f1-7ffcc8f49a48"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 14,
+    "sortAccuracy": 0.175,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The structure demonstrates excellent logical grouping with a type-first approach, intelligently sub-organizing images by purpose (photos chronologically by year vs screenshots vs design assets) and documents by domain (HR, legal, projects). Naming conventions are strictly consistent using lowercase_with_underscores. The hierarchy achieves appropriate balance at 2-3 levels for complex categories while keeping simple ones like logs and archives flat. All ~80 files are accounted for with no root clutter, and the MANIFEST clearly documents the scheme, though the configs/ folder mixes unrelated tools (Docker, Nginx, ESLint) that could benefit from minor subgrouping."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:09.371Z"
+}

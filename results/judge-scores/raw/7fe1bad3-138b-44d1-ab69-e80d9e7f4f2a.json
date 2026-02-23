@@ -1,0 +1,35 @@
+{
+  "runId": "7fe1bad3-138b-44d1-ab69-e80d9e7f4f2a",
+  "sourceFile": "Claude-Haiku-4.5_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "7fe1bad3-138b-44d1-ab69-e80d9e7f4f2a"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3438,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 8,
+    "adherenceToInstructions": 6,
+    "justification": "The campaign excels in voice consistency and originality, positioning Lumina around calendar integration and circadian rhythm with persuasive, platform-specific social content that avoids lighting clichés. However, it critically omits the required FAQ section with 5+ questions in landing-page.txt (the file cuts off at specifications), and hero-copy.txt contains only two distinct sections instead of the mandated three, representing significant adherence failures despite strong creative execution."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:39.088Z"
+}

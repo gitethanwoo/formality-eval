@@ -1,0 +1,35 @@
+{
+  "runId": "54e9b024-c785-4e0d-84da-292b36158471",
+  "sourceFile": "Claude-Opus-4.6_formal_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "54e9b024-c785-4e0d-84da-292b36158471"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4321,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 5,
+    "creativity": 8,
+    "adherenceToInstructions": 6,
+    "justification": "The campaign demonstrates a consistently warm, tech-savvy voice that resonates strongly with remote workers through specific pain points like '3 PM headaches' and Zoom lighting. The 'calendar-aware' positioning offers genuine originality beyond cliché smart-home messaging. However, the landing page omits the required FAQ section with 5+ questions, and visible truncations in the email sequence (Email 3) and social posts (LinkedIn Post 2) indicate incomplete deliverables that prevent a higher score."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:24.115Z"
+}

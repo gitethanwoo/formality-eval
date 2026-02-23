@@ -1,0 +1,32 @@
+{
+  "runId": "1bd205d8-1e28-42e0-a53a-306dc40ca322",
+  "sourceFile": "Claude-Opus-4.6_formal_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "1bd205d8-1e28-42e0-a53a-306dc40ca322"
+  },
+  "scores": {
+    "testsWritten": 150,
+    "testsExecutable": false,
+    "linesOfCode": 679,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "Clean, modular architecture with excellent handling of complex CSV features like escaped quotes (\"\"), multiline fields, and custom delimiters. Test suite provides meaningful assertions for edge cases including type coercion and triple quotes. However, critically misses two explicit requirements: streaming/large file support (the implementation loads entire strings into memory) and proper TypeScript generics (uses Record<string, unknown> instead of generic T). Code appears truncated and includes unrequested aggregation methods (sum, average) on the result object."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:08.878Z"
+}

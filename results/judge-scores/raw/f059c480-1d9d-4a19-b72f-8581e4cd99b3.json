@@ -1,0 +1,32 @@
+{
+  "runId": "f059c480-1d9d-4a19-b72f-8581e4cd99b3",
+  "sourceFile": "Claude-Opus-4.6_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "f059c480-1d9d-4a19-b72f-8581e4cd99b3"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 17,
+    "sortAccuracy": 0.2125,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 7,
+    "justification": "The folder hierarchy demonstrates excellent logical grouping with intuitive categories like code/frontend and documents/project_alpha, and the MANIFEST.md is exceptionally detailed with file counts and descriptions. However, the assistant failed to move .env.example and .eslintrc.json from the root directory into config/, violating the explicit requirement that no files remain in the root."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:15:01.377Z"
+}

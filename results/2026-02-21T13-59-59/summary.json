@@ -1,0 +1,86 @@
+[
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "casual",
+    "task": "coding",
+    "totalSteps": 11,
+    "totalToolCalls": 10,
+    "totalTokens": 96863,
+    "totalDurationMs": 126526,
+    "scores": {
+      "automated": {
+        "testsWritten": 116,
+        "testsPassing": 116,
+        "testPassRate": 1,
+        "linesOfCode": 599,
+        "edgeCasesCovered": 12
+      },
+      "laziness": {
+        "totalSteps": 11,
+        "toolCallCount": 10,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 599,
+        "lazinessIndex": 0.185
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "controlled",
+    "task": "coding",
+    "totalSteps": 14,
+    "totalToolCalls": 13,
+    "totalTokens": 208280,
+    "totalDurationMs": 184963,
+    "scores": {
+      "automated": {
+        "testsWritten": 755,
+        "testsPassing": 755,
+        "testPassRate": 1,
+        "linesOfCode": 997,
+        "edgeCasesCovered": 12
+      },
+      "laziness": {
+        "totalSteps": 14,
+        "toolCallCount": 13,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 997,
+        "lazinessIndex": 0.14
+      }
+    }
+  },
+  {
+    "model": "Claude Opus 4.6",
+    "provider": "anthropic",
+    "tier": "large",
+    "tone": "formal",
+    "task": "coding",
+    "totalSteps": 18,
+    "totalToolCalls": 18,
+    "totalTokens": 277824,
+    "totalDurationMs": 226614,
+    "scores": {
+      "automated": {
+        "testsWritten": 154,
+        "testsPassing": 154,
+        "testPassRate": 1,
+        "linesOfCode": 808,
+        "edgeCasesCovered": 12
+      },
+      "laziness": {
+        "totalSteps": 18,
+        "toolCallCount": 18,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 1,
+        "outputVolume": 808,
+        "lazinessIndex": 0.05499999999999999
+      }
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "coding",
+    "totalSteps": 27,
+    "totalToolCalls": 26,
+    "totalTokens": 1189876,
+    "totalDurationMs": 398699,
+    "scores": {
+      "automated": {
+        "testsWritten": 291,
+        "testsPassing": 291,
+        "testPassRate": 1,
+        "linesOfCode": 1421,
+        "edgeCasesCovered": 11
+      },
+      "laziness": {
+        "totalSteps": 27,
+        "toolCallCount": 26,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 1421,
+        "lazinessIndex": 0.05
+      }
+    }
+  }
+]

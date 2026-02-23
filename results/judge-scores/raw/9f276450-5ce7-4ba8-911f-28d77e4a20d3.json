@@ -1,0 +1,32 @@
+{
+  "runId": "9f276450-5ce7-4ba8-911f-28d77e4a20d3",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "9f276450-5ce7-4ba8-911f-28d77e4a20d3"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 32,
+    "sortAccuracy": 0.4,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The structure exhibits excellent organizational logic with intuitive top-level categories and consistent lowercase naming conventions. All 80 files were successfully relocated with zero remaining in root, and the MANIFEST provides clear documentation. Minor opportunities for improvement include the mixed categorical approach in the code directory (combining language and functional groupings) and some under-populated folders (e.g., screenshots/2024, spreadsheets/projects/project_alpha) that suggest slight over-organization."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:35.803Z"
+}

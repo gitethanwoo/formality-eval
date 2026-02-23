@@ -1,0 +1,35 @@
+{
+  "runId": "882c37ac-707b-409c-b6d1-ebae86e33844",
+  "sourceFile": "Claude-Haiku-4.5_formal_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "882c37ac-707b-409c-b6d1-ebae86e33844"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4855,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains exceptional voice consistency across all deliverables, seamlessly integrating features like calendar sync and circadian rhythm science that specifically resonate with remote workers 25-40. The thoroughness is remarkable, exceeding minimum requirements with 10 FAQs, 17 platform-optimized social posts, and comprehensive implementation guides. While the tagline borders on generic marketing speak, the sophisticated execution throughout—particularly the data-driven press release and strategic email sequencing—demonstrates genuine marketing craft that avoids typical lighting product clichés."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:43.477Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "45d34dcb-8448-49a4-be29-ddaf2b16865d",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "45d34dcb-8448-49a4-be29-ddaf2b16865d"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 8,
+    "sortAccuracy": 0.1,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent adherence to requirements with consistent snake_case naming and complete file coverage (all 80 files organized). The hierarchical logic is intuitive, grouping by file type then context (e.g., photos/personal/2024/), and the MANIFEST provides clear documentation. Minor deductions for quality due to the 'misc/' folder being a catch-all for diverse file types (configs and logs) and 'archives/' being somewhat flat compared to the 2-3 level depth of other categories."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:27.962Z"
+}

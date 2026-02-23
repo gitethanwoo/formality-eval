@@ -1,0 +1,35 @@
+{
+  "runId": "6d873a1f-c91d-4b80-83cc-785a1a67726a",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "6d873a1f-c91d-4b80-83cc-785a1a67726a"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1318,
+    "requirementChecksPassed": 6,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 1
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains strong voice consistency with a warm, tech-savvy tone and effectively positions Lumina as a 'calendar-aware' lighting solution that avoids clichéd 'illuminate' language. Specific strengths include platform-differentiated social content (Instagram's visual 'swipe' prompts versus LinkedIn's productivity focus) and a practical FAQ addressing genuine remote worker concerns like video call glare. However, the testimonials rely on generic placeholder quotes rather than specific user scenarios, and the hero copy repeats nearly identical phrasing across files where variation could strengthen the narrative while preserving message consistency."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:52.228Z"
+}

@@ -1,0 +1,35 @@
+{
+  "runId": "afdc1f3f-4d09-4ccf-bac3-6cab6396c466",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "afdc1f3f-4d09-4ccf-bac3-6cab6396c466"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1466,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a consistently warm, tech-savvy voice emphasizing 'effortless' automation across all deliverables, with strong audience targeting via specific pain points like video calls and circadian rhythm support. While it avoids clichéd 'illuminate' language and effectively positions Lumina against competitors through calendar integration, the tagline is merely competent rather than exceptional, and some social posts follow conventional hashtag patterns rather than breaking new ground. All technical requirements were met perfectly, including the 6+ social posts, 5+ FAQ items, and proper press release structure."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:44.346Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "70288754-db2a-4a06-b83b-26a8ff694a74",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "70288754-db2a-4a06-b83b-26a8ff694a74"
+  },
+  "scores": {
+    "testsWritten": 86,
+    "testsExecutable": false,
+    "linesOfCode": 335,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 5,
+    "thoroughness": 5,
+    "creativity": 5,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation misses critical requirements: no streaming support for large files (req 6) and no TypeScript generics (req 7). The architecture conflates parsing with data manipulation by attaching query methods (sum, average, filter) to the result object, violating separation of concerns. There are functional bugs (the average implementation increments total by 1 instead of adding the value) and the files are truncated mid-code. While basic CSV parsing works and tests cover some edge cases, the suite lacks tests for newlines within quoted fields despite the code partially supporting it."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:31.598Z"
+}

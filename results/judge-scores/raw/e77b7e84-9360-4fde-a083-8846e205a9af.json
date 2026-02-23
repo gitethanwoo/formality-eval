@@ -1,0 +1,35 @@
+{
+  "runId": "e77b7e84-9360-4fde-a083-8846e205a9af",
+  "sourceFile": "GPT-5.2-Codex_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "e77b7e84-9360-4fde-a083-8846e205a9af"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1015,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 6,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains exceptional voice consistency and strategic coherence across all deliverables, effectively positioning Lumina's calendar-aware automation as a key differentiator against competitors mentioned in the brand guide. While the writing is polished, audience-appropriate, and adheres perfectly to all structural requirements (including six FAQs and platform-specific social copy), the creative execution relies on familiar SaaS messaging frameworks ('syncs with your day,' 'perfectly lit') rather than developing a truly distinctive conceptual angle that would surprise a domain expert."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:52.218Z"
+}

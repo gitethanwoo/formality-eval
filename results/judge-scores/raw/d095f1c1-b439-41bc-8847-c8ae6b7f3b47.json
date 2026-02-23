@@ -1,0 +1,32 @@
+{
+  "runId": "d095f1c1-b439-41bc-8847-c8ae6b7f3b47",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d095f1c1-b439-41bc-8847-c8ae6b7f3b47"
+  },
+  "scores": {
+    "testsWritten": 52,
+    "testsExecutable": false,
+    "linesOfCode": 301,
+    "edgeCasesCovered": 9
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 5,
+    "adherenceToInstructions": 4,
+    "justification": "The implementation correctly handles quoted fields, custom delimiters, and type coercion with clean, readable code structure. However, it critically fails requirements #4 and #6: newlines within quoted fields are not supported because the code splits by lines before parsing, and there is no streaming implementation for large files. Additionally, the code is truncated mid-implementation and uses `any` types instead of proper generics for row objects."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:19:41.873Z"
+}

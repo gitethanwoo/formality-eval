@@ -1,0 +1,32 @@
+{
+  "runId": "8c5b1ec4-f2b2-41c0-b2bc-e7d3dd4ef6cf",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "8c5b1ec4-f2b2-41c0-b2bc-e7d3dd4ef6cf"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 44,
+    "sortAccuracy": 0.55,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "Excellent type-first organization that intuitively separates work assets (graphics/screenshots) from personal photos, and logically groups business documents by function (career, legal, HR) and project. The hierarchy maintains a consistent 2-3 level depth that balances categorization with accessibility, though creating subfolders for single categories (e.g., scripts/shell/, images/screenshots/2024/) adds slight unnecessary depth given the limited file count. The MANIFEST.md is comprehensive with a clear tree view and thoughtful rationale for key decisions like date-based photo organization and functional spreadsheet grouping."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:57.043Z"
+}

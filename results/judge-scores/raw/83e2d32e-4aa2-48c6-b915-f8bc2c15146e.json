@@ -1,0 +1,32 @@
+{
+  "runId": "83e2d32e-4aa2-48c6-b915-f8bc2c15146e",
+  "sourceFile": "Claude-Haiku-4.5_formal_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "83e2d32e-4aa2-48c6-b915-f8bc2c15146e"
+  },
+  "scores": {
+    "testsWritten": 247,
+    "testsExecutable": false,
+    "linesOfCode": 786,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The library demonstrates excellent documentation and clean, readable code with creative aggregation methods (sum, average, groupBy) on the CSVResult class. However, it critically fails to implement two explicit requirements: handling newlines within quoted fields (it splits by line separator before parsing, breaking quoted newlines) and streaming support for large files. Additionally, it uses `any` for row types instead of proper generics as requested, and the test suite—while voluminous with 63 tests—does not validate the newline-in-quotes edge case."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:39.130Z"
+}

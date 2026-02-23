@@ -1,0 +1,32 @@
+{
+  "runId": "41f826b9-1525-4bd1-9660-b4a864ccb216",
+  "sourceFile": "GPT-5.2-Codex_formal_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "41f826b9-1525-4bd1-9660-b4a864ccb216"
+  },
+  "scores": {
+    "testsWritten": 35,
+    "testsExecutable": false,
+    "linesOfCode": 281,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 5,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation misses two critical requirements: newlines within quoted fields and streaming support. The test suite contains a bug in the quoted field test (asserting on .desc instead of .name). While the code is readable and handles basic CSV parsing well, it lacks generics (using any instead) and has an unusual API design attaching aggregation methods to the result object rather than returning pure data."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:30.847Z"
+}

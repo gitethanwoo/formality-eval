@@ -1,0 +1,35 @@
+{
+  "runId": "34ff42c4-5834-410a-a755-0e840bb9d33e",
+  "sourceFile": "GPT-5.2-Codex_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "34ff42c4-5834-410a-a755-0e840bb9d33e"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1184,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign maintains excellent voice consistency through the 'light that learns your rhythm' motif and positions Lumina well against competitors by emphasizing 'it just works' automation. However, the presence of placeholder brackets in the press release and placeholder testimonials in the landing page undermines its polish, and while the calendar-integration angle offers freshness, the creative execution remains somewhat safe rather than distinctive. All six deliverables are structurally complete and appropriately tailored to their formats, with particularly strong platform-specific adaptations in the social posts."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:08.180Z"
+}

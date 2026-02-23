@@ -1,0 +1,35 @@
+{
+  "runId": "d212a6bd-3076-4b82-8ee3-609990afdaac",
+  "sourceFile": "GPT-5.2-Codex_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d212a6bd-3076-4b82-8ee3-609990afdaac"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1182,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains impressive voice consistency through recurring phrases like 'it just works' and 'adapts to your day' while effectively targeting remote workers with specific pain points like video call lighting and eye strain. All six deliverables meet technical requirements with proper formatting, though the landing page testimonials remain placeholders and the email sequence lacks specific customer anecdotes that would strengthen social proof. The work successfully avoids clichéd lighting metaphors like 'illuminate your workspace' and appropriately positions the $149 price point as an accessible upgrade."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:14.541Z"
+}

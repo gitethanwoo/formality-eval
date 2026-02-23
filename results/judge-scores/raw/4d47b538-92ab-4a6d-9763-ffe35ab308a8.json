@@ -1,0 +1,35 @@
+{
+  "runId": "4d47b538-92ab-4a6d-9763-ffe35ab308a8",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "4d47b538-92ab-4a6d-9763-ffe35ab308a8"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1530,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains excellent voice consistency across all six deliverables, seamlessly integrating the brand guide's 'modern, warm' tone through cohesive messaging like 'it just works' and warm email sign-offs. It demonstrates strong audience fit by specifically addressing remote worker pain points—calendar integration, ambient light sensing, and video call lighting—while avoiding clichéd 'illuminate your workspace' tropes in favor of the fresher 'light that learns your day' angle. However, some social posts rely on slightly formulaic countdown tactics ('3...2...1'), and the press release CEO quote borders on generic tech marketing speak ('lighting assistant you never knew you needed'). Overall, it is a polished, professional campaign that meets every technical requirement with strategic competitor positioning and clean, persuasive copy."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:14.030Z"
+}

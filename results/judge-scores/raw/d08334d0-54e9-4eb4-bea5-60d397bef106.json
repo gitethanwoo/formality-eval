@@ -1,0 +1,32 @@
+{
+  "runId": "d08334d0-54e9-4eb4-bea5-60d397bef106",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "d08334d0-54e9-4eb4-bea5-60d397bef106"
+  },
+  "scores": {
+    "testsWritten": 78,
+    "testsExecutable": false,
+    "linesOfCode": 272,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 8,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates robust parsing logic with comprehensive error handling, extensive test coverage for edge cases (empty inputs, malformed rows, custom delimiters), and clever utility methods (sum, average, groupBy) on the result object. However, it critically misses the streaming/large file requirement—loading entire strings into memory rather than providing an iterator interface—and lacks generics for type-safe row access, falling back to `any` for cell values despite the requirement for proper TypeScript generics."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:26:40.765Z"
+}

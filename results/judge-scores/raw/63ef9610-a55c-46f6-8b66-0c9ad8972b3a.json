@@ -1,0 +1,32 @@
+{
+  "runId": "63ef9610-a55c-46f6-8b66-0c9ad8972b3a",
+  "sourceFile": "Claude-Opus-4.6_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "63ef9610-a55c-46f6-8b66-0c9ad8972b3a"
+  },
+  "scores": {
+    "testsWritten": 801,
+    "testsExecutable": false,
+    "linesOfCode": 990,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates excellent code quality with a clean state machine architecture for field parsing, comprehensive type coercion, and robust error handling. The test suite features meaningful assertions covering edge cases like escaped quotes and comma-containing fields. However, it fails to implement two explicit requirements: streaming/large file parsing (it returns all rows in memory rather than using generators/async iterators) and generics (despite the requirement, no generic type parameters are used for row types). The helper methods on CSVResult (sum, average, groupBy) are useful value-adds but cannot compensate for the missing core functionality."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:27.883Z"
+}

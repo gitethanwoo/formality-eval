@@ -1,0 +1,32 @@
+{
+  "runId": "00e1d783-1445-40ab-84d0-2ecc3e34a3f5",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "00e1d783-1445-40ab-84d0-2ecc3e34a3f5"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1401
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a consistent warm, modern voice throughout (e.g., 'warmly' closings in emails, 'glow' terminology in hero copy) and effectively targets remote workers with specific references to 'deep work,' 'sprints,' and calendar integration. While all six deliverables are technically complete and well-structured—including exactly 5 FAQ questions and 6 labeled social posts—the tagline relies on the cliché 'works as hard as you do,' and the circadian lighting angle, though well-executed, breaks little new ground in the smart home category."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:17:44.284Z"
+}

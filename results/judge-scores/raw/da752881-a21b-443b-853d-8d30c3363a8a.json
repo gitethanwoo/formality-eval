@@ -1,0 +1,32 @@
+{
+  "runId": "da752881-a21b-443b-853d-8d30c3363a8a",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "da752881-a21b-443b-853d-8d30c3363a8a"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 24,
+    "sortAccuracy": 0.3,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "Excellent organizational scheme with consistent snake_case naming throughout and intuitive categorization by file type and purpose. The balanced 2-3 level hierarchy (with screenshots at 4 levels being a minor deviation) and clear separation of concerns (e.g., photos by year, code by language) demonstrates thoughtful information architecture. MANIFEST.md comprehensively documents the rationale with a complete tree view. Every file is accounted for with no stragglers in the root directory."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:19.536Z"
+}

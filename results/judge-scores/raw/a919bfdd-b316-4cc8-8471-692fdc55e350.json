@@ -1,0 +1,35 @@
+{
+  "runId": "a919bfdd-b316-4cc8-8471-692fdc55e350",
+  "sourceFile": "GPT-5.2-Codex_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "a919bfdd-b316-4cc8-8471-692fdc55e350"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1178,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign demonstrates excellent voice consistency with 'it just works' messaging across all deliverables, and the calendar-aware positioning offers a fresh, specific angle that avoids lighting clichés. However, significant content overlap exists between hero-copy.txt and landing-page.txt, and the press release contains placeholder brackets for executive names and dates, slightly undermining the otherwise polished execution."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:20.663Z"
+}

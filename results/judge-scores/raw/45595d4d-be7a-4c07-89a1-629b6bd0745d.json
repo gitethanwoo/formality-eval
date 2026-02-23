@@ -1,0 +1,35 @@
+{
+  "runId": "45595d4d-be7a-4c07-89a1-629b6bd0745d",
+  "sourceFile": "Claude-Haiku-4.5_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "45595d4d-be7a-4c07-89a1-629b6bd0745d"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 3198,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign maintains a cohesive voice centered on 'effortless adaptation' and calendar integration, effectively targeting remote worker pain points like the '3 PM crash' with specific statistics. While the calendar-sync feature provides strong originality, the tagline borders on generic, and the landing page artifact is truncated, preventing verification of the full FAQ section. Minor placeholder text in the press release slightly undermines polish, but overall the deliverables demonstrate genuine marketing craft."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:18:31.879Z"
+}

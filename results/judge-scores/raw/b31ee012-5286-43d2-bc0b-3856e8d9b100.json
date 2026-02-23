@@ -1,0 +1,32 @@
+{
+  "runId": "b31ee012-5286-43d2-bc0b-3856e8d9b100",
+  "sourceFile": "Claude-Haiku-4.5_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "b31ee012-5286-43d2-bc0b-3856e8d9b100"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 7,
+    "sortAccuracy": 0.0875,
+    "filesUntouched": 5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 8,
+    "justification": "The organizational scheme demonstrates excellent logic with intuitive top-level categories (archives, code, documents, logs, photos, spreadsheets) and well-balanced 2-3 level nesting (e.g., code/backend/, documents/procedures/). All 80 original files were accounted for and moved with consistent lowercase naming conventions. However, the AI left several organizational metadata files (COMPLETION_SUMMARY.txt, INDEX.md, ORGANIZATION_REPORT.txt, etc.) in the root directory alongside the required MANIFEST.md, which conflicts with the strict instruction that 'no files should remain in the root.'"
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:06.753Z"
+}

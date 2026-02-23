@@ -1,0 +1,35 @@
+{
+  "runId": "89e34c6e-1dd4-4680-b5c6-b4f769d013fc",
+  "sourceFile": "GPT-5.1-Codex-Mini_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "89e34c6e-1dd4-4680-b5c6-b4f769d013fc"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1455,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains a cohesive, warm voice throughout (e.g., 'Glow on,' 'remote rhythm') while cleverly positioning the calendar-sync feature as a differentiator against competitors. The writing avoids lighting clichés and effectively targets remote worker pain points like eye strain and manual adjustments. Minor weaknesses include the sudden introduction of 'AI-driven' jargon in Email 3 that contradicts the earlier, simpler 'intuitive' positioning, and slight over-repetition of 'warm amber' across files."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:39.723Z"
+}

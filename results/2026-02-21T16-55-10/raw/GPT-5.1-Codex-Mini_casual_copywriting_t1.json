@@ -1,0 +1,246 @@
+{
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "19cf5a69-bd7b-4b3c-82ea-14bb6b9eea47"
+  },
+  "prompt": "create a full marketing launch campaign for lumina. it's a new smart desk lamp that adjusts color temperature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audience is remote workers 25-40\n\nhere's what i need, each one as its own file:\n\n1. tagline.txt - memorable brand tagline (one line plz)\n2. hero-copy.txt - hero section copy for the landing page (headline + 2-3 paragraphs)\n3. email-sequence.txt - 3-email launch sequence (subject lines + full body for each)\n4. social-posts.txt - social media posts for 3 platforms (twitter/x, instagram, linkedin), at least 2 posts per platform\n5. landing-page.txt - full landing page copy (hero, features, testimonials placeholder, faq section with at least 5 questions, cta)\n6. press-release.txt - press release announcing the product launch (proper pr format with headline, dateline, body, boilerplate)\n\nmake sense? the copy should be compelling and on-brand\n\nokay thats it. actually do the work, don't just yap about it. write everything to the files",
+  "steps": [
+    {
+      "stepIndex": 0,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "readFile",
+          "args": {
+            "path": "brand-guide.md"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "readFile",
+          "result": {
+            "content": "# Lumina Brand Guide\n\n## Voice & Tone\n- Modern, warm, approachable\n- Tech-savvy but not jargony\n- Emphasize the \"it just works\" experience\n- Target audience: remote workers, 25-40, value productivity and wellness\n\n## Key Messages\n- Light that adapts to your life\n- Designed for how you actually work\n- No more eye strain, no more manual adjustments\n\n## Brand Colors (for reference)\n- Primary: Warm amber (#F5A623)\n- Secondary: Deep navy (#1A2B4A)\n- Accent: Soft white (#F8F9FA)\n\n## Competitors\n- BenQ ScreenBar ($109) — monitor-mounted, no smart features\n- Dyson Lightcycle ($599) — premium, over-engineered for most users\n- Xiaomi Mi LED ($39) — budget, basic smart features\n"
+          }
+        }
+      ],
+      "inputTokens": 572,
+      "outputTokens": 38,
+      "totalTokens": 610,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 1,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > tagline.txt\nLight that follows your day.\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 816,
+      "outputTokens": 154,
+      "totalTokens": 970,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 2,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > hero-copy.txt\nHeadline: Lumina adapts so you can focus.\n\nParagraph 1: Remote work thrives when your space feels effortless. Lumina is the smart desk lamp that intuitively shifts color temperature and brightness so there are no more distractions from harsh glare or dull light. It pays attention to your calendar, the time of day, and the light already filling the room, then gently sets the scene.\n\nParagraph 2: Pair it once, and Lumina keeps pace—glowing warmer during evening brainstorming, crisp and energized during morning sprints, and dimming when you log off. The intuitive app gives you control without overwhelming you; automation is the default, personalization is one tap away.\n\nParagraph 3: Built for remote workers who care about wellness and performance, Lumina is the kind of smart tech that quietly makes every task easier. It’s premium enough to feel like an upgrade, yet practical enough to fit effortlessly on any desk or workspace.\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 991,
+      "outputTokens": 285,
+      "totalTokens": 1276,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 3,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > email-sequence.txt\nEmail 1: Subject: Meet Lumina—the desk lamp that knows what you need before you do\nBody:\nHey there,\n\nSetting up a great work-from-home setup shouldn’t be another task on your list. That’s why we built Lumina—a smart desk lamp that adjusts color temperature, brightness, and mood based on the time of day, your calendar, and the light already in your space. It learns how you work, then keeps your desk in the perfect light automatically.\n\nLumina starts warm for evening wrap-ups, shifts to energizing daylight for your mid-day focus, and eases into dimmer tones when it's time to relax. No toggles, no manual tweaking—just consistent light that keeps your eyes comfortable and your mind focused.\n\nReady for your most seamless workday yet? Pre-order Lumina today for $149 and be among the first to experience light that actually understands your rhythm.\n\n[Link to preorder]\n\nEmail 2: Subject: Why remote workers are swapping their desk lamps for Lumina\nBody:\nHi again,\n\nWe’ve been talking with remote workers and the message is clear: they want tech that works quietly while they chase ideas. Lumina was built with that exact mindset. It blends smart automation (calendar cues, ambient light sensing, time-of-day shifts) with a warm, modern design that looks at home on any desk.\n\nLumina doesn’t just brighten your space—it reduces eye strain, keeps you energized during long calls, and smoothly transitions so you’re never fighting the glare of a midday sun or staring into a cold, blue bulb at 9 p.m. The result? Better focus, more comfort, and a desk lamp that finally feels like it was tuned to you.\n\nWant to see the difference? Join our early adopters and get Lumina for $149. Limited launch quantities, so grab yours before they’re gone.\n\n[Link to preorder]\n\nEmail 3: Subject: Last chance: Lumina launch pricing ends soon\nBody:\nHey,\n\nJust a quick reminder: Lumina officially launches soon, and our launch pricing of $149 won’t last forever. Remote workers everywhere are upgrading their desk light, and we’re down to the final wave of launch inventory.\n\nWhether you’re in a tiny apartment or a spacious home office, Lumina’s adaptive light keeps your mind and eyes in sync with your workday. It’s all tech-forward capability—smart sensors, calendar sync, app control—wrapped in a sleek, neutral design that feels premium without being over the top.\n\nThis is your last chance to secure Lumina at the launch price. Let your workspace glow with intention.\n\n[Link to preorder]\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 1297,
+      "outputTokens": 659,
+      "totalTokens": 1956,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 4,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > social-posts.txt\nTwitter / X Post 1:\nLumina senses your schedule, the room, and the hour to deliver the perfect light for whatever you’re working on. Smart, warm, effortless. Pre-order now for $149. #LuminaLight #RemoteWork\n\nTwitter / X Post 2:\nManual lamp adjustments? That’s so 2010. Lumina shifts color and brightness automatically based on time of day, calendar events, and ambient light. Let your desk glow without a second thought. #SmartLighting #WFHSetup\n\nInstagram Post 1:\nCaption: The desk lamp that keeps up with your day, so you can keep up with your goals. Lumina adjusts color temperature and brightness based on your calendar, your environment, and the work you’re doing. It’s smart, warm, and made for people who live and work on their own terms. Pre-order now—$149. #LuminaLight #RemoteWorkLife #DeskSetupGoals\nVisual idea: clean workspace with Lumina casting warm light on a laptop and notebook.\n\nInstagram Post 2:\nCaption: Morning sprints need bright light. Evening wrap-ups need warmth. Lumina knows the difference and makes the switch automatically. No fiddling, just focus. Who’s ready to upgrade their workspace? #SmartDeskLamp #LuminaGlow #ProductivityBoost\nVisual idea: split image showing cool light morning / warm light evening.\n\nLinkedIn Post 1:\nFinding the right light for your remote workday is a subtle productivity win. Lumina pairs adaptive lighting with calendar awareness and ambient sensors to deliver the right color temp and brightness at every moment. It’s tech that removes friction from your flow, so you can stay in the zone without even thinking about it. Learn more about the launch today. #RemoteWork #WorkspaceInnovation\n\nLinkedIn Post 2:\nRemote work thrives on intentional environments. Lumina is the smart desk lamp that understands your schedule, analyzes your room light, and adjusts automatically so your desk stays comfortable from sunrise meetings to late-night planning. Built for remote teams and serious solo workers alike—pre-order yours at launch pricing while availability lasts. #FutureOfWork #LuminaLaunch #WorkplaceWellbeing\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 1977,
+      "outputTokens": 557,
+      "totalTokens": 2534,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 5,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > landing-page.txt\nHero:\nHeadline: Light that adapts to how you work.\nSubheadline: Lumina is the smart desk lamp that adjusts automatically based on time of day, your calendar, and the light already in your room—so you can keep your focus where it belongs.\nCTA Button Text: Pre-order Lumina ($149)\n\nFeatures:\n1. Dynamic Color Temperature & Brightness: Lumina shifts from cool, energizing whites for morning focus to warm, calming ambers for evening sessions. Everything happens automatically without you ever opening a settings menu.\n2. Calendar & Context Awareness: Sync Lumina with your calendar to give cue-based lighting: sharper during deep work blocks and softer during meetings or winding-down periods.\n3. Ambient Room Sensing: Built-in sensors read how much light is already in your space. Lumina compensates for sunny windows, dim corners, and everything in between.\n4. Minimal Design, Maximum Comfort: Thoughtfully weighted base, matte finish, and whisper-quiet motor make Lumina feel premium on any desk. It’s plug-and-play, with wireless controls when you want them.\n5. Wellness Built In: Lumina’s gentle transitions reduce eye strain and fatigue, helping your body track a more natural day even when you’re working hard.\n\nTestimonials:\n\"Lumina finally gave me a premium lighting solution that keeps up with my meetings, deadlines, and late-night creative work.\" — Remote product designer\n\"My eyes feel better, my Zoom calls look sharper, and I never think about adjusting the lamp anymore.\" — Freelance writer\n[Additional testimonials to be added]\n\nFAQ:\nQ1: How does Lumina know when to change the light?\nA1: Lumina uses a combination of your device calendar, the time of day, and ambient light sensors in the lamp to determine the optimal color temperature and brightness.\n\nQ2: Do I need to download an app?\nA2: Lumina works out of the box. You can control it via the companion app for fine-tuning, but automation and presets are enabled by default.\n\nQ3: Can I override the automatic settings?\nA3: Absolutely. Tap the touch controls or use the app to lock a specific color temperature or brightness whenever you need a consistent look.\n\nQ4: Is Lumina compatible with my smart home setup?\nA4: Lumina currently supports Bluetooth control via the app. Smart home integrations are on our roadmap and will be announced post-launch.\n\nQ5: What is the warranty?\nA5: Lumina comes with a one-year limited warranty covering manufacturing defects.\n\nClosing CTA:\nReady to upgrade your workspace? Pre-order Lumina for $149 and let your desk lamp start working the moment you do.\n[Pre-order Button]\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 2555,
+      "outputTokens": 696,
+      "totalTokens": 3251,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 6,
+      "text": "",
+      "toolCalls": [
+        {
+          "toolName": "bash",
+          "args": {
+            "command": "cat <<'EOF' > press-release.txt\nFOR IMMEDIATE RELEASE\n\nHeadline: Lumina Launches Smart Desk Lamp Tailored for Remote Workers\nSubheadline: Adaptive light, calendar awareness, and ambient sensing make productivity glow for anyone working from home.\n\nNEW YORK, NY – October 7, 2024 – Lumina, the newest player in smart lighting, today announced the launch of its flagship desk lamp designed specifically for remote workers who want effortless focus and wellness cues. The $149 Lumina lamp dynamically adjusts color temperature and brightness based on time of day, calendar cues, and ambient room lighting, removing the need for manual tweaks and creating a cohesive work rhythm.\n\n“We wanted to build a lamp that feels like it truly understands the modern remote day,” said Priya Patel, founder of Lumina. “Most desk lighting forces you to fiddle with dials or switches. Lumina just observes your schedule, senses your room, and delivers the right light without asking for attention—so you can stay immersed in what matters.”\n\nLumina’s sensors data feed into a proprietary control system that blends subtle automation with user-friendly overrides. The lamp warms up ahead of evening wrap-ups, brightens automatically for morning focus, and dimly signals the end of the workday. It also responds in real time to window light, preventing midday glare or dim, depressing corners.\n\nRemote professionals can package Lumina into their routine by syncing it with calendar platforms or letting it learn their patterns through the companion app. A touch-sensitive base and elevation-adjustable arm complement the lamp’s adaptive brain, delivering both premium feel and practical flexibility.\n\nLumina is available for pre-order today at $149, with shipping slated for early November. Launch participants receive priority fulfillment and exclusive content focused on optimizing remote work environments.\n\nBoilerplate:\nLumina is a technology company focused on making work-from-home life more productive and comfortable through intentional lighting and design. Founded in 2023, Lumina designs smart, human-first lighting solutions that adapt to remote routines and help people stay in flow. For more information, visit www.luminalighting.com.\n\nMedia Contact:\nJordan Hayes\nPress@luminalighting.com\n(555) 012-8787\nEOF"
+          }
+        }
+      ],
+      "toolResults": [
+        {
+          "toolName": "bash",
+          "result": {
+            "stdout": "",
+            "stderr": "",
+            "exitCode": 0
+          }
+        }
+      ],
+      "inputTokens": 3272,
+      "outputTokens": 679,
+      "totalTokens": 3951,
+      "finishReason": "tool-calls",
+      "durationMs": 0
+    },
+    {
+      "stepIndex": 7,
+      "text": "All requested marketing materials for Lumina have been created and saved to their respective files:\n\n- `tagline.txt`\n- `hero-copy.txt`\n- `email-sequence.txt`\n- `social-posts.txt`\n- `landing-page.txt`\n- `press-release.txt`\n\nLet me know if you’d like revisions or additional assets!",
+      "toolCalls": [],
+      "toolResults": [],
+      "inputTokens": 3972,
+      "outputTokens": 94,
+      "totalTokens": 4066,
+      "finishReason": "stop",
+      "durationMs": 0
+    }
+  ],
+  "totalInputTokens": 15452,
+  "totalOutputTokens": 3162,
+  "totalTokens": 18614,
+  "totalSteps": 8,
+  "totalToolCalls": 7,
+  "totalDurationMs": 26477,
+  "finalSandboxFiles": [
+    "brand-guide.md",
+    "email-sequence.txt",
+    "hero-copy.txt",
+    "landing-page.txt",
+    "press-release.txt",
+    "social-posts.txt",
+    "tagline.txt"
+  ],
+  "artifacts": {
+    "brand-guide.md": "# Lumina Brand Guide\n\n## Voice & Tone\n- Modern, warm, approachable\n- Tech-savvy but not jargony\n- Emphasize the \"it just works\" experience\n- Target audience: remote workers, 25-40, value productivity and wellness\n\n## Key Messages\n- Light that adapts to your life\n- Designed for how you actually work\n- No more eye strain, no more manual adjustments\n\n## Brand Colors (for reference)\n- Primary: Warm amber (#F5A623)\n- Secondary: Deep navy (#1A2B4A)\n- Accent: Soft white (#F8F9FA)\n\n## Competitors\n- BenQ ScreenBar ($109) — monitor-mounted, no smart features\n- Dyson Lightcycle ($599) — premium, over-engineered for most users\n- Xiaomi Mi LED ($39) — budget, basic smart features\n",
+    "email-sequence.txt": "Email 1: Subject: Meet Lumina—the desk lamp that knows what you need before you do\nBody:\nHey there,\n\nSetting up a great work-from-home setup shouldn’t be another task on your list. That’s why we built Lumina—a smart desk lamp that adjusts color temperature, brightness, and mood based on the time of day, your calendar, and the light already in your space. It learns how you work, then keeps your desk in the perfect light automatically.\n\nLumina starts warm for evening wrap-ups, shifts to energizing daylight for your mid-day focus, and eases into dimmer tones when it's time to relax. No toggles, no manual tweaking—just consistent light that keeps your eyes comfortable and your mind focused.\n\nReady for your most seamless workday yet? Pre-order Lumina today for $149 and be among the first to experience light that actually understands your rhythm.\n\n[Link to preorder]\n\nEmail 2: Subject: Why remote workers are swapping their desk lamps for Lumina\nBody:\nHi again,\n\nWe’ve been talking with remote workers and the message is clear: they want tech that works quietly while they chase ideas. Lumina was built with that exact mindset. It blends smart automation (calendar cues, ambient light sensing, time-of-day shifts) with a warm, modern design that looks at home on any desk.\n\nLumina doesn’t just brighten your space—it reduces eye strain, keeps you energized during long calls, and smoothly transitions so you’re never fighting the glare of a midday sun or staring into a cold, blue bulb at 9 p.m. The result? Better focus, more comfort, and a desk lamp that finally feels like it was tuned to you.\n\nWant to see the difference? Join our early adopters and get Lumina for $149. Limited launch quantities, so grab yours before they’re gone.\n\n[Link to preorder]\n\nEmail 3: Subject: Last chance: Lumina launch pricing ends soon\nBody:\nHey,\n\nJust a quick reminder: Lumina officially launches soon, and our launch pricing of $149 won’t last forever. Remote workers everywhere are upgrading their desk light, and we’re down to the final wave of launch inventory.\n\nWhether you’re in a tiny apartment or a spacious home office, Lumina’s adaptive light keeps your mind and eyes in sync with your workday. It’s all tech-forward capability—smart sensors, calendar sync, app control—wrapped in a sleek, neutral design that feels premium without being over the top.\n\nThis is your last chance to secure Lumina at the launch price. Let your workspace glow with intention.\n\n[Link to preorder]\n",
+    "hero-copy.txt": "Headline: Lumina adapts so you can focus.\n\nParagraph 1: Remote work thrives when your space feels effortless. Lumina is the smart desk lamp that intuitively shifts color temperature and brightness so there are no more distractions from harsh glare or dull light. It pays attention to your calendar, the time of day, and the light already filling the room, then gently sets the scene.\n\nParagraph 2: Pair it once, and Lumina keeps pace—glowing warmer during evening brainstorming, crisp and energized during morning sprints, and dimming when you log off. The intuitive app gives you control without overwhelming you; automation is the default, personalization is one tap away.\n\nParagraph 3: Built for remote workers who care about wellness and performance, Lumina is the kind of smart tech that quietly makes every task easier. It’s premium enough to feel like an upgrade, yet practical enough to fit effortlessly on any desk or workspace.\n",
+    "landing-page.txt": "Hero:\nHeadline: Light that adapts to how you work.\nSubheadline: Lumina is the smart desk lamp that adjusts automatically based on time of day, your calendar, and the light already in your room—so you can keep your focus where it belongs.\nCTA Button Text: Pre-order Lumina ($149)\n\nFeatures:\n1. Dynamic Color Temperature & Brightness: Lumina shifts from cool, energizing whites for morning focus to warm, calming ambers for evening sessions. Everything happens automatically without you ever opening a settings menu.\n2. Calendar & Context Awareness: Sync Lumina with your calendar to give cue-based lighting: sharper during deep work blocks and softer during meetings or winding-down periods.\n3. Ambient Room Sensing: Built-in sensors read how much light is already in your space. Lumina compensates for sunny windows, dim corners, and everything in between.\n4. Minimal Design, Maximum Comfort: Thoughtfully weighted base, matte finish, and whisper-quiet motor make Lumina feel premium on any desk. It’s plug-and-play, with wireless controls when you want them.\n5. Wellness Built In: Lumina’s gentle transitions reduce eye strain and fatigue, helping your body track a more natural day even when you’re working hard.\n\nTestimonials:\n\"Lumina finally gave me a premium lighting solution that keeps up with my meetings, deadlines, and late-night creative work.\" — Remote product designer\n\"My eyes feel better, my Zoom calls look sharper, and I never think about adjusting the lamp anymore.\" — Freelance writer\n[Additional testimonials to be added]\n\nFAQ:\nQ1: How does Lumina know when to change the light?\nA1: Lumina uses a combination of your device calendar, the time of day, and ambient light sensors in the lamp to determine the optimal color temperature and brightness.\n\nQ2: Do I need to download an app?\nA2: Lumina works out of the box. You can control it via the companion app for fine-tuning, but automation and presets are enabled by default.\n\nQ3: Can I override the automatic settings?\nA3: Absolutely. Tap the touch controls or use the app to lock a specific color temperature or brightness whenever you need a consistent look.\n\nQ4: Is Lumina compatible with my smart home setup?\nA4: Lumina currently supports Bluetooth control via the app. Smart home integrations are on our roadmap and will be announced post-launch.\n\nQ5: What is the warranty?\nA5: Lumina comes with a one-year limited warranty covering manufacturing defects.\n\nClosing CTA:\nReady to upgrade your workspace? Pre-order Lumina for $149 and let your desk lamp start working the moment you do.\n[Pre-order Button]\n",
+    "press-release.txt": "FOR IMMEDIATE RELEASE\n\nHeadline: Lumina Launches Smart Desk Lamp Tailored for Remote Workers\nSubheadline: Adaptive light, calendar awareness, and ambient sensing make productivity glow for anyone working from home.\n\nNEW YORK, NY – October 7, 2024 – Lumina, the newest player in smart lighting, today announced the launch of its flagship desk lamp designed specifically for remote workers who want effortless focus and wellness cues. The $149 Lumina lamp dynamically adjusts color temperature and brightness based on time of day, calendar cues, and ambient room lighting, removing the need for manual tweaks and creating a cohesive work rhythm.\n\n“We wanted to build a lamp that feels like it truly understands the modern remote day,” said Priya Patel, founder of Lumina. “Most desk lighting forces you to fiddle with dials or switches. Lumina just observes your schedule, senses your room, and delivers the right light without asking for attention—so you can stay immersed in what matters.”\n\nLumina’s sensors data feed into a proprietary control system that blends subtle automation with user-friendly overrides. The lamp warms up ahead of evening wrap-ups, brightens automatically for morning focus, and dimly signals the end of the workday. It also responds in real time to window light, preventing midday glare or dim, depressing corners.\n\nRemote professionals can package Lumina into their routine by syncing it with calendar platforms or letting it learn their patterns through the companion app. A touch-sensitive base and elevation-adjustable arm complement the lamp’s adaptive brain, delivering both premium feel and practical flexibility.\n\nLumina is available for pre-order today at $149, with shipping slated for early November. Launch participants receive priority fulfillment and exclusive content focused on optimizing remote work environments.\n\nBoilerplate:\nLumina is a technology company focused on making work-from-home life more productive and comfortable through intentional lighting and design. Founded in 2023, Lumina designs smart, human-first lighting solutions that adapt to remote routines and help people stay in flow. For more information, visit www.luminalighting.com.\n\nMedia Contact:\nJordan Hayes\nPress@luminalighting.com\n(555) 012-8787\n",
+    "social-posts.txt": "Twitter / X Post 1:\nLumina senses your schedule, the room, and the hour to deliver the perfect light for whatever you’re working on. Smart, warm, effortless. Pre-order now for $149. #LuminaLight #RemoteWork\n\nTwitter / X Post 2:\nManual lamp adjustments? That’s so 2010. Lumina shifts color and brightness automatically based on time of day, calendar events, and ambient light. Let your desk glow without a second thought. #SmartLighting #WFHSetup\n\nInstagram Post 1:\nCaption: The desk lamp that keeps up with your day, so you can keep up with your goals. Lumina adjusts color temperature and brightness based on your calendar, your environment, and the work you’re doing. It’s smart, warm, and made for people who live and work on their own terms. Pre-order now—$149. #LuminaLight #RemoteWorkLife #DeskSetupGoals\nVisual idea: clean workspace with Lumina casting warm light on a laptop and notebook.\n\nInstagram Post 2:\nCaption: Morning sprints need bright light. Evening wrap-ups need warmth. Lumina knows the difference and makes the switch automatically. No fiddling, just focus. Who’s ready to upgrade their workspace? #SmartDeskLamp #LuminaGlow #ProductivityBoost\nVisual idea: split image showing cool light morning / warm light evening.\n\nLinkedIn Post 1:\nFinding the right light for your remote workday is a subtle productivity win. Lumina pairs adaptive lighting with calendar awareness and ambient sensors to deliver the right color temp and brightness at every moment. It’s tech that removes friction from your flow, so you can stay in the zone without even thinking about it. Learn more about the launch today. #RemoteWork #WorkspaceInnovation\n\nLinkedIn Post 2:\nRemote work thrives on intentional environments. Lumina is the smart desk lamp that understands your schedule, analyzes your room light, and adjusts automatically so your desk stays comfortable from sunrise meetings to late-night planning. Built for remote teams and serious solo workers alike—pre-order yours at launch pricing while availability lasts. #FutureOfWork #LuminaLaunch #WorkplaceWellbeing\n",
+    "tagline.txt": "Light that follows your day.\n"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1612
+  }
+}

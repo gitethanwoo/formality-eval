@@ -1,0 +1,32 @@
+{
+  "runId": "616b1c72-5149-4bf9-9b28-b0002c20507f",
+  "sourceFile": "Claude-Haiku-4.5_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "616b1c72-5149-4bf9-9b28-b0002c20507f"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 0,
+    "sortAccuracy": 0,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 9,
+    "creativity": 6,
+    "adherenceToInstructions": 7,
+    "justification": "The organizational logic is sound with intuitive functional grouping (Frontend/Backend/Scripts, Financial/Tracking), and the MANIFEST.md is exemplary—comprehensive, well-structured, and clearly explains the rationale. However, the folder naming critically violates the consistency requirement by mixing PascalCase (Photos, Documents, Code) with snake_case (Config_and_Build, Data_and_Reports, Meeting_Notes). Additionally, minor categorization errors exist (e.g., 'user_research_findings.txt' classified as Personal rather than work-related). All 80 files were properly moved with appropriate nesting depth."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:22.547Z"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "model": "GPT-5.1 Codex Mini",
+    "provider": "openai",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "totalSteps": 7,
+    "totalToolCalls": 6,
+    "totalTokens": 14559,
+    "totalDurationMs": 23285,
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1625
+    }
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "runId": "19cf5a69-bd7b-4b3c-82ea-14bb6b9eea47",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "19cf5a69-bd7b-4b3c-82ea-14bb6b9eea47"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1612
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains excellent consistency in its 'adaptive intelligence' positioning across all deliverables, with particularly strong platform-tailored social content (LinkedIn focuses on productivity, Instagram on aesthetics). The differentiation from competitors (BenQ/Dyson/Xiaomi) is sharp and the FAQ addresses genuine practical concerns like app requirements and smart home compatibility. However, Email 1 and Email 2 overlap significantly in feature explanations rather than building distinct narrative arcs (e.g., social proof or specific use cases), and the tagline, while clean, plays it safe without risking a more distinctive brand statement. The press release is professionally structured but relies on standard template language rather than extending the brand's warm, approachable voice into the formal format."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:17:43.117Z"
+}

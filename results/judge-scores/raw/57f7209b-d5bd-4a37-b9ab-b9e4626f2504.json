@@ -1,0 +1,32 @@
+{
+  "runId": "57f7209b-d5bd-4a37-b9ab-b9e4626f2504",
+  "sourceFile": "Claude-Haiku-4.5_formal_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "57f7209b-d5bd-4a37-b9ab-b9e4626f2504"
+  },
+  "scores": {
+    "testsWritten": 304,
+    "testsExecutable": false,
+    "linesOfCode": 1026,
+    "edgeCasesCovered": 11
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 5,
+    "creativity": 7,
+    "adherenceToInstructions": 4,
+    "justification": "While the code is readable and well-documented with comprehensive test coverage, it fails to implement three critical requirements: streaming/large file support, proper handling of newlines within quoted fields (it incorrectly splits by line separator first, breaking quoted newlines), and TypeScript generics (using 'any' for row data instead of generic types). The architecture using closures for method chaining is unconventional but functional, and the error collection approach is well-implemented."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:44.472Z"
+}

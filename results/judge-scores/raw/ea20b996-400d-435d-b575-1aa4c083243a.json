@@ -1,0 +1,32 @@
+{
+  "runId": "ea20b996-400d-435d-b575-1aa4c083243a",
+  "sourceFile": "Claude-Opus-4.6_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "ea20b996-400d-435d-b575-1aa4c083243a"
+  },
+  "scores": {
+    "testsWritten": 16,
+    "testsExecutable": false,
+    "linesOfCode": 612,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 6,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The parser demonstrates solid engineering with clean separation of concerns, proper handling of complex CSV features like escaped quotes and newlines within fields, and thoughtful additions like type coercion and query methods on the result object. However, it fails to implement two explicit requirements: streaming support for large files and generic type parameters for type-safe row objects. The architecture is otherwise well-structured with readable, well-commented code and comprehensive handling of delimiter customization and quote escaping."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:07.586Z"
+}

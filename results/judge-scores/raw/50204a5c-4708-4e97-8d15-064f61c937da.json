@@ -1,0 +1,32 @@
+{
+  "runId": "50204a5c-4708-4e97-8d15-064f61c937da",
+  "sourceFile": "GPT-5.2-Codex_formal_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "50204a5c-4708-4e97-8d15-064f61c937da"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 49,
+    "sortAccuracy": 0.6125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent naming consistency (uniform lowercase snake_case) and logical categorization by file type, domain, and date. The 2-3 level nesting strikes an optimal balance between flatness and excessive depth. Minor improvements could include separating personal vacation photos from professional/work photos in the 2024 folder, but overall the structure is immediately intuitive and complete with all 80 files properly relocated."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:56.628Z"
+}

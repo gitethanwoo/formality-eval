@@ -1,0 +1,32 @@
+{
+  "runId": "2e266fc4-3536-4a03-aee2-1a5b3d7c4f21",
+  "sourceFile": "GPT-5.2-Codex_controlled_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "2e266fc4-3536-4a03-aee2-1a5b3d7c4f21"
+  },
+  "scores": {
+    "testsWritten": 51,
+    "testsExecutable": false,
+    "linesOfCode": 315,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 6,
+    "adherenceToInstructions": 5,
+    "justification": "Implementation misses two explicit requirements: streaming support for large files (it loads entire strings into memory) and generics (rows use `Record<string, unknown>` instead of generic type parameters). The architecture awkwardly mixes CSV parsing with data analysis concerns (sum, average, groupBy methods on the result object). While the parsing logic correctly handles quoted fields and custom delimiters, the provided files are truncated, preventing verification of complete error handling, and the custom test framework lacks standard tooling integration."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:20:55.969Z"
+}

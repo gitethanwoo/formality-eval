@@ -1,0 +1,32 @@
+{
+  "runId": "6c283a07-b922-4742-aae9-84ecb8dbf264",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "6c283a07-b922-4742-aae9-84ecb8dbf264"
+  },
+  "scores": {
+    "testsWritten": 114,
+    "testsExecutable": false,
+    "linesOfCode": 309,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides comprehensive CSV parsing with good test coverage for edge cases like escaped quotes, custom delimiters, and malformed rows. However, it critically misses the streaming requirement, instead loading entire files into memory. It also fails to leverage TypeScript generics for type-safe row access, forcing use of Record<string, unknown> throughout. The architecture is unusual in embedding aggregation methods (sum, average, groupBy) directly on the result object rather than separating concerns."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:08.942Z"
+}

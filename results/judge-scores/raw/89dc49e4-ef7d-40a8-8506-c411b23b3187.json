@@ -1,0 +1,35 @@
+{
+  "runId": "89dc49e4-ef7d-40a8-8506-c411b23b3187",
+  "sourceFile": "Claude-Opus-4.6_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "89dc49e4-ef7d-40a8-8506-c411b23b3187"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4132,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 8,
+    "justification": "The campaign maintains excellent voice consistency with a warm, approachable, tech-savvy tone that perfectly fits remote workers aged 25-40, and the 'calendar-aware lighting' positioning offers a genuinely fresh angle that avoids generic 'illuminate your life' clichés. However, the landing page artifact is truncated before displaying the required FAQ section with 5+ questions, preventing verification of that deliverable, and the hero copy—while persuasive—presents as a single body block that may not fully satisfy the '3 distinct sections' structural requirement."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:25:57.279Z"
+}

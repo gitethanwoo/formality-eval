@@ -1,0 +1,32 @@
+{
+  "runId": "42cbe529-d49a-4387-a4f4-b9167fe8e987",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "42cbe529-d49a-4387-a4f4-b9167fe8e987"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 9,
+    "sortAccuracy": 0.1125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational scheme demonstrates excellent judgment by grouping documents by business function (career, HR, legal) and code by language, while maintaining consistent lowercase naming throughout. The 2-3 level nesting strikes an ideal balance, with year-based subfolders for photos providing sensible chronological organization without excessive depth. Minor categorization quibbles exist (e.g., Makefile in sh/, YAML configs in code/), but the structure is immediately intuitive and the comprehensive MANIFEST with tree visualization leaves no ambiguity about the organizational rationale."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:12.863Z"
+}

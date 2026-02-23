@@ -1,0 +1,32 @@
+{
+  "runId": "c36cbc61-290d-4aff-8327-746c8a47e4b2",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "c36cbc61-290d-4aff-8327-746c8a47e4b2"
+  },
+  "scores": {
+    "testsWritten": 52,
+    "testsExecutable": false,
+    "linesOfCode": 322,
+    "edgeCasesCovered": 9
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 4,
+    "creativity": 6,
+    "adherenceToInstructions": 4,
+    "justification": "The code is clean and readable with good TypeScript generics and a thoughtful result API featuring aggregation helpers (sum, average, groupBy). However, it critically fails two requirements: newlines within quoted fields are impossible because the parser splits input by line separator before tokenizing, and streaming support is absent (the entire file is loaded into memory). Tests are meaningful and cover edge cases like escaped quotes and type coercion, but they omit the missing newline and streaming functionality, masking these architectural flaws."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:49.141Z"
+}

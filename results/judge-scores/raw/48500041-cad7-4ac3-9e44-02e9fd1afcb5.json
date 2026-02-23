@@ -1,0 +1,32 @@
+{
+  "runId": "48500041-cad7-4ac3-9e44-02e9fd1afcb5",
+  "sourceFile": "GPT-5.1-Codex-Mini_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "48500041-cad7-4ac3-9e44-02e9fd1afcb5"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 11,
+    "sortAccuracy": 0.1375,
+    "filesUntouched": 2
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 6,
+    "adherenceToInstructions": 6,
+    "justification": "The organizational scheme demonstrates strong categorical logic with intuitive top-level buckets (photos, documents, code, spreadsheets) and well-balanced 2-3 level nesting that avoids both flatness and excessive depth. Naming conventions are consistently lowercase with underscores. However, the execution failed to relocate `.env.example` and `.eslintrc.json` from the root directory, violating the explicit instruction that no files remain at the top level, and the MANIFEST incorrectly claims all files were moved. Additionally, project file organization is slightly inconsistent between documents (which use `project_alpha/`) and spreadsheets (which use a generic `projects/` subfolder)."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:24:45.669Z"
+}

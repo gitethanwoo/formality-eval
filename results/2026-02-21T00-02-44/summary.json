@@ -1,0 +1,29 @@
+[
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "totalSteps": 40,
+    "totalToolCalls": 39,
+    "totalTokens": 709172,
+    "totalDurationMs": 219522,
+    "scores": {
+      "automated": {
+        "totalFiles": 81,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 0.9876543209876543,
+        "filesUntouched": 1
+      },
+      "laziness": {
+        "totalSteps": 40,
+        "toolCallCount": 39,
+        "uniqueToolsUsed": 3,
+        "completenessRate": 0.9876543209876543,
+        "outputVolume": 80,
+        "lazinessIndex": 0.029938271604938296
+      }
+    }
+  }
+]

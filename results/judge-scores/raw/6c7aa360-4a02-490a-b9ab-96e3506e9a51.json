@@ -1,0 +1,32 @@
+{
+  "runId": "6c7aa360-4a02-490a-b9ab-96e3506e9a51",
+  "sourceFile": "GPT-5.2-Codex_casual_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "6c7aa360-4a02-490a-b9ab-96e3506e9a51"
+  },
+  "scores": {
+    "testsWritten": 51,
+    "testsExecutable": false,
+    "linesOfCode": 288,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 5,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation correctly handles standard CSV parsing, escaped quotes, and custom delimiters with proper state machine logic, but fails to implement streaming/large file parsing despite it being a core requirement. The code lacks generics (rows are typed as Record<string, unknown> requiring casts), and critically, the test suite omits verification for newlines within quoted fields even though the parser logic appears to support it. The CSVResult class mixing data with query methods (sum, average) is an unusual architectural choice that couples parsing with analysis."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:15.624Z"
+}

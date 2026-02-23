@@ -1,0 +1,35 @@
+{
+  "runId": "6abcb5d3-d639-4137-b44a-70a292bb05b3",
+  "sourceFile": "GPT-5.2-Codex_formal_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "6abcb5d3-d639-4137-b44a-70a292bb05b3"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 1089,
+    "requirementChecksPassed": 5,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.8333333333333334
+  },
+  "judgeScores": {
+    "quality": 8,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 9,
+    "justification": "The campaign maintains excellent voice consistency through the 'it just works' positioning and 'adapts to your day' messaging across all deliverables. It effectively targets remote workers with relevant features like calendar sync and eye strain reduction while positioning the $149 price point strategically against competitors. The calendar-aware lighting angle offers fresh differentiation from generic smart lamp claims. Minor weaknesses include placeholder text in landing page testimonials and press release contact fields, and LinkedIn posts that feel slightly more corporate than the warm, approachable tone established in other channels."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:26:42.109Z"
+}

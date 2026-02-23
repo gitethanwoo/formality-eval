@@ -1,0 +1,83 @@
+[
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "copywriting",
+    "totalSteps": 2,
+    "totalToolCalls": 6,
+    "totalTokens": 15009,
+    "totalDurationMs": 63517,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 3375
+      },
+      "laziness": {
+        "totalSteps": 2,
+        "toolCallCount": 6,
+        "uniqueToolsUsed": 1,
+        "completenessRate": 1,
+        "outputVolume": 3375,
+        "lazinessIndex": 0.34500000000000003
+      }
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "copywriting",
+    "totalSteps": 6,
+    "totalToolCalls": 10,
+    "totalTokens": 73332,
+    "totalDurationMs": 100928,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 4153
+      },
+      "laziness": {
+        "totalSteps": 6,
+        "toolCallCount": 10,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 4153,
+        "lazinessIndex": 0.26
+      }
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "controlled",
+    "task": "copywriting",
+    "totalSteps": 15,
+    "totalToolCalls": 19,
+    "totalTokens": 404867,
+    "totalDurationMs": 247534,
+    "scores": {
+      "automated": {
+        "deliverablesRequested": 6,
+        "deliverablesProduced": 6,
+        "completenessRate": 1,
+        "totalWordCount": 4128
+      },
+      "laziness": {
+        "totalSteps": 15,
+        "toolCallCount": 19,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 4128,
+        "lazinessIndex": 0.125
+      }
+    }
+  }
+]

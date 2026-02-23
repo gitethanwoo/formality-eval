@@ -1,0 +1,32 @@
+{
+  "runId": "2eed774c-f03f-40c8-857f-7006012a500a",
+  "sourceFile": "Claude-Opus-4.6_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "2eed774c-f03f-40c8-857f-7006012a500a"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 12,
+    "sortAccuracy": 0.15,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational scheme demonstrates sophisticated domain awareness through project-based document grouping and chronologically-nested photo directories, while maintaining rigorous consistency in snake_case naming conventions. All 79 files are accounted for with a balanced 2-3 level hierarchy, and the MANIFEST provides clear rationale for the taxonomy. The only minor weakness is placing project_alpha_burndown.csv in spreadsheets/operations/ rather than with other Project Alpha deliverables in documents/project_alpha/, though this is defensible as operational data."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:15:06.860Z"
+}

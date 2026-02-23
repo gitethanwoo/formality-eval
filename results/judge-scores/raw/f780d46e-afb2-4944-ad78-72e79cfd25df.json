@@ -1,0 +1,32 @@
+{
+  "runId": "f780d46e-afb2-4944-ad78-72e79cfd25df",
+  "sourceFile": "Claude-Opus-4.6_formal_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "f780d46e-afb2-4944-ad78-72e79cfd25df"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 36,
+    "sortAccuracy": 0.45,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational structure demonstrates excellent domain expertise through the architectural layering of code (frontend/backend/data-science/scripts) and the temporal-functional hybrid sorting of photos (by year for personal, by purpose for work assets). All 80 files are accounted for with zero remaining in root, utilizing consistent kebab-case naming and ideal 2-3 level nesting, while the MANIFEST provides clear documentation of the 'type-first, topic-second' logic. The only minor quibble is that package_old.json might more appropriately reside in archives/ given its deprecated status, though its placement in config/ is defensible."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:16:06.821Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "07e76e85-6b78-47bd-9300-53a76a027b13",
+  "sourceFile": "Claude-Haiku-4.5_casual_coding_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "coding",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "07e76e85-6b78-47bd-9300-53a76a027b13"
+  },
+  "scores": {
+    "testsWritten": 108,
+    "testsExecutable": false,
+    "linesOfCode": 624,
+    "edgeCasesCovered": 11
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation demonstrates excellent TypeScript typing, clean architecture with separated concerns (parsing, coercion, result container), and comprehensive test coverage with meaningful assertions. However, it fails to implement two critical requirements: handling newlines within quoted fields (the parser splits by line separator before processing quotes) and streaming support for large files (it loads the entire input into memory). Additionally, while types are present, generics are not utilized as requested."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:21:35.994Z"
+}

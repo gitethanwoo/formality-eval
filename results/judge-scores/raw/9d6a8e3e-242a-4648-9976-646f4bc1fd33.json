@@ -1,0 +1,35 @@
+{
+  "runId": "9d6a8e3e-242a-4648-9976-646f4bc1fd33",
+  "sourceFile": "Claude-Opus-4.6_controlled_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "9d6a8e3e-242a-4648-9976-646f4bc1fd33"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 4413,
+    "requirementChecksPassed": 3,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.5
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 7,
+    "creativity": 8,
+    "adherenceToInstructions": 7,
+    "justification": "The campaign demonstrates exceptional voice consistency and polish, maintaining a warm, tech-savvy tone ('it just works,' 'no fiddling') that perfectly targets remote workers 25-40. The calendar integration feature offers genuine originality, moving well beyond clichéd lighting metaphors to position Lumina as a productivity tool rather than just a lamp. However, the landing page appears to lack the required FAQ section (5+ questions) in the provided text, and both the landing page and press release are truncated, preventing verification of complete adherence to structural requirements like the press release boilerplate and final CTAs."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:23:12.111Z"
+}

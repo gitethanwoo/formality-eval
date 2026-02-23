@@ -1,0 +1,32 @@
+{
+  "runId": "c4083b22-9114-4754-9055-5fce4629477e",
+  "sourceFile": "GPT-5.2-Codex_controlled_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "c4083b22-9114-4754-9055-5fce4629477e"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 45,
+    "sortAccuracy": 0.5625,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organization demonstrates excellent logic by categorizing files first by type (documents, code, photos) then by project, date, or functional area, making navigation intuitive. Naming conventions are consistent throughout using lowercase snake_case, and the 2-3 level nesting strikes an ideal balance between flatness and excessive depth. While the structure is professionally executed rather than inventive, the only minor weakness is the photos/misc/ folder serving as a catch-all for a single whiteboard image that could arguably fit elsewhere."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:17:58.347Z"
+}

@@ -1,0 +1,32 @@
+{
+  "runId": "23a93255-02dc-40a4-8aa2-2dd557dfcec3",
+  "sourceFile": "Claude-Opus-4.6_formal_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "formal",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "23a93255-02dc-40a4-8aa2-2dd557dfcec3"
+  },
+  "scores": {
+    "testsWritten": 199,
+    "testsExecutable": false,
+    "linesOfCode": 849,
+    "edgeCasesCovered": 12
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 7,
+    "creativity": 7,
+    "adherenceToInstructions": 6,
+    "justification": "The implementation demonstrates solid architecture with well-separated parsing logic and creative fluent API methods (sum, average, groupBy) on the result object. It handles complex CSV edge cases like escaped quotes and multiline fields robustly. However, it fails to implement the explicitly requested generics for type-safe row parsing (using unknown instead), and the streaming implementation is not visible in the provided truncated code, making adherence to all requirements uncertain."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:13:37.190Z"
+}

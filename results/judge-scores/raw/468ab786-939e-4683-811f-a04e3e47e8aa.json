@@ -1,0 +1,32 @@
+{
+  "runId": "468ab786-939e-4683-811f-a04e3e47e8aa",
+  "sourceFile": "Claude-Haiku-4.5_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "468ab786-939e-4683-811f-a04e3e47e8aa"
+  },
+  "scores": {
+    "testsWritten": 243,
+    "testsExecutable": false,
+    "linesOfCode": 782,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides extensive documentation (9 files), 80+ comprehensive tests with meaningful assertions, and a clean API with useful query methods (filter, sum, groupBy). However, it critically fails on two required features: newlines within quoted fields are handled incorrectly (the parser splits by line separator first, breaking quoted multi-line fields), and streaming support is claimed but not implemented (the code loads entire strings into memory). TypeScript types exist but lack generics for row types, using Record<string, any> instead of allowing typed CSVResult<T>."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:22:00.766Z"
+}

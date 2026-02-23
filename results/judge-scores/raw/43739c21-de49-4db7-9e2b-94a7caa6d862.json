@@ -1,0 +1,32 @@
+{
+  "runId": "43739c21-de49-4db7-9e2b-94a7caa6d862",
+  "sourceFile": "Claude-Opus-4.6_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "label": "Claude Opus 4.6",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "43739c21-de49-4db7-9e2b-94a7caa6d862"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 25,
+    "sortAccuracy": 0.3125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational scheme demonstrates excellent domain awareness, particularly in separating photos by personal year versus professional assets and partitioning code by technical function (app, data/ml, scripts). Naming conventions are perfectly consistent, and the 2-3 level nesting strikes an appropriate balance without over-engineering. The MANIFEST.md is comprehensive with clear visual hierarchy and detailed tables, though it contains a minor counting error (listing 16 code files instead of the actual 20)."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:15:14.578Z"
+}

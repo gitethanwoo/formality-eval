@@ -1,0 +1,32 @@
+{
+  "runId": "b7421824-934f-402c-a102-c4cf7c33f2e0",
+  "sourceFile": "GPT-5.2-Codex_casual_file-sorting_t1.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "b7421824-934f-402c-a102-c4cf7c33f2e0"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 28,
+    "sortAccuracy": 0.35,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The hybrid taxonomy elegantly balances technical and business contexts, organizing by file type at the root then by domain (HR/legal/projects) or language within. Hierarchy maintains ideal 2-3 level depth throughout, and the manifest provides clear documentation. All 80 files are appropriately categorized with consistent naming conventions."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:28:00.772Z"
+}

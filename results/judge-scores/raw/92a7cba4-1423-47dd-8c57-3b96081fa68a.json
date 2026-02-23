@@ -1,0 +1,32 @@
+{
+  "runId": "92a7cba4-1423-47dd-8c57-3b96081fa68a",
+  "sourceFile": "GPT-5.1-Codex-Mini_casual_file-sorting_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.1-codex-mini",
+      "provider": "openai",
+      "label": "GPT-5.1 Codex Mini",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "file-sorting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "92a7cba4-1423-47dd-8c57-3b96081fa68a"
+  },
+  "scores": {
+    "totalFiles": 80,
+    "correctlyPlaced": 17,
+    "sortAccuracy": 0.2125,
+    "filesUntouched": 0
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 9,
+    "creativity": 7,
+    "adherenceToInstructions": 10,
+    "justification": "The organizational scheme demonstrates excellent logical grouping with consistent lowercase snake_case naming and balanced 2-3 level nesting that makes navigation intuitive. All 80 files are comprehensively documented in the detailed MANIFEST. Minor improvements could include relocating `test_utils.py` to a dedicated tests directory and placing `api_documentation_draft.txt` with project documents rather than general notes, though the current structure remains highly functional."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:27:05.771Z"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "casual",
+    "task": "file-sorting",
+    "totalSteps": 16,
+    "totalToolCalls": 15,
+    "totalTokens": 104295,
+    "totalDurationMs": 36216,
+    "scores": {
+      "automated": {
+        "totalFiles": 80,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 1,
+        "filesUntouched": 0
+      },
+      "laziness": {
+        "totalSteps": 16,
+        "toolCallCount": 15,
+        "uniqueToolsUsed": 2,
+        "completenessRate": 1,
+        "outputVolume": 80,
+        "lazinessIndex": 0.10999999999999999
+      }
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "tier": "small",
+    "tone": "formal",
+    "task": "file-sorting",
+    "totalSteps": 32,
+    "totalToolCalls": 31,
+    "totalTokens": 894727,
+    "totalDurationMs": 299515,
+    "scores": {
+      "automated": {
+        "totalFiles": 86,
+        "correctlyPlaced": 80,
+        "sortAccuracy": 0.9302325581395349,
+        "filesUntouched": 6
+      },
+      "laziness": {
+        "totalSteps": 32,
+        "toolCallCount": 31,
+        "uniqueToolsUsed": 1,
+        "completenessRate": 0.9302325581395349,
+        "outputVolume": 80,
+        "lazinessIndex": 0.10290697674418606
+      }
+    }
+  }
+]

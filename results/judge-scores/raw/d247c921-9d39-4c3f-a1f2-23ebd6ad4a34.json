@@ -1,0 +1,35 @@
+{
+  "runId": "d247c921-9d39-4c3f-a1f2-23ebd6ad4a34",
+  "sourceFile": "Claude-Haiku-4.5_casual_copywriting_t1.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "casual",
+    "task": "copywriting",
+    "trial": 1,
+    "maxSteps": 400,
+    "runId": "d247c921-9d39-4c3f-a1f2-23ebd6ad4a34"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 2894,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 7,
+    "thoroughness": 5,
+    "creativity": 7,
+    "adherenceToInstructions": 5,
+    "justification": "The campaign demonstrates strong voice consistency and persuasive use of social proof (Sarah testimonial) across email and landing page materials, with platform-appropriate social content (casual Twitter, professional LinkedIn). However, landing-page.txt is truncated mid-FAQ, leaving the deliverable incomplete, and hero-copy.txt redundantly duplicates the landing page hero section. While the calendar-integration angle provides fresh, audience-appropriate positioning, the tagline is somewhat generic."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:23:51.655Z"
+}

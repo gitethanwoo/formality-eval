@@ -1,0 +1,35 @@
+{
+  "runId": "930778f4-2b01-4c00-83fc-c12b82c4866c",
+  "sourceFile": "Claude-Haiku-4.5_controlled_copywriting_t2.json",
+  "config": {
+    "model": {
+      "id": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "label": "Claude Haiku 4.5",
+      "tier": "small"
+    },
+    "tone": "controlled",
+    "task": "copywriting",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "930778f4-2b01-4c00-83fc-c12b82c4866c"
+  },
+  "scores": {
+    "deliverablesRequested": 6,
+    "deliverablesProduced": 6,
+    "completenessRate": 1,
+    "totalWordCount": 5210,
+    "requirementChecksPassed": 4,
+    "requirementChecksTotal": 6,
+    "requirementComplianceRate": 0.6666666666666666
+  },
+  "judgeScores": {
+    "quality": 9,
+    "thoroughness": 10,
+    "creativity": 8,
+    "adherenceToInstructions": 10,
+    "justification": "The campaign maintains exceptional voice consistency through the 'works your hours' theme and biology-focused messaging across all deliverables. It demonstrates strong audience fit by targeting specific remote worker pain points like calendar integration and circadian disruption with credible scientific backing. The writing is polished and persuasive, avoiding clichés like 'illuminate your space' in favor of fresh angles like 'fighting your biology.' While the tagline is functional rather than poetic, the overall execution is comprehensive (exceeding minimum requirements with 16 social posts and 11 FAQ items) and production-ready."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-22T02:24:12.654Z"
+}

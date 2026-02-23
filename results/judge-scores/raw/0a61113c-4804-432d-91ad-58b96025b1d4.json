@@ -1,0 +1,32 @@
+{
+  "runId": "0a61113c-4804-432d-91ad-58b96025b1d4",
+  "sourceFile": "GPT-5.2-Codex_controlled_coding_t2.json",
+  "config": {
+    "model": {
+      "id": "gpt-5.2-codex",
+      "provider": "openai",
+      "label": "GPT-5.2 Codex",
+      "tier": "large"
+    },
+    "tone": "controlled",
+    "task": "coding",
+    "trial": 2,
+    "maxSteps": 400,
+    "runId": "0a61113c-4804-432d-91ad-58b96025b1d4"
+  },
+  "scores": {
+    "testsWritten": 68,
+    "testsExecutable": false,
+    "linesOfCode": 327,
+    "edgeCasesCovered": 10
+  },
+  "judgeScores": {
+    "quality": 6,
+    "thoroughness": 6,
+    "creativity": 6,
+    "adherenceToInstructions": 5,
+    "justification": "The implementation provides solid CSV parsing logic with proper handling of quoted fields, escaped quotes, and custom delimiters, plus comprehensive test coverage including edge cases like large fields and malformed rows. However, it critically fails to implement streaming support (requirement #6) despite claiming to handle large files, and lacks generics for type-safe row objects (requirement #7). The automatic type coercion (converting 'true'/numbers/null) is creative but violates standard CSV parsing expectations where values should remain strings."
+  },
+  "judgeModel": "moonshotai/kimi-k2.5",
+  "judgedAt": "2026-02-21T21:25:41.016Z"
+}
