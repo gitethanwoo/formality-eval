@@ -15,9 +15,9 @@ const DIM_LABELS: Record<Dim, string> = {
   adherenceToInstructions: "Adherence",
 };
 
-const TONES: ToneStyle[] = ["casual", "controlled", "formal"];
+const TONES: ToneStyle[] = ["casual", "controlled", "formal", "keyboard-errors"];
 const TASKS: TaskType[] = ["copywriting", "coding", "file-sorting"];
-const TONE_LABELS: Record<ToneStyle, string> = { casual: "Casual", controlled: "Controlled", formal: "Formal" };
+const TONE_LABELS: Record<ToneStyle, string> = { casual: "Casual", controlled: "Controlled", formal: "Formal", "keyboard-errors": "Keyboard Errors" };
 const TASK_LABELS: Record<TaskType, string> = { copywriting: "Copywriting", coding: "Coding", "file-sorting": "File Sorting" };
 
 // ---------------------------------------------------------------------------

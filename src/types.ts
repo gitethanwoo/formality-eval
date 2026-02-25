@@ -1,4 +1,4 @@
-export type ToneStyle = "casual" | "controlled" | "formal";
+export type ToneStyle = "casual" | "controlled" | "formal" | "keyboard-errors";
 export type TaskType = "copywriting" | "coding" | "file-sorting";
 
 export interface ModelConfig {
