@@ -25,7 +25,7 @@ Usage:
 Options:
   --all, -a              Run the full eval matrix
   --model, -m <id>       Filter to a specific model
-  --tone, -t <tone>      Filter to "casual", "controlled", or "formal"
+  --tone, -t <tone>      Filter to "casual", "controlled", "formal", or "keyboard-errors"
   --task, -k <task>      Filter to "copywriting", "coding", or "file-sorting"
   --trials, -n <count>   Number of trials per config (default: 1)
   --help, -h             Show this help

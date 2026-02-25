@@ -38,7 +38,7 @@ export const MODELS: RuntimeModelConfig[] = [
   },
 ];
 
-export const TONES: ToneStyle[] = ["casual", "controlled", "formal"];
+export const TONES: ToneStyle[] = ["casual", "controlled", "formal", "keyboard-errors"];
 export const TASKS: TaskType[] = ["copywriting", "coding", "file-sorting"];
 
 export const MAX_STEPS = 400;
