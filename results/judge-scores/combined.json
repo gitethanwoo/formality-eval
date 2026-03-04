@@ -1485,6 +1485,501 @@
     "judgedAt": "2026-02-22T02:25:11.855Z"
   },
   {
+    "runId": "4e6b7fdd-f5f1-4282-a424-bfa6ecc01251",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "4e6b7fdd-f5f1-4282-a424-bfa6ecc01251"
+    },
+    "scores": {
+      "testsWritten": 305,
+      "testsExecutable": false,
+      "linesOfCode": 1071,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 6,
+      "creativity": 5,
+      "adherenceToInstructions": 5,
+      "justification": "Clean, well-documented code with good test coverage and a pleasant chainable API. However, it fails to implement streaming/large file parsing as explicitly required, and the premature line-splitting approach breaks multiline quoted field support—a critical CSV parsing feature. The use of 'any' for ParsedRow instead of generics also weakens type safety."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:31.048Z"
+  },
+  {
+    "runId": "f7b486a2-b51a-40b3-abfe-b8f853d4201c",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "f7b486a2-b51a-40b3-abfe-b8f853d4201c"
+    },
+    "scores": {
+      "testsWritten": 1743,
+      "testsExecutable": false,
+      "linesOfCode": 839,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 5,
+      "thoroughness": 6,
+      "creativity": 7,
+      "adherenceToInstructions": 4,
+      "justification": "The implementation is clean and well-documented with comprehensive tests for features it does implement (quoted fields, custom delimiters, type coercion, aggregations). However, it critically fails two explicit requirements: it cannot handle newlines within quoted fields (splits on line breaks before parsing, breaking multiline CSV cells) and lacks streaming support for large files (processes entire string at once). Additionally, it uses `any` for row types instead of proper generics as requested, and the test suite omits validation for multiline quoted fields."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:14.433Z"
+  },
+  {
+    "runId": "8139074c-cc17-4424-a42a-fd4fc533d4e0",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_coding_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "8139074c-cc17-4424-a42a-fd4fc533d4e0"
+    },
+    "scores": {
+      "testsWritten": 873,
+      "testsExecutable": false,
+      "linesOfCode": 741,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 6,
+      "justification": "The implementation demonstrates excellent thoroughness with 100+ meaningful tests and extensive documentation, plus creative touches like the fluent CSVResult API with aggregation methods. However, it fails to deliver two explicit requirements: streaming support for large files and proper TypeScript generics (it uses 'any' for row values). The architecture is clean with good separation of concerns between parsing, coercion, and result manipulation, though the ParsedRow type being '[key: string]: any' undermines type safety."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:15.492Z"
+  },
+  {
+    "runId": "f42c6d97-993d-48a0-8688-dfb202307f29",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_coding_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "f42c6d97-993d-48a0-8688-dfb202307f29"
+    },
+    "scores": {
+      "testsWritten": 890,
+      "testsExecutable": false,
+      "linesOfCode": 946,
+      "edgeCasesCovered": 12
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 7,
+      "creativity": 6,
+      "adherenceToInstructions": 4,
+      "justification": "The implementation features excellent documentation and test coverage with 100+ tests, plus thoughtful additions like aggregation methods. However, it critically fails the requirement to handle newlines within quoted fields because it splits lines before tokenizing, breaking quoted strings that contain line breaks. It also lacks the required streaming support and generics for type-safe row parsing, using `any` instead of allowing `parseCSV<T>()`."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:20.705Z"
+  },
+  {
+    "runId": "c177362d-ae07-421c-a5c5-9f909057d965",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_coding_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "c177362d-ae07-421c-a5c5-9f909057d965"
+    },
+    "scores": {
+      "testsWritten": 162,
+      "testsExecutable": false,
+      "linesOfCode": 1356,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 5,
+      "thoroughness": 6,
+      "creativity": 5,
+      "adherenceToInstructions": 4,
+      "justification": "The implementation has a critical architectural flaw: it splits input by newlines before parsing (line 119), making it impossible to handle newlines within quoted fields (requirement #4). It also lacks streaming support (#6) despite claiming otherwise, and uses 'any' types instead of the requested generics (#7). While the code is readable and has comprehensive documentation, the core CSV parsing logic is broken for standard CSV edge cases. The test suite misses this bug by not actually testing newlines inside quoted fields."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:16.356Z"
+  },
+  {
+    "runId": "1c956913-6552-4dd9-8a0f-808209d56883",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "1c956913-6552-4dd9-8a0f-808209d56883"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4078,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 9,
+      "justification": "The campaign demonstrates exceptional consistency in voice and strategy across all deliverables, with particular strength in the email sequence's strategic funnel design and the social posts' platform-specific tailoring. The writing avoids clichéd lighting metaphors while effectively targeting remote worker pain points (eye strain, afternoon slumps, calendar management) with specific, credible benefits. Minor weaknesses include placeholder brackets in the press release awaiting final details and a tagline that, while serviceable, leans toward generic triplicate structure rather than distinctive brand voice. Overall, this is polished, production-ready marketing that meets all technical requirements with room to spare."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:18.918Z"
+  },
+  {
+    "runId": "5258a053-329b-4c01-a91b-4ed2eff5a2e4",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "5258a053-329b-4c01-a91b-4ed2eff5a2e4"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4928,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign delivers a cohesive brand narrative through the \"Light That Thinks Like You Do\" concept, consistently differentiating Lumina as \"intelligent, not just connected\" across all channels while effectively targeting remote worker pain points like circadian rhythm disruption and video call lighting. While the deliverables demonstrate professional polish and exceed scope requirements (12 social posts, 10 FAQ items), minor redundancy between hero-copy.txt and the landing page hero section, along with somewhat conventional press release formatting, prevent it from reaching true excellence."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:31.081Z"
+  },
+  {
+    "runId": "65492834-936d-4fd4-a218-0abdc0d3fc53",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_copywriting_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "65492834-936d-4fd4-a218-0abdc0d3fc53"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4704,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains exceptional voice consistency through the recurring 'works as hard as you do' motif and precise audience alignment with references to the '3pm slump' and calendar integration. It exceeds deliverable requirements with 15 social posts and 12 FAQ entries, though some Instagram captions rely on standard formulas and the press release contains placeholder founder names requiring manual completion. The persuasive health-focused positioning and clean, professional writing demonstrate solid marketing craft appropriate for the $149 smart home market."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:40.936Z"
+  },
+  {
+    "runId": "34d96ae5-c8fa-4c40-96f9-b5b51b9cb5da",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_copywriting_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "34d96ae5-c8fa-4c40-96f9-b5b51b9cb5da"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 5259,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 8,
+      "justification": "The campaign maintains a cohesive 'Light That Knows Your Day' narrative across all deliverables, effectively targeting remote workers with specific pain points like the '3 PM energy crash' and calendar integration benefits. The email sequence follows a strong persuasion arc from intrigue to urgency, while the social content appropriately tailors tone to each platform. Minor issues include a spelling error in Instagram hashtags ('ProducitivtyHacks') and apparent truncation of the press release boilerplate and landing page FAQ in the provided artifacts. Overall, the work demonstrates solid marketing craft with consistent voice and strong audience alignment."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:44.986Z"
+  },
+  {
+    "runId": "3a4b1345-9af1-4355-b75d-75eb0399d05f",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_copywriting_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "3a4b1345-9af1-4355-b75d-75eb0399d05f"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4822,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains a cohesive 'invisible adaptation' narrative across all touchpoints, effectively targeting remote worker pain points like the '3pm slump' and video call fatigue without falling into generic 'illuminate your life' tropes. While the deliverables are comprehensive and platform-appropriate—including a particularly strong email nurture sequence and differentiated social strategies—the creativity, while solid, stops short of being truly groundbreaking or risky enough to merit a top-tier originality score."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:37.334Z"
+  },
+  {
+    "runId": "0bbe9a2c-4ba4-432e-b1b2-ff7f5256db13",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "0bbe9a2c-4ba4-432e-b1b2-ff7f5256db13"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 22,
+      "sortAccuracy": 0.275,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 7,
+      "creativity": 6,
+      "adherenceToInstructions": 9,
+      "justification": "The directory structure offers intuitive categorization by file type with consistent snake_case naming and well-balanced 2-3 level nesting. However, the MANIFEST.md contains a significant counting error (claiming 16 files in projects/ versus the actual 11), indicating insufficient verification. All 80 files were successfully organized with zero remaining in the root directory."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:10.769Z"
+  },
+  {
+    "runId": "4cc30612-3ebe-4735-bb78-4910007f5e65",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "4cc30612-3ebe-4735-bb78-4910007f5e65"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The organization demonstrates excellent logical grouping with intuitive 2-3 level nesting and consistent numeric-prefixed naming conventions that provide clear visual ordering. The comprehensive MANIFEST.md provides detailed file descriptions and clear rationale for the structure. Minor deduction for the '06_config_and_logs' folder which misleadingly suggests it contains configuration files (actual configs reside in 04_code/config/), potentially causing slight navigation confusion despite containing only logs as listed."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:19.665Z"
+  },
+  {
+    "runId": "07140cb4-ae36-4417-b3ed-f29f01b71fbd",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_file-sorting_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "07140cb4-ae36-4417-b3ed-f29f01b71fbd"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 5
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 6,
+      "creativity": 7,
+      "adherenceToInstructions": 5,
+      "justification": "The folder hierarchy demonstrates solid organizational logic with intuitive categorization (e.g., separating Photos into Personal_Memories, Team_Photos, and Design_Assets) and consistent use of numbered prefixes for sorting. However, the work is marred by six documentation files remaining in the root directory, violating the strict requirement that no files remain there. Additionally, the MANIFEST.md contains inaccuracies (listing non-existent folders like Meeting_Notes and 07_Miscellaneous) and appears truncated, undermining its utility as documentation."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:00.161Z"
+  },
+  {
+    "runId": "28ddfb7b-629b-4bdf-a701-a56f60e8a685",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_file-sorting_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "28ddfb7b-629b-4bdf-a701-a56f60e8a685"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The organizational structure is logical and intuitive, with consistent PascalCase naming and well-balanced 2-level nesting (e.g., Code/Backend/files). All ~80 files are accounted for in appropriate categories. The MANIFEST.md is comprehensive and clearly explains the rationale, though it contains a minor error listing '8' files for Backend when 9 are actually present."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:08.165Z"
+  },
+  {
+    "runId": "73971785-59c2-4fb8-83f1-0c989e974868",
+    "sourceFile": "Claude-Haiku-4.5_keyboard-errors_file-sorting_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-haiku-4-5",
+        "provider": "anthropic",
+        "label": "Claude Haiku 4.5",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "73971785-59c2-4fb8-83f1-0c989e974868"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 0,
+      "sortAccuracy": 0,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The numbered prefix system (01_PHOTOS, etc.) creates intuitive visual ordering, and the MANIFEST provides exceptional file-level documentation with descriptive metadata. However, some categorization choices are questionable: utils.ts and validate_schema.ts belong in Backend rather than Configuration, and user_research_findings.txt would be better placed in Projects than floating at the Documents root level. The dual use of 'Personal' for both family photos and career documents creates slight ambiguity, though the structure otherwise maintains excellent consistency with 2-3 level nesting and 100% file coverage."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:05.115Z"
+  },
+  {
     "runId": "17e458de-7b43-4463-8c52-8d188924a7a3",
     "sourceFile": "Claude-Opus-4.6_casual_coding_t1.json",
     "config": {
@@ -2968,6 +3463,469 @@
     },
     "judgeModel": "moonshotai/kimi-k2.5",
     "judgedAt": "2026-02-21T21:16:06.821Z"
+  },
+  {
+    "runId": "de8d9277-2c55-4bb1-a081-b29425aba73d",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "de8d9277-2c55-4bb1-a081-b29425aba73d"
+    },
+    "scores": {
+      "testsWritten": 744,
+      "testsExecutable": false,
+      "linesOfCode": 954,
+      "edgeCasesCovered": 12
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 7,
+      "creativity": 6,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation demonstrates clean architecture, good separation of concerns, and comprehensive test coverage for quoted fields, escaped quotes, multiline values, and custom delimiters. However, it misses two explicit requirements: streaming/large file parsing (it loads the entire input as a string into memory) and generics (rows are typed as Record<string, unknown>[] rather than supporting a generic type parameter like parseCSV<T>). While error handling structures exist, the parser lacks sophisticated malformed CSV validation beyond column count checking."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:16.005Z"
+  },
+  {
+    "runId": "1f9f262b-bcc8-4ab3-a77c-8bd12cefcb5b",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_coding_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "1f9f262b-bcc8-4ab3-a77c-8bd12cefcb5b"
+    },
+    "scores": {
+      "testsWritten": 312,
+      "testsExecutable": false,
+      "linesOfCode": 792,
+      "edgeCasesCovered": 12
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 7,
+      "creativity": 6,
+      "adherenceToInstructions": 6,
+      "justification": "The implementation demonstrates solid architecture with a clean state-machine parser, comprehensive handling of quoted fields/escaped quotes, and good edge case coverage (CRLF/CR line endings, empty fields, type coercion). However, it fails to deliver two key requirements: streaming/large file parsing (it processes the entire input string at once with no streaming API) and proper generics (rows are typed as Record<string, unknown> rather than supporting generic row types like CSVResult<T>). The custom test framework is functional but unconventional."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:15:56.245Z"
+  },
+  {
+    "runId": "04b655dc-735d-44b7-8f67-3dd1e49c6c71",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_coding_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "04b655dc-735d-44b7-8f67-3dd1e49c6c71"
+    },
+    "scores": {
+      "testsWritten": 750,
+      "testsExecutable": false,
+      "linesOfCode": 958,
+      "edgeCasesCovered": 12
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 7,
+      "creativity": 7,
+      "adherenceToInstructions": 7,
+      "justification": "The implementation demonstrates excellent code organization with a well-designed state machine parser and comprehensive type definitions. The custom test framework and rich result API (with methods like sum/filter) show creativity. However, while the parser correctly handles complex CSV edge cases (quoted newlines, escaped quotes, various line endings), it appears to lack the required streaming support for large files—the API loads entire contents into memory. The truncated files prevent full verification of error handling completeness."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:11.162Z"
+  },
+  {
+    "runId": "8ccb7ac5-2e80-47e6-bcd5-3980b5febba3",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_coding_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "8ccb7ac5-2e80-47e6-bcd5-3980b5febba3"
+    },
+    "scores": {
+      "testsWritten": 249,
+      "testsExecutable": false,
+      "linesOfCode": 1026,
+      "edgeCasesCovered": 12
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 6,
+      "creativity": 6,
+      "adherenceToInstructions": 6,
+      "justification": "The implementation demonstrates solid architecture with clean separation between line splitting and field parsing, comprehensive handling of CSV edge cases (quoted newlines, escaped quotes, CRLF variants), and a well-structured test suite with meaningful assertions. However, it fails to implement two explicit requirements: streaming/large file parsing (the code loads all lines into memory via splitLines) and TypeScript generics (rows use Record<string, unknown> rather than generic type parameters). The result object utility methods (filter, sum, groupBy) show thoughtful API design, but the truncated files and missing features prevent a higher score."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:12.820Z"
+  },
+  {
+    "runId": "4cae97ca-dff3-452c-9fe4-44f7b48afd09",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "4cae97ca-dff3-452c-9fe4-44f7b48afd09"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4102,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 9,
+      "justification": "The campaign maintains exceptional voice consistency through its 'it just works' messaging and warm, tech-savvy tone across all six deliverables. The 'calendar-aware lighting' angle provides genuine originality that avoids smart-lamp clichés while precisely targeting remote worker pain points (Zoom fatigue, circadian disruption). The writing is polished and persuasive, with strong risk-reversal tactics and competitor differentiation. While the landing-page.txt artifact displays a truncation marker, the visible content demonstrates full structural compliance through the specs section, indicating the FAQ section likely follows in the complete file."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:37.022Z"
+  },
+  {
+    "runId": "d55e01f5-d656-442f-aa7d-c3df56118bb5",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "d55e01f5-d656-442f-aa7d-c3df56118bb5"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4365,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 8,
+      "creativity": 8,
+      "adherenceToInstructions": 9,
+      "justification": "The campaign maintains exceptional voice consistency—modern, warm, and tech-savvy across all six files—with persuasive messaging that effectively targets remote workers through specific references to calendar integration, circadian health, and Zoom fatigue. The 'Light that knows your day' positioning is memorable and thematically cohesive, while the competitive framing against Dyson and BenQ demonstrates genuine marketing craft. Minor deductions apply for the truncation visible in the landing page and LinkedIn sections (preventing full verification of the FAQ section), and social posts that, while platform-appropriate, follow somewhat conventional launch formats rather than breaking new ground."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:30.913Z"
+  },
+  {
+    "runId": "9d23201a-d4ff-4965-b3c2-c9ac8b69df63",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_copywriting_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "9d23201a-d4ff-4965-b3c2-c9ac8b69df63"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4818,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 10,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains exceptional voice consistency—modern, warm, and 'tech-savvy but not jargony'—across all deliverables, seamlessly adapting tone for each platform while preserving core messaging like 'it just works.' It demonstrates strong persuasiveness and audience fit by targeting remote workers with specific pain points (3 p.m. headaches, circadian disruption) and credible social proof, avoiding clichéd 'illuminate your workspace' tropes through fresh positioning around calendar integration and ambient sensing. The writing is polished and professional, though the all-lowercase Twitter aesthetic creates minor visual friction with the formal press release, and repetitive phrasing like 'zero effort/no babysitting' across files slightly dulls the originality."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:32.175Z"
+  },
+  {
+    "runId": "7c3e2824-4f87-4893-92d1-57dcd1d198f4",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_copywriting_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "7c3e2824-4f87-4893-92d1-57dcd1d198f4"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4437,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 9,
+      "justification": "The campaign maintains a consistently modern, approachable voice across all deliverables, effectively positioning Lumina between over-engineered premium lamps and basic budget options. The calendar-sync feature provides a fresh, specific angle that avoids lighting clichés, while the copy demonstrates strong audience understanding with references to 'deep-work blocks' and circadian health. Minor redundancy across files and the slightly truncated landing page view prevent a perfect 10, but overall execution is polished and persuasive."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:34.838Z"
+  },
+  {
+    "runId": "683d9567-e061-4f48-a312-2b6d9f38c7ee",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_copywriting_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "683d9567-e061-4f48-a312-2b6d9f38c7ee"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 4257,
+      "requirementChecksPassed": 3,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.5
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 7,
+      "creativity": 8,
+      "adherenceToInstructions": 7,
+      "justification": "The campaign demonstrates exceptional voice consistency and sharp audience insight, effectively positioning Lumina's calendar integration as a remote work-specific wellness tool rather than generic smart lighting. However, the landing page deliverable lacks the required FAQ section with 5+ questions in the provided text, and the truncation of several files prevents full verification of completeness. While the writing is polished, persuasive, and creatively avoids clichés with angles like 'Light that thinks ahead,' the structural omission of the FAQ section impacts adherence to the specific brief requirements."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:37.330Z"
+  },
+  {
+    "runId": "c337e8c3-3975-4250-8bb3-db65161b7050",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "c337e8c3-3975-4250-8bb3-db65161b7050"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 25,
+      "sortAccuracy": 0.3125,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The organization demonstrates excellent logical grouping with consistent snake_case naming and balanced 2-level nesting that avoids both over-flattening and excessive depth. All 80 files were accounted for and categorized into intuitive domains (code by stack, photos by year/purpose, documents by project), with a particularly thorough MANIFEST.md featuring tree diagrams and explanatory tables. The only minor weaknesses are the unavoidable catch-all 'other' and 'notes' folders for miscellaneous items, which slightly dilute the otherwise crystal-clear taxonomy."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:30.240Z"
+  },
+  {
+    "runId": "d60ce403-7858-4303-b9ab-66970b6b25f9",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "d60ce403-7858-4303-b9ab-66970b6b25f9"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 8,
+      "sortAccuracy": 0.1,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme demonstrates excellent judgment with a balanced 2-3 level hierarchy and consistent snake_case naming throughout. The MANIFEST.md is particularly strong, offering tree diagrams and rationale tables that make the structure immediately intelligible. While the flattening of component paths into filenames like components_Button.tsx is slightly inelegant compared to nested directories, it remains functional, and the categorization logic—such as organizing photos by context then chronology—shows thoughtful attention to user navigation patterns."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:51.857Z"
+  },
+  {
+    "runId": "79bafa45-9249-43fe-b2cf-a8b4357ded48",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_file-sorting_t2.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "79bafa45-9249-43fe-b2cf-a8b4357ded48"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 21,
+      "sortAccuracy": 0.2625,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme demonstrates excellent logical grouping by file type, project affiliation, and temporal relevance, with intuitive 2-3 level nesting (e.g., photos/2024/vacation/, documents/project_alpha/). All 80 files were comprehensively reorganized with consistent snake_case naming, and the MANIFEST.md provides exceptional documentation including a complete directory tree and categorical rationale. Minor improvements could include separating test utilities from production ML code, though the current structure remains highly functional."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:44.478Z"
+  },
+  {
+    "runId": "d2dbd874-8b00-49e9-8fc9-13be4ccda868",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_file-sorting_t3.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "d2dbd874-8b00-49e9-8fc9-13be4ccda868"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 33,
+      "sortAccuracy": 0.4125,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 10,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme demonstrates excellent logical grouping by file purpose and context, with consistent snake_case naming throughout. The two-level hierarchy achieves optimal balance—sufficiently granular for the 80 files without excessive nesting—with particularly thoughtful date-based organization for photos and project-based separation for documents. The comprehensive MANIFEST.md effectively documents the rationale and structure, though the TypeScript folder aggregates diverse code types (components, hooks, utilities) without sub-categorization—a minor simplification given the file count."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:55.114Z"
+  },
+  {
+    "runId": "7e7f16ad-8344-4596-bf82-a5000bb8a045",
+    "sourceFile": "Claude-Opus-4.6_keyboard-errors_file-sorting_t4.json",
+    "config": {
+      "model": {
+        "id": "claude-opus-4-6",
+        "provider": "anthropic",
+        "label": "Claude Opus 4.6",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "7e7f16ad-8344-4596-bf82-a5000bb8a045"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 27,
+      "sortAccuracy": 0.3375,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The organization demonstrates excellent hierarchical thinking with a consistent two-level structure that balances granularity and simplicity, using uniform lowercase naming throughout. The MANIFEST.md is exemplary, providing detailed per-folder breakdowns with specific file descriptions, counts, and contextual rationale that makes the logic immediately transparent. The categorization shows thoughtful domain judgment, such as isolating data-ml pipelines from backend code and distinguishing design assets from personal versus work photography. The only minor critique is the combination of HR and sales data in a single subfolder, which is pragmatic for the current volume but could be separated if those domains expand."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:15.583Z"
   },
   {
     "runId": "4fc2591c-2433-45cd-8c1d-e4c7ca5b7015",
@@ -4581,6 +5539,501 @@
     },
     "judgeModel": "moonshotai/kimi-k2.5",
     "judgedAt": "2026-02-21T21:25:28.496Z"
+  },
+  {
+    "runId": "245108a0-2498-409f-962e-c0bddce814e3",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "245108a0-2498-409f-962e-c0bddce814e3"
+    },
+    "scores": {
+      "testsWritten": 49,
+      "testsExecutable": false,
+      "linesOfCode": 291,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 5,
+      "thoroughness": 4,
+      "creativity": 6,
+      "adherenceToInstructions": 4,
+      "justification": "The implementation correctly handles basic CSV parsing, custom delimiters, and quoted fields with escaped quotes, and includes thoughtful extras like aggregation methods. However, it critically fails to support newlines within quoted fields due to splitting input by lines before parsing (a fundamental architectural flaw for CSV), lacks streaming support as required, and does not use generics for type-safe row parsing despite the requirement for 'Proper TypeScript types and generics'."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:46.137Z"
+  },
+  {
+    "runId": "8f856f27-74d4-44e5-b3bc-0f843f042a77",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "8f856f27-74d4-44e5-b3bc-0f843f042a77"
+    },
+    "scores": {
+      "testsWritten": 61,
+      "testsExecutable": false,
+      "linesOfCode": 295,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 5,
+      "creativity": 6,
+      "adherenceToInstructions": 4,
+      "justification": "The code is clean, readable, and features well-defined TypeScript types with a convenient fluent API for filtering and aggregation. However, the architecture fundamentally cannot handle newlines within quoted fields (a core requirement) due to splitting input by lines before tokenization, and streaming support is completely absent. The implementation file appears truncated, and the omission of generics for type-safe row mapping further misses key requirements."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:16:59.227Z"
+  },
+  {
+    "runId": "f4da3a6a-2479-4976-b4f5-dd0305cdb966",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_coding_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "f4da3a6a-2479-4976-b4f5-dd0305cdb966"
+    },
+    "scores": {
+      "testsWritten": 52,
+      "testsExecutable": false,
+      "linesOfCode": 291,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 6,
+      "creativity": 7,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation features a clean state-machine parser with good error handling and comprehensive tests for quoted fields, custom delimiters, and malformed rows. However, it fails to meet two critical requirements: streaming support for large files (it loads the entire input into memory) and generics for type safety (rows are hardcoded as Record<string, unknown>). The addition of aggregation methods (sum, average, groupBy) is a nice creative touch, but the lack of tests for newlines within quoted fields—despite the code supporting them—reveals gaps in thoroughness."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:00.864Z"
+  },
+  {
+    "runId": "b988c3e7-db59-40ac-b87f-64e5c5e9edf0",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_coding_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "b988c3e7-db59-40ac-b87f-64e5c5e9edf0"
+    },
+    "scores": {
+      "testsWritten": 87,
+      "testsExecutable": false,
+      "linesOfCode": 299,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 6,
+      "creativity": 7,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation features clean architecture with well-separated tokenization logic and rich query methods (filter, sum, groupBy) on the result object. However, it critically fails to handle newlines within quoted fields due to line-splitting occurring before quote-aware parsing, and lacks the required streaming support for large files. Additionally, it omits generics for type-safe row structures despite the explicit requirement."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:02.960Z"
+  },
+  {
+    "runId": "32e02eb7-ab25-4e8c-9316-f0d419595053",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_coding_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "32e02eb7-ab25-4e8c-9316-f0d419595053"
+    },
+    "scores": {
+      "testsWritten": 75,
+      "testsExecutable": false,
+      "linesOfCode": 326,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 7,
+      "creativity": 7,
+      "adherenceToInstructions": 6,
+      "justification": "The implementation demonstrates clean architecture with a fluent API design (filter, sum, average, groupBy methods) and comprehensive test coverage including type coercion, custom delimiters, and malformed input handling. However, it fails to implement streaming support for large files (requirement #6) and lacks proper generics for type-safe row objects (using Record<string, any> instead of generic T). The code is readable and handles edge cases like escaped quotes and unterminated fields well, but the missing streaming capability significantly impacts adherence to the specification."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:13.040Z"
+  },
+  {
+    "runId": "1646abf2-aee1-4100-8499-1148efb2404a",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "1646abf2-aee1-4100-8499-1148efb2404a"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1554,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 10,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains exceptional voice consistency with its 'light that moves with you' narrative across all deliverables, effectively targeting remote workers with relevant pain points like eye strain and calendar integration. While the execution is polished and thorough—including nine social posts and comprehensive FAQ coverage—the reliance on familiar productivity buzzwords ('flow,' 'grind') and somewhat predictable wellness framing keeps it from achieving true creative distinction. The press release structure and logical email sequence progression demonstrate professional marketing competence appropriate for the $149 price point."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:50.821Z"
+  },
+  {
+    "runId": "8375d0ec-547c-49c9-bc51-68c129be5948",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "8375d0ec-547c-49c9-bc51-68c129be5948"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1474,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains excellent voice consistency through recurring 'flow' and 'rhythm' motifs while avoiding clichés like 'illuminate your workspace.' The competitive positioning against Dyson and BenQ is sharp, and features like calendar sync specifically address remote worker pain points. While the first two emails could be more differentiated in structure and tone, the overall execution is polished, audience-appropriate, and demonstrates genuine marketing craft with specific, benefit-driven copy."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:17.743Z"
+  },
+  {
+    "runId": "5421f21f-ec10-4c2a-9591-38d6651ce417",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_copywriting_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "5421f21f-ec10-4c2a-9591-38d6651ce417"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1639,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains a cohesive, warm-yet-tech-savvy voice throughout—evident in details like the email sign-offs ('Lightfully yours') and Instagram captions ('calm command center')—while consistently targeting the 25-40 remote worker demographic with specific references to calendar syncing, video calls, and 'deep work.' It exceeds minimum requirements (9 social posts vs. 6 required, 6 FAQ questions vs. 5) and avoids clichéd 'illuminate your life' framing in favor of fresher angles like 'personal lighting assistant.' The only minor flaws are placeholder text in the press release dateline and labeled placeholder testimonials, which slightly detract from otherwise polished, professional copy."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:23.239Z"
+  },
+  {
+    "runId": "de0f94f8-06a4-446e-8575-3ffd2c2a4e8a",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_copywriting_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "de0f94f8-06a4-446e-8575-3ffd2c2a4e8a"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1557,
+      "requirementChecksPassed": 4,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.6666666666666666
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The campaign maintains exceptional voice consistency across all six deliverables, effectively positioning Lumina's calendar-sync features against competitors with polished, audience-appropriate language. While the execution avoids clichés like 'illuminate your potential,' the creative approach remains somewhat safe within the wellness-tech genre, and Email 3's explicit mention of the target demographic ('Remote workers aged 25-40') breaks the fourth wall in a way that feels artificial rather than organic."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:17.749Z"
+  },
+  {
+    "runId": "86a0b558-347e-46e4-be9e-aed00f70fd05",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_copywriting_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "86a0b558-347e-46e4-be9e-aed00f70fd05"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1425,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains excellent voice consistency with its 'adapts to your rhythm' positioning across all deliverables, and the calendar-aware lighting angle offers a fresh, practical benefit for remote workers. However, there is noticeable repetition between the hero copy and Email 1, and the 'final glow-up' pun in Email 3 slightly undermines the otherwise warm-but-professional tone. The social posts meet platform requirements but could differentiate their tones more distinctly (LinkedIn reads quite similarly to Twitter)."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:28.060Z"
+  },
+  {
+    "runId": "303449ae-34d1-4236-840b-0b71c58eee99",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "303449ae-34d1-4236-840b-0b71c58eee99"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 20,
+      "sortAccuracy": 0.25,
+      "filesUntouched": 2
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 6,
+      "creativity": 8,
+      "adherenceToInstructions": 5,
+      "justification": "The folder hierarchy demonstrates excellent organizational logic with intuitive categorization by file type, chronology, project, and business function, using consistent naming conventions and appropriate 2-3 level nesting. However, the assistant failed to move .env.example and .eslintrc.json from the root directory despite explicit instructions to leave no files there, and incorrectly claimed in the MANIFEST that the root contained only folders."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:46.869Z"
+  },
+  {
+    "runId": "d96116ae-d2ab-4984-887d-c59a3d6a82b8",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "d96116ae-d2ab-4984-887d-c59a3d6a82b8"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 29,
+      "sortAccuracy": 0.3625,
+      "filesUntouched": 2
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 6,
+      "creativity": 6,
+      "adherenceToInstructions": 6,
+      "justification": "The folder hierarchy is intuitive and professionally structured with consistent naming conventions and well-balanced 2-3 level nesting (e.g., photos/dated/2024/, documents/projects/alpha/). However, the assistant failed to move .env.example and .eslintrc.json from the root directory, violating the explicit requirement that no files remain there, and the MANIFEST.md incorrectly asserts the root is empty except for itself, which undermines its accuracy."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:47.768Z"
+  },
+  {
+    "runId": "baa38c75-079b-4b25-bdd8-1d6458099414",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_file-sorting_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "baa38c75-079b-4b25-bdd8-1d6458099414"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 15,
+      "sortAccuracy": 0.1875,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme demonstrates excellent logical grouping by file type and business function, with particularly thoughtful separation of photos into dated events versus general assets, and appropriate 2-3 level nesting for financial and project documents. While creating dedicated folders for single spreadsheets maintains taxonomic clarity for future growth, it slightly underutilizes consolidation; nonetheless, the structure is immediately intuitive, comprehensively documented in the detailed MANIFEST, and satisfies all requirements including complete file relocation and consistent lowercase naming conventions."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:53.988Z"
+  },
+  {
+    "runId": "fcac405d-436d-41e4-aac8-42b0c70880bd",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_file-sorting_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "fcac405d-436d-41e4-aac8-42b0c70880bd"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 17,
+      "sortAccuracy": 0.2125,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme employs an intuitive type-first hierarchy (photos/documents/code/etc.) with consistent snake_case naming throughout. Nesting is well-balanced at 2-3 levels deep—exemplified by documents/project_alpha/notes/—avoiding both flat dumping and excessive depth. All 80 files were comprehensively relocated with zero root clutter, and the MANIFEST clearly articulates the categorization rationale for each directory, making the structure immediately navigable for new users."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:54.058Z"
+  },
+  {
+    "runId": "130b7374-95db-40f1-9d23-21fc9e91bfb7",
+    "sourceFile": "GPT-5.1-Codex-Mini_keyboard-errors_file-sorting_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.1-codex-mini",
+        "provider": "openai",
+        "label": "GPT-5.1 Codex Mini",
+        "tier": "small"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "130b7374-95db-40f1-9d23-21fc9e91bfb7"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 12,
+      "sortAccuracy": 0.15,
+      "filesUntouched": 2
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 7,
+      "creativity": 7,
+      "adherenceToInstructions": 6,
+      "justification": "The organizational scheme demonstrates excellent logical grouping—particularly the photos/ directory split by context and year and the documents/ directory organized by project—along with consistent snake_case naming and well-balanced 2-3 level nesting. However, the assistant failed to move .env.example and .eslintrc.json from the root directory, violating the explicit requirement that no files remain in the root, and the MANIFEST incorrectly asserts that only the manifest remains at root. Additionally, placing package_old.json in code/dependencies/ is slightly incongruous with the otherwise clean separation of concerns."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:54.839Z"
   },
   {
     "runId": "131d82d9-d066-4eca-a7fe-cbbc9e4579a4",
@@ -6267,5 +7720,500 @@
     },
     "judgeModel": "moonshotai/kimi-k2.5",
     "judgedAt": "2026-02-21T21:26:58.761Z"
+  },
+  {
+    "runId": "0cf3e282-5a1d-471a-89ea-12c67684e954",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "0cf3e282-5a1d-471a-89ea-12c67684e954"
+    },
+    "scores": {
+      "testsWritten": 23,
+      "testsExecutable": false,
+      "linesOfCode": 304,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 5,
+      "creativity": 5,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation provides a clean synchronous CSV parser with custom delimiters and quoted field support, but critically fails to implement streaming/large file handling (requirement #6) and omits TypeScript generics (requirement #7) despite explicit requirements. The architecture awkwardly mixes parsing concerns with analytics methods (sum, average, groupBy), and while basic edge cases are covered, the test suite lacks verification for newlines within quoted fields and uses a custom assertion framework rather than standard testing libraries."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:51:47.982Z"
+  },
+  {
+    "runId": "3cd81fdf-5365-4ea9-bd9b-59521262694b",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_coding_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "3cd81fdf-5365-4ea9-bd9b-59521262694b"
+    },
+    "scores": {
+      "testsWritten": 40,
+      "testsExecutable": false,
+      "linesOfCode": 289,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 6,
+      "creativity": 7,
+      "adherenceToInstructions": 6,
+      "justification": "The implementation correctly handles quoted fields, custom delimiters, and newlines within quotes, with solid error collection for malformed rows. However, it critically omits streaming support (requirement #6), loading entire files into memory via string parsing, which defeats the purpose for large files. While the aggregation methods (sum, average, groupBy) demonstrate useful creativity, the lack of generics for type-safe row objects and missing tests for newlines-in-quotes (despite implementation support) prevent this from scoring higher."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:17:45.661Z"
+  },
+  {
+    "runId": "f790d34b-d645-4606-9b72-3830ea8fbf91",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_coding_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "f790d34b-d645-4606-9b72-3830ea8fbf91"
+    },
+    "scores": {
+      "testsWritten": 40,
+      "testsExecutable": false,
+      "linesOfCode": 302,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 5,
+      "creativity": 6,
+      "adherenceToInstructions": 5,
+      "justification": "The parser correctly implements basic CSV parsing with quoted fields, custom delimiters, and type coercion, supported by a custom test framework with meaningful assertions. However, it critically fails to handle newlines within quoted fields (splitting input by newlines before parsing) and lacks streaming support and generics as explicitly required. The addition of aggregation methods (sum, average, groupBy) shows creativity but mixes parsing concerns with data analysis, while the architectural decision to load the entire file into memory prevents large file processing."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:07.301Z"
+  },
+  {
+    "runId": "bc5fe496-cf7f-40c3-b9e5-0cded496d4af",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_coding_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "bc5fe496-cf7f-40c3-b9e5-0cded496d4af"
+    },
+    "scores": {
+      "testsWritten": 37,
+      "testsExecutable": false,
+      "linesOfCode": 289,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 7,
+      "creativity": 6,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation provides clean, readable code with comprehensive test coverage for CSV edge cases including quoted fields, escaped quotes, and custom delimiters. However, it critically fails to implement the required streaming/large file parsing capability, loading entire inputs into memory instead. The architecture mixes parsing concerns with data analysis by attaching aggregation methods (sum, average, groupBy) to the result object, which is inappropriate for a parser library, and it lacks generics for type-safe row access despite the TypeScript requirement."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:10.509Z"
+  },
+  {
+    "runId": "23c5ccf6-8ed6-4a6a-aa96-a61ab7a3e7fb",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_coding_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "coding",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "23c5ccf6-8ed6-4a6a-aa96-a61ab7a3e7fb"
+    },
+    "scores": {
+      "testsWritten": 38,
+      "testsExecutable": false,
+      "linesOfCode": 255,
+      "edgeCasesCovered": 10
+    },
+    "judgeScores": {
+      "quality": 6,
+      "thoroughness": 7,
+      "creativity": 5,
+      "adherenceToInstructions": 5,
+      "justification": "The implementation demonstrates robust parsing logic correctly handling quoted fields with commas/newlines, escaped quotes, and custom delimiters, backed by meaningful tests covering edge cases like empty input and large fields. However, it critically fails the streaming requirement (loading entire files as strings) and violates TypeScript best practices by using `any` instead of generics for row types. The architecture awkwardly couples data manipulation methods (filter, sum, groupBy) with the parsing result rather than separating concerns."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:13.549Z"
+  },
+  {
+    "runId": "0f17b6ca-f548-4d64-ba9f-3f48ab183e0e",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "0f17b6ca-f548-4d64-ba9f-3f48ab183e0e"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1208,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 9,
+      "creativity": 6,
+      "adherenceToInstructions": 8,
+      "justification": "The campaign maintains a consistent, warm-yet-tech-savvy voice across all six deliverables and meets every technical requirement (6 FAQs, 6 social posts, 3 email sections). However, Email 3 commits a significant marketing error by explicitly stating the target demographic ('ages 25–40') in the copy itself, and several pieces rely on generic productivity clichés ('light that works as hard as you do') rather than developing truly distinctive creative angles."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:21.752Z"
+  },
+  {
+    "runId": "c810675d-bf38-404b-8ecd-261341d41205",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_copywriting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "c810675d-bf38-404b-8ecd-261341d41205"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1100,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign demonstrates strong strategic positioning by leveraging calendar integration as a distinctive, practical feature that genuinely differentiates Lumina from competitors like Dyson and BenQ. Voice consistency is excellent across all deliverables, maintaining the 'warm, effortless' brand personality perfectly suited for remote workers aged 25-40. However, creative execution occasionally plays it safe—over-relying on the repetitive 'adapts to your life' framing across multiple assets—and the inclusion of placeholder testimonials in the landing page slightly undermines the otherwise polished presentation."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:52:08.986Z"
+  },
+  {
+    "runId": "79ec36ed-dc01-4e54-b8e2-f50114746a98",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_copywriting_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "79ec36ed-dc01-4e54-b8e2-f50114746a98"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1067,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 6,
+      "creativity": 6,
+      "adherenceToInstructions": 8,
+      "justification": "The campaign maintains a consistent, warm, professional voice well-suited to remote workers, with strong product positioning against competitors. However, the landing page contains placeholder testimonials instead of completed copy, and the creative angle—while avoiding the worst lighting clichés—relies repetitively on 'adapts/moves with your day' phrasing across deliverables without sufficient variation or surprising imagery."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:15.830Z"
+  },
+  {
+    "runId": "b8bbfd24-6de6-4ee5-9c1b-678daf1d8bb9",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_copywriting_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "b8bbfd24-6de6-4ee5-9c1b-678daf1d8bb9"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1052,
+      "requirementChecksPassed": 5,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 0.8333333333333334
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign delivers consistent, professional messaging across all six deliverables with a distinctive 'calendar-aware' feature that effectively differentiates from competitors. The 'it just works' voice remains cohesive and audience-appropriate throughout, avoiding clichéd lighting puns. While thoroughly structured, the reliance on placeholders for testimonials and press release details, along with safe social copy that could be more platform-native, keeps it from excellence. The calendar integration angle provides genuine originality in a crowded smart-home market."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:26.180Z"
+  },
+  {
+    "runId": "bb62406f-7651-42dd-a5e1-9e23fb442257",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_copywriting_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "copywriting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "bb62406f-7651-42dd-a5e1-9e23fb442257"
+    },
+    "scores": {
+      "deliverablesRequested": 6,
+      "deliverablesProduced": 6,
+      "completenessRate": 1,
+      "totalWordCount": 1063,
+      "requirementChecksPassed": 6,
+      "requirementChecksTotal": 6,
+      "requirementComplianceRate": 1
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 9,
+      "creativity": 6,
+      "adherenceToInstructions": 10,
+      "justification": "The campaign maintains excellent voice consistency across all deliverables, nailing the 'it just works' positioning with clean, audience-appropriate language for remote workers (e.g., calendar integration, 'deep work' references). All technical requirements are met precisely: 6 social posts with platform labels, 3 emails with subjects, and 6 FAQ questions. However, the landing page includes placeholder testimonials rather than fabricated quotes, slightly reducing polish. While the execution avoids clichés like 'illuminate your workspace,' the creative angle remains safe and formulaic within the productivity-tech genre, missing opportunities for more distinctive personality or unexpected messaging."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:28.851Z"
+  },
+  {
+    "runId": "46fcbf0f-0ce5-486b-8e0f-c4e9c41485f4",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "46fcbf0f-0ce5-486b-8e0f-c4e9c41485f4"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 27,
+      "sortAccuracy": 0.3375,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 6,
+      "adherenceToInstructions": 10,
+      "justification": "The organizational scheme demonstrates excellent logical consistency by grouping files first by broad type (code, documents, photos) then by domain, language, or date, creating an intuitive browsing experience. Naming conventions are uniformly lowercase with underscores, and nesting is appropriately balanced at 2-3 levels throughout. All 80 files are accounted for with none remaining in the root directory. The only minor issue is a formatting inconsistency in the MANIFEST.md tree diagram where project_beta appears incorrectly indented, though this doesn't affect the actual directory structure."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T15:52:13.642Z"
+  },
+  {
+    "runId": "c881100e-89ca-406f-85f8-c06031443a23",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_file-sorting_t1.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 1,
+      "maxSteps": 400,
+      "runId": "c881100e-89ca-406f-85f8-c06031443a23"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 19,
+      "sortAccuracy": 0.2375,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 7,
+      "thoroughness": 9,
+      "creativity": 6,
+      "adherenceToInstructions": 8,
+      "justification": "The structure provides logical categorization by file type and purpose, with particularly strong organization of code by language and documents by domain/project. However, the redundant \"photos/2024/photos\" nesting creates confusing duplication and unnecessary depth, while sparsely populated folders (tsx, spreadsheets/projects/alpha) indicate slightly uneven distribution. The MANIFEST.md is comprehensive and clearly explains the rationale, though it does not address these minor structural inconsistencies."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:35.572Z"
+  },
+  {
+    "runId": "f6c04131-b7c8-4d4b-bd65-8298fda0457a",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_file-sorting_t2.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 2,
+      "maxSteps": 400,
+      "runId": "f6c04131-b7c8-4d4b-bd65-8298fda0457a"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 20,
+      "sortAccuracy": 0.25,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The organizational scheme demonstrates excellent logical grouping by file type and purpose, with particularly thoughtful distinctions (e.g., separating TS/TSX by framework usage, photos by year and context). The hierarchy maintains an appropriate 2-3 level depth throughout, and the MANIFEST.md provides clear documentation. Minor improvements could include consolidating the deeply nested spreadsheet paths (finance/budget/) or clarifying the distinction between 'images' and 'photos' in the manifest, though these are stylistic preferences rather than functional flaws."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:46.866Z"
+  },
+  {
+    "runId": "f68aa8b1-2c2a-4757-8aa9-75305e3584e7",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_file-sorting_t3.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 3,
+      "maxSteps": 400,
+      "runId": "f68aa8b1-2c2a-4757-8aa9-75305e3584e7"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 18,
+      "sortAccuracy": 0.225,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 8,
+      "thoroughness": 9,
+      "creativity": 7,
+      "adherenceToInstructions": 9,
+      "justification": "The organizational scheme effectively groups files by type and project, with consistent lowercase naming and clear separation of concerns (e.g., project_alpha documents isolated from project_beta). The hierarchy maintains appropriate depth at 2-3 levels for most categories, though screenshots are nested four levels deep (photos/screenshots/2024/) which slightly breaks the pattern established by personal photos. All approximately 80 files are accounted for with no stragglers in the root directory, and the MANIFEST provides a clear tree view and rationale."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:45.172Z"
+  },
+  {
+    "runId": "52be1079-2835-485a-b57d-708a087c1639",
+    "sourceFile": "GPT-5.2-Codex_keyboard-errors_file-sorting_t4.json",
+    "config": {
+      "model": {
+        "id": "gpt-5.2-codex",
+        "provider": "openai",
+        "label": "GPT-5.2 Codex",
+        "tier": "large"
+      },
+      "tone": "keyboard-errors",
+      "task": "file-sorting",
+      "trial": 4,
+      "maxSteps": 400,
+      "runId": "52be1079-2835-485a-b57d-708a087c1639"
+    },
+    "scores": {
+      "totalFiles": 80,
+      "correctlyPlaced": 20,
+      "sortAccuracy": 0.25,
+      "filesUntouched": 0
+    },
+    "judgeScores": {
+      "quality": 9,
+      "thoroughness": 9,
+      "creativity": 8,
+      "adherenceToInstructions": 9,
+      "justification": "The structure demonstrates excellent domain awareness, separating code by language (including React tsx files), organizing photos via a thoughtful hybrid of chronology and function, and maintaining consistent lowercase naming. The 4-level nesting for project notes (e.g., documents/projects/alpha/notes/) slightly exceeds the typical 2-3 level guideline, and the configs/other/ folder is a generic catch-all that could be more descriptive, but these are minor pragmatic choices in an otherwise polished organization."
+    },
+    "judgeModel": "moonshotai/kimi-k2.5",
+    "judgedAt": "2026-02-25T18:18:52.751Z"
   }
 ]

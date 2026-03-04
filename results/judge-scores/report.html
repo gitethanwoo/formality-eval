@@ -26,6 +26,7 @@
     --tone-casual: #c7d2fe;
     --tone-controlled: #818cf8;
     --tone-formal: #4338ca;
+    --tone-keyboard-errors: #d97706;
     --green: #059669;
     --red: #dc2626;
     --font-mono: "IBM Plex Mono", monospace;
@@ -214,6 +215,7 @@
   .tone-swatch.tone-casual { background: var(--tone-casual); }
   .tone-swatch.tone-controlled { background: var(--tone-controlled); }
   .tone-swatch.tone-formal { background: var(--tone-formal); }
+  .tone-swatch.tone-keyboard-errors { background: var(--tone-keyboard-errors); }
 
   /* Prompt comparison */
   .prompt-grid {
@@ -242,6 +244,7 @@
   .prompt-col.tone-casual .prompt-col-header { border-top-color: var(--tone-casual); }
   .prompt-col.tone-controlled .prompt-col-header { border-top-color: var(--tone-controlled); }
   .prompt-col.tone-formal .prompt-col-header { border-top-color: var(--tone-formal); }
+  .prompt-col.tone-keyboard-errors .prompt-col-header { border-top-color: var(--tone-keyboard-errors); }
   .prompt-text {
     font-family: var(--font-mono);
     font-size: 10.5px;
@@ -438,7 +441,7 @@
       <div class="metric-card-label">token cost<br>increase</div>
     </div>
     <div class="metric-card">
-      <div class="metric-card-value">r=0.98</div>
+      <div class="metric-card-value">r=1.00</div>
       <div class="metric-card-label">model strength &times;<br>tone sensitivity</div>
     </div>
   </div>
@@ -454,7 +457,7 @@
     <span class="section-line"></span>
     
   </div>
-    <p class="body-text">There’s a generational divide in how people talk to AI. Some write structured, professional prompts with explicit requirements and quality bars. Others type the way they’d text a friend — terse, lowercase, minimal punctuation, vibes over specifications. It’s not about politeness (“please” and “thank you”) — it’s about <em>grammatical register</em>. Gen-Z shorthand vs. millennial corporate email.</p><p class="body-text">Prior work has tested politeness effects on MCQ benchmarks — accuracy on multiple-choice questions. Yin et al. (2024) examined politeness, Cai et al. (2025) tested tone on MMLU, and EmotionPrompt explored emotional stimulus. But nobody has tested the register/formality spectrum on the kind of work people actually <em>use</em> AI for: writing marketing copy, building software, organizing files. Agentic, multi-step, generative tasks where the model uses tools and iterates.</p><p class="body-text">We designed an experiment to find out. The twist: we added a third condition between casual and formal — <strong>“controlled”</strong> — which has the same informational content as formal but written in a casual register. This lets us separate two things that formal prompts change simultaneously: (a) the grammatical register and formality, and (b) the specificity and completeness of the instructions.</p>
+    <p class="body-text">There’s a generational divide in how people talk to AI. Some write structured, professional prompts with explicit requirements and quality bars. Others type the way they’d text a friend — terse, lowercase, minimal punctuation, vibes over specifications. It’s not about politeness (“please” and “thank you”) — it’s about <em>grammatical register</em>. Gen-Z shorthand vs. millennial corporate email.</p><p class="body-text">Prior work has tested politeness effects on MCQ benchmarks — accuracy on multiple-choice questions. Yin et al. (2024) examined politeness, Cai et al. (2025) tested tone on MMLU, and EmotionPrompt explored emotional stimulus. But nobody has tested the register/formality spectrum on the kind of work people actually <em>use</em> AI for: writing marketing copy, building software, organizing files. Agentic, multi-step, generative tasks where the model uses tools and iterates.</p><p class="body-text">We designed an experiment to find out. The twist: we added two extra conditions. <strong>“Controlled”</strong> has the same informational content as formal but written in a casual register — this lets us separate register from specificity. <strong>“Keyboard errors”</strong> takes controlled and adds realistic fast-typing mistakes (transpositions like “teh”, dropped letters, missing apostrophes) — testing whether surface-level messiness degrades output quality.</p>
   </div>
 
   <div class="section-divider"></div>
@@ -470,7 +473,7 @@
   </div>
 
     <h3 class="finding-heading">3.1 The Matrix</h3>
-    <p class="body-text">We tested 4 models across 3 tones, 3 tasks, and 5 trials per cell — 180 target runs, 190 actual evaluations including a partial extra batch.</p>
+    <p class="body-text">We tested 4 models across 4 tones, 3 tasks, and 5 trials per cell (1 trial for keyboard-errors) — 180 target runs, 249 actual evaluations including a partial extra batch.</p>
 
     <div class="design-matrix">
       <div class="design-cell">
@@ -478,7 +481,7 @@
         <div class="design-cell-label">models</div>
       </div>
       <div class="design-cell">
-        <div class="design-cell-value">3</div>
+        <div class="design-cell-value">4</div>
         <div class="design-cell-label">tones</div>
       </div>
       <div class="design-cell">
@@ -493,8 +496,8 @@
 
     <p class="body-text"><strong>Models:</strong> Claude Opus 4.6 and GPT-5.2 Codex (large tier), Claude Haiku 4.5 and GPT-5.1 Codex Mini (small tier). Two providers, two capability tiers — a deliberate pairing to test whether model strength interacts with tone sensitivity.</p>
 
-    <h3 class="finding-heading" style="margin-top:40px">3.2 The Three Tones</h3>
-    <p class="body-text">The key methodological contribution is the <strong>controlled</strong> condition. Prior work only compared polite vs. rude, or formal vs. casual, without controlling for information content. Our controlled tone has <em>identical informational content</em> to the formal version — the same requirements, the same quality bars, the same directives — but written in casual register. This lets us disentangle register from specificity.</p><p class="body-text">Here are excerpts from the prompts across all three tones for each task:</p>
+    <h3 class="finding-heading" style="margin-top:40px">3.2 The Four Tones</h3>
+    <p class="body-text">The key methodological contribution is the <strong>controlled</strong> condition. Prior work only compared polite vs. rude, or formal vs. casual, without controlling for information content. Our controlled tone has <em>identical informational content</em> to the formal version — the same requirements, the same quality bars, the same directives — but written in casual register. This lets us disentangle register from specificity.</p><p class="body-text">Here are excerpts from the prompts across all four tones for each task:</p>
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:24px">Copywriting Task</div>
     <div class="prompt-grid">
@@ -543,6 +546,17 @@ Each deliverable should be written to its own file. The copy should be compellin
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
       </div>
+    </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">create a full marketing launch campagin for lumina. its a new smart desk lamp that adjusts color tempreature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audiance is remote workers 25-40
+
+you need to do ALL of thees, each one gets its own file:
+
+1. tagline.txt - memorable brand tagline (one line)
+2. hero-copy.txt - hero section copy for teh landing page (headline + 2-3 paragraphs)
+3. email-sequence.txt - 3-email launch sequence (subject lines + full body for eahc)
+4. social-posts.txt - social media posts for 3 platforms (twitter/x, instag…</div>
     </div>
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">Coding Task</div>
@@ -595,6 +609,18 @@ Write tests in `csv-parser.test.ts` using standard assertions. Tests should cove
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
       </div>
+    </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">build me a csv parser libary in typescript. create teh implementation and comperhensive tests
+
+put the code in csv-parser.ts, heres what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headrs
+2. quoted fields - handle fields wrapepd in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields (two double quotes = one literal)
+4. custom delimiters - support configruable delimiter (default comma), quote character (default double quote), and line seperator
+5. type coercion - automaticaly de…</div>
     </div>
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">File Sorting Task</div>
@@ -651,6 +677,21 @@ Important: Do NOT leave any files in the root directory (except MANIFEST.md).
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
       </div>
     </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">i need you to organize a messy direcotry of files into a clean, logical folder strucutre
+
+the current directory has about 80 files dumepd flat with no organization. they incldue:
+- photos (jpg, png) with dates in filenmaes
+- documents (pdf, docx, txt) realted to different projects
+- spreadsheets (xlsx, csv) with financial/reporting data
+- code files (js, ts, py) from varoius projects
+- miscellaneous files (zip archives, config files, logs)
+
+heres the job:
+1. first, list all files in the current directory to see waht you're working with
+2. analyze the filenames to undrestand teh content and cat…</div>
+    </div>
 
     <h3 class="finding-heading" style="margin-top:40px">3.3 The Tasks</h3>
     <p class="body-text">All three tasks are agentic and multi-step — models use tools, write files, and iterate. This is novel compared to prior work’s focus on single-turn text-in/text-out benchmarks.</p><p class="body-text"><strong>Copywriting:</strong> Create a complete marketing launch campaign for a smart desk lamp — tagline, hero copy, email sequence, social posts, landing page, and press release, each as a separate file.</p><p class="body-text"><strong>Coding:</strong> Build a CSV parser library in TypeScript with parsing, type coercion, error handling, filtering, and aggregation — plus a comprehensive test suite.</p><p class="body-text"><strong>File Sorting:</strong> Organize ~80 files dumped flat in a directory into a clean folder structure by type and project, then document the result in a manifest.</p>
@@ -675,7 +716,7 @@ Please proceed by using your available tools to complete all aspects of this tas
   <!-- 4.1 Surface Finding -->
   <div class="section">
     <h3 class="finding-heading">4.1 The Surface Finding: Formal Scores Higher</h3>
-    <p class="body-text">Across all 190 evaluations, formal prompts score +1.8% higher than casual (74.1% vs 72.3%). Controlled lands between them at 74.9%. This is directionally consistent with prior work — Cai et al. found +3.1% on humanities tasks.</p>
+    <p class="body-text">Across all 249 evaluations, formal prompts score +1.8% higher than casual (74.1% vs 72.3%). Controlled lands between them at 74.9%. This is directionally consistent with prior work — Cai et al. found +3.1% on humanities tasks.</p>
 
     <div class="chart-panel">
       <span class="fig-label">FIG.001</span>
@@ -684,6 +725,7 @@ Please proceed by using your available tools to complete all aspects of this tas
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
     <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
@@ -704,6 +746,12 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="width:100%;height:74.13934426229508%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.8%</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.78813559322033%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -714,7 +762,7 @@ Please proceed by using your available tools to complete all aspects of this tas
       <span class="fig-label">FIG.002</span>
       <div class="chart-title">Score by Dimension and Tone</div>
       
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Quality<span style="color:var(--green);margin-left:8px">Δ +1.7%</span></div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Quality<span style="color:var(--green);margin-left:8px">Δ +1.1%</span></div>
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
           <div style="flex:1;height:20px;background:var(--border)">
@@ -733,6 +781,12 @@ Please proceed by using your available tools to complete all aspects of this tas
             <div style="height:100%;width:75.08196721311475%;background:var(--tone-formal)"></div>
           </div>
           <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">75.1%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Keyboard Errors</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:74.40677966101694%;background:var(--tone-keyboard-errors)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">74.4%</div>
         </div>
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Thoroughness<span style="color:var(--green);margin-left:8px">Δ +3.5%</span></div>
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
@@ -753,8 +807,14 @@ Please proceed by using your available tools to complete all aspects of this tas
             <div style="height:100%;width:78.52459016393442%;background:var(--tone-formal)"></div>
           </div>
           <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">78.5%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Keyboard Errors</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:78.47457627118645%;background:var(--tone-keyboard-errors)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">78.5%</div>
         </div>
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Creativity<span style="color:var(--muted);margin-left:8px">Δ +0.0%</span></div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Creativity<span style="color:var(--muted);margin-left:8px">Δ +0.6%</span></div>
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
           <div style="flex:1;height:20px;background:var(--border)">
@@ -773,8 +833,14 @@ Please proceed by using your available tools to complete all aspects of this tas
             <div style="height:100%;width:68.36065573770492%;background:var(--tone-formal)"></div>
           </div>
           <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">68.4%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Keyboard Errors</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:68.98305084745763%;background:var(--tone-keyboard-errors)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">69.0%</div>
         </div>
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Adherence<span style="color:var(--green);margin-left:8px">Δ +1.9%</span></div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:6px">Adherence<span style="color:var(--green);margin-left:8px">Δ +4.6%</span></div>
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Casual</div>
           <div style="flex:1;height:20px;background:var(--border)">
@@ -793,6 +859,12 @@ Please proceed by using your available tools to complete all aspects of this tas
             <div style="height:100%;width:74.59016393442623%;background:var(--tone-formal)"></div>
           </div>
           <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">74.6%</div>
+        </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:90px;flex-shrink:0;text-align:right">Keyboard Errors</div>
+          <div style="flex:1;height:20px;background:var(--border)">
+            <div style="height:100%;width:77.28813559322033%;background:var(--tone-keyboard-errors)"></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:50px;flex-shrink:0">77.3%</div>
         </div>
     </div>
 
@@ -811,6 +883,7 @@ Please proceed by using your available tools to complete all aspects of this tas
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       <div style="display:flex;align-items:flex-end;gap:32px;justify-content:center">
     <div style="flex:1;text-align:center;max-width:200px">
@@ -829,6 +902,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">83.2%</div>
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:83.21428571428571%;background:var(--tone-formal)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">83.6%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:83.625%;background:var(--tone-keyboard-errors)"></div>
               </div>
             </div>
         </div>
@@ -850,6 +928,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:59.62499999999999%;background:var(--tone-formal)"></div>
               </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">59.2%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:59.21052631578948%;background:var(--tone-keyboard-errors)"></div>
+              </div>
             </div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Coding</div>
@@ -869,6 +952,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">79.1%</div>
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:79.125%;background:var(--tone-formal)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">80.8%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:80.75%;background:var(--tone-keyboard-errors)"></div>
               </div>
             </div>
         </div>
@@ -907,6 +995,12 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="width:100%;height:90.9090909090909%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">268,567 tok</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:84.43551210258082%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -918,21 +1012,27 @@ Please proceed by using your available tools to complete all aspects of this tas
     <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
         <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">98s</div>
         <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
-          <div style="width:100%;height:54.90306736638938%;background:var(--tone-casual)"></div>
+          <div style="width:100%;height:54.20969256893397%;background:var(--tone-casual)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
       </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
         <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">141s</div>
         <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
-          <div style="width:100%;height:78.6058103315969%;background:var(--tone-controlled)"></div>
+          <div style="width:100%;height:77.61309188375921%;background:var(--tone-controlled)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
       </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
         <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">163s</div>
         <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
-          <div style="width:100%;height:90.9090909090909%;background:var(--tone-formal)"></div>
+          <div style="width:100%;height:89.7609934435104%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">165s</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:90.90909090909089%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -959,6 +1059,12 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="width:100%;height:53.20856796987579%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1,756</div>
+        <div style="width:56px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:51.951480026146704%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -969,7 +1075,7 @@ Please proceed by using your available tools to complete all aspects of this tas
   <!-- 4.4 Only Strong Models Benefit -->
   <div class="section">
     <h3 class="finding-heading">4.4 Only Strong Models Benefit</h3>
-    <p class="body-text">The headline quality gain hides a critical interaction: not all models benefit equally from formal prompts. The correlation between model overall quality and formal-casual delta is 0.98 — near-perfect linearity. Tone sensitivity appears to be a marker of model sophistication.</p>
+    <p class="body-text">The headline quality gain hides a critical interaction: not all models benefit equally from formal prompts. The correlation between model overall quality and formal-casual delta is 1.00 — near-perfect linearity. Tone sensitivity appears to be a marker of model sophistication.</p>
 
     <div class="chart-panel">
       <span class="fig-label">FIG.007</span>
@@ -978,6 +1084,7 @@ Please proceed by using your available tools to complete all aspects of this tas
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       <div style="display:flex;align-items:flex-end;gap:32px;justify-content:center">
     <div style="flex:1;text-align:center;max-width:200px">
@@ -996,6 +1103,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">71.0%</div>
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:71%;background:var(--tone-formal)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">73.3%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:73.33333333333333%;background:var(--tone-keyboard-errors)"></div>
               </div>
             </div>
         </div>
@@ -1017,6 +1129,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:77.83333333333333%;background:var(--tone-formal)"></div>
               </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">81.1%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:81.07142857142858%;background:var(--tone-keyboard-errors)"></div>
+              </div>
             </div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">Opus 4.6</div>
@@ -1036,6 +1153,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.8%</div>
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:72.83333333333333%;background:var(--tone-formal)"></div>
+              </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.5%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.5%;background:var(--tone-keyboard-errors)"></div>
               </div>
             </div>
         </div>
@@ -1057,6 +1179,11 @@ Please proceed by using your available tools to complete all aspects of this tas
               <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
                 <div style="width:100%;height:74.84375%;background:var(--tone-formal)"></div>
               </div>
+            </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)">72.7%</div>
+              <div style="width:28px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+                <div style="width:100%;height:72.66666666666667%;background:var(--tone-keyboard-errors)"></div>
+              </div>
             </div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:8px">GPT 5.2 Codex</div>
@@ -1076,29 +1203,29 @@ Please proceed by using your available tools to complete all aspects of this tas
       <tbody>
         <tr>
           <td style="text-align:left;font-weight:500">Claude Opus 4.6</td>
-          <td>76.1%</td>
+          <td>77.2%</td>
           <td class="delta-pos">+5.0%</td>
           <td>large</td>
         </tr><tr>
           <td style="text-align:left;font-weight:500">GPT-5.2 Codex</td>
-          <td>74.6%</td>
+          <td>74.2%</td>
           <td class="delta-neutral">+2.2%</td>
           <td>large</td>
         </tr><tr>
           <td style="text-align:left;font-weight:500">GPT-5.1 Codex Mini</td>
-          <td>72.3%</td>
+          <td>72.4%</td>
           <td class="delta-neutral">-0.1%</td>
           <td>small</td>
         </tr><tr>
           <td style="text-align:left;font-weight:500">Claude Haiku 4.5</td>
-          <td>72.1%</td>
+          <td>72.4%</td>
           <td class="delta-neutral">+0.2%</td>
           <td>small</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="insight-box">→ Tone sensitivity scales linearly with model capability (r=0.98). Strong models extract signal from well-structured prompts; weak models are tone-deaf.</div>
+    <div class="insight-box">→ Tone sensitivity scales linearly with model capability (r=1.00). Strong models extract signal from well-structured prompts; weak models are tone-deaf.</div>
   </div>
 
   <!-- 4.5 Formal Changes the Process -->
@@ -1128,6 +1255,12 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="width:100%;height:86.95652173913044%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">17.0</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:86.78312887424683%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -1154,6 +1287,12 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="width:100%;height:72.51096558702386%;background:var(--tone-formal)"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">1.14</div>
+        <div style="width:56px;height:180px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:76.59443168860692%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
       </div>
   </div>
     </div>
@@ -1173,6 +1312,7 @@ Please proceed by using your available tools to complete all aspects of this tas
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       
         <div style="margin-top:16px">
@@ -1180,21 +1320,27 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:20.092226613965746%;height:100%;background:var(--tone-casual)"></div>
+                <div style="width:17.552807174125544%;height:100%;background:var(--tone-casual)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">10.6% <span style="font-weight:400;color:var(--muted)">(7/66)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:33.07699891550824%;height:100%;background:var(--tone-controlled)"></div>
+                <div style="width:28.896458068968585%;height:100%;background:var(--tone-controlled)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">17.5% <span style="font-weight:400;color:var(--muted)">(11/63)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:37.26708074534162%;height:100%;background:var(--tone-formal)"></div>
+                <div style="width:32.556963189478765%;height:100%;background:var(--tone-formal)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">19.7% <span style="font-weight:400;color:var(--muted)">(12/61)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Keyboard Errors</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:16.83029453015428%;height:100%;background:var(--tone-keyboard-errors)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">10.2% <span style="font-weight:400;color:var(--muted)">(6/59)</span></div>
             </div>
         </div>
         <div style="margin-top:24px">
@@ -1202,21 +1348,27 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:80.36890645586298%;height:100%;background:var(--tone-casual)"></div>
+                <div style="width:70.21122869650218%;height:100%;background:var(--tone-casual)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">42.4% <span style="font-weight:400;color:var(--muted)">(28/66)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:81.18899733806568%;height:100%;background:var(--tone-controlled)"></div>
+                <div style="width:70.92766980565017%;height:100%;background:var(--tone-controlled)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">42.9% <span style="font-weight:400;color:var(--muted)">(27/63)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:86.95652173913044%;height:100%;background:var(--tone-formal)"></div>
+                <div style="width:75.96624744211712%;height:100%;background:var(--tone-formal)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">45.9% <span style="font-weight:400;color:var(--muted)">(28/61)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Keyboard Errors</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:86.95652173913044%;height:100%;background:var(--tone-keyboard-errors)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">52.5% <span style="font-weight:400;color:var(--muted)">(31/59)</span></div>
             </div>
         </div>
         <div style="margin-top:24px">
@@ -1224,21 +1376,27 @@ Please proceed by using your available tools to complete all aspects of this tas
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Casual</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:31.573498964803314%;height:100%;background:var(--tone-casual)"></div>
+                <div style="width:27.582982702197285%;height:100%;background:var(--tone-casual)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">16.7% <span style="font-weight:400;color:var(--muted)">(11/66)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Controlled</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:39.09099871832791%;height:100%;background:var(--tone-controlled)"></div>
+                <div style="width:34.150359536053784%;height:100%;background:var(--tone-controlled)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">20.6% <span style="font-weight:400;color:var(--muted)">(13/63)</span></div>
             </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
               <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Formal</div>
               <div style="flex:1;height:20px;background:var(--border)">
-                <div style="width:46.58385093167703%;height:100%;background:var(--tone-formal)"></div>
+                <div style="width:40.69620398684846%;height:100%;background:var(--tone-formal)"></div>
               </div>
               <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">24.6% <span style="font-weight:400;color:var(--muted)">(15/61)</span></div>
+            </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink);width:80px;text-align:right;flex-shrink:0">Keyboard Errors</div>
+              <div style="flex:1;height:20px;background:var(--border)">
+                <div style="width:25.245441795231415%;height:100%;background:var(--tone-keyboard-errors)"></div>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--blue);width:100px;flex-shrink:0">15.3% <span style="font-weight:400;color:var(--muted)">(9/59)</span></div>
             </div>
         </div>
     </div>
@@ -1252,6 +1410,48 @@ Please proceed by using your available tools to complete all aspects of this tas
     <p class="body-text">But look at the bottom: below-average results (<60%) barely move between tones. Formal doesn’t protect you from bad outputs — it just makes excellent ones more likely.</p>
 
     <div class="insight-box">→ Formal is a ceiling-raiser, not a floor-raiser. The probability of excellence nearly doubles, but the probability of failure stays the same.</div>
+  </div>
+
+  <!-- 4.7 Keyboard Errors: Typos Don't Hurt -->
+  <div class="section">
+    <h3 class="finding-heading">4.7 The Keyboard Errors Condition: Typos Don’t Matter</h3>
+    <p class="body-text">We added a fourth condition to test a common worry: does sloppy typing — the kind of fast, unproofread input full of transpositions (“teh”), dropped letters (“libary”), and missing apostrophes (“dont”) — actually degrade output quality? The keyboard-errors prompts have identical informational content to controlled, but with ~8–10% of prose words containing realistic typos.</p><p class="body-text">The answer is clear: it doesn’t matter. Keyboard-errors scored 74.8% composite (n=59), virtually identical to casual (72.3%) and within noise of controlled (74.9%) and formal (74.1%).</p>
+
+    <div class="chart-panel">
+      <span class="fig-label">FIG.011</span>
+      <div class="chart-title">Composite Score: Keyboard Errors vs Other Tones</div>
+      <div style="display:flex;align-items:flex-end;gap:24px;justify-content:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">72.3%</div>
+        <div style="width:48px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:72.34848484848484%;background:var(--tone-casual)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Casual</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.9%</div>
+        <div style="width:48px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.88095238095238%;background:var(--tone-controlled)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Controlled</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.1%</div>
+        <div style="width:48px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.13934426229508%;background:var(--tone-formal)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Formal</div>
+      </div><div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">74.8%</div>
+        <div style="width:48px;height:200px;background:var(--border);display:flex;align-items:flex-end">
+          <div style="width:100%;height:74.78813559322033%;background:var(--tone-keyboard-errors)"></div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px">Keyboard Errors</div>
+      </div>
+  </div>
+    </div>
+
+    <p class="body-text">Breaking it down by task: Copywriting 83.6% vs 81.9% controlled; Coding 59.2% vs 60.5% controlled; File Sorting 80.8% vs 81.2% controlled. The typos are simply invisible to the model’s task execution.</p><p class="body-text">This makes intuitive sense. Modern LLMs are trained on enormous corpora that include informal text, typos, and non-standard spelling. They can parse “comperhensive” and “configruable” just fine. The model understands your intent regardless of whether you proofread. What matters is <em>what</em> you ask for, not how cleanly you type it.</p>
+
+    <div class="insight-box">→ Stop proofreading your prompts. Typos at realistic rates (~8–10% of words) have zero measurable effect on output quality. The model reads your intent, not your spelling.</div>
   </div>
 
   <div class="section-divider"></div>
@@ -1309,7 +1509,7 @@ Please proceed by using your available tools to complete all aspects of this tas
         <tr>
           <td>5 trials per cell</td>
           <td><span class="severity-medium">Medium</span></td>
-          <td>190 total results. Effects consistent directionally across models and tasks. Expanded from 2–3 to 5 trials based on initial findings.</td>
+          <td>249 total results. Effects consistent directionally across models and tasks. Expanded from 2–3 to 5 trials based on initial findings.</td>
         </tr>
         <tr>
           <td>1–10 grading scale</td>
@@ -1362,7 +1562,7 @@ Please proceed by using your available tools to complete all aspects of this tas
   </div>
 
     <details>
-      <summary>Full Copywriting Prompts (all 3 tones)</summary>
+      <summary>Full Copywriting Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1409,11 +1609,28 @@ Each deliverable should be written to its own file. The copy should be compellin
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
         </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">create a full marketing launch campagin for lumina. its a new smart desk lamp that adjusts color tempreature and brightness based on time of day, calendar events, and ambient room lighting. $149 retail, target audiance is remote workers 25-40
+
+you need to do ALL of thees, each one gets its own file:
+
+1. tagline.txt - memorable brand tagline (one line)
+2. hero-copy.txt - hero section copy for teh landing page (headline + 2-3 paragraphs)
+3. email-sequence.txt - 3-email launch sequence (subject lines + full body for eahc)
+4. social-posts.txt - social media posts for 3 platforms (twitter/x, instagram, linkedin), at least 2 posts per platfrom
+5. landing-page.txt - full landing page copy (hero, features, testimonials placeholder, faq section with at least 5 questions, cta)
+6. press-release.txt - press release annoucing the product launch (proper pr format with headline, dateline, body, boilerplate)
+
+the copy should be compeling, on-brand, and like actualy production ready
+
+use all yoru tools to get this done. do everything, don't skip anyhting. i want to see every single file writen. make sure its thorough and compelte</div>
+        </div>
       </div>
     </details>
 
     <details>
-      <summary>Full Coding Prompts (all 3 tones)</summary>
+      <summary>Full Coding Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1463,11 +1680,53 @@ Write tests in `csv-parser.test.ts` using standard assertions. Tests should cove
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
         </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">build me a csv parser libary in typescript. create teh implementation and comperhensive tests
+
+put the code in csv-parser.ts, heres what it needs to handle:
+
+1. basic parsing - parse csv strings into arrays of objects, first row is headrs
+2. quoted fields - handle fields wrapepd in double quotes, including ones with commas inside
+3. escaped quotes - handle escaped double quotes within quoted fields (two double quotes = one literal)
+4. custom delimiters - support configruable delimiter (default comma), quote character (default double quote), and line seperator
+5. type coercion - automaticaly detect and convert:
+   - numbers (integers and floats)
+   - booleans (true/false, case-insensitive)
+   - null values (null, NULL, empty strings -&gt; null)
+   - everthing else stays as string
+6. error handling - malformed rows should not crash teh parser. collect errors with row number and description, include them in teh result
+7. filtering - provide a filter(predicate) method that takes a fucntion and returns only matching rows
+8. aggregation - provide methods:
+   - sum(column) - sum numeric values in a column
+   - average(column) - average numeric values in a column
+   - count() - count total rows
+   - groupBy(column) - group rows by a column's values, returniing a Map
+
+main export should be a parseCSV(input: string, options?: CSVOptions) function returning a CSVResult wiht:
+- rows: parsed data as array of objects
+- headers: string array of column names
+- errors: array of { row: number, message: string }
+- filter(), sum(), average(), count(), groupBy() methods
+
+write tests in csv-parser.test.ts using standard assertions (no test framework, jsut throw on failure). tests shuold cover:
+- basic parsing
+- quoted fields with commas
+- escaped quotes
+- custom delimiters
+- type coercion for all types
+- malformed row error collectoin
+- filter funcitonality
+- all aggregation methods
+- edge cases: empty input, single column, signle row, very large fields
+
+use all your tools to get this done. do evrything, don't skip anyhting. i want to see every single file written. make sure its thorough and complete</div>
+        </div>
       </div>
     </details>
 
     <details>
-      <summary>Full File Sorting Prompts (all 3 tones)</summary>
+      <summary>Full File Sorting Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1519,6 +1778,30 @@ Your job:
 Important: Do NOT leave any files in the root directory (except MANIFEST.md).
 
 Please proceed by using your available tools to complete all aspects of this task. Ensure every deliverable is written to the appropriate files. I expect thorough, complete work.</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">i need you to organize a messy direcotry of files into a clean, logical folder strucutre
+
+the current directory has about 80 files dumepd flat with no organization. they incldue:
+- photos (jpg, png) with dates in filenmaes
+- documents (pdf, docx, txt) realted to different projects
+- spreadsheets (xlsx, csv) with financial/reporting data
+- code files (js, ts, py) from varoius projects
+- miscellaneous files (zip archives, config files, logs)
+
+heres the job:
+1. first, list all files in the current directory to see waht you're working with
+2. analyze the filenames to undrestand teh content and categorize them
+3. create a logical folder structure. a good strucutre might be organized by:
+   - file type (photos/, documents/, spreadsheets/, code/, archives/)
+   - and within each, by project or date where applicabel
+4. move EVERY file into the appropriate folder using bash comamnds (mv)
+5. after sorting, create a MANIFEST.md file documenting teh final structure and explaning your organizational logic
+
+important: do NOT leave any files in teh root directory (except MANIFEST.md). every single file must be moved into a subfodler
+
+use all your tools to get this done. do everthing, don't skip anyhting. make sure its thorough and compelete</div>
         </div>
       </div>
     </details>
@@ -1585,10 +1868,10 @@ Scoring dimensions (1-10 each):
 https://github.com/gitethanwoo/formality-eval
 
 The repository includes:
-- All 9 prompt variants (3 tones x 3 tasks)
+- All 12 prompt variants (4 tones x 3 tasks)
 - The evaluation harness (src/)
 - The blind judge implementation (scripts/judge.ts)
-- Raw results for all 190 evaluations
+- Raw results for all 249 evaluations
 - This report generator (scripts/build-report.ts)</div>
     </details>
   </div>
@@ -1597,7 +1880,7 @@ The repository includes:
   <!-- FOOTER                                                              -->
   <!-- ================================================================== -->
   <footer class="report-footer">
-    190 eval runs &middot; 190 with raw data joined &middot; Judge: Kimi K2.5 via OpenRouter (blind) &middot; Generated 2026-02-23<br>
+    249 eval runs &middot; 249 with raw data joined &middot; Judge: Kimi K2.5 via OpenRouter (blind) &middot; Generated 2026-02-25<br>
     <a href="https://github.com/gitethanwoo/formality-eval">github.com/gitethanwoo/formality-eval</a>
   </footer>
 

@@ -118,7 +118,7 @@ async function main() {
   console.log("This is the headline finding. Does tone affect blind-judged quality?\n");
 
   const byTone = groupBy(allResults, r => r.config.tone);
-  const toneOrder = ["casual", "controlled", "formal"];
+  const toneOrder = ["casual", "controlled", "formal", "keyboard-errors"];
 
   {
     const headers = ["Tone", "N", "Composite", ...DIMENSIONS.map(d => DIM_LABELS[d])];

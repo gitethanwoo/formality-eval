@@ -1,6 +1,7 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import type { JudgedEvalResult, EvalRunResult, ToneStyle, TaskType } from "../src/types.js";
+import { CODING_KEYBOARD_ERRORS, COPYWRITING_KEYBOARD_ERRORS, FILE_SORTING_KEYBOARD_ERRORS } from "../src/prompts/keyboard-errors.js";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -571,6 +572,7 @@ async function main() {
     --tone-casual: #c7d2fe;
     --tone-controlled: #818cf8;
     --tone-formal: #4338ca;
+    --tone-keyboard-errors: #d97706;
     --green: #059669;
     --red: #dc2626;
     --font-mono: "IBM Plex Mono", monospace;
@@ -759,6 +761,7 @@ async function main() {
   .tone-swatch.tone-casual { background: var(--tone-casual); }
   .tone-swatch.tone-controlled { background: var(--tone-controlled); }
   .tone-swatch.tone-formal { background: var(--tone-formal); }
+  .tone-swatch.tone-keyboard-errors { background: var(--tone-keyboard-errors); }
 
   /* Prompt comparison */
   .prompt-grid {
@@ -787,6 +790,7 @@ async function main() {
   .prompt-col.tone-casual .prompt-col-header { border-top-color: var(--tone-casual); }
   .prompt-col.tone-controlled .prompt-col-header { border-top-color: var(--tone-controlled); }
   .prompt-col.tone-formal .prompt-col-header { border-top-color: var(--tone-formal); }
+  .prompt-col.tone-keyboard-errors .prompt-col-header { border-top-color: var(--tone-keyboard-errors); }
   .prompt-text {
     font-family: var(--font-mono);
     font-size: 10.5px;
@@ -998,7 +1002,7 @@ async function main() {
     ${bodyText([
       `There\u2019s a generational divide in how people talk to AI. Some write structured, professional prompts with explicit requirements and quality bars. Others type the way they\u2019d text a friend \u2014 terse, lowercase, minimal punctuation, vibes over specifications. It\u2019s not about politeness (\u201Cplease\u201D and \u201Cthank you\u201D) \u2014 it\u2019s about <em>grammatical register</em>. Gen-Z shorthand vs. millennial corporate email.`,
       `Prior work has tested politeness effects on MCQ benchmarks \u2014 accuracy on multiple-choice questions. Yin et al. (2024) examined politeness, Cai et al. (2025) tested tone on MMLU, and EmotionPrompt explored emotional stimulus. But nobody has tested the register/formality spectrum on the kind of work people actually <em>use</em> AI for: writing marketing copy, building software, organizing files. Agentic, multi-step, generative tasks where the model uses tools and iterates.`,
-      `We designed an experiment to find out. The twist: we added a third condition between casual and formal \u2014 <strong>\u201Ccontrolled\u201D</strong> \u2014 which has the same informational content as formal but written in a casual register. This lets us separate two things that formal prompts change simultaneously: (a) the grammatical register and formality, and (b) the specificity and completeness of the instructions.`,
+      `We designed an experiment to find out. The twist: we added two extra conditions. <strong>\u201CControlled\u201D</strong> has the same informational content as formal but written in a casual register \u2014 this lets us separate register from specificity. <strong>\u201CKeyboard errors\u201D</strong> takes controlled and adds realistic fast-typing mistakes (transpositions like \u201Cteh\u201D, dropped letters, missing apostrophes) \u2014 testing whether surface-level messiness degrades output quality.`,
     ])}
   </div>
 
@@ -1012,7 +1016,7 @@ async function main() {
 
     <h3 class="finding-heading">3.1 The Matrix</h3>
     ${bodyText([
-      `We tested 4 models across 3 tones, 3 tasks, and 5 trials per cell \u2014 180 target runs, ${results.length} actual evaluations including a partial extra batch.`,
+      `We tested 4 models across 4 tones, 3 tasks, and 5 trials per cell (1 trial for keyboard-errors) \u2014 180 target runs, ${results.length} actual evaluations including a partial extra batch.`,
     ])}
 
     <div class="design-matrix">
@@ -1021,7 +1025,7 @@ async function main() {
         <div class="design-cell-label">models</div>
       </div>
       <div class="design-cell">
-        <div class="design-cell-value">3</div>
+        <div class="design-cell-value">4</div>
         <div class="design-cell-label">tones</div>
       </div>
       <div class="design-cell">
@@ -1038,10 +1042,10 @@ async function main() {
       `<strong>Models:</strong> Claude Opus 4.6 and GPT-5.2 Codex (large tier), Claude Haiku 4.5 and GPT-5.1 Codex Mini (small tier). Two providers, two capability tiers \u2014 a deliberate pairing to test whether model strength interacts with tone sensitivity.`,
     ])}
 
-    <h3 class="finding-heading" style="margin-top:40px">3.2 The Three Tones</h3>
+    <h3 class="finding-heading" style="margin-top:40px">3.2 The Four Tones</h3>
     ${bodyText([
       `The key methodological contribution is the <strong>controlled</strong> condition. Prior work only compared polite vs. rude, or formal vs. casual, without controlling for information content. Our controlled tone has <em>identical informational content</em> to the formal version \u2014 the same requirements, the same quality bars, the same directives \u2014 but written in casual register. This lets us disentangle register from specificity.`,
-      `Here are excerpts from the prompts across all three tones for each task:`,
+      `Here are excerpts from the prompts across all four tones for each task:`,
     ])}
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:24px">Copywriting Task</div>
@@ -1059,6 +1063,10 @@ async function main() {
         <div class="prompt-text">${escHtml(PROMPT_EXCERPT_FORMAL)}</div>
       </div>
     </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">${escHtml(COPYWRITING_KEYBOARD_ERRORS.slice(0, 600))}\u2026</div>
+    </div>
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">Coding Task</div>
     <div class="prompt-grid">
@@ -1075,6 +1083,10 @@ async function main() {
         <div class="prompt-text">${escHtml(CODING_EXCERPT_FORMAL)}</div>
       </div>
     </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">${escHtml(CODING_KEYBOARD_ERRORS.slice(0, 600))}\u2026</div>
+    </div>
 
     <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;margin-top:32px">File Sorting Task</div>
     <div class="prompt-grid">
@@ -1090,6 +1102,10 @@ async function main() {
         <div class="prompt-col-header">Formal</div>
         <div class="prompt-text">${escHtml(FILESORT_EXCERPT_FORMAL)}</div>
       </div>
+    </div>
+    <div style="margin-top:8px;border:1px solid var(--border);background:var(--card);padding:20px;border-top:3px solid var(--tone-keyboard-errors)">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Keyboard Errors</div>
+      <div class="prompt-text">${escHtml(FILE_SORTING_KEYBOARD_ERRORS.slice(0, 600))}\u2026</div>
     </div>
 
     <h3 class="finding-heading" style="margin-top:40px">3.3 The Tasks</h3>
@@ -1130,6 +1146,7 @@ async function main() {
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       ${singleBarChart(
         toneStats.map((t) => ({ label: TONE_LABELS[t.tone], value: t.mean, tone: t.tone })),
@@ -1174,6 +1191,7 @@ async function main() {
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       ${verticalBarChart(
         taskTone.map((t) => ({
@@ -1265,6 +1283,7 @@ async function main() {
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       ${verticalBarChart(
         modelTone.map((m) => ({
@@ -1364,6 +1383,7 @@ async function main() {
         <div class="tone-legend-item"><div class="tone-swatch tone-casual"></div> Casual</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-controlled"></div> Controlled</div>
         <div class="tone-legend-item"><div class="tone-swatch tone-formal"></div> Formal</div>
+        <div class="tone-legend-item"><div class="tone-swatch tone-keyboard-errors"></div> Kbd Errors</div>
       </div>
       ${tailThresholds.map((threshold, ti) => {
         const maxPct = Math.max(...tailData.flatMap((t) => t.rates.map((r) => r.pct)));
@@ -1398,6 +1418,46 @@ async function main() {
     ])}
 
     ${insightBox(`Formal is a ceiling-raiser, not a floor-raiser. The probability of excellence nearly doubles, but the probability of failure stays the same.`)}
+  </div>
+
+  <!-- 4.7 Keyboard Errors: Typos Don't Hurt -->
+  <div class="section">
+    <h3 class="finding-heading">4.7 The Keyboard Errors Condition: Typos Don\u2019t Matter</h3>
+    ${bodyText([
+      `We added a fourth condition to test a common worry: does sloppy typing \u2014 the kind of fast, unproofread input full of transpositions (\u201Cteh\u201D), dropped letters (\u201Clibary\u201D), and missing apostrophes (\u201Cdont\u201D) \u2014 actually degrade output quality? The keyboard-errors prompts have identical informational content to controlled, but with ~8\u201310% of prose words containing realistic typos.`,
+      `The answer is clear: it doesn\u2019t matter. Keyboard-errors scored ${fmt(toneStats[3].mean)} composite (n=${toneStats[3].n}), virtually identical to casual (${fmt(toneStats[0].mean)}) and within noise of controlled (${fmt(toneStats[1].mean)}) and formal (${fmt(toneStats[2].mean)}).`,
+    ])}
+
+    <div class="chart-panel">
+      <span class="fig-label">${nextFig()}</span>
+      <div class="chart-title">Composite Score: Keyboard Errors vs Other Tones</div>
+      ${singleBarChart(
+        toneStats.map((t) => ({ label: TONE_LABELS[t.tone], value: t.mean, tone: t.tone })),
+        100,
+        200,
+        fmt,
+        48,
+      )}
+    </div>
+
+    ${(() => {
+      const kbByTask = TASKS.map((task) => {
+        const kb = results.filter((r) => r.config.tone === "keyboard-errors" && r.config.task === task);
+        const ctrl = results.filter((r) => r.config.tone === "controlled" && r.config.task === task);
+        return {
+          task,
+          kbMean: pct(mean(kb.map(composite))),
+          ctrlMean: pct(mean(ctrl.map(composite))),
+          n: kb.length,
+        };
+      });
+      return bodyText([
+        `Breaking it down by task: ${kbByTask.map(t => `${TASK_LABELS[t.task as TaskType]} ${fmt(t.kbMean)} vs ${fmt(t.ctrlMean)} controlled`).join("; ")}. The typos are simply invisible to the model\u2019s task execution.`,
+        `This makes intuitive sense. Modern LLMs are trained on enormous corpora that include informal text, typos, and non-standard spelling. They can parse \u201Ccomperhensive\u201D and \u201Cconfigruable\u201D just fine. The model understands your intent regardless of whether you proofread. What matters is <em>what</em> you ask for, not how cleanly you type it.`,
+      ]);
+    })()}
+
+    ${insightBox(`Stop proofreading your prompts. Typos at realistic rates (~8\u201310% of words) have zero measurable effect on output quality. The model reads your intent, not your spelling.`)}
   </div>
 
   <div class="section-divider"></div>
@@ -1498,7 +1558,7 @@ async function main() {
     ${sectionHeader("Appendix")}
 
     <details>
-      <summary>Full Copywriting Prompts (all 3 tones)</summary>
+      <summary>Full Copywriting Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1512,11 +1572,15 @@ async function main() {
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
           <div class="appendix-content">${escHtml(PROMPT_EXCERPT_FORMAL)}</div>
         </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">${escHtml(COPYWRITING_KEYBOARD_ERRORS)}</div>
+        </div>
       </div>
     </details>
 
     <details>
-      <summary>Full Coding Prompts (all 3 tones)</summary>
+      <summary>Full Coding Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1530,11 +1594,15 @@ async function main() {
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
           <div class="appendix-content">${escHtml(CODING_EXCERPT_FORMAL)}</div>
         </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">${escHtml(CODING_KEYBOARD_ERRORS)}</div>
+        </div>
       </div>
     </details>
 
     <details>
-      <summary>Full File Sorting Prompts (all 3 tones)</summary>
+      <summary>Full File Sorting Prompts (all 4 tones)</summary>
       <div style="display:grid;gap:16px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-casual)">Casual</div>
@@ -1547,6 +1615,10 @@ async function main() {
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-formal)">Formal</div>
           <div class="appendix-content">${escHtml(FILESORT_EXCERPT_FORMAL)}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;padding-top:8px;border-top:3px solid var(--tone-keyboard-errors)">Keyboard Errors</div>
+          <div class="appendix-content">${escHtml(FILE_SORTING_KEYBOARD_ERRORS)}</div>
         </div>
       </div>
     </details>
@@ -1609,7 +1681,7 @@ Scoring dimensions (1-10 each):
 https://github.com/gitethanwoo/formality-eval
 
 The repository includes:
-- All 9 prompt variants (3 tones x 3 tasks)
+- All 12 prompt variants (4 tones x 3 tasks)
 - The evaluation harness (src/)
 - The blind judge implementation (scripts/judge.ts)
 - Raw results for all ${results.length} evaluations
